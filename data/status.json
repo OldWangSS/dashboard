@@ -1,5 +1,5 @@
 {
-  "updated": "",
+  "updated": "2026-05-11 23:53",
   "daily": {
     "tasks": [],
     "kb": [],
@@ -18,8 +18,8 @@
     "abyss": true,
     "hermes": true,
     "hmcode": true,
-    "catclaw": false,
-    "homebot": false
+    "catclaw": true,
+    "homebot": true
   },
   "token": {
     "today": 0,
