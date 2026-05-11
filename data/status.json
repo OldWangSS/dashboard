@@ -1,0 +1,26 @@
+{
+  "updated": "2026-05-11 23:41",
+  "briefing": {
+    "title": "等待首次运行",
+    "items": []
+  },
+  "football": {
+    "predictions": [],
+    "review": null
+  },
+  "news": {
+    "source": "",
+    "items": []
+  },
+  "weekly": null,
+  "system": {
+    "abyss": true,
+    "hermes": true,
+    "hmcode": true,
+    "catclaw": true,
+    "homebot": true
+  },
+  "token": {
+    "today": 0
+  }
+}
