@@ -1,26 +1,28 @@
 {
-  "updated": "2026-05-11 23:41",
-  "briefing": {
-    "title": "等待首次运行",
+  "updated": "",
+  "daily": {
+    "tasks": [],
+    "kb": [],
+    "token_summary": ""
+  },
+  "news": {
+    "source": "",
     "items": []
   },
   "football": {
     "predictions": [],
     "review": null
   },
-  "news": {
-    "source": "",
-    "items": []
-  },
   "weekly": null,
   "system": {
     "abyss": true,
     "hermes": true,
     "hmcode": true,
-    "catclaw": true,
-    "homebot": true
+    "catclaw": false,
+    "homebot": false
   },
   "token": {
-    "today": 0
+    "today": 0,
+    "month": 0
   }
 }

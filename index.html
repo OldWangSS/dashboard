@@ -2,203 +2,202 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abyss 控制台</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>王叔的任务看板</title>
 <style>
   :root {
-    --bg: #0d1117;
-    --card: #161b22;
-    --border: #21262d;
-    --text: #c9d1d9;
-    --dim: #8b949e;
-    --green: #3fb950;
-    --red: #f85149;
-    --purple: #a371f7;
-    --blue: #58a6ff;
-    --orange: #d29922;
+    --bg: #0d1117; --card: #161b22; --border: #21262d;
+    --text: #c9d1d9; --dim: #8b949e;
+    --green: #3fb950; --red: #f85149; --purple: #a371f7; --blue: #58a6ff; --orange: #d29922;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { 
-    background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    max-width: 600px; margin: 0 auto; padding: 16px; min-height: 100vh;
-  }
-  header {
-    text-align: center; padding: 8px 0 16px;
-    border-bottom: 1px solid var(--border); margin-bottom: 16px;
-  }
-  header h1 { font-size: 1.4em; color: var(--purple); }
-  header .time { font-size: 0.8em; color: var(--dim); margin-top: 4px; }
-  .card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 8px; padding: 14px; margin-bottom: 12px;
-  }
-  .card summary { cursor: pointer; font-weight: 600; font-size: 1em; color: var(--blue); }
-  .card details[open] summary { margin-bottom: 10px; }
-  .card summary::marker { font-size: 0.8em; }
-  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
-  .dot.on { background: var(--green); box-shadow: 0 0 6px var(--green); }
-  .dot.off { background: var(--red); box-shadow: 0 0 6px var(--red); }
-  .grid { display: flex; flex-wrap: wrap; gap: 8px; }
-  .agent { 
-    flex: 1; min-width: 60px; text-align: center; padding: 8px 4px;
-    border-radius: 6px; background: rgba(255,255,255,0.03); font-size: 0.8em;
-  }
-  .agent .name { display: block; margin-top: 4px; }
-  .agent.on { border: 1px solid rgba(63,185,80,0.3); }
-  .agent.off { border: 1px solid rgba(248,81,73,0.3); opacity: 0.6; }
-  .news-item { padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 0.9em; }
-  .news-item:last-child { border: none; }
-  .news-item a { color: var(--text); text-decoration: none; }
-  .news-item a:hover { color: var(--blue); }
-  .tag { 
-    display: inline-block; padding: 1px 6px; border-radius: 4px; font-size: 0.7em; 
-    margin-right: 4px; background: rgba(163,113,247,0.15); color: var(--purple);
-  }
-  .match { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; font-size: 0.85em; border-bottom: 1px solid var(--border); }
-  .match:last-child { border: none; }
-  .match .score { font-weight: bold; }
-  .hit { color: var(--green); }
-  .miss { color: var(--red); }
-  .pending { color: var(--dim); }
-  .token-bar { height: 4px; background: var(--border); border-radius: 2px; margin-top: 6px; overflow: hidden; }
-  .token-bar div { height: 100%; background: var(--purple); border-radius: 2px; }
-  footer { text-align: center; padding: 16px; color: var(--dim); font-size: 0.7em; }
-  .loading { text-align: center; color: var(--dim); padding: 20px; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; max-width:600px; margin:0 auto; padding:12px; }
+  header { text-align:center; padding:6px 0 10px; border-bottom:1px solid var(--border); margin-bottom:10px; }
+  header h1 { font-size:1.3em; color:var(--purple); }
+  header .time { font-size:0.75em; color:var(--dim); margin-top:2px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:12px; margin-bottom:10px; }
+  .card summary { cursor:pointer; font-weight:600; font-size:0.95em; color:var(--blue); list-style:none; }
+  .card summary::-webkit-details-marker { display:none; }
+  .card summary::before { content:'▸ '; font-size:0.8em; }
+  .card details[open] summary::before { content:'▾ '; }
+  .card details[open] summary { margin-bottom:8px; }
+  .dot { display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:4px; }
+  .dot.on { background:var(--green); box-shadow:0 0 5px var(--green); }
+  .dot.off { background:var(--red); box-shadow:0 0 5px var(--red); }
+  .agents-row { display:flex; gap:6px; flex-wrap:wrap; justify-content:center; }
+  .agent { text-align:center; padding:6px 4px; border-radius:6px; background:rgba(255,255,255,0.02); font-size:0.75em; flex:1; min-width:55px; }
+  .agent.on { border:1px solid rgba(63,185,80,0.25); }
+  .agent.off { border:1px solid rgba(248,81,73,0.25); opacity:0.5; }
+  .agent .icon { font-size:1.2em; display:block; }
+  .section-title { font-size:0.8em; color:var(--dim); padding:6px 0 4px; border-bottom:1px solid var(--border); margin-bottom:6px; }
+  .item { font-size:0.82em; padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.03); }
+  .item:last-child { border:none; }
+  .tag { display:inline-block; padding:1px 5px; border-radius:3px; font-size:0.7em; margin-right:4px; background:rgba(163,113,247,0.12); color:var(--purple); }
+  .two-col { display:flex; gap:10px; }
+  .two-col>div { flex:1; }
+  .match { display:flex; justify-content:space-between; align-items:center; padding:4px 0; font-size:0.8em; border-bottom:1px solid rgba(255,255,255,0.03); }
+  .match:last-child { border:none; }
+  .match .score { font-weight:bold; }
+  .hit { color:var(--green); }
+  .miss { color:var(--red); }
+  .pending { color:var(--dim); }
+  .cost { text-align:center; padding:6px; font-size:0.78em; color:var(--dim); }
+  .cost b { color:var(--purple); }
+  footer { text-align:center; padding:10px; color:var(--dim); font-size:0.65em; }
+  .loading { text-align:center; color:var(--dim); padding:12px; font-size:0.82em; }
+  .news-item { font-size:0.82em; padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.03); }
+  .news-item a { color:var(--text); text-decoration:none; }
+  .news-item a:hover { color:var(--blue); }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>🦞 Abyss 控制台</h1>
+  <h1>📋 王叔的任务看板</h1>
   <div class="time" id="clock">加载中...</div>
 </header>
 
+<!-- 1. 运行早报 -->
 <div class="card">
   <details open>
-    <summary>🛡️ 系统状态</summary>
-    <div class="grid" id="agents"></div>
+    <summary>🌅 运行早报</summary>
+    <div class="section-title">📋 昨日重要任务</div>
+    <div id="dailyTasks" class="loading">--</div>
+    <div class="section-title">📚 知识库更新</div>
+    <div id="dailyKB" class="loading">--</div>
+    <div class="section-title">💰 Token 消耗</div>
+    <div id="dailyToken" class="loading">--</div>
   </details>
 </div>
 
-<div class="card">
-  <details>
-    <summary>🌅 今日早报</summary>
-    <div id="briefing" class="loading">等待首次运行...</div>
-  </details>
-</div>
-
-<div class="card">
-  <details>
-    <summary>⚽ 足球预测</summary>
-    <div id="football" class="loading">等待首次运行...</div>
-  </details>
-</div>
-
+<!-- 2. 今日新闻 -->
 <div class="card">
   <details>
     <summary>📰 今日新闻</summary>
-    <div id="news" class="loading">等待首次运行...</div>
+    <div id="newsSource" style="font-size:0.72em;color:var(--dim);margin-bottom:4px"></div>
+    <div id="newsList" class="loading">等待首次运行...</div>
   </details>
 </div>
 
+<!-- 3. 足球预测 + 复盘 -->
+<div class="card">
+  <details>
+    <summary>⚽ 足球预测 & 复盘</summary>
+    <div class="two-col">
+      <div>
+        <div class="section-title">🔮 预测</div>
+        <div id="predictions" class="loading">--</div>
+      </div>
+      <div>
+        <div class="section-title">📊 复盘</div>
+        <div id="review" class="loading">--</div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- 4. 运行周报（周一显示） -->
 <div class="card" id="weeklyCard" style="display:none">
   <details>
-    <summary>📋 每周汇总</summary>
-    <div id="weekly" class="loading"></div>
+    <summary>📋 运行周报</summary>
+    <div class="section-title">📋 上周重要任务</div>
+    <div id="weeklyTasks" class="loading">--</div>
+    <div class="section-title">📚 知识库更新</div>
+    <div id="weeklyKB" class="loading">--</div>
+    <div class="section-title">💰 Token 消耗</div>
+    <div id="weeklyToken" class="loading">--</div>
   </details>
 </div>
 
-<div style="text-align:center; padding:8px; color:var(--dim); font-size:0.8em">
-  每日 ¥<span id="tokenCost">--</span> · <span id="refreshInfo">自动刷新</span>
+<!-- 5. 系统状态（最底） -->
+<div class="card">
+  <details open>
+    <summary>🛡️ 系统状态</summary>
+    <div class="agents-row" id="agents"></div>
+    <div class="cost">今日成本 <b id="costToday">¥--</b> · 本月 <b id="costMonth">¥--</b></div>
+  </details>
 </div>
 
-<footer>Abyss Dashboard · OldWangSS</footer>
+<footer>Abyss Dashboard · OldWangSS · <span id="refreshInfo"></span></footer>
 
 <script>
 const AGENTS = [
-  { id: 'abyss',    name: 'Abyss',   emoji: '🧠', depends: null },
-  { id: 'hermes',   name: 'Hermes',  emoji: '💻', depends: 'abyss' },
-  { id: 'hmcode',   name: 'Hmcode',  emoji: '📝', depends: 'abyss' },
-  { id: 'catclaw',  name: 'CatClaw', emoji: '🦞', depends: null },
-  { id: 'homebot',  name: 'HomeBot', emoji: '🏠', depends: 'catclaw' },
+  { id:'abyss',   name:'Abyss',   icon:'🧠', depends:null },
+  { id:'catclaw', name:'CatClaw', icon:'🦞', depends:null },
+  { id:'hermes',  name:'Hermes',  icon:'💻', depends:'abyss' },
+  { id:'hmcode',  name:'Hmcode',  icon:'📝', depends:'abyss' },
+  { id:'homebot', name:'HomeBot', icon:'🏠', depends:'catclaw' },
 ];
 
 async function load() {
   try {
-    const r = await fetch('data/status.json?t=' + Date.now());
+    const r = await fetch('data/status.json?t='+Date.now());
     const d = await r.json();
     renderSystem(d.system);
-    renderBriefing(d.briefing);
-    renderFootball(d.football);
+    renderDaily(d.daily);
     renderNews(d.news);
+    renderFootball(d.football);
     renderWeekly(d.weekly);
-    document.getElementById('tokenCost').textContent = d.token?.today?.toFixed(2) || '--';
-    document.getElementById('clock').textContent = '更新于 ' + (d.updated || '--');
-  } catch(e) {
-    document.getElementById('clock').textContent = '数据加载失败';
-  }
+    document.getElementById('costToday').textContent = '¥'+(d.token?.today||0).toFixed(2);
+    document.getElementById('costMonth').textContent = '¥'+(d.token?.month||0).toFixed(2);
+    document.getElementById('clock').textContent = '更新于 '+(d.updated||'--');
+    document.getElementById('refreshInfo').textContent = '每5分钟自动刷新';
+  } catch(e) { document.getElementById('clock').textContent = '数据加载失败'; }
 }
 
 function renderSystem(sys) {
-  const el = document.getElementById('agents');
-  el.innerHTML = AGENTS.map(a => {
-    const alive = a.depends ? sys[a.depends] : sys[a.id];
-    const cls = alive ? 'on' : 'off';
-    return `<div class="agent ${cls}">
-      <span class="dot ${alive ? 'on' : 'off'}"></span>
-      <span class="name">${a.emoji} ${a.name}</span>
+  document.getElementById('agents').innerHTML = AGENTS.map(a => {
+    const ok = a.depends ? sys[a.depends] : sys[a.id];
+    return `<div class="agent ${ok?'on':'off'}">
+      <span class="icon">${a.icon}</span>
+      <span class="dot ${ok?'on':'off'}"></span>${a.name}
     </div>`;
   }).join('');
 }
 
-function renderBriefing(b) {
-  const el = document.getElementById('briefing');
-  if (!b?.items?.length) { el.innerHTML = '<div class="loading">等待首次运行...</div>'; return; }
-  el.innerHTML = `<p style="font-size:0.9em">${b.title || ''}</p>` +
-    b.items.map(i => `<div style="font-size:0.85em;padding:3px 0">${i}</div>`).join('');
-}
-
-function renderFootball(f) {
-  const el = document.getElementById('football');
-  const preds = f?.predictions || [];
-  const review = f?.review;
-  if (!preds.length && !review) { el.innerHTML = '<div class="loading">等待首次运行...</div>'; return; }
-  
-  let html = '';
-  if (preds.length) {
-    html += preds.map(m => {
-      const cls = m.hit === true ? 'hit' : m.hit === false ? 'miss' : 'pending';
-      return `<div class="match">
-        <span>${m.home || '?'} vs ${m.away || '?'}</span>
-        <span class="score ${cls}">${m.prediction || '待预测'}</span>
-      </div>`;
-    }).join('');
-  }
-  if (review) {
-    html += `<div style="margin-top:8px;font-size:0.8em;color:var(--dim)">📊 复盘: ${review.hit}/${review.total} 命中 (${review.rate})</div>`;
-  }
-  el.innerHTML = html;
+function renderDaily(d) {
+  if (!d) return;
+  document.getElementById('dailyTasks').innerHTML = d.tasks?.map(t=>`<div class="item">${t}</div>`).join('')||'<div class="item">--</div>';
+  document.getElementById('dailyKB').innerHTML = d.kb?.map(k=>`<div class="item">${k}</div>`).join('')||'<div class="item">--</div>';
+  document.getElementById('dailyToken').innerHTML = `<div class="item">${d.token_summary||'--'}</div>`;
 }
 
 function renderNews(n) {
-  const el = document.getElementById('news');
-  if (!n?.items?.length) { el.innerHTML = '<div class="loading">等待首次运行...</div>'; return; }
-  el.innerHTML = (n.source ? `<div style="font-size:0.75em;color:var(--dim);margin-bottom:6px">来源: ${n.source}</div>` : '') +
-    n.items.map(i => {
-      const tag = i.tag ? `<span class="tag">${i.tag}</span>` : '';
-      return `<div class="news-item">${tag}<a href="${i.link || '#'}" target="_blank">${i.title}</a></div>`;
-    }).join('');
+  document.getElementById('newsSource').textContent = n?.source ? '来源: '+n.source : '';
+  if (!n?.items?.length) { document.getElementById('newsList').innerHTML='<div class="loading">等待首次运行...</div>'; return; }
+  document.getElementById('newsList').innerHTML = n.items.map(i => {
+    const tag = i.tag ? `<span class="tag">${i.tag}</span>` : '';
+    return `<div class="news-item">${tag}<a href="${i.link||'#'}" target="_blank">${i.title}</a></div>`;
+  }).join('');
+}
+
+function renderFootball(f) {
+  const preds = f?.predictions||[];
+  const review = f?.review;
+  document.getElementById('predictions').innerHTML = preds.length 
+    ? preds.map(m => {
+        const cls = m.hit===true?'hit':m.hit===false?'miss':'pending';
+        return `<div class="match"><span>${m.home||'?'} vs ${m.away||'?'}</span><span class="score ${cls}">${m.prediction||'--'}</span></div>`;
+      }).join('')
+    : '<div class="item">--</div>';
+  
+  document.getElementById('review').innerHTML = review
+    ? `<div class="item">命中 ${review.hit}/${review.total}（${review.rate}）</div>` +
+      (review.detail||[]).map(d => `<div class="item" style="font-size:0.75em">${d}</div>`).join('')
+    : '<div class="item">--</div>';
 }
 
 function renderWeekly(w) {
   const card = document.getElementById('weeklyCard');
-  if (!w) { card.style.display = 'none'; return; }
-  card.style.display = 'block';
-  document.getElementById('weekly').innerHTML = w.items?.map(i => `<div style="font-size:0.85em;padding:3px 0">${i}</div>`).join('') || '暂无数据';
+  if (!w) { card.style.display='none'; return; }
+  card.style.display='block';
+  document.getElementById('weeklyTasks').innerHTML = w.tasks?.map(t=>`<div class="item">${t}</div>`).join('')||'--';
+  document.getElementById('weeklyKB').innerHTML = w.kb?.map(k=>`<div class="item">${k}</div>`).join('')||'--';
+  document.getElementById('weeklyToken').innerHTML = `<div class="item">${w.token_summary||'--'}</div>`;
 }
 
 load();
-setInterval(load, 300000); // 5min refresh
+setInterval(load, 300000);
 </script>
 </body>
 </html>
