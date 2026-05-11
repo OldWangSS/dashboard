@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-12 00:20",
+  "updated": "2026-05-12 00:17",
   "daily": {
     "tasks": [
       "✅ F盘AgentDownload/AgentShared 迁移完成",
@@ -16,7 +16,7 @@
       "新增 概念/认知决定接触层级.md",
       "新增 视频笔记/DeepSeek V4 杠杆窗口.md"
     ],
-    "token_summary": "DeepSeek V4 Pro: 今日 ¥26.11 · 本月 ¥255.24"
+    "token_summary": "DeepSeek V4 Pro: 今日 94.4M tokens (¥26.52) · 本月 1.15B tokens (¥255.64)"
   },
   "news": {
     "source": "CatClaw Browser",
@@ -37,7 +37,9 @@
     "homebot": true
   },
   "token": {
-    "today": 26.11,
-    "month": 255.24
+    "today": 26.52,
+    "month": 255.64,
+    "today_tokens": 94441372,
+    "month_tokens": 1153757000
   }
 }
