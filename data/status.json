@@ -1,13 +1,28 @@
 {
-  "updated": "2026-05-11 23:53",
+  "updated": "2026-05-12 00:20",
   "daily": {
-    "tasks": [],
-    "kb": [],
-    "token_summary": ""
+    "tasks": [
+      "✅ F盘AgentDownload/AgentShared 迁移完成",
+      "✅ Chrome/Edge 浏览器数据迁回C盘NVMe",
+      "✅ 政企产品知识库搭建（和对讲+云视讯）",
+      "✅ MiniMax到期应对方案",
+      "✅ CatClaw能力摸底（30个Skills+新闻抓取）",
+      "✅ GitHub Pages仪表盘搭建+数据推送"
+    ],
+    "kb": [
+      "新增 政企产品/和对讲.md",
+      "新增 政企产品/云视讯.md",
+      "新增 概念/偷懒是商机.md（完整版）",
+      "新增 概念/认知决定接触层级.md",
+      "新增 视频笔记/DeepSeek V4 杠杆窗口.md"
+    ],
+    "token_summary": "DeepSeek V4 Pro: 今日 ¥26.11 · 本月 ¥255.24"
   },
   "news": {
-    "source": "",
-    "items": []
+    "source": "CatClaw Browser",
+    "items": [
+      {"title": "等待首次新闻抓取...", "link": "#", "tag": "待推送"}
+    ]
   },
   "football": {
     "predictions": [],
@@ -22,7 +37,7 @@
     "homebot": true
   },
   "token": {
-    "today": 0,
-    "month": 254.12
+    "today": 26.11,
+    "month": 255.24
   }
 }
