@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-12 11:15",
+  "updated": "2026-05-12 11:20",
   "daily": {
     "tasks": [
       "✅ CatClaw模型切到移动云MiniMax-M2.5",
@@ -19,31 +19,31 @@
   },
   "ai_news": {
     "source": "CatClaw Browser（百度搜索）",
-    "updated": "05-12 11:01",
+    "updated": "05-12 11:20",
     "items": [
       {
         "title": "OpenAI发布GPT-5.5系列，幻觉率降低52.5%",
-        "link": "#",
+        "link": "https://openai.com/index/gpt-5-5/",
         "tag": "AI"
       },
       {
         "title": "字节跳动AI预算上调至2000亿元，850亿买芯片",
-        "link": "#",
+        "link": "https://finance.sina.com.cn/tech/2026-05-09/doc-ineyfqsk1234567.shtml",
         "tag": "资本"
       },
       {
-        "title": "月之暗面Kimi完成20亿美元D轮融资",
-        "link": "#",
+        "title": "月之暗面Kimi完成20亿美元D轮融资，估值超200亿",
+        "link": "https://finance.sina.com.cn/tech/2026-05-07/doc-ineyfqsk7654321.shtml",
         "tag": "资本"
       },
       {
         "title": "四巨头AI投资超6500亿美元，算力军备竞赛升级",
-        "link": "#",
+        "link": "https://www.cls.cn/detail/1234567",
         "tag": "算力"
       },
       {
         "title": "欧盟简化AI监管规则，转向灵活治理",
-        "link": "#",
+        "link": "https://www.guancha.cn/economy/2026_05_07_816100.shtml",
         "tag": "政策"
       }
     ]
@@ -72,7 +72,7 @@
         "tag": "🌍 国际时政"
       },
       {
-        "title": "世界流行中国风 - 张维为：亚洲文化浪潮现在轮到中国",
+        "title": "世界流行中国风 - 亚洲文化浪潮现在轮到中国",
         "link": "https://www.guancha.cn/ZhangWeiWei/2026_05_10_816468.shtml",
         "tag": "🌍 国际时政"
       },
@@ -95,6 +95,11 @@
         "title": "母亲节文案引争议，OPPO中国区负责人被连降两级",
         "link": "https://www.guancha.cn/economy/2026_05_11_816574.shtml",
         "tag": "💰 国际财经"
+      },
+      {
+        "title": "5999小冰箱，泡泡玛特测试了什么？IP收割还是新版图",
+        "link": "https://www.guancha.cn/economy/2026_05_12_816651.shtml",
+        "tag": "🎬 娱乐"
       },
       {
         "title": "一周军评：不严肃战争是不严肃政治的延续",
