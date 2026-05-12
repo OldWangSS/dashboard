@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-12 11:01",
+  "updated": "2026-05-12 11:15",
   "daily": {
     "tasks": [
       "✅ CatClaw模型切到移动云MiniMax-M2.5",
@@ -52,83 +52,88 @@
     "source": "CatClaw Browser（观察者网+直播吧）",
     "items": [
       {
-        "title": "特朗普将访华！中方公布日期",
-        "link": "#",
+        "title": "中国不再认为中美问题在于误解，现在是系统性对抗",
+        "link": "https://www.guancha.cn/FyodorLukyanov/2026_05_12_816655.shtml",
         "tag": "🌍 国际时政"
       },
       {
-        "title": "伊朗：目前专注止战",
-        "link": "#",
+        "title": "与特朗普交易的博弈艺术：赢得博弈之五重逻辑",
+        "link": "https://www.guancha.cn/LiCheng/2026_05_11_816616.shtml",
         "tag": "🌍 国际时政"
       },
       {
-        "title": "赖清德窜访引关注",
-        "link": "#",
+        "title": "被伊朗羞辱的特朗普，急需来中国冲喜",
+        "link": "https://www.guancha.cn/tangxianglong/2026_05_11_816569.shtml",
         "tag": "🌍 国际时政"
+      },
+      {
+        "title": "中东战火把东南亚烧出三急，但有人还想夹带私货",
+        "link": "https://www.guancha.cn/xuliping2/2026_05_11_816553.shtml",
+        "tag": "🌍 国际时政"
+      },
+      {
+        "title": "世界流行中国风 - 张维为：亚洲文化浪潮现在轮到中国",
+        "link": "https://www.guancha.cn/ZhangWeiWei/2026_05_10_816468.shtml",
+        "tag": "🌍 国际时政"
+      },
+      {
+        "title": "美国消费者信心崩了，特朗普顾问：都怪总统管太多",
+        "link": "https://www.guancha.cn/internation/2026_05_12_816687.shtml",
+        "tag": "💰 国际财经"
       },
       {
         "title": "京沪高铁部分线路涨价20%",
-        "link": "#",
+        "link": "https://www.guancha.cn/economy/2026_05_11_816623.shtml",
         "tag": "💰 国际财经"
       },
       {
-        "title": "华为起诉迪士尼专利侵权",
-        "link": "#",
+        "title": "华为大战迪士尼！一场专利诉讼背后的中国科技变局",
+        "link": "https://www.guancha.cn/economy/2026_05_11_816604.shtml",
         "tag": "💰 国际财经"
       },
       {
-        "title": "丁薛祥调研华为芯片实验室",
-        "link": "#",
+        "title": "母亲节文案引争议，OPPO中国区负责人被连降两级",
+        "link": "https://www.guancha.cn/economy/2026_05_11_816574.shtml",
         "tag": "💰 国际财经"
       },
       {
-        "title": "福特级四号舰再延期两年",
-        "link": "#",
-        "tag": "🛡️ 国际军事"
+        "title": "一周军评：不严肃战争是不严肃政治的延续",
+        "link": "https://www.guancha.cn/WangShiChun/2026_05_10_816481.shtml",
+        "tag": "⚔️ 国际军事"
       },
       {
-        "title": "朝鲜军人参加俄红场阅兵",
-        "link": "#",
-        "tag": "🛡️ 国际军事"
+        "title": "5月7日应该成为巴基斯坦的空军节",
+        "link": "https://www.guancha.cn/ChenFeng3/2026_05_07_816119.shtml",
+        "tag": "⚔️ 国际军事"
       },
       {
-        "title": "国防部：已配齐\"航母五件套\"",
-        "link": "#",
-        "tag": "🛡️ 国际军事"
-      },
-      {
-        "title": "欧冠决赛裁判确定",
-        "link": "#",
+        "title": "英超：热刺1-1利兹联四轮不败",
+        "link": "https://news.zhibo8.com/zuqiu/2026-05-12/match1713736date2026vnative.htm",
         "tag": "⚽ 足球"
       },
       {
-        "title": "登贝莱连任法甲最佳",
-        "link": "#",
+        "title": "西甲：巴塞罗那2-0皇马 国家德比取胜",
+        "link": "https://news.zhibo8.com/zuqiu/2026-05-11/match1730676v-jijin.htm",
         "tag": "⚽ 足球"
       },
       {
-        "title": "巴萨2-0皇马西甲夺冠",
-        "link": "#",
+        "title": "意甲：AC米兰2-3亚特兰大 / 那不勒斯2-3博洛尼亚",
+        "link": "https://news.zhibo8.com/zuqiu/",
         "tag": "⚽ 足球"
       },
       {
-        "title": "字母哥正式上架！雄鹿接受交易报价",
-        "link": "#",
+        "title": "姆巴佩因多次在伯纳乌被嘘，不愿本季再登场",
+        "link": "https://news.zhibo8.com/zuqiu/2026-05-12/6a020aa0e331fnative.htm",
+        "tag": "⚽ 足球"
+      },
+      {
+        "title": "米切尔季后赛第5次单节20+，超詹姆斯！和库里并列历史第1",
+        "link": "https://news.zhibo8.com/nba/2026-05-12/6a0287f82b4a9native.htm",
         "tag": "🏀 NBA"
       },
       {
-        "title": "米切尔季后赛第5次单节20+，比肩库里",
-        "link": "#",
-        "tag": "🏀 NBA"
-      },
-      {
-        "title": "乐透抽签：奇才状元 快船5号签",
-        "link": "#",
-        "tag": "🏀 NBA"
-      },
-      {
-        "title": "湖人0-3落后雷霆",
-        "link": "#",
+        "title": "Shams：雄鹿正式公开接受有关字母哥的交易报价",
+        "link": "https://news.zhibo8.com/nba/2026-05-12/6a0205c38eec6native.htm",
         "tag": "🏀 NBA"
       }
     ]
