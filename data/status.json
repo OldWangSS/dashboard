@@ -1,32 +1,138 @@
 {
-  "updated": "2026-05-12 00:17",
+  "updated": "2026-05-12 10:41",
   "daily": {
     "tasks": [
-      "✅ F盘AgentDownload/AgentShared 迁移完成",
-      "✅ Chrome/Edge 浏览器数据迁回C盘NVMe",
-      "✅ 政企产品知识库搭建（和对讲+云视讯）",
-      "✅ MiniMax到期应对方案",
-      "✅ CatClaw能力摸底（30个Skills+新闻抓取）",
-      "✅ GitHub Pages仪表盘搭建+数据推送"
+      "✅ CatClaw模型切到移动云MiniMax-M2.5",
+      "✅ CatClaw新闻早报修复+browser搜索",
+      "✅ 知识库空文件清理",
+      "✅ F盘AgentDownload/AgentShared迁移完成",
+      "✅ 政企产品知识库搭建",
+      "✅ MiniMax到期应对方案"
     ],
     "kb": [
-      "新增 政企产品/和对讲.md",
-      "新增 政企产品/云视讯.md",
-      "新增 概念/偷懒是商机.md（完整版）",
+      "新增 政企产品/和对讲.md（完整版）",
+      "新增 概念/偷懒是商机.md",
       "新增 概念/认知决定接触层级.md",
-      "新增 视频笔记/DeepSeek V4 杠杆窗口.md"
+      "删除 空壳文件 人人都有AI私人助手.md"
     ],
-    "token_summary": "DeepSeek V4 Pro: 今日 94.4M tokens (¥26.52) · 本月 1.15B tokens (¥255.64)"
+    "token_summary": "DeepSeek V4 Pro: 今日 32,362,058 tokens ($17.90) · 本月 80,313,163 tokens ($44.41)"
+  },
+  "ai_news": {
+    "source": "CatClaw Browser（百度搜索）",
+    "updated": "05-12 10:41",
+    "items": [
+      {
+        "title": "OpenAI发布GPT-5.5系列，幻觉率降低52.5%",
+        "link": "#",
+        "tag": "AI"
+      },
+      {
+        "title": "字节跳动AI预算上调至2000亿元，850亿买芯片",
+        "link": "#",
+        "tag": "资本"
+      },
+      {
+        "title": "月之暗面Kimi完成20亿美元D轮融资",
+        "link": "#",
+        "tag": "资本"
+      },
+      {
+        "title": "四巨头AI投资超6500亿美元，算力军备竞赛升级",
+        "link": "#",
+        "tag": "算力"
+      },
+      {
+        "title": "欧盟简化AI监管规则，转向灵活治理",
+        "link": "#",
+        "tag": "政策"
+      }
+    ]
   },
   "news": {
-    "source": "CatClaw Browser",
+    "source": "CatClaw Browser（观察者网+直播吧）",
     "items": [
-      {"title": "等待首次新闻抓取...", "link": "#", "tag": "待推送"}
+      {
+        "title": "特朗普将访华！中方公布日期",
+        "link": "#",
+        "tag": "时政"
+      },
+      {
+        "title": "京沪高铁部分线路涨价20%",
+        "link": "#",
+        "tag": "财经"
+      },
+      {
+        "title": "福特级四号舰再延期两年",
+        "link": "#",
+        "tag": "军事"
+      },
+      {
+        "title": "巴萨2-0皇马西甲夺冠",
+        "link": "#",
+        "tag": "足球"
+      },
+      {
+        "title": "字母哥正式上架！雄鹿接受交易报价",
+        "link": "#",
+        "tag": "NBA"
+      }
     ]
   },
   "football": {
-    "predictions": [],
-    "review": null
+    "predictions": [
+      {
+        "home": "SSC Napoli",
+        "away": "Bologna FC 1909",
+        "prediction": "1-1",
+        "hit": null
+      },
+      {
+        "home": "Rayo Vallecano de Madrid",
+        "away": "Girona FC",
+        "prediction": "1-1",
+        "hit": null
+      },
+      {
+        "home": "Tottenham Hotspur FC",
+        "away": "Leeds United FC",
+        "prediction": "1-1",
+        "hit": null
+      },
+      {
+        "home": "Celta Vigo",
+        "away": "莱万特",
+        "prediction": "3-0",
+        "hit": null
+      },
+      {
+        "home": "Real Betis",
+        "away": "Elche",
+        "prediction": "3-0",
+        "hit": null
+      },
+      {
+        "home": "奥萨苏纳",
+        "away": "Atletico",
+        "prediction": "1-1",
+        "hit": null
+      }
+    ],
+    "review": {
+      "hit": 1,
+      "total": 16,
+      "rate": "1/16",
+      "detail": [
+        "精确命中率: 6.2%, 方向命中率: 6.2%",
+        "帕尔马 vs 罗马: 2-3",
+        "AC米兰 vs 亚特兰大: 2-3",
+        "美因茨 vs 柏林联合: 1-3",
+        "巴黎圣日耳曼 vs 布雷斯特: 1-0",
+        "摩纳哥 vs 里尔: 0-1",
+        "梅斯 vs 洛里昂: 0-4",
+        "勒阿弗尔 vs 马赛: 0-1",
+        "雷恩 vs 巴黎FC: 2-1"
+      ]
+    }
   },
   "weekly": null,
   "system": {
@@ -37,9 +143,9 @@
     "homebot": true
   },
   "token": {
-    "today": 26.52,
-    "month": 255.64,
-    "today_tokens": 94441372,
-    "month_tokens": 1153757000
+    "today": 17.9,
+    "month": 44.41,
+    "today_tokens": 32362058,
+    "month_tokens": 80313163
   }
 }
