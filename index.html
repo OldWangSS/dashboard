@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>王叔的任务看板</title>
 <style>
   :root {
@@ -12,7 +12,7 @@
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; max-width:100%; margin:0 auto; padding:24px 40px; font-size:20px; }
-  header { text-align:left; padding:10px 0 14px; border-bottom:1px solid var(--border); margin-bottom:14px; }
+  header { text-align:center; padding:10px 0 14px; border-bottom:1px solid var(--border); margin-bottom:14px; }
   header h1 { font-size:1.7em; color:var(--purple); }
   header .time { font-size:0.85em; color:var(--dim); margin-top:4px; }
   .card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:16px; margin-bottom:14px; }
@@ -32,10 +32,10 @@
   .section-title { font-size:1.0em; color:var(--dim); padding:10px 0 5px; border-bottom:1px solid var(--border); margin-bottom:10px; }
   .item { font-size:1.0em; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.03); }
   .item:last-child { border:none; }
-  .tag { display:inline-block; padding:2px 6px; border-radius:3px; font-size:0.75em; margin-right:5px; background:rgba(163,113,247,0.12); color:var(--purple); }
-  .two-col { display:flex; gap:10px; }
-  .two-col>div { flex:1; }
-  .match { display:flex; justify-content:space-between; align-items:center; padding:6px 0; font-size:1.0em; border-bottom:1px solid rgba(255,255,255,0.03); }
+  .tag { display:inline-block; padding:2px 6px; border-radius:3px; font-size:0.72em; margin-right:4px; background:rgba(163,113,247,0.12); color:var(--purple); }
+  .two-col { display:flex; gap:16px; }
+  .two-col>div { flex:1; min-width:0; }
+  .match { display:flex; justify-content:space-between; align-items:center; padding:5px 0; font-size:1.0em; border-bottom:1px solid rgba(255,255,255,0.03); }
   .match:last-child { border:none; }
   .match .score { font-weight:bold; }
   .hit { color:var(--green); }
@@ -43,14 +43,21 @@
   .pending { color:var(--dim); }
   .cost { text-align:left; padding:8px; font-size:0.82em; color:var(--dim); }
   .cost b { color:var(--purple); }
-  footer { text-align:left; padding:14px; color:var(--dim); font-size:0.8em; }
+  footer { text-align:center; padding:14px; color:var(--dim); font-size:0.8em; }
   .loading { text-align:left; color:var(--dim); padding:14px; font-size:1.0em; }
-  .news-item { font-size:1.0em; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.03); }
+  .news-item { font-size:0.92em; padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.03); }
   .news-item a { color:var(--text); text-decoration:none; }
   .news-item a:hover { color:var(--blue); }
-  .news-updated { font-size:0.72em; color:var(--dim); margin-bottom:4px; }
-  .token-num { font-family:'SF Mono','Cascadia Code',monospace; font-size:0.82em; color:var(--dim); }
+  .news-updated { font-size:0.72em; color:var(--dim); margin-bottom:6px; }
+  .scroll-box { max-height:360px; overflow-y:auto; }
+  .scroll-box::-webkit-scrollbar { width:4px; }
+  .scroll-box::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
+  .token-num { font-family:'SF Mono','Cascadia Code',monospace; font-size:0.82em; color:var(--dim); text-align:left; padding:8px; }
   .token-num b { color:var(--purple); font-size:1.0em; }
+  .review-item { font-size:0.85em; padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.02); }
+  .review-item:last-child { border:none; }
+  .full-width { width:100%; }
+  .label-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
 </style>
 </head>
 <body>
@@ -64,73 +71,81 @@
 <div class="card">
   <details open>
     <summary>🌅 运行早报</summary>
-    <div class="section-title">📋 昨日重要任务</div>
-    <div id="dailyTasks" class="loading">--</div>
-    <div class="section-title">📚 知识库更新</div>
-    <div id="dailyKB" class="loading">--</div>
+    <div class="two-col">
+      <div>
+        <div class="section-title">📋 昨日重要任务</div>
+        <div id="dailyTasks" class="loading">--</div>
+      </div>
+      <div>
+        <div class="section-title">📚 知识库更新</div>
+        <div id="dailyKB" class="loading">--</div>
+      </div>
+    </div>
     <div class="section-title">💰 Token 消耗</div>
     <div id="dailyToken" class="loading">--</div>
   </details>
 </div>
 
-<!-- 2. 每日AI新闻（CatClaw生成） -->
+<!-- 2. 新闻（AI + 综合并排） -->
 <div class="card">
   <details open>
-    <summary>🤖 每日AI新闻</summary>
-    <div class="news-updated" id="aiNewsSource"></div>
-    <div id="aiNewsList" class="loading">等待首次抓取...</div>
-  </details>
-</div>
-
-<!-- 3. 综合新闻 -->
-<div class="card">
-  <details>
-    <summary>📰 综合新闻</summary>
-    <div class="news-updated" id="newsSource"></div>
-    <div id="newsList" class="loading">等待首次运行...</div>
-  </details>
-</div>
-
-<!-- 4. 足球预测 + 复盘 -->
-<div class="card">
-  <details>
-    <summary>⚽ 足球预测 & 复盘</summary>
+    <summary>📰 每日新闻</summary>
     <div class="two-col">
       <div>
-        <div class="section-title">🔮 预测</div>
-        <div id="predictions" class="loading">--</div>
+        <div class="label-row">
+          <span style="font-weight:600;color:var(--purple);font-size:0.95em;">🤖 AI新闻</span>
+          <span class="news-updated" id="aiNewsUpdated" style="margin:0"></span>
+        </div>
+        <div id="aiNewsList" class="loading">--</div>
       </div>
       <div>
-        <div class="section-title">📊 复盘</div>
-        <div id="review" class="loading">--</div>
+        <div class="label-row">
+          <span style="font-weight:600;color:var(--orange);font-size:0.95em;">🌐 综合新闻</span>
+          <span class="news-updated" id="newsSource" style="margin:0"></span>
+        </div>
+        <div class="scroll-box" id="newsScroll">
+          <div id="newsList" class="loading">--</div>
+        </div>
       </div>
     </div>
   </details>
 </div>
 
-<!-- 5. 运行周报（周一显示） -->
+<!-- 3. 足球 -->
+<div class="card">
+  <details open>
+    <summary>⚽ 足球</summary>
+    <div class="two-col">
+      <div>
+        <div class="section-title">🔮 今日比赛预测</div>
+        <div class="scroll-box">
+          <div id="predictions" class="loading">--</div>
+        </div>
+      </div>
+      <div>
+        <div class="section-title">📊 前日赛果复盘</div>
+        <div class="scroll-box">
+          <div id="review" class="loading">--</div>
+        </div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- 4. 运行周报（周一显示） -->
 <div class="card" id="weeklyCard" style="display:none">
   <details>
     <summary>📋 运行周报</summary>
-    <div class="section-title">📋 上周重要任务</div>
-    <div id="weeklyTasks" class="loading">--</div>
-    <div class="section-title">📚 知识库更新</div>
-    <div id="weeklyKB" class="loading">--</div>
+    <div class="two-col">
+      <div><div class="section-title">📋 上周任务</div><div id="weeklyTasks" class="loading">--</div></div>
+      <div><div class="section-title">📚 知识库</div><div id="weeklyKB" class="loading">--</div></div>
+    </div>
     <div class="section-title">💰 Token 消耗</div>
     <div id="weeklyToken" class="loading">--</div>
   </details>
 </div>
 
-<!-- 6. 每周AI新闻（周一显示） -->
-<div class="card" id="weeklyAiCard" style="display:none">
-  <details>
-    <summary>🤖 每周AI新闻</summary>
-    <div class="news-updated" id="weeklyAiSource"></div>
-    <div id="weeklyAiList" class="loading">--</div>
-  </details>
-</div>
-
-<!-- 7. 系统状态 -->
+<!-- 5. 系统状态 -->
 <div class="card">
   <details open>
     <summary>🛡️ 系统状态</summary>
@@ -163,8 +178,8 @@ async function load() {
     renderNews(d.news);
     renderFootball(d.football);
     renderWeekly(d.weekly);
-    document.getElementById('costToday').textContent = '¥'+(d.token?.today||0).toFixed(2);
-    document.getElementById('costMonth').textContent = '¥'+(d.token?.month||0).toFixed(2);
+    document.getElementById('costToday').textContent = '$'+(d.token?.today||0).toFixed(2);
+    document.getElementById('costMonth').textContent = '$'+(d.token?.month||0).toFixed(2);
     document.getElementById('tokensToday').textContent = fmt(d.token?.today_tokens);
     document.getElementById('tokensMonth').textContent = fmt(d.token?.month_tokens);
     document.getElementById('clock').textContent = '更新于 '+(d.updated||'--');
@@ -190,7 +205,7 @@ function renderDaily(d) {
 }
 
 function renderAiNews(n) {
-  document.getElementById('aiNewsSource').textContent = n?.source ? '来源: '+n.source + (n.updated ? ' · '+n.updated : '') : '';
+  document.getElementById('aiNewsUpdated').textContent = n?.source ? n.source + (n.updated?' · '+n.updated:'') : '';
   if (!n?.items?.length) { document.getElementById('aiNewsList').innerHTML='<div class="loading">等待首次抓取...</div>'; return; }
   document.getElementById('aiNewsList').innerHTML = n.items.map(i => {
     const tag = i.tag ? `<span class="tag">${i.tag}</span>` : '';
@@ -199,7 +214,7 @@ function renderAiNews(n) {
 }
 
 function renderNews(n) {
-  document.getElementById('newsSource').textContent = n?.source ? '来源: '+n.source : '';
+  document.getElementById('newsSource').textContent = n?.source || '';
   if (!n?.items?.length) { document.getElementById('newsList').innerHTML='<div class="loading">等待首次运行...</div>'; return; }
   document.getElementById('newsList').innerHTML = n.items.map(i => {
     const tag = i.tag ? `<span class="tag">${i.tag}</span>` : '';
@@ -217,28 +232,24 @@ function renderFootball(f) {
       }).join('')
     : '<div class="item">--</div>';
   
-  document.getElementById('review').innerHTML = review
-    ? `<div class="item">命中 ${review.hit}/${review.total}（${review.rate}）</div>` +
-      (review.detail||[]).map(d => `<div class="item" style="font-size:0.75em">${d}</div>`).join('')
-    : '<div class="item">--</div>';
+  if (review) {
+    let html = `<div class="item">命中 ${review.hit}/${review.total} (比分) + ${review.direction||0}/${review.total} (方向)</div>`;
+    if (review.detail?.length) {
+      html += review.detail.map(d => `<div class="review-item">${d}</div>`).join('');
+    }
+    document.getElementById('review').innerHTML = html;
+  } else {
+    document.getElementById('review').innerHTML = '<div class="item">--</div>';
+  }
 }
 
 function renderWeekly(w) {
   const card = document.getElementById('weeklyCard');
-  const aiCard = document.getElementById('weeklyAiCard');
-  if (!w) { card.style.display='none'; aiCard.style.display='none'; return; }
+  if (!w) { card.style.display='none'; return; }
   card.style.display='block';
   document.getElementById('weeklyTasks').innerHTML = w.tasks?.map(t=>`<div class="item">${t}</div>`).join('')||'--';
   document.getElementById('weeklyKB').innerHTML = w.kb?.map(k=>`<div class="item">${k}</div>`).join('')||'--';
   document.getElementById('weeklyToken').innerHTML = `<div class="item">${w.token_summary||'--'}</div>`;
-  if (w.ai_news?.items?.length) {
-    aiCard.style.display='block';
-    document.getElementById('weeklyAiSource').textContent = '来源: '+ (w.ai_news.source||'CatClaw');
-    document.getElementById('weeklyAiList').innerHTML = w.ai_news.items.map(i => {
-      const tag = i.tag ? `<span class="tag">${i.tag}</span>` : '';
-      return `<div class="news-item">${tag}<a href="${i.link||'#'}" target="_blank">${i.title}</a></div>`;
-    }).join('');
-  }
 }
 
 load();
