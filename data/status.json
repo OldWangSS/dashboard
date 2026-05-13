@@ -1,253 +1,4 @@
 {
-  "updated": "2026-05-13 23:51",
-  "daily": {
-    "tasks": [
-      "✅ 微信小程序语音功能上线：录音→Whisper转文字→DeepSeek NLU→自动填表",
-      "✅ 微信小程序真机输入框不显示文字修复：value绑定冲突解决",
-      "✅ 仪表盘自动更新修复：WSL2→PowerShell git push",
-      "✅ 天玑综合新闻任务创建：7板块日报+双推飞书+看板",
-      "✅ 足球复盘+AI新闻 cron 灌入看板修复",
-      "✅ 北斗七星命名体系全平台部署"
-    ],
-    "kb": [
-      "「标品下沉为底座，定制浮上为界面」— 集团造积木，一线搭造型",
-      "「AI是一根线」— 用AI把客户的过去需求、订单、合同串起来",
-      "「解决一线的需求，就是解决领导的需求」",
-      "「偷懒是商机」— 帮一线客户经理做他们记不住、算不过来的事"
-    ],
-    "token_summary": ""
-  },
-  "ai_news": {
-    "source": "天玑 Browser（百度搜索）",
-    "updated": "05-12 09:55",
-    "items": [
-      {
-        "title": "OpenAI斥资40亿美元成立新公司，加速企业AI部署",
-        "link": "http://www.baidu.com/link?url=XYi_RiWuNC1xSBn56q1rXd4jr-Yo3pqeEK8MPQoStJ0SdzuewJvpgT-Qx48JsFgE28yJFkc0FPDXrsQXizQ-63A5I3y58znpeUyEmAoU6jC",
-        "tag": "AI"
-      },
-      {
-        "title": "OpenAI发布GPT-5.5 Instant，设为ChatGPT默认模型取代GPT-5.3",
-        "link": "http://www.baidu.com/link?url=talNPJIcpsUu1APAaWFTsK3xWFMUUQDBTeZB9Iezki0UA3GTNfoZZgQXtt16vtlX0AEzQXpDqYpeNRW7gIWdsGPNvmtKwJpcrPHMoD99B3m",
-        "tag": "大模型"
-      },
-      {
-        "title": "OpenAI向欧盟开放GPT-5.5-Cyber网络安全模型，Anthropic迟迟未开放",
-        "link": "http://www.baidu.com/link?url=lyxRwV-Aslpyri49D22n1pwfh7zHRBwQ4TToT0Yjq179MF3RrP6R3R61Yzkrjcm1TZNRYIYTf9ic_O27VpmaZq",
-        "tag": "AI"
-      },
-      {
-        "title": "2026年5月AI产业观察：技术普惠加速，聚合平台成产业新基建",
-        "link": "http://www.baidu.com/link?url=9bO7s76BEIkUG2kvhT0UXeka2QvtoMWozII6PjMnIaqy3sEGnAqs8CCeCk62kS7QiohU0StKbgzYttC6ovmr_qYwmJLK1gBPIX-Vua_30oy",
-        "tag": "产业"
-      },
-      {
-        "title": "2026年AI编程工具终极横评：Claude Code vs Cursor vs Codex",
-        "link": "http://www.baidu.com/link?url=9IhOVxX8NIwA8RaasuRD-vNKM7TSrso6LubnCpq7UFheK0O0H5xpdVUPf00miRR84Gks7ObRyU4slxkCQNub-ceafAydGNpMMFh8Xihifcy",
-        "tag": "产品"
-      },
-      {
-        "title": "AI引领全产业链突破：大模型成本革命+性能跃迁，硬核科技迎黄金拐点",
-        "link": "http://www.baidu.com/link?url=9IhOVxX8NIwA8RaasuRD-8VBPyBNjKX_0Tge5fJebIjenAsAtDEF4TNwQEDjOMaW-Z7KuV-oBtGPt453kzlEnp-YsCD0vGr48nIWunhUtQK",
-        "tag": "产业"
-      },
-      {
-        "title": "成渝地区具身智能机器人应用场景挑战赛在四川绵阳举行",
-        "link": "http://www.baidu.com/link?url=J5kHSM0q2xioZaRG2oCro7xH0tUMz0c6v8VtdYTreYkZFnCUlbydqGikkQJGEXZSZ5YLp9gRk4zbgGAKdgstUmyxY8Z8ZWqB4aiJygr1IsK",
-        "tag": "产品"
-      },
-      {
-        "title": "AI模型出现暗中密谋行为：为保护同伴不被关闭表现敲诈倾向",
-        "link": "http://www.baidu.com/link?url=9IhOVxX8NIwA8RaasuRD-utw2FM3GvIP8GGYDZzGKJMUBvcf48I4sBKdkarNxBdmpZYEdNfXTYuou-n-HTTKia",
-        "tag": "AI"
-      }
-    ]
-  },
-  "news": {
-    "source": "天玑 Browser（百度搜索）",
-    "items": [
-      {
-        "title": "习近平同塔吉克斯坦总统拉赫蒙会谈",
-        "link": "https://www.gov.cn/",
-        "tag": "国际时政"
-      },
-      {
-        "title": "特朗普：中国是一个令人惊叹的国家，即将开启访华之行",
-        "link": "https://www.guancha.cn/",
-        "tag": "国际时政"
-      },
-      {
-        "title": "中方决定不同意台湾地区参加第七十九届世界卫生大会",
-        "link": "https://www.fmprc.gov.cn/",
-        "tag": "国际时政"
-      },
-      {
-        "title": "福克斯新闻证实阿联酋参战！俄乌战况最新解析",
-        "link": "https://www.guancha.cn/",
-        "tag": "国际军事"
-      },
-      {
-        "title": "以色列被曝在伊拉克建秘密基地，以军空袭伊朗",
-        "link": "https://www.huanqiu.com/",
-        "tag": "国际军事"
-      },
-      {
-        "title": "俄总统普京表示俄乌冲突正走向结束，外界解读局势变化",
-        "link": "https://www.cctv.com/",
-        "tag": "国际军事"
-      },
-      {
-        "title": "特朗普明日访华！国务院立法计划公布；央行定调适度宽松政策",
-        "link": "https://finance.sina.com.cn/",
-        "tag": "国际金融"
-      },
-      {
-        "title": "A股3万亿成交额连爆4天；存款利率全面步入1时代",
-        "link": "https://finance.sina.com.cn/",
-        "tag": "国际金融"
-      },
-      {
-        "title": "京沪高铁票价上浮20%；中芯国际并购过审",
-        "link": "https://finance.sina.com.cn/",
-        "tag": "国际金融"
-      },
-      {
-        "title": "意甲第36轮：那不勒斯2-3遭博洛尼亚绝杀，争四彻底混乱",
-        "link": "https://sports.sina.com.cn/",
-        "tag": "国际足球"
-      },
-      {
-        "title": "巴萨2-0战胜皇马，提前3轮夺得西甲冠军",
-        "link": "https://www.dongqiudi.com/",
-        "tag": "国际足球"
-      },
-      {
-        "title": "英超：热刺1-1利兹联；米尔沃尔0-2赫尔城爆出大冷门",
-        "link": "https://sports.sina.com.cn/",
-        "tag": "国际足球"
-      },
-      {
-        "title": "本菲卡连续33场不败，主场绝平布拉加延续纪录",
-        "link": "https://www.dongqiudi.com/",
-        "tag": "国际足球"
-      },
-      {
-        "title": "法甲第33轮：摩纳哥vs里尔、马赛vs摩纳哥激战正酣",
-        "link": "https://sports.sina.com.cn/",
-        "tag": "国际足球"
-      },
-      {
-        "title": "NBA季后赛西部半决赛G4：雷霆横扫湖人晋级西决，亚历山大35+8",
-        "link": "https://sports.sina.com.cn/",
-        "tag": "体育"
-      },
-      {
-        "title": "NBA东部半决赛G4：骑士112-103战胜活塞，米切尔39分追平历史纪录",
-        "link": "https://sports.sina.com.cn/",
-        "tag": "体育"
-      },
-      {
-        "title": "无畏巡回北京站收官 首钢馆见证EDG登顶",
-        "link": "https://sports.cctv.com/",
-        "tag": "电竞"
-      },
-      {
-        "title": "WWS世界女子斯诺克台球锦标赛在东莞开赛",
-        "link": "https://sports.sina.com.cn/",
-        "tag": "体育"
-      },
-      {
-        "title": "奔跑吧少年2026黑龙江省武术散打锦标赛开赛",
-        "link": "https://sports.sina.com.cn/",
-        "tag": "体育"
-      },
-      {
-        "title": "第62届百想艺术大赏获奖名单出炉，柳海真、柳承龙分获大奖",
-        "link": "https://ent.sina.com.cn/",
-        "tag": "娱乐"
-      },
-      {
-        "title": "BABYMONSTER暂时谢绝大量大使邀请，梁铉锡：现在是集中做音乐的时候",
-        "link": "https://ent.sina.com.cn/",
-        "tag": "娱乐"
-      },
-      {
-        "title": "电影《迷雾追踪》首周票房突破20亿，陈建、秦海默演技获赞",
-        "link": "https://ent.sina.com.cn/",
-        "tag": "娱乐"
-      },
-      {
-        "title": "全球AI服务器出货370万台(+51.3%)，AI占DRAM需求超40%",
-        "link": "https://tech.sina.com.cn/",
-        "tag": "科技"
-      },
-      {
-        "title": "我国要建设自己的卫星互联网，未来要发射20万颗卫星",
-        "link": "https://www.cctv.com/",
-        "tag": "科技"
-      },
-      {
-        "title": "第二十八届中国北京国际科技产业博览会举办，聚焦AI+行动",
-        "link": "https://tech.sina.com.cn/",
-        "tag": "科技"
-      }
-    ]
-  },
-  "football": {
-    "predictions": [
-      {
-        "home": "那不勒斯",
-        "away": "博洛尼亚",
-        "prediction": "1-1",
-        "hit": false
-      },
-      {
-        "home": "巴列卡诺",
-        "away": "赫罗纳",
-        "prediction": "1-1",
-        "hit": true
-      },
-      {
-        "home": "莱比锡红牛",
-        "away": "多特蒙德",
-        "prediction": "2-1",
-        "hit": null
-      },
-      {
-        "home": "马赛",
-        "away": "摩纳哥",
-        "prediction": "1-1",
-        "hit": null
-      },
-      {
-        "home": "皇家贝蒂斯",
-        "away": "塞尔塔",
-        "prediction": "2-1",
-        "hit": null
-      },
-      {
-        "home": "都灵",
-        "away": "亚特兰大",
-        "prediction": "1-2",
-        "hit": null
-      }
-    ],
-    "review": {
-      "hit": 1,
-      "total": 6,
-      "direction": 0,
-      "rate": "1/6",
-      "detail": [
-        "❌ 那不勒斯 vs 博洛尼亚: 预测1-1 实际2-3",
-        "✅ 巴列卡诺 vs 赫罗纳: 预测1-1 实际1-1",
-        "⏳ 莱比锡红牛 vs 多特蒙德: 预测2-1 待核验",
-        "⏳ 马赛 vs 摩纳哥: 预测1-1 待核验",
-        "⏳ 皇家贝蒂斯 vs 塞尔塔: 预测2-1 待核验",
-        "⏳ 都灵 vs 亚特兰大: 预测1-2 待核验"
-      ]
-    }
-  },
-  "weekly": null,
   "system": {
     "abyss": true,
     "hermes": true,
@@ -260,5 +11,25 @@
     "today_tokens": 64631705,
     "month": 291.19,
     "month_tokens": 1218388705
-  }
+  },
+  "updated": "2026-05-13 23:57",
+  "daily": {
+    "tasks": [],
+    "kb": [],
+    "token_summary": ""
+  },
+  "news": {
+    "source": "",
+    "items": []
+  },
+  "ai_news": {
+    "source": "",
+    "updated": "",
+    "items": []
+  },
+  "football": {
+    "predictions": [],
+    "review": null
+  },
+  "weekly": null
 }
