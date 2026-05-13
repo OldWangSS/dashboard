@@ -37,7 +37,7 @@
   #graph { width: 100vw; height: 100vh; cursor: grab; }
   #graph:active { cursor: grabbing; }
 
-  .node circle { stroke-width: 1.2; cursor: pointer; transition: r 0.25s, fill 0.25s; }
+  .node circle { cursor: pointer; transition: r 0.25s, fill 0.25s; }
   .node text { pointer-events: none; transition: fill 0.25s; }
   .link { }
 
@@ -530,7 +530,8 @@ const node = g.append("g").selectAll("g")
 node.append("circle")
   .attr("r", d => catRadius[d.type] || 6)
   .attr("fill", d => catColors[d.type] || "#666")
-  .attr("stroke", d => catStroke[d.type] || "#444");
+  .attr("stroke", d => catStroke[d.type] || "#444")
+  .attr("stroke-width", 1.2);
 
 node.append("text")
   .text(d => d.name.length > 10 ? d.name.slice(0,9)+"…" : d.name)
