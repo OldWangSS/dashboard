@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>政企需求助手</title>
+<style>
+  :root {
+    --bg: #0d1117; --card: #161b22; --border: #21262d;
+    --text: #c9d1d9; --dim: #8b949e; --accent: #4fc3f7;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, 'Segoe UI', sans-serif;
+    min-height: 100vh; padding: 20px;
+  }
+  .container { max-width: 600px; margin: 40px auto; }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px; margin-bottom: 16px;
+  }
+  h1 { font-size: 1.4em; color: var(--accent); margin-bottom: 8px; }
+  .subtitle { color: var(--dim); font-size: 0.9em; margin-bottom: 20px; }
+  input, select, textarea {
+    width: 100%; padding: 10px 12px; margin-bottom: 12px;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--text); font-size: 0.95em;
+  }
+  textarea { min-height: 80px; resize: vertical; }
+  label { font-size: 0.85em; color: var(--dim); display: block; margin-bottom: 4px; }
+  .btn {
+    width: 100%; padding: 12px;
+    background: var(--accent); color: #000;
+    border: none; border-radius: 8px;
+    font-size: 1em; font-weight: 600; cursor: pointer;
+  }
+  .btn:active { opacity: 0.8; }
+  .result-card { display: none; }
+  .result-card.show { display: block; }
+  .tag {
+    display: inline-block; padding: 3px 10px;
+    border-radius: 12px; font-size: 0.78em; margin: 4px 4px 4px 0;
+    background: rgba(79,195,247,0.15); color: var(--accent);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <h1>📱 政企需求助手</h1>
+    <p class="subtitle">客户经理语音录入需求 → AI自动匹配政企产品</p>
+    <label>部门</label>
+    <select id="dept">
+      <option value="">请选择部门</option>
+      <option>系统集成中心</option><option>战略客户中心</option>
+      <option>双塔分公司</option><option>龙城分公司</option>
+      <option>朝阳县分公司</option><option>北票分公司</option>
+      <option>建平分公司</option><option>凌源分公司</option>
+      <option>喀左分公司</option>
+    </select>
+    <label>客户需求描述</label>
+    <textarea id="desc" placeholder="例如：客户有3个门店需要联网，预算有限，希望每月不超过500元..."></textarea>
+    <button class="btn" onclick="analyze()">🔍 AI 分析推荐</button>
+  </div>
+  <div class="card result-card" id="result">
+    <h2 style="font-size:1.1em;margin-bottom:12px;">📋 推荐产品</h2>
+    <div id="products"></div>
+  </div>
+</div>
+
+<script>
+const products = {
+  '专线': '企业专线接入，稳定高速',
+  '短彩信': '批量短信彩信推送服务',
+  '千里眼': '远程视频监控管理平台',
+  '云视讯': '高清视频会议系统',
+  '和对讲': '公网集群对讲调度',
+  '和车队': '企业车辆管理调度',
+  '移动云': '云计算存储一站式服务',
+  '物联网': 'IoT设备连接管理平台'
+};
+
+function analyze() {
+  const desc = document.getElementById('desc').value;
+  const dept = document.getElementById('dept').value;
+  if (!desc || !dept) { alert('请填写部门和需求描述'); return; }
+
+  // 简单关键词匹配演示
+  const kws = {
+    '专线': ['联网','网络','宽带','门店','上网','连接','线路'],
+    '短彩信': ['短信','彩信','通知','推送','提醒','营销','验证码'],
+    '千里眼': ['监控','摄像头','安防','视频监控','录像'],
+    '云视讯': ['会议','视频会议','开会','远程会议'],
+    '和对讲': ['对讲','调度','沟通','实时通信'],
+    '和车队': ['车辆','车队','调度','定位','轨迹'],
+    '移动云': ['存储','服务器','云端','计算','备份','网站'],
+    '物联网': ['物联网','传感器','设备','连接','智能'],
+  };
+
+  const scores = {};
+  for (const [prod, keywords] of Object.entries(kws)) {
+    scores[prod] = keywords.filter(k => desc.includes(k)).length;
+  }
+
+  const sorted = Object.entries(scores)
+    .filter(([k,v]) => v > 0)
+    .sort((a,b) => b[1]-a[1])
+    .slice(0, 3);
+
+  const result = document.getElementById('result');
+  const productsDiv = document.getElementById('products');
+
+  if (sorted.length === 0) {
+    productsDiv.innerHTML = '<p style="color:var(--dim)">未匹配到产品，请尝试更详细描述需求</p>';
+  } else {
+    productsDiv.innerHTML = sorted.map(([name, cnt]) =>
+      `<div class="card" style="padding:16px;">
+        <span class="tag">${name}</span>
+        <span style="color:var(--dim);font-size:0.85em;">${products[name]}</span>
+        <div style="margin-top:6px;"><span class="tag" style="background:rgba(255,213,79,0.15);color:#ffd54f;">匹配度: ${'⭐'.repeat(cnt)}</span></div>
+      </div>`
+    ).join('');
+  }
+  result.classList.add('show');
+}
+</script>
+</body>
+</html>

@@ -3,257 +3,216 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>王叔的任务看板</title>
+<title>AI是一根线</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
 <style>
   :root {
-    --bg: #0d1117; --card: #161b22; --border: #21262d;
-    --text: #c9d1d9; --dim: #8b949e;
-    --green: #3fb950; --red: #f85149; --purple: #a371f7; --blue: #58a6ff; --orange: #d29922;
+    --bg: #0d0d0d;
+    --text: #c9d1d9;
+    --dim: #6e7681;
+    --accent: #ffd54f;
+    --accent2: #4fc3f7;
+    --line: #2a2a2a;
+    --card: #151515;
+    --border: #252525;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; max-width:100%; margin:0 auto; padding:24px 40px; font-size:20px; }
-  header { text-align:center; padding:10px 0 14px; border-bottom:1px solid var(--border); margin-bottom:14px; }
-  header h1 { font-size:1.7em; color:var(--purple); }
-  header .time { font-size:0.85em; color:var(--dim); margin-top:4px; }
-  .card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:16px; margin-bottom:14px; }
-  .card summary { cursor:pointer; font-weight:600; font-size:1.15em; color:var(--blue); list-style:none; }
-  .card summary::-webkit-details-marker { display:none; }
-  .card summary::before { content:'▸ '; font-size:0.9em; }
-  .card details[open] summary::before { content:'▾ '; }
-  .card details[open] summary { margin-bottom:8px; }
-  .dot { display:inline-block; width:6px; height:6px; border-radius:50%; margin-right:3px; }
-  .dot.on { background:var(--green); box-shadow:0 0 5px var(--green); }
-  .dot.off { background:var(--red); box-shadow:0 0 5px var(--red); }
-  .agents-row { display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-start; }
-  .agent { text-align:left; padding:8px 6px; border-radius:6px; background:rgba(255,255,255,0.02); font-size:0.78em; flex:1; min-width:50px; }
-  .agent.on { border:1px solid rgba(63,185,80,0.25); }
-  .agent.off { border:1px solid rgba(248,81,73,0.25); opacity:0.5; }
-  .agent .icon { font-size:1.3em; display:block; }
-  .section-title { font-size:1.0em; color:var(--dim); padding:10px 0 5px; border-bottom:1px solid var(--border); margin-bottom:10px; }
-  .item { font-size:1.0em; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.03); }
-  .item:last-child { border:none; }
-  .tag { display:inline-block; padding:2px 6px; border-radius:3px; font-size:0.72em; margin-right:4px; background:rgba(163,113,247,0.12); color:var(--purple); }
-  .two-col { display:flex; gap:16px; }
-  .two-col>div { flex:1; min-width:0; }
-  .match { display:flex; justify-content:space-between; align-items:center; padding:5px 0; font-size:1.0em; border-bottom:1px solid rgba(255,255,255,0.03); }
-  .match:last-child { border:none; }
-  .match .score { font-weight:bold; }
-  .hit { color:var(--green); }
-  .miss { color:var(--red); }
-  .pending { color:var(--dim); }
-  .cost { text-align:left; padding:8px; font-size:0.82em; color:var(--dim); }
-  .cost b { color:var(--purple); }
-  footer { text-align:center; padding:14px; color:var(--dim); font-size:0.8em; }
-  .loading { text-align:left; color:var(--dim); padding:14px; font-size:1.0em; }
-  .news-item { font-size:0.92em; padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.03); }
-  .news-item a { color:var(--text); text-decoration:none; }
-  .news-item a:hover { color:var(--blue); }
-  .news-updated { font-size:0.72em; color:var(--dim); margin-bottom:6px; }
-  .scroll-box { max-height:360px; overflow-y:auto; }
-  .scroll-box::-webkit-scrollbar { width:4px; }
-  .scroll-box::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
-  .token-num { font-family:'SF Mono','Cascadia Code',monospace; font-size:0.82em; color:var(--dim); text-align:left; padding:8px; }
-  .token-num b { color:var(--purple); font-size:1.0em; }
-  .review-item { font-size:0.85em; padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.02); }
-  .review-item:last-child { border:none; }
-  .full-width { width:100%; }
-  .label-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, 'Segoe UI', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    user-select: none;
+  }
+  /* 顶部导航 */
+  .topbar {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 24px;
+    background: linear-gradient(180deg, rgba(13,13,13,0.98) 60%, rgba(13,13,13,0));
+  }
+  .logo { font-size: 1.1em; font-weight: 700; letter-spacing: 0.05em; color: var(--accent); }
+  .topbar-btns { display: flex; gap: 10px; }
+  .topbar-btn {
+    padding: 8px 18px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--card);
+    color: var(--text);
+    font-size: 0.85em;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-flex; align-items: center;
+  }
+  .topbar-btn:hover { border-color: var(--accent); color: var(--accent); background: #1a1a1a; }
+  .topbar-btn.primary { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 600; }
+  .topbar-btn.primary:hover { opacity: 0.9; }
+
+  /* 画布 */
+  #graph { width: 100vw; height: 100vh; cursor: grab; }
+  #graph:active { cursor: grabbing; }
+  .node circle { stroke: var(--line); stroke-width: 1.5; cursor: pointer; transition: r 0.3s, fill 0.3s; }
+  .node.core circle { stroke: var(--accent); stroke-width: 2; }
+  .node text { fill: var(--dim); font-size: 11px; pointer-events: none; transition: fill 0.3s; }
+  .node.core text { fill: var(--text); font-weight: 600; font-size: 13px; }
+  .link { stroke: var(--line); stroke-width: 1; stroke-opacity: 0.5; }
+
+  /* 提示框 */
+  .tooltip {
+    position: fixed; z-index: 200;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px 16px;
+    max-width: 260px;
+    pointer-events: none; opacity: 0;
+    transition: opacity 0.2s;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  }
+  .tooltip.show { opacity: 1; }
+  .tooltip h3 { font-size: 1em; color: var(--accent); margin-bottom: 4px; }
+  .tooltip p { font-size: 0.82em; color: var(--dim); line-height: 1.5; }
+
+  /* 底部 */
+  .footer {
+    position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+    font-size: 0.75em; color: var(--dim); letter-spacing: 0.05em;
+    opacity: 0.5; z-index: 100;
+  }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>📋 王叔的任务看板</h1>
-  <div class="time" id="clock">加载中...</div>
-</header>
-
-<!-- 1. 运行早报 -->
-<div class="card">
-  <details open>
-    <summary>🌅 运行日报</summary>
-    <div class="two-col">
-      <div>
-        <div class="section-title">📋 重要任务</div>
-        <div id="dailyTasks" class="loading">--</div>
-      </div>
-      <div>
-        <div class="section-title">📚 知识库更新</div>
-        <div id="dailyKB" class="loading">--</div>
-      </div>
-    </div>
-    <div class="section-title">💰 Token 消耗</div>
-    <div id="dailyToken" class="loading">--</div>
-  </details>
+<div class="topbar">
+  <span class="logo">AI是一根线</span>
+  <div class="topbar-btns">
+    <a href="/dashboard/" class="topbar-btn">📊 王叔的任务看板</a>
+    <a href="/zqxqzs/" class="topbar-btn primary" style="background:var(--accent2); border-color:var(--accent2); color:#000;">📱 政企需求助手</a>
+  </div>
 </div>
 
-<!-- 2. 新闻（AI + 综合并排） -->
-<div class="card">
-  <details open>
-    <summary>📰 每日新闻</summary>
-    <div class="two-col">
-      <div>
-        <div class="label-row">
-          <span style="font-weight:600;color:var(--purple);font-size:0.95em;">🤖 AI新闻</span>
-          <span class="news-updated" id="aiNewsUpdated" style="margin:0"></span>
-        </div>
-        <div id="aiNewsList" class="loading">--</div>
-      </div>
-      <div>
-        <div class="label-row">
-          <span style="font-weight:600;color:var(--orange);font-size:0.95em;">🌐 综合新闻</span>
-          <span class="news-updated" id="newsSource" style="margin:0"></span>
-        </div>
-        <div class="scroll-box" id="newsScroll">
-          <div id="newsList" class="loading">--</div>
-        </div>
-      </div>
-    </div>
-  </details>
-</div>
-
-<!-- 3. 足球 -->
-<div class="card">
-  <details open>
-    <summary>⚽ 足球</summary>
-    <div class="two-col">
-      <div>
-        <div class="section-title">🔮 今日比赛预测</div>
-        <div class="scroll-box">
-          <div id="predictions" class="loading">--</div>
-        </div>
-      </div>
-      <div>
-        <div class="section-title">📊 前日赛果复盘</div>
-        <div class="scroll-box">
-          <div id="review" class="loading">--</div>
-        </div>
-      </div>
-    </div>
-  </details>
-</div>
-
-<!-- 4. 运行周报（周一显示） -->
-<div class="card" id="weeklyCard" style="display:none">
-  <details>
-    <summary>📋 运行周报</summary>
-    <div class="two-col">
-      <div><div class="section-title">📋 上周任务</div><div id="weeklyTasks" class="loading">--</div></div>
-      <div><div class="section-title">📚 知识库</div><div id="weeklyKB" class="loading">--</div></div>
-    </div>
-    <div class="section-title">💰 Token 消耗</div>
-    <div id="weeklyToken" class="loading">--</div>
-  </details>
-</div>
-
-<!-- 5. 系统状态 -->
-<div class="card">
-  <details open>
-    <summary>🛡️ 系统状态</summary>
-    <div class="agents-row" id="agents"></div>
-    <div class="cost">今日成本 <b id="costToday">¥--</b> · 本月 <b id="costMonth">¥--</b></div>
-    <div class="token-num">今日 <b id="tokensToday">--</b> tokens · 本月 <b id="tokensMonth">--</b> tokens</div>
-  </details>
-</div>
-
-<footer>Abyss Dashboard · OldWangSS · <span id="refreshInfo"></span></footer>
+<svg id="graph"></svg>
+<div class="tooltip" id="tooltip"><h3 id="tip-title"></h3><p id="tip-desc"></p></div>
+<div class="footer">Drag nodes · Scroll to zoom · Click for detail</div>
 
 <script>
-const AGENTS = [
-  { id:'abyss',   name:'Abyss',   icon:'🧠', depends:null },
-  { id:'catclaw', name:'CatClaw', icon:'🦞', depends:null },
-  { id:'hermes',  name:'Hermes',  icon:'💻', depends:'abyss' },
-  { id:'hmcode',  name:'Hmcode',  icon:'📝', depends:'abyss' },
-  { id:'homebot', name:'HomeBot', icon:'🏠', depends:'catclaw' },
+const W = window.innerWidth;
+const H = window.innerHeight;
+
+const svg = d3.select("#graph");
+const g = svg.append("g");
+
+const tooltip = d3.select("#tooltip");
+const tipTitle = d3.select("#tip-title");
+const tipDesc = d3.select("#tip-desc");
+
+// 缩放
+svg.call(d3.zoom()
+  .extent([[0,0],[W,H]])
+  .scaleExtent([0.3, 3])
+  .on("zoom", (e) => g.attr("transform", e.transform)));
+
+// 数据
+const nodes = [
+  // 核心金句（一级节点）
+  { id: "base-ui", name: "底座与界面", type: "core", desc: "标品下沉为底座，定制浮上为界面——集团造积木，一线搭造型"},
+  { id: "line", name: "AI是一根线", type: "core", desc: "用AI把客户的过去需求、订单、合同串起来。不是做工具，是帮一线做他们记不住的事"},
+  { id: "frontline", name: "一线即领导", type: "core", desc: "解决一线的需求，就是解决领导的需求。客户经理最懂客户"},
+  { id: "lazy", name: "偷懒是商机", type: "core", desc: "帮一线客户经理做他们记不住、算不过来的事——偷懒驱动创新"},
+  // 概念节点
+  { id: "dead", name: "标品已死", type: "concept", desc: "都什么时代了还卖标准化产品。标品时代结束，定制浮上为界面"},
+  { id: "blocks", name: "积木与造型", type: "concept", desc: "集团提供算力/模型/管道作为底座积木，客户经理用AI拼成千人千面的定制方案"},
+  { id: "7star", name: "七星阵", type: "concept", desc: "北斗七星多Agent协同——天枢(大脑)、玉衡(公正)、开阳(代码)、天玑(执行)、天璇(应急)"},
+  { id: "zero", name: "零基础的力量", type: "concept", desc: "40岁零编程基础，一个半月搭建完整AI系统。人的成长取决于思考，不取决于背景"},
+  { id: "lastmile", name: "最后一公里", type: "concept", desc: "地市级产品经理处于最后一公里，直接面对客户经理和一线需求，最懂痛点"},
+  { id: "think", name: "思考即翻身", type: "concept", desc: "善于思考的人，总会有翻身的一天。AI的价值取决于使用它的人的思考深度"},
+  { id: "gut", name: "基层直觉", type: "concept", desc: "基层产品经理的直觉，往往对得上顶层设计——你的概念与集团战略高度一致"},
 ];
 
-function fmt(n) { return n ? n.toLocaleString() : '--'; }
+const links = [
+  { source: "line", target: "base-ui" },
+  { source: "line", target: "dead" },
+  { source: "line", target: "lastmile" },
+  { source: "base-ui", target: "dead" },
+  { source: "dead", target: "blocks" },
+  { source: "blocks", target: "lastmile" },
+  { source: "lastmile", target: "frontline" },
+  { source: "frontline", target: "lazy" },
+  { source: "lazy", target: "zero" },
+  { source: "frontline", target: "zero" },
+  { source: "7star", target: "zero" },
+  { source: "zero", target: "think" },
+  { source: "think", target: "gut" },
+  { source: "7star", target: "lastmile" },
+];
 
-async function load() {
-  try {
-    const r = await fetch('data/status.json?t='+Date.now());
-    const d = await r.json();
-    renderSystem(d.system);
-    renderDaily(d.daily);
-    renderAiNews(d.ai_news);
-    renderNews(d.news);
-    renderFootball(d.football);
-    renderWeekly(d.weekly);
-    document.getElementById('costToday').textContent = '$'+(d.token?.today||0).toFixed(2);
-    document.getElementById('costMonth').textContent = '$'+(d.token?.month||0).toFixed(2);
-    document.getElementById('tokensToday').textContent = fmt(d.token?.today_tokens);
-    document.getElementById('tokensMonth').textContent = fmt(d.token?.month_tokens);
-    document.getElementById('clock').textContent = '更新于 '+(d.updated||'--');
-    document.getElementById('refreshInfo').textContent = '每5分钟自动刷新';
-  } catch(e) { document.getElementById('clock').textContent = '数据加载失败'; }
-}
+// 力导向
+const sim = d3.forceSimulation(nodes)
+  .force("link", d3.forceLink(links).id(d => d.id).distance(120))
+  .force("charge", d3.forceManyBody().strength(-300))
+  .force("center", d3.forceCenter(W/2, H/2))
+  .force("collision", d3.forceCollide(40));
 
-function renderSystem(sys) {
-  document.getElementById('agents').innerHTML = AGENTS.map(a => {
-    const ok = a.depends ? sys[a.depends] : sys[a.id];
-    return `<div class="agent ${ok?'on':'off'}">
-      <span class="icon">${a.icon}</span>
-      <span class="dot ${ok?'on':'off'}"></span>${a.name}
-    </div>`;
-  }).join('');
-}
+// 连线
+const link = g.append("g").selectAll("line")
+  .data(links).join("line")
+  .attr("class", "link");
 
-function renderDaily(d) {
-  if (!d) return;
-  document.getElementById('dailyTasks').innerHTML = d.tasks?.map(t=>`<div class="item">${t}</div>`).join('')||'<div class="item">--</div>';
-  document.getElementById('dailyKB').innerHTML = d.kb?.map(k=>`<div class="item">${k}</div>`).join('')||'<div class="item">--</div>';
-  document.getElementById('dailyToken').innerHTML = `<div class="item">${d.token_summary||'--'}</div>`;
-}
+// 节点
+const node = g.append("g").selectAll("g")
+  .data(nodes).join("g")
+  .attr("class", d => `node ${d.type === 'core' ? 'core' : ''}`)
+  .call(d3.drag()
+    .on("start", (e,d) => { if(!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+    .on("drag", (e,d) => { d.fx = e.x; d.fy = e.y; })
+    .on("end", (e,d) => { if(!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }));
 
-function renderAiNews(n) {
-  document.getElementById('aiNewsUpdated').textContent = n?.source ? n.source + (n.updated?' · '+n.updated:'') : '';
-  if (!n?.items?.length) { document.getElementById('aiNewsList').innerHTML='<div class="loading">等待首次抓取...</div>'; return; }
-  document.getElementById('aiNewsList').innerHTML = n.items.map(i => {
-    const tag = i.tag ? `<span class="tag">${i.tag}</span>` : '';
-    return `<div class="news-item">${tag}<a href="${i.link||'#'}" target="_blank">${i.title}</a></div>`;
-  }).join('');
-}
+node.append("circle")
+  .attr("r", d => d.type === 'core' ? 18 : 10)
+  .attr("fill", d => d.type === 'core' ? '#1a1a1a' : '#111');
 
-function renderNews(n) {
-  document.getElementById('newsSource').textContent = n?.source || '';
-  if (!n?.items?.length) { document.getElementById('newsList').innerHTML='<div class="loading">等待首次运行...</div>'; return; }
-  document.getElementById('newsList').innerHTML = n.items.map(i => {
-    const tag = i.tag ? `<span class="tag">${i.tag}</span>` : '';
-    return `<div class="news-item">${tag}<a href="${i.link||'#'}" target="_blank">${i.title}</a></div>`;
-  }).join('');
-}
+node.append("text")
+  .text(d => d.name)
+  .attr("text-anchor", "middle")
+  .attr("dy", d => d.type === 'core' ? 32 : 22);
 
-function renderFootball(f) {
-  const preds = f?.predictions||[];
-  const review = f?.review;
-  document.getElementById('predictions').innerHTML = preds.length 
-    ? preds.map(m => {
-        const cls = m.hit===true?'hit':m.hit===false?'miss':'pending';
-        return `<div class="match"><span>${m.home||'?'} vs ${m.away||'?'}</span><span class="score ${cls}">${m.prediction||'--'}</span></div>`;
-      }).join('')
-    : '<div class="item">--</div>';
-  
-  if (review) {
-    let html = `<div class="item">命中 ${review.hit}/${review.total} (比分) + ${review.direction||0}/${review.total} (方向)</div>`;
-    if (review.detail?.length) {
-      html += review.detail.map(d => `<div class="review-item">${d}</div>`).join('');
-    }
-    document.getElementById('review').innerHTML = html;
-  } else {
-    document.getElementById('review').innerHTML = '<div class="item">--</div>';
-  }
-}
+// 交互
+node.on("mouseenter", function(e,d) {
+    d3.select(this).select("circle").transition().duration(200).attr("r", d.type==='core'?24:14);
+    tipTitle.text(d.name);
+    tipDesc.text(d.desc);
+    tooltip.classed("show", true);
+  })
+  .on("mousemove", function(e) {
+    tooltip.style("left", (e.pageX+16)+"px").style("top", (e.pageY-60)+"px");
+  })
+  .on("mouseleave", function(e,d) {
+    d3.select(this).select("circle").transition().duration(200).attr("r", d.type==='core'?18:10);
+    tooltip.classed("show", false);
+  });
 
-function renderWeekly(w) {
-  const card = document.getElementById('weeklyCard');
-  if (!w) { card.style.display='none'; return; }
-  card.style.display='block';
-  document.getElementById('weeklyTasks').innerHTML = w.tasks?.map(t=>`<div class="item">${t}</div>`).join('')||'--';
-  document.getElementById('weeklyKB').innerHTML = w.kb?.map(k=>`<div class="item">${k}</div>`).join('')||'--';
-  document.getElementById('weeklyToken').innerHTML = `<div class="item">${w.token_summary||'--'}</div>`;
-}
+// 点击高亮
+node.on("click", function(e,d) {
+  // 高亮连线
+  link.attr("stroke-opacity", l => l.source.id===d.id || l.target.id===d.id ? 1 : 0.12)
+      .attr("stroke", l => l.source.id===d.id||l.target.id===d.id ? "var(--accent)" : "var(--line)");
+  // 高亮节点
+  node.select("circle").attr("fill", n => n.id===d.id ? "var(--accent)" : (links.some(l=>(l.source.id===d.id&&l.target.id===n.id)||(l.target.id===d.id&&l.source.id===n.id)) ? "#222" : "#0a0a0a"));
+  node.select("text").attr("fill", n => n.id===d.id ? "#000" : (links.some(l=>(l.source.id===d.id&&l.target.id===n.id)||(l.target.id===d.id&&l.source.id===n.id)) ? "var(--text)" : "var(--dim)"));
+  // 3秒后恢复
+  setTimeout(() => {
+    link.attr("stroke-opacity", 0.5).attr("stroke", "var(--line)");
+    node.select("circle").attr("fill", n => n.type==='core'?'#1a1a1a':'#111');
+    node.select("text").attr("fill", n => n.type==='core'?'var(--text)':'var(--dim)');
+  }, 3000);
+});
 
-load();
-setInterval(load, 300000);
+// 模拟
+sim.on("tick", () => {
+  link.attr("x1", d => d.source.x).attr("y1", d => d.source.y)
+      .attr("x2", d => d.target.x).attr("y2", d => d.target.y);
+  node.attr("transform", d => `translate(${d.x},${d.y})`);
+});
 </script>
 </body>
 </html>
