@@ -552,33 +552,58 @@ node.on("mouseenter", function(e,d) {
     tooltip.classed("show", false);
   });
 
-// Click → modal + highlight connected links
+// Click → modal + highlight connected links & node
 let lastClicked = null;
+let highlightActive = false;
+
 node.on("click", function(e,d) {
   // Reset all from previous click
   resetHighlight();
 
-  // Highlight connected links & nodes
+  highlightActive = true;
   lastClicked = d;
-  link.attr("stroke", l => {
-    if (l.source.id === d.id || l.target.id === d.id) return "#ff3333";
-    return l._color;
-  }).attr("stroke-opacity", l => {
-    if (l.source.id === d.id || l.target.id === d.id) return 0.9;
-    return 0.3;
-  }).attr("stroke-width", l => {
-    if (l.source.id === d.id || l.target.id === d.id) return 2.5;
-    return 1;
-  });
-  // Dim unconnected nodes
-  node.select("circle").attr("opacity", n => {
-    if (n.id === d.id) return 1;
-    const connected = LINKS.some(l => 
-      (l.source.id === d.id && l.target.id === n.id) || 
-      (l.target.id === d.id && l.source.id === n.id)
-    );
-    return connected ? 0.9 : 0.25;
-  });
+
+  // Highlight connected links in red
+  link
+    .attr("stroke", l => {
+      const src = l.source.id || l.source;
+      const tgt = l.target.id || l.target;
+      if (src === d.id || tgt === d.id) return "#ff3333";
+      return l._color || "#555";
+    })
+    .attr("stroke-opacity", l => {
+      const src = l.source.id || l.source;
+      const tgt = l.target.id || l.target;
+      return (src === d.id || tgt === d.id) ? 0.9 : 0.2;
+    })
+    .attr("stroke-width", l => {
+      const src = l.source.id || l.source;
+      const tgt = l.target.id || l.target;
+      return (src === d.id || tgt === d.id) ? 3 : 1;
+    });
+
+  // Highlight clicked node circle — glow + enlarge
+  node.select("circle")
+    .attr("stroke", n => {
+      if (n.id === d.id) return "#ff3333";
+      const connected = LINKS.some(l => {
+        const src = l.source.id || l.source;
+        const tgt = l.target.id || l.target;
+        return (src === d.id && tgt === n.id) || (tgt === d.id && src === n.id);
+      });
+      return connected ? catStroke[n.type] || "#444" : "#333";
+    })
+    .attr("stroke-width", n => n.id === d.id ? 3 : 1.2)
+    .attr("r", n => n.id === d.id ? (catRadius[n.type]||6)*1.5 : (catRadius[n.type]||6))
+    .attr("opacity", n => {
+      if (n.id === d.id) return 1;
+      const connected = LINKS.some(l => {
+        const src = l.source.id || l.source;
+        const tgt = l.target.id || l.target;
+        return (src === d.id && tgt === n.id) || (tgt === d.id && src === n.id);
+      });
+      return connected ? 0.85 : 0.2;
+    });
 
   // Modal
   document.getElementById("modal-title").textContent = d.name;
@@ -591,10 +616,17 @@ node.on("click", function(e,d) {
 });
 
 function resetHighlight() {
-  link.attr("stroke", l => l._color)
-      .attr("stroke-opacity", 0.5)
-      .attr("stroke-width", 1);
-  node.select("circle").attr("opacity", 1);
+  if (!highlightActive) return;
+  highlightActive = false;
+  link
+    .attr("stroke", l => l._color || "#555")
+    .attr("stroke-opacity", 0.5)
+    .attr("stroke-width", 1);
+  node.select("circle")
+    .attr("stroke", n => catStroke[n.type] || "#444")
+    .attr("stroke-width", 1.2)
+    .attr("r", n => catRadius[n.type] || 6)
+    .attr("opacity", 1);
 }
 
 function closeModal() {
