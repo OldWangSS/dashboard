@@ -1,14 +1,20 @@
 {
-  "updated": "2026-05-13 13:43",
+  "updated": "2026-05-13 13:46",
   "daily": {
     "tasks": [
-      "✅ 仪表盘Git Push修复：WSL2→PowerShell推送",
-      "✅ 天玑综合新闻任务部署（Windows计划任务7:30）",
-      "✅ 每日早报cron重构：百度搜索+时效铁律",
-      "✅ 足球复盘cron接入仪表盘灌数据",
-      "✅ 看板三层自动更新架构搭建完成"
+      "✅ 微信小程序语音功能上线：录音→Whisper转文字→DeepSeek NLU→自动填表",
+      "✅ 微信小程序真机输入框不显示文字修复：value绑定冲突解决",
+      "✅ 仪表盘自动更新修复：WSL2→PowerShell git push",
+      "✅ 天玑综合新闻任务创建：7板块日报+双推飞书+看板",
+      "✅ 足球复盘+AI新闻 cron 灌入看板修复",
+      "✅ 北斗七星命名体系全平台部署"
     ],
-    "kb": [],
+    "kb": [
+      "微信小程序语音链路：wx.getRecorderManager→Whisper→DeepSeek NLU",
+      "微信小程序真机调试坑：value+bindinput冲突、darkmode覆盖文字颜色",
+      "仪表盘自动更新架构：dashboard_updater.py + dashboard_content_updater.py",
+      "天玑新闻简报：Windows计划任务+OpenClaw agent→7板块双推"
+    ],
     "token_summary": ""
   },
   "ai_news": {
