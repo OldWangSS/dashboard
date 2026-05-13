@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-13 09:41",
+  "updated": "2026-05-13 09:47",
   "daily": {
     "tasks": [
       "✅ Git Push修复：WSL2→PowerShell",
@@ -12,7 +12,7 @@
     "token_summary": "DeepSeek V4 Pro: 178,194 tokens ($0.10)"
   },
   "ai_news": {
-    "source": "CatClaw Browser（百度搜索）",
+    "source": "天玑 Browser（百度搜索）",
     "updated": "05-13 09:20",
     "items": [
       {
@@ -33,7 +33,7 @@
     ]
   },
   "news": {
-    "source": "CatClaw Browser（观察者网+直播吧）",
+    "source": "天玑 Browser（观察者网+直播吧）",
     "items": [
       {
         "title": "中美经贸高级别磋商在华盛顿举行",
@@ -112,9 +112,9 @@
     "homebot": true
   },
   "token": {
-    "today": 1.33,
-    "today_tokens": 2422157,
-    "month": 256.97,
-    "month_tokens": 1156179157
+    "today": 1.42,
+    "today_tokens": 2579852,
+    "month": 257.06,
+    "month_tokens": 1156336852
   }
 }
