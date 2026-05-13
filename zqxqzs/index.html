@@ -56,16 +56,14 @@
 
   <!-- 语音卡片 -->
   <div class="card voice-card">
-    <div class="v-head">🎤 语音录入需求</div>
-    <div class="v-hint">按住说话，AI 自动识别并推荐产品</div>
-    <button class="v-btn" id="voice-btn">🎙️ 按住说话</button>
-    <div id="voice-status" style="display:none;text-align:center;color:#7c4dff;margin-top:10px"></div>
-    <div id="voice-result" style="display:none">
-      <div class="voice-text-area">
-        <textarea id="voice-text-edit" placeholder="修改识别结果..."></textarea>
-        <button class="btn btn-purple" id="btn-analyze">🤖 AI 智能推荐产品</button>
-      </div>
-    </div>
+    <div class="v-head">📝 录入需求</div>
+    <div class="v-hint">打字或说话，AI 自动识别并推荐产品</div>
+
+    <textarea id="voice-text-edit" placeholder="请描述客户需求，例如：给公安局装50个摄像头，需要30天存储"></textarea>
+    <div id="voice-status" style="display:none;text-align:center;color:#7c4dff;margin:8px 0;font-size:13px"></div>
+    <button id="voice-btn" class="v-btn">🎙️ 按住说话</button>
+
+    <button class="btn btn-purple" id="btn-analyze" style="margin-top:12px">🤖 AI 智能推荐产品</button>
     <div id="voice-ai-result" style="display:none"></div>
   </div>
 

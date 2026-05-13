@@ -200,7 +200,7 @@ function initVoice() {
       }
       state.voiceText = text;
       $('voice-text-edit').value = text;
-      $('voice-status').textContent = '🎤 正在识别: ' + text.slice(0,15) + (text.length>15?'…':'');
+      $('voice-text-edit').focus();
     };
 
     r.onerror = (e) => {
@@ -211,7 +211,6 @@ function initVoice() {
       state.recEnded = true;
       if (!pressed) {
         if (state.voiceText) {
-          $('voice-result').style.display = '';
           $('voice-status').style.display = 'none';
         } else {
           $('voice-status').textContent = '未检测到语音，请重试';
@@ -239,7 +238,6 @@ function initVoice() {
     btn.classList.add('recording');
     btn.textContent = '🔴 松开发送';
     state.voiceText = '';
-    $('voice-result').style.display = 'none';
     $('voice-ai-result').style.display = 'none';
     $('voice-status').textContent = '⏳ 准备录音...';
     $('voice-status').style.display = '';
@@ -272,7 +270,6 @@ function initVoice() {
       // 等 onend 回调后处理结果
       setTimeout(() => {
         if (state.voiceText) {
-          $('voice-result').style.display = '';
           $('voice-status').style.display = 'none';
         } else {
           if (state.lastRecError) {
