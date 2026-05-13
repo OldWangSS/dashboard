@@ -7,78 +7,63 @@
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <style>
   :root {
-    --bg: #0d0d0d;
-    --text: #c9d1d9;
-    --dim: #6e7681;
-    --accent: #ffd54f;
-    --accent2: #4fc3f7;
-    --line: #2a2a2a;
-    --card: #151515;
-    --border: #252525;
+    --bg: #0d0d0d; --text: #c9d1d9; --dim: #6e7681;
+    --accent: #ffd54f; --accent2: #4fc3f7;
+    --line: #2a2a2a; --card: #151515; --border: #252525;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body {
-    background: var(--bg);
-    color: var(--text);
+    background: var(--bg); color: var(--text);
     font-family: -apple-system, 'Segoe UI', sans-serif;
-    overflow: hidden;
-    height: 100vh;
-    user-select: none;
+    overflow: hidden; height: 100vh; user-select: none;
   }
-  /* 顶部导航 */
   .topbar {
     position: fixed; top:0; left:0; right:0; z-index:100;
     display: flex; justify-content: space-between; align-items: center;
     padding: 14px 24px;
     background: linear-gradient(180deg, rgba(13,13,13,0.98) 60%, rgba(13,13,13,0));
+    pointer-events: none;
   }
+  .topbar>*{pointer-events:auto}
   .logo { font-size: 1.1em; font-weight: 700; letter-spacing: 0.05em; color: var(--accent); }
   .topbar-btns { display: flex; gap: 10px; }
   .topbar-btn {
-    padding: 8px 18px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    background: var(--card);
-    color: var(--text);
-    font-size: 0.85em;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-decoration: none;
-    display: inline-flex; align-items: center;
+    padding: 8px 18px; border: 1px solid var(--border); border-radius: 6px;
+    background: var(--card); color: var(--text); font-size: 0.85em;
+    cursor: pointer; transition: all 0.2s; text-decoration: none;
   }
-  .topbar-btn:hover { border-color: var(--accent); color: var(--accent); background: #1a1a1a; }
-  .topbar-btn.primary { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 600; }
-  .topbar-btn.primary:hover { opacity: 0.9; }
+  .topbar-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .topbar-btn.primary { background: var(--accent2); color: #000; border-color: var(--accent2); font-weight: 600; }
 
-  /* 画布 */
   #graph { width: 100vw; height: 100vh; cursor: grab; }
   #graph:active { cursor: grabbing; }
-  .node circle { stroke: var(--line); stroke-width: 1.5; cursor: pointer; transition: r 0.3s, fill 0.3s; }
-  .node.core circle { stroke: var(--accent); stroke-width: 2; }
-  .node text { fill: var(--dim); font-size: 11px; pointer-events: none; transition: fill 0.3s; }
-  .node.core text { fill: var(--text); font-weight: 600; font-size: 13px; }
-  .link { stroke: var(--line); stroke-width: 1; stroke-opacity: 0.5; }
 
-  /* 提示框 */
+  .node circle { stroke-width: 1; cursor: pointer; transition: r 0.3s, fill 0.3s; }
+  .node text { pointer-events: none; transition: fill 0.3s, font-size 0.3s; }
+  .link { stroke-opacity: 0.3; stroke-width: 0.6; }
+
   .tooltip {
     position: fixed; z-index: 200;
     background: var(--card); border: 1px solid var(--border);
-    border-radius: 8px; padding: 12px 16px;
-    max-width: 260px;
-    pointer-events: none; opacity: 0;
-    transition: opacity 0.2s;
+    border-radius: 8px; padding: 10px 14px; max-width: 240px;
+    pointer-events: none; opacity: 0; transition: opacity 0.2s;
     box-shadow: 0 8px 32px rgba(0,0,0,0.6);
   }
   .tooltip.show { opacity: 1; }
-  .tooltip h3 { font-size: 1em; color: var(--accent); margin-bottom: 4px; }
-  .tooltip p { font-size: 0.82em; color: var(--dim); line-height: 1.5; }
-
-  /* 底部 */
+  .tooltip h3 { font-size: 0.95em; color: var(--accent); margin-bottom: 2px; }
+  .tooltip p { font-size: 0.78em; color: var(--dim); }
   .footer {
-    position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
-    font-size: 0.75em; color: var(--dim); letter-spacing: 0.05em;
-    opacity: 0.5; z-index: 100;
+    position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%);
+    font-size: 0.72em; color: var(--dim); opacity: 0.4; z-index: 100;
   }
+
+  /* Legend */
+  .legend {
+    position: fixed; bottom: 16px; right: 20px; z-index: 100;
+    font-size: 0.72em; display: flex; gap: 12px; opacity: 0.5;
+  }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
 </style>
 </head>
 <body>
@@ -87,18 +72,17 @@
   <span class="logo">AI不AI</span>
   <div class="topbar-btns">
     <a href="/dashboard/" class="topbar-btn">📊 王叔的任务看板</a>
-    <a href="/zqxqzs/" class="topbar-btn primary" style="background:var(--accent2); border-color:var(--accent2); color:#000;">📱 政企需求助手</a>
+    <a href="/zqxqzs/" class="topbar-btn primary">📱 政企需求助手</a>
   </div>
 </div>
 
 <svg id="graph"></svg>
 <div class="tooltip" id="tooltip"><h3 id="tip-title"></h3><p id="tip-desc"></p></div>
-<div class="footer">Drag nodes · Scroll to zoom · Click for detail</div>
+<div class="footer">拖拽节点 · 滚轮缩放 · 点击高亮连线</div>
+<div class="legend" id="legend"></div>
 
 <script>
-const W = window.innerWidth;
-const H = window.innerHeight;
-
+const W = window.innerWidth, H = window.innerHeight;
 const svg = d3.select("#graph");
 const g = svg.append("g");
 
@@ -106,108 +90,105 @@ const tooltip = d3.select("#tooltip");
 const tipTitle = d3.select("#tip-title");
 const tipDesc = d3.select("#tip-desc");
 
-// 缩放
-svg.call(d3.zoom()
-  .extent([[0,0],[W,H]])
-  .scaleExtent([0.3, 3])
-  .on("zoom", (e) => g.attr("transform", e.transform)));
+// Zoom
+svg.call(d3.zoom().extent([[0,0],[W,H]]).scaleExtent([0.2, 4])
+  .on("zoom", e => g.attr("transform", e.transform)));
 
-// 数据
-const nodes = [
-  // 核心金句（一级节点）
-  { id: "base-ui", name: "底座与界面", type: "core", desc: "标品下沉为底座，定制浮上为界面——集团造积木，一线搭造型"},
-  { id: "line", name: "AI是一根线", type: "core", desc: "用AI把客户的过去需求、订单、合同串起来。不是做工具，是帮一线做他们记不住的事"},
-  { id: "frontline", name: "一线即领导", type: "core", desc: "解决一线的需求，就是解决领导的需求。客户经理最懂客户"},
-  { id: "lazy", name: "偷懒是商机", type: "core", desc: "帮一线客户经理做他们记不住、算不过来的事——偷懒驱动创新"},
-  // 概念节点
-  { id: "dead", name: "标品已死", type: "concept", desc: "都什么时代了还卖标准化产品。标品时代结束，定制浮上为界面"},
-  { id: "blocks", name: "积木与造型", type: "concept", desc: "集团提供算力/模型/管道作为底座积木，客户经理用AI拼成千人千面的定制方案"},
-  { id: "7star", name: "七星阵", type: "concept", desc: "北斗七星多Agent协同——天枢(大脑)、玉衡(公正)、开阳(代码)、天玑(执行)、天璇(应急)"},
-  { id: "zero", name: "零基础的力量", type: "concept", desc: "40岁零编程基础，一个半月搭建完整AI系统。人的成长取决于思考，不取决于背景"},
-  { id: "lastmile", name: "最后一公里", type: "concept", desc: "地市级产品经理处于最后一公里，直接面对客户经理和一线需求，最懂痛点"},
-  { id: "think", name: "思考即翻身", type: "concept", desc: "善于思考的人，总会有翻身的一天。AI的价值取决于使用它的人的思考深度"},
-  { id: "gut", name: "基层直觉", type: "concept", desc: "基层产品经理的直觉，往往对得上顶层设计——你的概念与集团战略高度一致"},
-];
+// Category config
+const catColors = {
+  "concept": "#4fc3f7", "product": "#81c784", "reading": "#ce93d8",
+  "video": "#ff8a65", "football": "#4dd0e1", "tech": "#90a4ae",
+  "external": "#a1887f", "core": "#ffd54f"
+};
+const catRadius = { "concept": 8, "core": 10, "product": 7, "reading": 6, "video": 6, "football": 6, "tech": 6, "external": 6 };
+const catLabels = { "concept": "理念", "product": "产品", "reading": "阅读", "video": "视频", "football": "足球", "tech": "技术", "external": "外部", "core": "核心" };
 
-const links = [
-  { source: "line", target: "base-ui" },
-  { source: "line", target: "dead" },
-  { source: "line", target: "lastmile" },
-  { source: "base-ui", target: "dead" },
-  { source: "dead", target: "blocks" },
-  { source: "blocks", target: "lastmile" },
-  { source: "lastmile", target: "frontline" },
-  { source: "frontline", target: "lazy" },
-  { source: "lazy", target: "zero" },
-  { source: "frontline", target: "zero" },
-  { source: "7star", target: "zero" },
-  { source: "zero", target: "think" },
-  { source: "think", target: "gut" },
-  { source: "7star", target: "lastmile" },
-];
+// Build legend
+const legend = d3.select("#legend");
+Object.entries(catLabels).forEach(([cat, label]) => {
+  legend.append("div").attr("class", "legend-item").html(
+    `<span class="legend-dot" style="background:${catColors[cat]}"></span>${label}`
+  );
+});
 
-// 力导向
-const sim = d3.forceSimulation(nodes)
-  .force("link", d3.forceLink(links).id(d => d.id).distance(120))
-  .force("charge", d3.forceManyBody().strength(-300))
+// Graph data
+const NODES = [{"id": "舒展 AI 知识库", "name": "舒展 AI 知识库", "type": "concept"}, {"id": "标品下沉，定制上浮", "name": "标品下沉，定制上浮", "type": "concept"}, {"id": "概念关系图谱", "name": "概念关系图谱", "type": "concept"}, {"id": "2026 移动云大会", "name": "2026 移动云大会", "type": "concept"}, {"id": "40岁零基础的诚实", "name": "40岁零基础的诚实", "type": "concept"}, {"id": "AI 不是搜索引擎", "name": "AI 不是搜索引擎", "type": "concept"}, {"id": "AI 的命运取决于使用者", "name": "AI 的命运取决于使用者", "type": "concept"}, {"id": "MoMA — 移动模型服务聚合引擎", "name": "MoMA — 移动模型服务聚合引擎", "type": "concept"}, {"id": "Token 效率革命", "name": "Token 效率革命", "type": "concept"}, {"id": "Token 经销商：客户经理的新身份", "name": "Token 经销商：客户经理的新身份", "type": "concept"}, {"id": "三层算力", "name": "三层算力", "type": "concept"}, {"id": "两条线交汇", "name": "两条线交汇", "type": "concept"}, {"id": "九天大模型", "name": "九天大模型", "type": "concept"}, {"id": "五次社会矛盾框架", "name": "五次社会矛盾框架", "type": "concept"}, {"id": "从零到五虎将", "name": "从零到五虎将", "type": "concept"}, {"id": "你训练的 AI 的价值 = 你自身的价值", "name": "你训练的 AI 的价值 = 你自身的价值", "type": "concept"}, {"id": "偷懒是商机", "name": "偷懒是商机", "type": "concept"}, {"id": "算力是发动机，AI全链路是一辆车", "name": "算力是发动机，AI全链路是一辆车", "type": "concept"}, {"id": "有得选 → 不用选", "name": "有得选 → 不用选", "type": "concept"}, {"id": "标品是底座，定制是界面", "name": "标品是底座，定制是界面", "type": "concept"}, {"id": "永不关机的硬盘", "name": "永不关机的硬盘", "type": "concept"}, {"id": "灵感串联之线", "name": "灵感串联之线", "type": "concept"}, {"id": "生产力到消费品的最后一公里", "name": "生产力到消费品的最后一公里", "type": "concept"}, {"id": "国家AI战略 = 电车模式再现", "name": "国家AI战略 = 电车模式再现", "type": "concept"}, {"id": "私人AI = 个人资产", "name": "私人AI = 个人资产", "type": "concept"}, {"id": "中国移动在AI时代的三个卡位", "name": "中国移动在AI时代的三个卡位", "type": "concept"}, {"id": "飞书承载私人AI对话 → 抢占入口", "name": "飞书承载私人AI对话 → 抢占入口", "type": "concept"}, {"id": "AI Token = 新货币·四大央行", "name": "AI Token = 新货币·四大央行", "type": "video"}, {"id": "2026移动云大会 — 四大分论坛要点", "name": "2026移动云大会 — 四大分论坛要点", "type": "external"}, {"id": "辽宁省数字政府建设实施方案（2025-2027）", "name": "辽宁省数字政府建设实施方案（2025-2027）", "type": "external"}, {"id": "专线", "name": "专线", "type": "product"}, {"id": "云视讯（移动会议）", "name": "云视讯（移动会议）", "type": "product"}, {"id": "千里眼", "name": "千里眼", "type": "product"}, {"id": "和对讲 — 中国移动政企产品知识库", "name": "和对讲 — 中国移动政企产品知识库", "type": "product"}, {"id": "和车队", "name": "和车队", "type": "product"}, {"id": "物联网", "name": "物联网", "type": "product"}, {"id": "短彩信", "name": "短彩信", "type": "product"}, {"id": "移动云", "name": "移动云", "type": "product"}, {"id": "移动政企产品知识库", "name": "移动政企产品知识库", "type": "product"}, {"id": "认知决定接触层级", "name": "认知决定接触层级", "type": "concept"}, {"id": "AI对社会的影响——普通人如何应对", "name": "AI对社会的影响——普通人如何应对", "type": "video"}, {"id": "《AI、就业和社保》——卓贤万字长文深度分析", "name": "《AI、就业和社保》——卓贤万字长文深度分析", "type": "video"}, {"id": "Claude Code + Obsidian：AI 思考伙伴", "name": "Claude Code + Obsidian：AI 思考伙伴", "type": "video"}, {"id": "DeepSeek V4：历史性的杠杆窗口", "name": "DeepSeek V4：历史性的杠杆窗口", "type": "video"}, {"id": "The Agency — 144位AI专家开源项目", "name": "The Agency — 144位AI专家开源项目", "type": "video"}, {"id": "一句\"废话\"推导整个经济学", "name": "一句\"废话\"推导整个经济学", "type": "video"}, {"id": "《The Mixer》(Michael Cox) — 英超战术史", "name": "《The Mixer》(Michael Cox) — 英超战术史", "type": "football"}, {"id": "《倒转金字塔》(Inverting the Pyramid)", "name": "《倒转金字塔》(Inverting the Pyramid)", "type": "football"}, {"id": "传控体系（Possession Systems）", "name": "传控体系（Possession Systems）", "type": "football"}, {"id": "比赛复盘框架（预测与复盘专用）", "name": "比赛复盘框架（预测与复盘专用）", "type": "football"}, {"id": "球员评估维度", "name": "球员评估维度", "type": "football"}, {"id": "空间理论（战术基础）", "name": "空间理论（战术基础）", "type": "football"}, {"id": "足球知识库", "name": "足球知识库", "type": "football"}, {"id": "阵型演变史（Formation Evolution）", "name": "阵型演变史（Formation Evolution）", "type": "football"}, {"id": "高位压迫体系（Pressing Systems）", "name": "高位压迫体系（Pressing Systems）", "type": "football"}];
+const LINKS = [{"source": "舒展 AI 知识库", "target": "永不关机的硬盘"}, {"source": "舒展 AI 知识库", "target": "灵感串联之线"}, {"source": "舒展 AI 知识库", "target": "40岁零基础的诚实"}, {"source": "舒展 AI 知识库", "target": "从零到五虎将"}, {"source": "舒展 AI 知识库", "target": "五次社会矛盾框架"}, {"source": "舒展 AI 知识库", "target": "国家AI战略 = 电车模式再现"}, {"source": "舒展 AI 知识库", "target": "三层算力"}, {"source": "舒展 AI 知识库", "target": "生产力到消费品的最后一公里"}, {"source": "舒展 AI 知识库", "target": "两条线交汇"}, {"source": "舒展 AI 知识库", "target": "偷懒是商机"}, {"source": "舒展 AI 知识库", "target": "标品是底座，定制是界面"}, {"source": "舒展 AI 知识库", "target": "九天大模型"}, {"source": "舒展 AI 知识库", "target": "认知决定接触层级"}, {"source": "舒展 AI 知识库", "target": "2026移动云大会 — 四大分论坛要点"}, {"source": "舒展 AI 知识库", "target": "足球知识库"}, {"source": "标品下沉，定制上浮", "target": "偷懒是商机"}, {"source": "概念关系图谱", "target": "永不关机的硬盘"}, {"source": "概念关系图谱", "target": "灵感串联之线"}, {"source": "概念关系图谱", "target": "40岁零基础的诚实"}, {"source": "概念关系图谱", "target": "五次社会矛盾框架"}, {"source": "概念关系图谱", "target": "国家AI战略 = 电车模式再现"}, {"source": "概念关系图谱", "target": "三层算力"}, {"source": "概念关系图谱", "target": "生产力到消费品的最后一公里"}, {"source": "概念关系图谱", "target": "两条线交汇"}, {"source": "概念关系图谱", "target": "偷懒是商机"}, {"source": "概念关系图谱", "target": "2026移动云大会 — 四大分论坛要点"}, {"source": "2026 移动云大会", "target": "三层算力"}, {"source": "2026 移动云大会", "target": "国家AI战略 = 电车模式再现"}, {"source": "2026 移动云大会", "target": "生产力到消费品的最后一公里"}, {"source": "2026 移动云大会", "target": "偷懒是商机"}, {"source": "AI 的命运取决于使用者", "target": "40岁零基础的诚实"}, {"source": "MoMA — 移动模型服务聚合引擎", "target": "三层算力"}, {"source": "Token 效率革命", "target": "三层算力"}, {"source": "Token 效率革命", "target": "偷懒是商机"}, {"source": "Token 经销商：客户经理的新身份", "target": "五次社会矛盾框架"}, {"source": "Token 经销商：客户经理的新身份", "target": "偷懒是商机"}, {"source": "三层算力", "target": "国家AI战略 = 电车模式再现"}, {"source": "两条线交汇", "target": "五次社会矛盾框架"}, {"source": "九天大模型", "target": "三层算力"}, {"source": "从零到五虎将", "target": "灵感串联之线"}, {"source": "从零到五虎将", "target": "40岁零基础的诚实"}, {"source": "你训练的 AI 的价值 = 你自身的价值", "target": "灵感串联之线"}, {"source": "偷懒是商机", "target": "生产力到消费品的最后一公里"}, {"source": "偷懒是商机", "target": "五次社会矛盾框架"}, {"source": "偷懒是商机", "target": "认知决定接触层级"}, {"source": "算力是发动机，AI全链路是一辆车", "target": "三层算力"}, {"source": "算力是发动机，AI全链路是一辆车", "target": "国家AI战略 = 电车模式再现"}, {"source": "算力是发动机，AI全链路是一辆车", "target": "2026移动云大会 — 四大分论坛要点"}, {"source": "有得选 → 不用选", "target": "五次社会矛盾框架"}, {"source": "标品是底座，定制是界面", "target": "偷懒是商机"}, {"source": "标品是底座，定制是界面", "target": "生产力到消费品的最后一公里"}, {"source": "永不关机的硬盘", "target": "灵感串联之线"}, {"source": "国家AI战略 = 电车模式再现", "target": "五次社会矛盾框架"}, {"source": "私人AI = 个人资产", "target": "永不关机的硬盘"}, {"source": "私人AI = 个人资产", "target": "灵感串联之线"}, {"source": "私人AI = 个人资产", "target": "足球知识库"}, {"source": "中国移动在AI时代的三个卡位", "target": "九天大模型"}, {"source": "中国移动在AI时代的三个卡位", "target": "标品是底座，定制是界面"}, {"source": "中国移动在AI时代的三个卡位", "target": "偷懒是商机"}, {"source": "AI Token = 新货币·四大央行", "target": "五次社会矛盾框架"}, {"source": "AI Token = 新货币·四大央行", "target": "偷懒是商机"}, {"source": "移动政企产品知识库", "target": "专线"}, {"source": "移动政企产品知识库", "target": "短彩信"}, {"source": "移动政企产品知识库", "target": "千里眼"}, {"source": "移动政企产品知识库", "target": "云视讯（移动会议）"}, {"source": "移动政企产品知识库", "target": "和对讲 — 中国移动政企产品知识库"}, {"source": "移动政企产品知识库", "target": "和车队"}, {"source": "移动政企产品知识库", "target": "移动云"}, {"source": "移动政企产品知识库", "target": "物联网"}, {"source": "移动政企产品知识库", "target": "标品是底座，定制是界面"}, {"source": "认知决定接触层级", "target": "标品是底座，定制是界面"}, {"source": "足球知识库", "target": "空间理论（战术基础）"}, {"source": "足球知识库", "target": "传控体系（Possession Systems）"}, {"source": "足球知识库", "target": "高位压迫体系（Pressing Systems）"}, {"source": "足球知识库", "target": "比赛复盘框架（预测与复盘专用）"}, {"source": "足球知识库", "target": "球员评估维度"}];
+
+// Sim
+const sim = d3.forceSimulation(NODES)
+  .force("link", d3.forceLink(LINKS).id(d => d.id).distance(d => d.type==="concept" ? 100 : 80))
+  .force("charge", d3.forceManyBody().strength(-200))
   .force("center", d3.forceCenter(W/2, H/2))
-  .force("collision", d3.forceCollide(40));
+  .force("collision", d3.forceCollide(d => (catRadius[d.type]||7)+3));
 
-// 连线
+// Links
 const link = g.append("g").selectAll("line")
-  .data(links).join("line")
-  .attr("class", "link");
+  .data(LINKS).join("line")
+  .attr("class", "link")
+  .attr("stroke", "var(--line)");
 
-// 节点
+// Nodes
 const node = g.append("g").selectAll("g")
-  .data(nodes).join("g")
-  .attr("class", d => `node ${d.type === 'core' ? 'core' : ''}`)
+  .data(NODES).join("g")
+  .attr("class", "node")
   .call(d3.drag()
     .on("start", (e,d) => { if(!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
     .on("drag", (e,d) => { d.fx = e.x; d.fy = e.y; })
     .on("end", (e,d) => { if(!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }));
 
 node.append("circle")
-  .attr("r", d => d.type === 'core' ? 18 : 10)
-  .attr("fill", d => d.type === 'core' ? '#1a1a1a' : '#111');
+  .attr("r", d => catRadius[d.type] || 6)
+  .attr("fill", d => catColors[d.type] || "#555")
+  .attr("stroke", d => d3.color(catColors[d.type]||"#555").darker(0.4))
+  .attr("stroke-opacity", 0.3)
+  .attr("stroke-width", 0.5);
 
 node.append("text")
-  .text(d => d.name)
+  .text(d => d.name.length > 12 ? d.name.slice(0,10)+".." : d.name)
   .attr("text-anchor", "middle")
-  .attr("dy", d => d.type === 'core' ? 32 : 22);
+  .attr("dy", d => (catRadius[d.type]||6) + 12)
+  .attr("fill", "var(--dim)")
+  .attr("font-size", d => d.type==="concept"||d.type==="core" ? "10px" : "8px");
 
-// 交互
+// Hover
 node.on("mouseenter", function(e,d) {
-    d3.select(this).select("circle").transition().duration(200).attr("r", d.type==='core'?24:14);
+    d3.select(this).select("circle").transition().duration(200)
+      .attr("r", (catRadius[d.type]||6)*1.5);
     tipTitle.text(d.name);
-    tipDesc.text(d.desc);
+    tipDesc.text(catLabels[d.type]||d.type);
     tooltip.classed("show", true);
   })
-  .on("mousemove", function(e) {
-    tooltip.style("left", (e.pageX+16)+"px").style("top", (e.pageY-60)+"px");
-  })
+  .on("mousemove", e => tooltip.style("left",(e.pageX+14)+"px").style("top",(e.pageY-50)+"px"))
   .on("mouseleave", function(e,d) {
-    d3.select(this).select("circle").transition().duration(200).attr("r", d.type==='core'?18:10);
+    d3.select(this).select("circle").transition().duration(200)
+      .attr("r", catRadius[d.type]||6);
     tooltip.classed("show", false);
   });
 
-// 点击高亮
+// Click highlight
+let highlightedNode = null;
 node.on("click", function(e,d) {
-  // 高亮连线
-  link.attr("stroke-opacity", l => l.source.id===d.id || l.target.id===d.id ? 1 : 0.12)
-      .attr("stroke", l => l.source.id===d.id||l.target.id===d.id ? "var(--accent)" : "var(--line)");
-  // 高亮节点
-  node.select("circle").attr("fill", n => n.id===d.id ? "var(--accent)" : (links.some(l=>(l.source.id===d.id&&l.target.id===n.id)||(l.target.id===d.id&&l.source.id===n.id)) ? "#222" : "#0a0a0a"));
-  node.select("text").attr("fill", n => n.id===d.id ? "#000" : (links.some(l=>(l.source.id===d.id&&l.target.id===n.id)||(l.target.id===d.id&&l.source.id===n.id)) ? "var(--text)" : "var(--dim)"));
-  // 3秒后恢复
-  setTimeout(() => {
-    link.attr("stroke-opacity", 0.5).attr("stroke", "var(--line)");
-    node.select("circle").attr("fill", n => n.type==='core'?'#1a1a1a':'#111');
-    node.select("text").attr("fill", n => n.type==='core'?'var(--text)':'var(--dim)');
-  }, 3000);
+  if (highlightedNode === d.id) {
+    // Un-highlight
+    highlightedNode = null;
+    link.attr("stroke", "var(--line)").attr("stroke-opacity", 0.3).attr("stroke-width", 0.6);
+    node.select("circle").attr("fill", d => catColors[d.type]||"#555").attr("stroke-opacity", 0.3);
+    node.select("text").attr("fill", "var(--dim)").attr("font-size", d => d.type==="concept"||d.type==="core" ? "10px" : "8px");
+    return;
+  }
+  highlightedNode = d.id;
+  link.attr("stroke-opacity", l => l.source.id===d.id||l.target.id===d.id ? 1 : 0.06)
+      .attr("stroke", l => l.source.id===d.id||l.target.id===d.id ? "#fff" : "var(--line)")
+      .attr("stroke-width", l => l.source.id===d.id||l.target.id===d.id ? 1.2 : 0.3);
+  node.select("circle")
+      .attr("fill", n => n.id===d.id ? "#fff" : (LINKS.some(l=>(l.source.id===d.id&&l.target.id===n.id)||(l.target.id===d.id&&l.source.id===n.id)) ? catColors[n.type] : "#1a1a1a"))
+      .attr("stroke-opacity", 0.6);
+  node.select("text")
+      .attr("fill", n => n.id===d.id ? "#000" : (LINKS.some(l=>(l.source.id===d.id&&l.target.id===n.id)||(l.target.id===d.id&&l.source.id===n.id)) ? "#fff" : "var(--dim)"))
+      .attr("font-size", n => n.id===d.id ? "12px" : (LINKS.some(l=>(l.source.id===d.id&&l.target.id===n.id)||(l.target.id===d.id&&l.source.id===n.id)) ? "10px" : "8px"));
 });
 
-// 模拟
 sim.on("tick", () => {
   link.attr("x1", d => d.source.x).attr("y1", d => d.source.y)
       .attr("x2", d => d.target.x).attr("y2", d => d.target.y);

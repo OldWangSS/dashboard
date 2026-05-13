@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI不AI</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+  :root {
+    --bg: #0d0d0d; --text: #c9d1d9; --dim: #6e7681;
+    --accent: #ffd54f; --accent2: #4fc3f7;
+    --line: #2a2a2a; --card: #151515; --border: #252525;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, 'Segoe UI', sans-serif;
+    overflow: hidden; height: 100vh; user-select: none;
+  }
+  .topbar {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 24px;
+    background: linear-gradient(180deg, rgba(13,13,13,0.98) 60%, rgba(13,13,13,0));
+    pointer-events: none;
+  }
+  .topbar>*{pointer-events:auto}
+  .logo { font-size: 1.1em; font-weight: 700; letter-spacing: 0.05em; color: var(--accent); }
+  .topbar-btns { display: flex; gap: 10px; }
+  .topbar-btn {
+    padding: 8px 18px; border: 1px solid var(--border); border-radius: 6px;
+    background: var(--card); color: var(--text); font-size: 0.85em;
+    cursor: pointer; transition: all 0.2s; text-decoration: none;
+  }
+  .topbar-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .topbar-btn.primary { background: var(--accent2); color: #000; border-color: var(--accent2); font-weight: 600; }
+
+  #graph { width: 100vw; height: 100vh; cursor: grab; }
+  #graph:active { cursor: grabbing; }
+
+  .node circle { stroke-width: 1; cursor: pointer; transition: r 0.3s, fill 0.3s; }
+  .node text { pointer-events: none; transition: fill 0.3s, font-size 0.3s; }
+  .link { stroke-opacity: 0.3; stroke-width: 0.6; }
+
+  .tooltip {
+    position: fixed; z-index: 200;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 10px 14px; max-width: 240px;
+    pointer-events: none; opacity: 0; transition: opacity 0.2s;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  }
+  .tooltip.show { opacity: 1; }
+  .tooltip h3 { font-size: 0.95em; color: var(--accent); margin-bottom: 2px; }
+  .tooltip p { font-size: 0.78em; color: var(--dim); }
+  .footer {
+    position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%);
+    font-size: 0.72em; color: var(--dim); opacity: 0.4; z-index: 100;
+  }
+
+  /* Legend */
+  .legend {
+    position: fixed; bottom: 16px; right: 20px; z-index: 100;
+    font-size: 0.72em; display: flex; gap: 12px; opacity: 0.5;
+  }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="logo">AI不AI</span>
+  <div class="topbar-btns">
+    <a href="/dashboard/" class="topbar-btn">📊 王叔的任务看板</a>
+    <a href="/zqxqzs/" class="topbar-btn primary">📱 政企需求助手</a>
+  </div>
+</div>
+
+<svg id="graph"></svg>
+<div class="tooltip" id="tooltip"><h3 id="tip-title"></h3><p id="tip-desc"></p></div>
+<div class="footer">拖拽节点 · 滚轮缩放 · 点击高亮连线</div>
+<div class="legend" id="legend"></div>
+
+<script>
+const W = window.innerWidth, H = window.innerHeight;
+const svg = d3.select("#graph");
+const g = svg.append("g");
+
+const tooltip = d3.select("#tooltip");
+const tipTitle = d3.select("#tip-title");
+const tipDesc = d3.select("#tip-desc");
+
+// Zoom
+svg.call(d3.zoom().extent([[0,0],[W,H]]).scaleExtent([0.2, 4])
+  .on("zoom", e => g.attr("transform", e.transform)));
+
+// Category config
+const catColors = {
+  "concept": "#4fc3f7", "product": "#81c784", "reading": "#ce93d8",
+  "video": "#ff8a65", "football": "#4dd0e1", "tech": "#90a4ae",
+  "external": "#a1887f", "core": "#ffd54f"
+};
+const catRadius = { "concept": 8, "core": 10, "product": 7, "reading": 6, "video": 6, "football": 6, "tech": 6, "external": 6 };
+const catLabels = { "concept": "理念", "product": "产品", "reading": "阅读", "video": "视频", "football": "足球", "tech": "技术", "external": "外部", "core": "核心" };
+
+// Build legend
+const legend = d3.select("#legend");
+Object.entries(catLabels).forEach(([cat, label]) => {
+  legend.append("div").attr("class", "legend-item").html(
+    `<span class="legend-dot" style="background:${catColors[cat]}"></span>${label}`
+  );
+});
+
+// Graph data
+const NODES = CHAPTERS_JSON_PLACEHOLDER;
+const LINKS = LINKS_JSON_PLACEHOLDER;
+
+// Sim
+const sim = d3.forceSimulation(NODES)
+  .force("link", d3.forceLink(LINKS).id(d => d.id).distance(d => d.type==="concept" ? 100 : 80))
+  .force("charge", d3.forceManyBody().strength(-200))
+  .force("center", d3.forceCenter(W/2, H/2))
+  .force("collision", d3.forceCollide(d => (catRadius[d.type]||7)+3));
+
+// Links
+const link = g.append("g").selectAll("line")
+  .data(LINKS).join("line")
+  .attr("class", "link")
+  .attr("stroke", "var(--line)");
+
+// Nodes
+const node = g.append("g").selectAll("g")
+  .data(NODES).join("g")
+  .attr("class", "node")
+  .call(d3.drag()
+    .on("start", (e,d) => { if(!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+    .on("drag", (e,d) => { d.fx = e.x; d.fy = e.y; })
+    .on("end", (e,d) => { if(!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }));
+
+node.append("circle")
+  .attr("r", d => catRadius[d.type] || 6)
+  .attr("fill", d => catColors[d.type] || "#555")
+  .attr("stroke", d => d3.color(catColors[d.type]||"#555").darker(0.4))
+  .attr("stroke-opacity", 0.3)
+  .attr("stroke-width", 0.5);
+
+node.append("text")
+  .text(d => d.name.length > 12 ? d.name.slice(0,10)+".." : d.name)
+  .attr("text-anchor", "middle")
+  .attr("dy", d => (catRadius[d.type]||6) + 12)
+  .attr("fill", "var(--dim)")
+  .attr("font-size", d => d.type==="concept"||d.type==="core" ? "10px" : "8px");
+
+// Hover
+node.on("mouseenter", function(e,d) {
+    d3.select(this).select("circle").transition().duration(200)
+      .attr("r", (catRadius[d.type]||6)*1.5);
+    tipTitle.text(d.name);
+    tipDesc.text(catLabels[d.type]||d.type);
+    tooltip.classed("show", true);
+  })
+  .on("mousemove", e => tooltip.style("left",(e.pageX+14)+"px").style("top",(e.pageY-50)+"px"))
+  .on("mouseleave", function(e,d) {
+    d3.select(this).select("circle").transition().duration(200)
+      .attr("r", catRadius[d.type]||6);
+    tooltip.classed("show", false);
+  });
+
+// Click highlight
+let highlightedNode = null;
+node.on("click", function(e,d) {
+  if (highlightedNode === d.id) {
+    // Un-highlight
+    highlightedNode = null;
+    link.attr("stroke", "var(--line)").attr("stroke-opacity", 0.3).attr("stroke-width", 0.6);
+    node.select("circle").attr("fill", d => catColors[d.type]||"#555").attr("stroke-opacity", 0.3);
+    node.select("text").attr("fill", "var(--dim)").attr("font-size", d => d.type==="concept"||d.type==="core" ? "10px" : "8px");
+    return;
+  }
+  highlightedNode = d.id;
+  link.attr("stroke-opacity", l => l.source.id===d.id||l.target.id===d.id ? 1 : 0.06)
+      .attr("stroke", l => l.source.id===d.id||l.target.id===d.id ? "#fff" : "var(--line)")
+      .attr("stroke-width", l => l.source.id===d.id||l.target.id===d.id ? 1.2 : 0.3);
+  node.select("circle")
+      .attr("fill", n => n.id===d.id ? "#fff" : (LINKS.some(l=>(l.source.id===d.id&&l.target.id===n.id)||(l.target.id===d.id&&l.source.id===n.id)) ? catColors[n.type] : "#1a1a1a"))
+      .attr("stroke-opacity", 0.6);
+  node.select("text")
+      .attr("fill", n => n.id===d.id ? "#000" : (LINKS.some(l=>(l.source.id===d.id&&l.target.id===n.id)||(l.target.id===d.id&&l.source.id===n.id)) ? "#fff" : "var(--dim)"))
+      .attr("font-size", n => n.id===d.id ? "12px" : (LINKS.some(l=>(l.source.id===d.id&&l.target.id===n.id)||(l.target.id===d.id&&l.source.id===n.id)) ? "10px" : "8px"));
+});
+
+sim.on("tick", () => {
+  link.attr("x1", d => d.source.x).attr("y1", d => d.source.y)
+      .attr("x2", d => d.target.x).attr("y2", d => d.target.y);
+  node.attr("transform", d => `translate(${d.x},${d.y})`);
+});
+</script>
+</body>
+</html>
