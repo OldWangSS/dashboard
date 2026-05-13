@@ -147,7 +147,7 @@ const catStroke = {
   "external": "#5d4037", "core": "#f9a825"
 };
 const catRadius = {
-  "core": 11, "concept": 8, "product": 7, "reading": 6,
+  "core": 18, "concept": 8, "product": 7, "reading": 6,
   "video": 6, "football": 6, "tech": 6, "external": 6
 };
 const catLabels = {
@@ -168,10 +168,10 @@ Object.entries(catLabels).forEach(([cat, label]) => {
 // Data
 const NODES = [
   {
-    "id": "舒展 AI 知识库",
-    "name": "舒展 AI 知识库",
-    "type": "concept",
-    "desc": "这是舒展从2026年3月开始搭建的个人AI知识体系，覆盖产品、技术、战略、足球、阅读等多个维度。核心理念是「AI是一根线」——把碎片化的知识、想法、需求串成一张可生长的网络。目前已有55+知识节点，按类别分为：核心概念(23个)、产品(8个)、视频(6个)、足球(7个)、外部资料(2个)、阅读(1个)。每个节点都是舒展亲自思考、提炼、写下的原创内容。"
+    "id": "王叔的AI知识库",
+    "name": "王叔的AI知识库",
+    "type": "core",
+    "desc": "舒展（王叔）从2026年3月开始搭建的个人AI知识体系，覆盖产品、技术、战略、足球、阅读等多个维度。核心理念是「AI是一根线」——把碎片化的知识、想法、需求串成一张可生长的网络。目前已有55+知识节点，按类别分为：核心概念(23个)、产品(8个)、视频(6个)、足球(7个)、外部资料(2个)。每个节点都是舒展亲自思考、提炼、写下的原创内容。这是整个知识图谱的中心枢纽。"
   },
   {
     "id": "标品下沉，定制上浮",
@@ -498,17 +498,17 @@ const NODES = [
     "desc": "以失去球权后立即反抢为核心的战术体系，代表人物：克洛普、瓜迪奥拉。核心理念：不在本方半场等对手犯错，而是在对方半场主动制造错误。对舒展的启发：AI系统不应该「等用户问了才动」——要主动监控、主动提醒、主动关联。这就是Abyss的Proactive模式来源：像利物浦的前场压迫一样，持续扫描信息流，在问题发生之前预警。"
   }
 ];
-const LINKS = [{"source": "舒展 AI 知识库", "target": "永不关机的硬盘"}, {"source": "舒展 AI 知识库", "target": "灵感串联之线"}, {"source": "舒展 AI 知识库", "target": "40岁零基础的诚实"}, {"source": "舒展 AI 知识库", "target": "从零到五虎将"}, {"source": "舒展 AI 知识库", "target": "五次社会矛盾框架"}, {"source": "舒展 AI 知识库", "target": "国家AI战略 = 电车模式再现"}, {"source": "舒展 AI 知识库", "target": "三层算力"}, {"source": "舒展 AI 知识库", "target": "生产力到消费品的最后一公里"}, {"source": "舒展 AI 知识库", "target": "两条线交汇"}, {"source": "舒展 AI 知识库", "target": "偷懒是商机"}, {"source": "舒展 AI 知识库", "target": "标品是底座，定制是界面"}, {"source": "舒展 AI 知识库", "target": "九天大模型"}, {"source": "舒展 AI 知识库", "target": "认知决定接触层级"}, {"source": "舒展 AI 知识库", "target": "2026移动云大会 — 四大分论坛要点"}, {"source": "舒展 AI 知识库", "target": "足球知识库"}, {"source": "标品下沉，定制上浮", "target": "偷懒是商机"}, {"source": "概念关系图谱", "target": "永不关机的硬盘"}, {"source": "概念关系图谱", "target": "灵感串联之线"}, {"source": "概念关系图谱", "target": "40岁零基础的诚实"}, {"source": "概念关系图谱", "target": "五次社会矛盾框架"}, {"source": "概念关系图谱", "target": "国家AI战略 = 电车模式再现"}, {"source": "概念关系图谱", "target": "三层算力"}, {"source": "概念关系图谱", "target": "生产力到消费品的最后一公里"}, {"source": "概念关系图谱", "target": "两条线交汇"}, {"source": "概念关系图谱", "target": "偷懒是商机"}, {"source": "概念关系图谱", "target": "2026移动云大会 — 四大分论坛要点"}, {"source": "2026 移动云大会", "target": "三层算力"}, {"source": "2026 移动云大会", "target": "国家AI战略 = 电车模式再现"}, {"source": "2026 移动云大会", "target": "生产力到消费品的最后一公里"}, {"source": "2026 移动云大会", "target": "偷懒是商机"}, {"source": "AI 的命运取决于使用者", "target": "40岁零基础的诚实"}, {"source": "MoMA — 移动模型服务聚合引擎", "target": "三层算力"}, {"source": "Token 效率革命", "target": "三层算力"}, {"source": "Token 效率革命", "target": "偷懒是商机"}, {"source": "Token 经销商：客户经理的新身份", "target": "五次社会矛盾框架"}, {"source": "Token 经销商：客户经理的新身份", "target": "偷懒是商机"}, {"source": "三层算力", "target": "国家AI战略 = 电车模式再现"}, {"source": "两条线交汇", "target": "五次社会矛盾框架"}, {"source": "九天大模型", "target": "三层算力"}, {"source": "从零到五虎将", "target": "灵感串联之线"}, {"source": "从零到五虎将", "target": "40岁零基础的诚实"}, {"source": "你训练的 AI 的价值 = 你自身的价值", "target": "灵感串联之线"}, {"source": "偷懒是商机", "target": "生产力到消费品的最后一公里"}, {"source": "偷懒是商机", "target": "五次社会矛盾框架"}, {"source": "偷懒是商机", "target": "认知决定接触层级"}, {"source": "算力是发动机，AI全链路是一辆车", "target": "三层算力"}, {"source": "算力是发动机，AI全链路是一辆车", "target": "国家AI战略 = 电车模式再现"}, {"source": "算力是发动机，AI全链路是一辆车", "target": "2026移动云大会 — 四大分论坛要点"}, {"source": "有得选 → 不用选", "target": "五次社会矛盾框架"}, {"source": "标品是底座，定制是界面", "target": "偷懒是商机"}, {"source": "标品是底座，定制是界面", "target": "生产力到消费品的最后一公里"}, {"source": "永不关机的硬盘", "target": "灵感串联之线"}, {"source": "国家AI战略 = 电车模式再现", "target": "五次社会矛盾框架"}, {"source": "私人AI = 个人资产", "target": "永不关机的硬盘"}, {"source": "私人AI = 个人资产", "target": "灵感串联之线"}, {"source": "私人AI = 个人资产", "target": "足球知识库"}, {"source": "中国移动在AI时代的三个卡位", "target": "九天大模型"}, {"source": "中国移动在AI时代的三个卡位", "target": "标品是底座，定制是界面"}, {"source": "中国移动在AI时代的三个卡位", "target": "偷懒是商机"}, {"source": "AI Token = 新货币·四大央行", "target": "五次社会矛盾框架"}, {"source": "AI Token = 新货币·四大央行", "target": "偷懒是商机"}, {"source": "移动政企产品知识库", "target": "专线"}, {"source": "移动政企产品知识库", "target": "短彩信"}, {"source": "移动政企产品知识库", "target": "千里眼"}, {"source": "移动政企产品知识库", "target": "云视讯（移动会议）"}, {"source": "移动政企产品知识库", "target": "和对讲 — 中国移动政企产品知识库"}, {"source": "移动政企产品知识库", "target": "和车队"}, {"source": "移动政企产品知识库", "target": "移动云"}, {"source": "移动政企产品知识库", "target": "物联网"}, {"source": "移动政企产品知识库", "target": "标品是底座，定制是界面"}, {"source": "认知决定接触层级", "target": "标品是底座，定制是界面"}, {"source": "足球知识库", "target": "空间理论（战术基础）"}, {"source": "足球知识库", "target": "传控体系（Possession Systems）"}, {"source": "足球知识库", "target": "高位压迫体系（Pressing Systems）"}, {"source": "足球知识库", "target": "比赛复盘框架（预测与复盘专用）"}, {"source": "足球知识库", "target": "球员评估维度"}];
+const LINKS = [{"source": "王叔的AI知识库", "target": "永不关机的硬盘"}, {"source": "王叔的AI知识库", "target": "灵感串联之线"}, {"source": "王叔的AI知识库", "target": "40岁零基础的诚实"}, {"source": "王叔的AI知识库", "target": "从零到五虎将"}, {"source": "王叔的AI知识库", "target": "五次社会矛盾框架"}, {"source": "王叔的AI知识库", "target": "国家AI战略 = 电车模式再现"}, {"source": "王叔的AI知识库", "target": "三层算力"}, {"source": "王叔的AI知识库", "target": "生产力到消费品的最后一公里"}, {"source": "王叔的AI知识库", "target": "两条线交汇"}, {"source": "王叔的AI知识库", "target": "偷懒是商机"}, {"source": "王叔的AI知识库", "target": "标品是底座，定制是界面"}, {"source": "王叔的AI知识库", "target": "九天大模型"}, {"source": "王叔的AI知识库", "target": "认知决定接触层级"}, {"source": "王叔的AI知识库", "target": "2026移动云大会 — 四大分论坛要点"}, {"source": "王叔的AI知识库", "target": "足球知识库"}, {"source": "标品下沉，定制上浮", "target": "偷懒是商机"}, {"source": "概念关系图谱", "target": "永不关机的硬盘"}, {"source": "概念关系图谱", "target": "灵感串联之线"}, {"source": "概念关系图谱", "target": "40岁零基础的诚实"}, {"source": "概念关系图谱", "target": "五次社会矛盾框架"}, {"source": "概念关系图谱", "target": "国家AI战略 = 电车模式再现"}, {"source": "概念关系图谱", "target": "三层算力"}, {"source": "概念关系图谱", "target": "生产力到消费品的最后一公里"}, {"source": "概念关系图谱", "target": "两条线交汇"}, {"source": "概念关系图谱", "target": "偷懒是商机"}, {"source": "概念关系图谱", "target": "2026移动云大会 — 四大分论坛要点"}, {"source": "2026 移动云大会", "target": "三层算力"}, {"source": "2026 移动云大会", "target": "国家AI战略 = 电车模式再现"}, {"source": "2026 移动云大会", "target": "生产力到消费品的最后一公里"}, {"source": "2026 移动云大会", "target": "偷懒是商机"}, {"source": "AI 的命运取决于使用者", "target": "40岁零基础的诚实"}, {"source": "MoMA — 移动模型服务聚合引擎", "target": "三层算力"}, {"source": "Token 效率革命", "target": "三层算力"}, {"source": "Token 效率革命", "target": "偷懒是商机"}, {"source": "Token 经销商：客户经理的新身份", "target": "五次社会矛盾框架"}, {"source": "Token 经销商：客户经理的新身份", "target": "偷懒是商机"}, {"source": "三层算力", "target": "国家AI战略 = 电车模式再现"}, {"source": "两条线交汇", "target": "五次社会矛盾框架"}, {"source": "九天大模型", "target": "三层算力"}, {"source": "从零到五虎将", "target": "灵感串联之线"}, {"source": "从零到五虎将", "target": "40岁零基础的诚实"}, {"source": "你训练的 AI 的价值 = 你自身的价值", "target": "灵感串联之线"}, {"source": "偷懒是商机", "target": "生产力到消费品的最后一公里"}, {"source": "偷懒是商机", "target": "五次社会矛盾框架"}, {"source": "偷懒是商机", "target": "认知决定接触层级"}, {"source": "算力是发动机，AI全链路是一辆车", "target": "三层算力"}, {"source": "算力是发动机，AI全链路是一辆车", "target": "国家AI战略 = 电车模式再现"}, {"source": "算力是发动机，AI全链路是一辆车", "target": "2026移动云大会 — 四大分论坛要点"}, {"source": "有得选 → 不用选", "target": "五次社会矛盾框架"}, {"source": "标品是底座，定制是界面", "target": "偷懒是商机"}, {"source": "标品是底座，定制是界面", "target": "生产力到消费品的最后一公里"}, {"source": "永不关机的硬盘", "target": "灵感串联之线"}, {"source": "国家AI战略 = 电车模式再现", "target": "五次社会矛盾框架"}, {"source": "私人AI = 个人资产", "target": "永不关机的硬盘"}, {"source": "私人AI = 个人资产", "target": "灵感串联之线"}, {"source": "私人AI = 个人资产", "target": "足球知识库"}, {"source": "中国移动在AI时代的三个卡位", "target": "九天大模型"}, {"source": "中国移动在AI时代的三个卡位", "target": "标品是底座，定制是界面"}, {"source": "中国移动在AI时代的三个卡位", "target": "偷懒是商机"}, {"source": "AI Token = 新货币·四大央行", "target": "五次社会矛盾框架"}, {"source": "AI Token = 新货币·四大央行", "target": "偷懒是商机"}, {"source": "移动政企产品知识库", "target": "专线"}, {"source": "移动政企产品知识库", "target": "短彩信"}, {"source": "移动政企产品知识库", "target": "千里眼"}, {"source": "移动政企产品知识库", "target": "云视讯（移动会议）"}, {"source": "移动政企产品知识库", "target": "和对讲 — 中国移动政企产品知识库"}, {"source": "移动政企产品知识库", "target": "和车队"}, {"source": "移动政企产品知识库", "target": "移动云"}, {"source": "移动政企产品知识库", "target": "物联网"}, {"source": "移动政企产品知识库", "target": "标品是底座，定制是界面"}, {"source": "认知决定接触层级", "target": "标品是底座，定制是界面"}, {"source": "足球知识库", "target": "空间理论（战术基础）"}, {"source": "足球知识库", "target": "传控体系（Possession Systems）"}, {"source": "足球知识库", "target": "高位压迫体系（Pressing Systems）"}, {"source": "足球知识库", "target": "比赛复盘框架（预测与复盘专用）"}, {"source": "足球知识库", "target": "球员评估维度"}, {"source": "王叔的AI知识库", "target": "AI 不是搜索引擎"}, {"source": "王叔的AI知识库", "target": "飞书承载私人AI对话 → 抢占入口"}, {"source": "王叔的AI知识库", "target": "AI对社会的影响——普通人如何应对"}, {"source": "王叔的AI知识库", "target": "《AI、就业和社保》——卓贤万字长文深度分析"}, {"source": "王叔的AI知识库", "target": "Claude Code + Obsidian：AI 思考伙伴"}, {"source": "王叔的AI知识库", "target": "DeepSeek V4：历史性的杠杆窗口"}, {"source": "王叔的AI知识库", "target": "The Agency — 144位AI专家开源项目"}, {"source": "王叔的AI知识库", "target": "一句\"废话\"推导整个经济学"}, {"source": "足球知识库", "target": "《The Mixer》(Michael Cox) — 英超战术史"}, {"source": "足球知识库", "target": "《倒转金字塔》(Inverting the Pyramid)"}, {"source": "足球知识库", "target": "阵型演变史（Formation Evolution）"}, {"source": "王叔的AI知识库", "target": "辽宁省数字政府建设实施方案（2025-2027）"}, {"source": "辽宁省数字政府建设实施方案（2025-2027）", "target": "中国移动在AI时代的三个卡位"}, {"source": "偷懒是商机", "target": "Token 经销商：客户经理的新身份"}, {"source": "AI 不是搜索引擎", "target": "AI 的命运取决于使用者"}, {"source": "飞书承载私人AI对话 → 抢占入口", "target": "私人AI = 个人资产"}, {"source": "MoMA — 移动模型服务聚合引擎", "target": "九天大模型"}, {"source": "你训练的 AI 的价值 = 你自身的价值", "target": "私人AI = 个人资产"}, {"source": "有得选 → 不用选", "target": "从零到五虎将"}, {"source": "Claude Code + Obsidian：AI 思考伙伴", "target": "灵感串联之线"}, {"source": "DeepSeek V4：历史性的杠杆窗口", "target": "Token 效率革命"}, {"source": "The Agency — 144位AI专家开源项目", "target": "从零到五虎将"}, {"source": "高位压迫体系（Pressing Systems）", "target": "永不关机的硬盘"}, {"source": "空间理论（战术基础）", "target": "球员评估维度"}, {"source": "传控体系（Possession Systems）", "target": "比赛复盘框架（预测与复盘专用）"}, {"source": "球员评估维度", "target": "比赛复盘框架（预测与复盘专用）"}, {"source": "专线", "target": "移动云"}, {"source": "云视讯（移动会议）", "target": "千里眼"}, {"source": "和对讲 — 中国移动政企产品知识库", "target": "和车队"}, {"source": "物联网", "target": "移动云"}, {"source": "短彩信", "target": "专线"}, {"source": "移动政企产品知识库", "target": "专线"}, {"source": "移动政企产品知识库", "target": "物联网"}];
 
 // Assign each link a random warm color
 LINKS.forEach(l => l._color = linkColors[Math.floor(Math.random()*linkColors.length)]);
 
 // Sim — tighter layout
 const sim = d3.forceSimulation(NODES)
-  .force("link", d3.forceLink(LINKS).id(d => d.id).distance(60))
-  .force("charge", d3.forceManyBody().strength(-400))
+  .force("link", d3.forceLink(LINKS).id(d => d.id).distance(45))
+  .force("charge", d3.forceManyBody().strength(-550))
   .force("center", d3.forceCenter(W/2, H/2))
-  .force("collision", d3.forceCollide(d => (catRadius[d.type]||7)+4));
+  .force("collision", d3.forceCollide(d => (catRadius[d.type]||7)+2));
 
 // Links — colored
 const link = g.append("g").selectAll("line")
@@ -552,8 +552,35 @@ node.on("mouseenter", function(e,d) {
     tooltip.classed("show", false);
   });
 
-// Click → modal
+// Click → modal + highlight connected links
+let lastClicked = null;
 node.on("click", function(e,d) {
+  // Reset all from previous click
+  resetHighlight();
+
+  // Highlight connected links & nodes
+  lastClicked = d;
+  link.attr("stroke", l => {
+    if (l.source.id === d.id || l.target.id === d.id) return "#ff3333";
+    return l._color;
+  }).attr("stroke-opacity", l => {
+    if (l.source.id === d.id || l.target.id === d.id) return 0.9;
+    return 0.3;
+  }).attr("stroke-width", l => {
+    if (l.source.id === d.id || l.target.id === d.id) return 2.5;
+    return 1;
+  });
+  // Dim unconnected nodes
+  node.select("circle").attr("opacity", n => {
+    if (n.id === d.id) return 1;
+    const connected = LINKS.some(l => 
+      (l.source.id === d.id && l.target.id === n.id) || 
+      (l.target.id === d.id && l.source.id === n.id)
+    );
+    return connected ? 0.9 : 0.25;
+  });
+
+  // Modal
   document.getElementById("modal-title").textContent = d.name;
   const tag = document.getElementById("modal-tag");
   tag.textContent = catLabels[d.type] || d.type;
@@ -563,8 +590,17 @@ node.on("click", function(e,d) {
   document.getElementById("modal-overlay").classList.add("show");
 });
 
+function resetHighlight() {
+  link.attr("stroke", l => l._color)
+      .attr("stroke-opacity", 0.5)
+      .attr("stroke-width", 1);
+  node.select("circle").attr("opacity", 1);
+}
+
 function closeModal() {
   document.getElementById("modal-overlay").classList.remove("show");
+  resetHighlight();
+  lastClicked = null;
 }
 
 // Simple markdown → HTML for modal content
