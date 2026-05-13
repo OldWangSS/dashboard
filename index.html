@@ -39,7 +39,7 @@
 
   .node circle { stroke-width: 1.2; cursor: pointer; transition: r 0.25s, fill 0.25s; }
   .node text { pointer-events: none; transition: fill 0.25s; }
-  .link { stroke-opacity: 0.5; stroke-width: 1; }
+  .link { }
 
   /* Modal */
   .modal-overlay {
@@ -514,7 +514,9 @@ const sim = d3.forceSimulation(NODES)
 const link = g.append("g").selectAll("line")
   .data(LINKS).join("line")
   .attr("class", "link")
-  .attr("stroke", d => d._color);
+  .attr("stroke", d => d._color)
+  .attr("stroke-opacity", 0.5)
+  .attr("stroke-width", 1);
 
 // Nodes
 const node = g.append("g").selectAll("g")
