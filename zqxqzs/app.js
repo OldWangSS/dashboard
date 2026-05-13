@@ -146,21 +146,18 @@ function initVoice() {
   const btn = $('voice-btn');
   const ua = navigator.userAgent;
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const isWeChat = /MicroMessenger/i.test(ua);
-  const isIOS = /iPhone|iPad|iPod/i.test(ua);
 
   // 微信内置浏览器不支持
-  if (isWeChat) {
+  if (/MicroMessenger/i.test(ua)) {
     btn.textContent = '📱 微信内不支持语音';
     btn.disabled = true;
-    btn.classList.add('disabled');
     $('voice-status').innerHTML = '请点击右上角 <b>「···」→「在浏览器中打开」</b>';
     $('voice-status').style.display = '';
     return;
   }
 
   // iOS 全系不支持
-  if (!SpeechRecognition || isIOS) {
+  if (/iPhone|iPad|iPod/i.test(ua)) {
     btn.textContent = '⚠️ iOS 暂不支持语音';
     btn.disabled = true;
     $('voice-status').textContent = '请使用安卓手机或电脑端 Chrome';
@@ -175,6 +172,7 @@ function initVoice() {
   }
 
   let rec = null;
+  let pressed = false; // 按钮是否在按压态
 
   function makeRec() {
     const r = new SpeechRecognition();
@@ -183,104 +181,109 @@ function initVoice() {
     r.continuous = false;
 
     r.onstart = () => {
-      $('voice-status').textContent = '🎤 录音中...';
+      $('voice-status').textContent = '🎤 说话中...';
       $('voice-status').style.display = '';
     };
 
     r.onresult = (e) => {
       const text = e.results[0][0].transcript;
       state.voiceText = text;
-      btn.classList.remove('recording');
-      btn.textContent = '🎙️ 按住说话';
-      state.recording = false;
+      resetBtn();
       $('voice-result').style.display = '';
       $('voice-text-edit').value = text;
       $('voice-status').style.display = 'none';
     };
 
     r.onerror = (e) => {
-      btn.classList.remove('recording');
-      btn.textContent = '🎙️ 按住说话';
-      state.recording = false;
       const msgs = {
-        'not-allowed': '麦克风权限未授权，请在浏览器设置中允许',
-        'no-speech': '未检测到语音，请靠近麦克风说话',
+        'not-allowed': '🎙️ 请先授权麦克风权限',
+        'no-speech': '未检测到语音，请靠近说话',
         'audio-capture': '未找到麦克风设备',
-        'network': '网络连接失败'
+        'network': '网络连接失败，请重试'
       };
       $('voice-status').textContent = msgs[e.error] || ('识别失败: ' + e.error);
       $('voice-status').style.display = '';
+      // 不自动复位按钮，等用户松开
     };
 
     r.onend = () => {
-      btn.classList.remove('recording');
-      btn.textContent = '🎙️ 按住说话';
-      state.recording = false;
-      if (!state.voiceResult) {
-        $('voice-status').style.display = 'none';
+      if (!state.voiceText) {
+        $('voice-status').textContent = '未检测到语音，请重试';
+        $('voice-status').style.display = '';
       }
     };
 
     return r;
   }
 
+  function resetBtn() {
+    pressed = false;
+    state.recording = false;
+    btn.classList.remove('recording');
+    btn.textContent = '🎙️ 按住说话';
+  }
+
   function startRecord(e) {
     e.preventDefault();
+    e.stopPropagation();
+    if (pressed) return;
+    pressed = true;
+
     btn.classList.add('recording');
     btn.textContent = '🔴 松开发送';
     state.voiceText = '';
     $('voice-result').style.display = 'none';
     $('voice-ai-result').style.display = 'none';
-    $('voice-status').textContent = '⏳ 长按录音...';
+    $('voice-status').textContent = '⏳ 准备录音...';
     $('voice-status').style.display = '';
 
+    // 延迟 500ms 后真正启动，让按钮视觉先稳定
     clearTimeout(state.holdTimer);
     state.holdTimer = setTimeout(() => {
+      if (!pressed) return; // 用户已经松开了
       state.recording = true;
-      $('voice-status').textContent = '🎤 录音中...';
       rec = makeRec();
       try {
         rec.start();
       } catch(err) {
-        btn.classList.remove('recording');
-        btn.textContent = '🎙️ 按住说话';
-        state.recording = false;
         $('voice-status').textContent = '启动失败: ' + err.message;
+        $('voice-status').style.display = '';
+        // 保持按钮红色，不自动弹回
       }
-    }, 300);
+    }, 500);
   }
 
   function stopRecord(e) {
     e.preventDefault();
     clearTimeout(state.holdTimer);
-    if (!state.recording) {
-      // 短按，回退 UI
-      btn.classList.remove('recording');
-      btn.textContent = '🎙️ 按住说话';
-      $('voice-status').style.display = 'none';
-      return;
+
+    if (!pressed) return;
+    resetBtn();
+
+    if (rec && state.recording) {
+      $('voice-status').textContent = '⏳ 识别中...';
+      $('voice-status').style.display = '';
+      try { rec.stop(); } catch(err) {}
+    } else if (!state.recording) {
+      // 没等到 500ms 就松开了
+      $('voice-status').textContent = '请长按按钮说话';
+      $('voice-status').style.display = '';
     }
-    if (!rec) return;
-    btn.classList.remove('recording');
-    btn.textContent = '🎙️ 按住说话';
-    state.recording = false;
-    $('voice-status').textContent = '⏳ 识别中...';
-    try { rec.stop(); } catch(err) {}
   }
 
-  // 移动端优先 touch 事件
-  btn.addEventListener('touchstart', startRecord, {passive: false});
-  btn.addEventListener('touchend', stopRecord, {passive: false});
-  btn.addEventListener('touchcancel', stopRecord, {passive: false});
+  // 防止鸿蒙/安卓长按触发系统菜单
+  btn.addEventListener('contextmenu', (e) => e.preventDefault());
 
-  // 桌面端 mouse 事件兜底
+  // touch 事件
+  btn.addEventListener('touchstart', startRecord, {passive: false});
+  btn.addEventListener('touchend', stopRecord);
+  btn.addEventListener('touchcancel', stopRecord);
+
+  // 桌面兜底
   btn.addEventListener('mousedown', startRecord);
   btn.addEventListener('mouseup', stopRecord);
   btn.addEventListener('mouseleave', (e) => {
-    if (state.recording && rec) {
-      e.preventDefault();
-      stopRecord(e);
-    }
+    if (pressed) stopRecord(e);
   });
 
   // 文字修改
