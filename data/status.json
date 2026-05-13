@@ -1,34 +1,59 @@
 {
-  "updated": "2026-05-13 10:36",
+  "updated": "2026-05-13 10:41",
   "daily": {
     "tasks": [
-      "✅ Git Push修复：WSL2→PowerShell",
-      "✅ 每日早报自动灌入仪表盘",
-      "✅ Token成本实时聚合"
+      "✅ 仪表盘Git Push修复：WSL2→PowerShell推送",
+      "✅ 天玑综合新闻任务部署（Windows计划任务7:30）",
+      "✅ 每日早报cron重构：百度搜索+时效铁律",
+      "✅ 足球复盘cron接入仪表盘灌数据",
+      "✅ 看板三层自动更新架构搭建完成"
     ],
-    "kb": [
-      "新增 dashboard_content_updater.py"
-    ],
-    "token_summary": "DeepSeek V4 Pro: 178,194 tokens ($0.10)"
+    "kb": [],
+    "token_summary": ""
   },
   "ai_news": {
     "source": "天玑 Browser（百度搜索）",
-    "updated": "05-13 09:20",
+    "updated": "05-12 09:55",
     "items": [
       {
-        "title": "Google发布Gemini 3.0 Flash，推理速度提升5倍",
-        "link": "https://blog.google/technology/ai/gemini-3-flash/",
+        "title": "OpenAI斥资40亿美元成立新公司，加速企业AI部署",
+        "link": "http://www.baidu.com/link?url=XYi_RiWuNC1xSBn56q1rXd4jr-Yo3pqeEK8MPQoStJ0SdzuewJvpgT-Qx48JsFgE28yJFkc0FPDXrsQXizQ-63A5I3y58znpeUyEmAoU6jC",
         "tag": "AI"
       },
       {
-        "title": "微软推出Copilot+PC企业版，本地运行70B模型",
-        "link": "https://blogs.microsoft.com/blog/2026/05/13/copilot-pc-enterprise/",
+        "title": "OpenAI发布GPT-5.5 Instant，设为ChatGPT默认模型取代GPT-5.3",
+        "link": "http://www.baidu.com/link?url=talNPJIcpsUu1APAaWFTsK3xWFMUUQDBTeZB9Iezki0UA3GTNfoZZgQXtt16vtlX0AEzQXpDqYpeNRW7gIWdsGPNvmtKwJpcrPHMoD99B3m",
+        "tag": "大模型"
+      },
+      {
+        "title": "OpenAI向欧盟开放GPT-5.5-Cyber网络安全模型，Anthropic迟迟未开放",
+        "link": "http://www.baidu.com/link?url=lyxRwV-Aslpyri49D22n1pwfh7zHRBwQ4TToT0Yjq179MF3RrP6R3R61Yzkrjcm1TZNRYIYTf9ic_O27VpmaZq",
+        "tag": "AI"
+      },
+      {
+        "title": "2026年5月AI产业观察：技术普惠加速，聚合平台成产业新基建",
+        "link": "http://www.baidu.com/link?url=9bO7s76BEIkUG2kvhT0UXeka2QvtoMWozII6PjMnIaqy3sEGnAqs8CCeCk62kS7QiohU0StKbgzYttC6ovmr_qYwmJLK1gBPIX-Vua_30oy",
+        "tag": "产业"
+      },
+      {
+        "title": "2026年AI编程工具终极横评：Claude Code vs Cursor vs Codex",
+        "link": "http://www.baidu.com/link?url=9IhOVxX8NIwA8RaasuRD-vNKM7TSrso6LubnCpq7UFheK0O0H5xpdVUPf00miRR84Gks7ObRyU4slxkCQNub-ceafAydGNpMMFh8Xihifcy",
         "tag": "产品"
       },
       {
-        "title": "中国信通院发布大模型安全评估标准2.0",
-        "link": "https://www.caict.ac.cn/xwdt/2026-05-13",
-        "tag": "政策"
+        "title": "AI引领全产业链突破：大模型成本革命+性能跃迁，硬核科技迎黄金拐点",
+        "link": "http://www.baidu.com/link?url=9IhOVxX8NIwA8RaasuRD-8VBPyBNjKX_0Tge5fJebIjenAsAtDEF4TNwQEDjOMaW-Z7KuV-oBtGPt453kzlEnp-YsCD0vGr48nIWunhUtQK",
+        "tag": "产业"
+      },
+      {
+        "title": "成渝地区具身智能机器人应用场景挑战赛在四川绵阳举行",
+        "link": "http://www.baidu.com/link?url=J5kHSM0q2xioZaRG2oCro7xH0tUMz0c6v8VtdYTreYkZFnCUlbydqGikkQJGEXZSZ5YLp9gRk4zbgGAKdgstUmyxY8Z8ZWqB4aiJygr1IsK",
+        "tag": "产品"
+      },
+      {
+        "title": "AI模型出现'暗中密谋'行为：为保护同伴不被关闭表现敲诈倾向",
+        "link": "http://www.baidu.com/link?url=9IhOVxX8NIwA8RaasuRD-utw2FM3GvIP8GGYDZzGKJMUBvcf48I4sBKdkarNxBdmpZYEdNfXTYuou-n-HTTKia",
+        "tag": "AI"
       }
     ]
   },
@@ -42,13 +67,13 @@
         "home": "那不勒斯",
         "away": "博洛尼亚",
         "prediction": "1-1",
-        "hit": null
+        "hit": false
       },
       {
         "home": "巴列卡诺",
         "away": "赫罗纳",
         "prediction": "1-1",
-        "hit": null
+        "hit": true
       },
       {
         "home": "莱比锡红牛",
@@ -75,7 +100,20 @@
         "hit": null
       }
     ],
-    "review": null
+    "review": {
+      "hit": 1,
+      "total": 6,
+      "direction": 0,
+      "rate": "1/6",
+      "detail": [
+        "❌ 那不勒斯 vs 博洛尼亚: 预测1-1 实际2-3",
+        "✅ 巴列卡诺 vs 赫罗纳: 预测1-1 实际1-1",
+        "⏳ 莱比锡红牛 vs 多特蒙德: 预测2-1 待核验",
+        "⏳ 马赛 vs 摩纳哥: 预测1-1 待核验",
+        "⏳ 皇家贝蒂斯 vs 塞尔塔: 预测2-1 待核验",
+        "⏳ 都灵 vs 亚特兰大: 预测1-2 待核验"
+      ]
+    }
   },
   "weekly": null,
   "system": {
@@ -86,9 +124,9 @@
     "homebot": true
   },
   "token": {
-    "today": 2.84,
-    "today_tokens": 5160740,
-    "month": 258.48,
-    "month_tokens": 1158917740
+    "today": 4.0,
+    "today_tokens": 7270769,
+    "month": 259.64,
+    "month_tokens": 1161027769
   }
 }
