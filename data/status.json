@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-13 13:49",
+  "updated": "2026-05-13 13:52",
   "daily": {
     "tasks": [
       "✅ 微信小程序语音功能上线：录音→Whisper转文字→DeepSeek NLU→自动填表",
@@ -10,10 +10,10 @@
       "✅ 北斗七星命名体系全平台部署"
     ],
     "kb": [
-      "微信小程序语音链路：wx.getRecorderManager→Whisper→DeepSeek NLU",
-      "微信小程序真机调试坑：value+bindinput冲突、darkmode覆盖文字颜色",
-      "仪表盘自动更新架构：dashboard_updater.py + dashboard_content_updater.py",
-      "天玑新闻简报：Windows计划任务+OpenClaw agent→7板块双推"
+      "微信小程序语音链路：wx.getRecorderManager()录音→上传Whisper HTTP后端→转文字→DeepSeek NLU→自动填表",
+      "微信小程序真机调试：value+bindinput冲突导致光标消失，去掉value绑定只靠setData；darkmode覆盖字体颜色",
+      "WSL2→手机真机：netsh portproxy + 防火墙入站规则，WSL2重启后IP可能变化",
+      "个人主体小程序不能用微信同声传译插件，最终方案：自建Whisper服务"
     ],
     "token_summary": ""
   },
