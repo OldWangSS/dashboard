@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-13 14:56",
+  "updated": "2026-05-13 14:58",
   "daily": {
     "tasks": [
       "✅ 微信小程序语音功能上线：录音→Whisper转文字→DeepSeek NLU→自动填表",
@@ -65,7 +65,133 @@
   },
   "news": {
     "source": "天玑 Browser（百度搜索）",
-    "items": []
+    "items": [
+      {
+        "title": "习近平同塔吉克斯坦总统拉赫蒙会谈",
+        "link": "https://www.gov.cn/",
+        "tag": "国际时政"
+      },
+      {
+        "title": "特朗普：中国是一个令人惊叹的国家，即将开启访华之行",
+        "link": "https://www.guancha.cn/",
+        "tag": "国际时政"
+      },
+      {
+        "title": "中方决定不同意台湾地区参加第七十九届世界卫生大会",
+        "link": "https://www.fmprc.gov.cn/",
+        "tag": "国际时政"
+      },
+      {
+        "title": "福克斯新闻证实阿联酋参战！俄乌战况最新解析",
+        "link": "https://www.guancha.cn/",
+        "tag": "国际军事"
+      },
+      {
+        "title": "以色列被曝在伊拉克建秘密基地，以军空袭伊朗",
+        "link": "https://www.huanqiu.com/",
+        "tag": "国际军事"
+      },
+      {
+        "title": "俄总统普京表示俄乌冲突正走向结束，外界解读局势变化",
+        "link": "https://www.cctv.com/",
+        "tag": "国际军事"
+      },
+      {
+        "title": "特朗普明日访华！国务院立法计划公布；央行定调适度宽松政策",
+        "link": "https://finance.sina.com.cn/",
+        "tag": "国际金融"
+      },
+      {
+        "title": "A股3万亿成交额连爆4天；存款利率全面步入1时代",
+        "link": "https://finance.sina.com.cn/",
+        "tag": "国际金融"
+      },
+      {
+        "title": "京沪高铁票价上浮20%；中芯国际并购过审",
+        "link": "https://finance.sina.com.cn/",
+        "tag": "国际金融"
+      },
+      {
+        "title": "意甲第36轮：那不勒斯2-3遭博洛尼亚绝杀，争四彻底混乱",
+        "link": "https://sports.sina.com.cn/",
+        "tag": "国际足球"
+      },
+      {
+        "title": "巴萨2-0战胜皇马，提前3轮夺得西甲冠军",
+        "link": "https://www.dongqiudi.com/",
+        "tag": "国际足球"
+      },
+      {
+        "title": "英超：热刺1-1利兹联；米尔沃尔0-2赫尔城爆出大冷门",
+        "link": "https://sports.sina.com.cn/",
+        "tag": "国际足球"
+      },
+      {
+        "title": "本菲卡连续33场不败，主场绝平布拉加延续纪录",
+        "link": "https://www.dongqiudi.com/",
+        "tag": "国际足球"
+      },
+      {
+        "title": "法甲第33轮：摩纳哥vs里尔、马赛vs摩纳哥激战正酣",
+        "link": "https://sports.sina.com.cn/",
+        "tag": "国际足球"
+      },
+      {
+        "title": "NBA季后赛西部半决赛G4：雷霆横扫湖人晋级西决，亚历山大35+8",
+        "link": "https://sports.sina.com.cn/",
+        "tag": "体育"
+      },
+      {
+        "title": "NBA东部半决赛G4：骑士112-103战胜活塞，米切尔39分追平历史纪录",
+        "link": "https://sports.sina.com.cn/",
+        "tag": "体育"
+      },
+      {
+        "title": "无畏巡回北京站收官 首钢馆见证EDG登顶",
+        "link": "https://sports.cctv.com/",
+        "tag": "电竞"
+      },
+      {
+        "title": "WWS世界女子斯诺克台球锦标赛在东莞开赛",
+        "link": "https://sports.sina.com.cn/",
+        "tag": "体育"
+      },
+      {
+        "title": "奔跑吧少年2026黑龙江省武术散打锦标赛开赛",
+        "link": "https://sports.sina.com.cn/",
+        "tag": "体育"
+      },
+      {
+        "title": "第62届百想艺术大赏获奖名单出炉，柳海真、柳承龙分获大奖",
+        "link": "https://ent.sina.com.cn/",
+        "tag": "娱乐"
+      },
+      {
+        "title": "BABYMONSTER暂时谢绝大量大使邀请，梁铉锡：现在是集中做音乐的时候",
+        "link": "https://ent.sina.com.cn/",
+        "tag": "娱乐"
+      },
+      {
+        "title": "电影《迷雾追踪》首周票房突破20亿，陈建、秦海默演技获赞",
+        "link": "https://ent.sina.com.cn/",
+        "tag": "娱乐"
+      },
+      {
+        "title": "全球AI服务器出货370万台(+51.3%)，AI占DRAM需求超40%",
+        "link": "https://tech.sina.com.cn/",
+        "tag": "科技"
+      },
+      {
+        "title": "我国要建设自己的卫星互联网，未来要发射20万颗卫星",
+        "link": "https://www.cctv.com/",
+        "tag": "科技"
+      },
+      {
+        "title": "第二十八届中国北京国际科技产业博览会举办，聚焦AI+行动",
+        "link": "https://tech.sina.com.cn/",
+        "tag": "科技"
+      }
+    ]
   },
   "football": {
     "predictions": [
