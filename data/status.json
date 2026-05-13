@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-13 09:33",
+  "updated": "2026-05-13 09:35",
   "daily": {
     "tasks": [
       "✅ Git Push修复：WSL2→PowerShell",
@@ -112,9 +112,9 @@
     "homebot": true
   },
   "token": {
-    "today": 0.97,
-    "today_tokens": 1761664,
-    "month": 256.61,
-    "month_tokens": 1155518664
+    "today": 1.33,
+    "today_tokens": 2422157,
+    "month": 256.97,
+    "month_tokens": 1156179157
   }
 }
