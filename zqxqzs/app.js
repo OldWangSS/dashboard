@@ -16,7 +16,8 @@ let state = {
   voiceText: '',
   voiceResult: null,
   recording: false,
-  recognition: null
+  recognition: null,
+  holdTimer: null
 };
 
 const $ = id => document.getElementById(id);
@@ -227,27 +228,39 @@ function initVoice() {
     e.preventDefault();
     btn.classList.add('recording');
     btn.textContent = '🔴 松开发送';
-    state.recording = true;
     state.voiceText = '';
     $('voice-result').style.display = 'none';
     $('voice-ai-result').style.display = 'none';
-    $('voice-status').textContent = '⏳ 请求麦克风...';
+    $('voice-status').textContent = '⏳ 长按录音...';
     $('voice-status').style.display = '';
 
-    rec = makeRec();
-    try {
-      rec.start();
-    } catch(err) {
-      btn.classList.remove('recording');
-      btn.textContent = '🎙️ 按住说话';
-      state.recording = false;
-      $('voice-status').textContent = '启动失败: ' + err.message;
-    }
+    clearTimeout(state.holdTimer);
+    state.holdTimer = setTimeout(() => {
+      state.recording = true;
+      $('voice-status').textContent = '🎤 录音中...';
+      rec = makeRec();
+      try {
+        rec.start();
+      } catch(err) {
+        btn.classList.remove('recording');
+        btn.textContent = '🎙️ 按住说话';
+        state.recording = false;
+        $('voice-status').textContent = '启动失败: ' + err.message;
+      }
+    }, 300);
   }
 
   function stopRecord(e) {
     e.preventDefault();
-    if (!state.recording || !rec) return;
+    clearTimeout(state.holdTimer);
+    if (!state.recording) {
+      // 短按，回退 UI
+      btn.classList.remove('recording');
+      btn.textContent = '🎙️ 按住说话';
+      $('voice-status').style.display = 'none';
+      return;
+    }
+    if (!rec) return;
     btn.classList.remove('recording');
     btn.textContent = '🎙️ 按住说话';
     state.recording = false;
