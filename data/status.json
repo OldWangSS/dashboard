@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-13 20:41",
+  "updated": "2026-05-13 20:47",
   "daily": {
     "tasks": [
       "✅ 微信小程序语音功能上线：录音→Whisper转文字→DeepSeek NLU→自动填表",
@@ -256,9 +256,9 @@
     "homebot": true
   },
   "token": {
-    "today": 27.65,
-    "today_tokens": 50281583,
-    "month": 283.29,
-    "month_tokens": 1204038583
+    "today": 28.48,
+    "today_tokens": 51775339,
+    "month": 284.12,
+    "month_tokens": 1205532339
   }
 }
