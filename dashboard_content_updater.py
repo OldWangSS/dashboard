@@ -11,9 +11,9 @@ from datetime import datetime
 def _data_file():
     """根据操作系统自动选择路径"""
     if sys.platform == "win32":
-        return r"F:\AgentDownload\dashboard\data\status.json"
+        return r"F:\AgentDownload\dashboard\dashboard\data\status.json"
     else:
-        return "/mnt/f/AgentDownload/dashboard/data/status.json"
+        return "/mnt/f/AgentDownload/dashboard/dashboard/data/status.json"
 
 DATA_FILE = _data_file()
 
@@ -33,14 +33,11 @@ def main():
     parser.add_argument("--json", dest="json_str", help="JSON string to merge")
     args = parser.parse_args()
 
-    # 读取输入：优先 --json 参数，否则 stdin
     if args.json_str:
         raw = args.json_str
     else:
         if sys.stdin.isatty():
             print("ERROR: no --json arg and no stdin pipe", file=sys.stderr)
-            print("Usage: echo '{\"news\":{...}}' | python dashboard_content_updater.py", file=sys.stderr)
-            print("   or: python dashboard_content_updater.py --json '{\"news\":{...}}'", file=sys.stderr)
             sys.exit(1)
         raw = sys.stdin.read()
 
@@ -51,8 +48,6 @@ def main():
         sys.exit(1)
 
     data = load()
-
-    # 合并每个顶层字段
     for key in ("daily", "news", "ai_news", "football", "weekly"):
         if key in incoming and incoming[key] is not None:
             data[key] = incoming[key]
