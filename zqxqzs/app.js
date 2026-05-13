@@ -179,34 +179,44 @@ function initVoice() {
   function makeRec() {
     const r = new SpeechRecognition();
     r.lang = 'zh-CN';
-    r.interimResults = false;
-    r.continuous = false;
+    r.interimResults = true;
+    r.continuous = true;
+    r.maxAlternatives = 1;
 
     r.onstart = () => {
       $('voice-status').textContent = '🎤 说话中...';
       $('voice-status').style.display = '';
     };
 
+    r.onspeechstart = () => {
+      $('voice-status').textContent = '🎤 正在识别...';
+    };
+
     r.onresult = (e) => {
-      const text = e.results[0][0].transcript;
+      // 持续模式下结果会累积，取最新的
+      let text = '';
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        text += e.results[i][0].transcript;
+      }
       state.voiceText = text;
-      resetBtn();
-      $('voice-result').style.display = '';
       $('voice-text-edit').value = text;
-      $('voice-status').style.display = 'none';
+      $('voice-status').textContent = '🎤 正在识别: ' + text.slice(0,15) + (text.length>15?'…':'');
     };
 
     r.onerror = (e) => {
-      // 按住期间不弹错误，等松手再处理
       state.lastRecError = e.error;
     };
 
     r.onend = () => {
-      // 按住期间静默结束不打扰，松手时 stopRecord 统一处理
       state.recEnded = true;
-      if (!pressed && !state.voiceText) {
-        $('voice-status').textContent = '未检测到语音，请重试';
-        $('voice-status').style.display = '';
+      if (!pressed) {
+        if (state.voiceText) {
+          $('voice-result').style.display = '';
+          $('voice-status').style.display = 'none';
+        } else {
+          $('voice-status').textContent = '未检测到语音，请重试';
+          $('voice-status').style.display = '';
+        }
       }
     };
 
@@ -258,10 +268,13 @@ function initVoice() {
     resetBtn();
 
     if (rec && state.recording) {
-      try { rec.stop(); } catch(err) {}
-      // 等 onend 自然处理后，如果没结果再提示
+      try { rec.abort(); } catch(err) {}
+      // 等 onend 回调后处理结果
       setTimeout(() => {
-        if (!state.voiceText) {
+        if (state.voiceText) {
+          $('voice-result').style.display = '';
+          $('voice-status').style.display = 'none';
+        } else {
           if (state.lastRecError) {
             const msgs = {
               'not-allowed': '🎙️ 请先授权麦克风权限',
