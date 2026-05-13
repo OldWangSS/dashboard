@@ -17,7 +17,9 @@ let state = {
   voiceResult: null,
   recording: false,
   recognition: null,
-  holdTimer: null
+  holdTimer: null,
+  lastRecError: null,
+  recEnded: false
 };
 
 const $ = id => document.getElementById(id);
@@ -195,19 +197,14 @@ function initVoice() {
     };
 
     r.onerror = (e) => {
-      const msgs = {
-        'not-allowed': '🎙️ 请先授权麦克风权限',
-        'no-speech': '未检测到语音，请靠近说话',
-        'audio-capture': '未找到麦克风设备',
-        'network': '网络连接失败，请重试'
-      };
-      $('voice-status').textContent = msgs[e.error] || ('识别失败: ' + e.error);
-      $('voice-status').style.display = '';
-      // 不自动复位按钮，等用户松开
+      // 按住期间不弹错误，等松手再处理
+      state.lastRecError = e.error;
     };
 
     r.onend = () => {
-      if (!state.voiceText) {
+      // 按住期间静默结束不打扰，松手时 stopRecord 统一处理
+      state.recEnded = true;
+      if (!pressed && !state.voiceText) {
         $('voice-status').textContent = '未检测到语音，请重试';
         $('voice-status').style.display = '';
       }
@@ -261,11 +258,27 @@ function initVoice() {
     resetBtn();
 
     if (rec && state.recording) {
-      $('voice-status').textContent = '⏳ 识别中...';
-      $('voice-status').style.display = '';
       try { rec.stop(); } catch(err) {}
+      // 等 onend 自然处理后，如果没结果再提示
+      setTimeout(() => {
+        if (!state.voiceText) {
+          if (state.lastRecError) {
+            const msgs = {
+              'not-allowed': '🎙️ 请先授权麦克风权限',
+              'no-speech': '未检测到语音，请靠近说话',
+              'audio-capture': '未找到麦克风设备',
+              'network': '网络连接失败，请重试'
+            };
+            $('voice-status').textContent = msgs[state.lastRecError] || ('识别失败: ' + state.lastRecError);
+          } else {
+            $('voice-status').textContent = '未检测到语音，请长按后说话';
+          }
+          $('voice-status').style.display = '';
+        }
+        state.lastRecError = null;
+        state.recEnded = false;
+      }, 300);
     } else if (!state.recording) {
-      // 没等到 500ms 就松开了
       $('voice-status').textContent = '请长按按钮说话';
       $('voice-status').style.display = '';
     }
