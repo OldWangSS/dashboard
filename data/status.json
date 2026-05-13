@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-13 14:58",
+  "updated": "2026-05-13 15:01",
   "daily": {
     "tasks": [
       "✅ 微信小程序语音功能上线：录音→Whisper转文字→DeepSeek NLU→自动填表",
@@ -10,10 +10,10 @@
       "✅ 北斗七星命名体系全平台部署"
     ],
     "kb": [
-      "微信小程序语音链路：wx.getRecorderManager()录音→上传Whisper HTTP后端→转文字→DeepSeek NLU→自动填表",
-      "微信小程序真机调试：value+bindinput冲突导致光标消失，去掉value绑定只靠setData；darkmode覆盖字体颜色",
-      "WSL2→手机真机：netsh portproxy + 防火墙入站规则，WSL2重启后IP可能变化",
-      "个人主体小程序不能用微信同声传译插件，最终方案：自建Whisper服务"
+      "「标品下沉为底座，定制浮上为界面」— 集团造积木，一线搭造型",
+      "「AI是一根线」— 用AI把客户的过去需求、订单、合同串起来",
+      "「解决一线的需求，就是解决领导的需求」",
+      "「偷懒是商机」— 帮一线客户经理做他们记不住、算不过来的事"
     ],
     "token_summary": ""
   },
@@ -256,9 +256,9 @@
     "homebot": true
   },
   "token": {
-    "today": 6.98,
-    "today_tokens": 12697145,
-    "month": 262.62,
-    "month_tokens": 1166454145
+    "today": 15.54,
+    "today_tokens": 28258972,
+    "month": 271.18,
+    "month_tokens": 1182015972
   }
 }
