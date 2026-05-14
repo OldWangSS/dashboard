@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-14 10:08",
+  "updated": "2026-05-14 10:14",
   "daily": {
     "tasks": [
       "✅ PWA政企需求助手从Vercel迁移至GitHub Pages（DNS配置/路径调整/代码迁移）",
@@ -244,9 +244,9 @@
     "homebot": true
   },
   "token": {
-    "today": 5.03,
-    "today_tokens": 9138895,
-    "month": 260.67,
-    "month_tokens": 1162895895
+    "today": 5.32,
+    "today_tokens": 9680115,
+    "month": 260.96,
+    "month_tokens": 1163437115
   }
 }
