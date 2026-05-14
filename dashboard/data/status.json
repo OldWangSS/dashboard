@@ -12,58 +12,58 @@
     "token_summary": ""
   },
   "ai_news": {
-    "source": "天玑 Browser（百度搜索）",
-    "updated": "05-13 08:00",
+    "source": "百度搜索",
+    "updated": "05-14 10:00",
     "items": [
       {
-        "title": "Create 2026百度AI开发者大会北京开幕，李彦宏提出DAA日活智能体数新指标",
-        "link": "https://create2026.events.net.cn",
-        "tag": "大模型"
+        "title": "DeepSeek拟融资500亿元，投后估值3500亿，刷新中国AI企业融资纪录",
+        "link": "https://www.baidu.com",
+        "tag": "融资"
       },
       {
-        "title": "百度发布「芯云模体」全栈AI能力升级，主题「万物一体」开启智能新纪元",
+        "title": "腾讯Q1财报：AI战略迈入商业转化关键年，营收1964亿同比增9%，净利增21%",
         "link": "https://www.baidu.com",
         "tag": "大模型"
       },
       {
-        "title": "软通动力亮相Create 2026，展示全栈AI解决方案与智能硬件矩阵",
+        "title": "联发科天玑开发者大会MDDC 2026开幕，发布AI开发套件3.0，阶跃星辰音乐模型端侧部署",
         "link": "https://www.baidu.com",
         "tag": "产品"
       },
       {
-        "title": "全球人工智能终端展5月14-16日将在深圳举办，400+企业参展",
-        "link": "https://www.baidu.com",
-        "tag": "产品"
-      },
-      {
-        "title": "DeepSeek拟融资超70亿美元（约500亿人民币），或成中国AI公司最大融资轮",
-        "link": "https://www.baidu.com",
-        "tag": "融资"
-      },
-      {
-        "title": "美风投领投月之暗面（Kimi）新一轮融资约20亿美元，估值超200亿",
-        "link": "https://www.baidu.com",
-        "tag": "融资"
-      },
-      {
-        "title": "智谱AI发布原生多模态基础模型GLM-5V-Turbo，实现视觉即代码突破",
-        "link": "https://www.baidu.com",
-        "tag": "大模型"
-      },
-      {
-        "title": "AI硬件公司「未来智能」完成亿元级A+轮融资，传音参与战略投资",
-        "link": "https://www.baidu.com",
-        "tag": "融资"
-      },
-      {
-        "title": "美国考虑与中国就AI安全风险举行定期会谈，财长贝森特牵头",
+        "title": "网信办：3-4月新增72款生成式AI服务备案，累计868款完成备案",
         "link": "https://www.baidu.com",
         "tag": "政策"
       },
       {
-        "title": "CopilotKit AG-UI协议获A轮融资2700万美元，专注原生智能体应用部署",
+        "title": "中信建投AI中期策略：北美CSP Q1资本开支同比增70%，算力需求持续强劲",
+        "link": "https://www.baidu.com",
+        "tag": "大模型"
+      },
+      {
+        "title": "工信部发布AI终端智能化分级国标：L1响应级→L4协同级四级体系",
+        "link": "https://www.baidu.com",
+        "tag": "政策"
+      },
+      {
+        "title": "Anthropic计划今夏融资数百亿美元，估值冲击万亿美元超越OpenAI",
+        "link": "https://www.baidu.com",
+        "tag": "融资"
+      },
+      {
+        "title": "2026世界数字教育大会杭州举办：AI+教育从「答题工具」升级为「成长伙伴」",
         "link": "https://www.baidu.com",
         "tag": "产品"
+      },
+      {
+        "title": "特斯拉接入中国本土大模型，智能汽车AI竞争转向本地化服务能力较量",
+        "link": "https://www.baidu.com",
+        "tag": "产品"
+      },
+      {
+        "title": "央行/发改委/工信部联手引爆AI与半导体，招商证券预测CSP资本开支8300亿美元",
+        "link": "https://www.baidu.com",
+        "tag": "政策"
       }
     ]
   },
