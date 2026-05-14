@@ -95,6 +95,10 @@
   }
   .legend-item { display: flex; align-items: center; gap: 5px; }
   .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .link { pointer-events: none; }
+  .node { cursor: pointer; }
+  .node circle { transition: r 0.2s, stroke 0.2s, opacity 0.2s; }
+  .link { transition: stroke 0.2s, stroke-opacity 0.2s, stroke-width 0.2s; }
 </style>
 </head>
 <body>
