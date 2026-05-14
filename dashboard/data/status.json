@@ -8,13 +8,7 @@
       "✅ PWA子路径从/app/改为/zqxqzs/（政企需求助手拼音缩写）",
       "✅ 万网DNS从零配置完成（A记录+CNAME），域名www.aithe1.xyz生效"
     ],
-    "kb": [
-      "📌 PWA子路径部署避坑：Vercel自动检测子目录改路由，GitHub Pages更可控",
-      "📌 万网DNS A记录@→IP，CNAME www→github.io，全球传播需30分钟",
-      "📌 移动端Web Speech API：微信浏览器和iOS Safari不支持SpeechRecognition",
-      "📌 CSS -webkit-tap-highlight-color:transparent + user-select:none去蓝框",
-      "📌 touchstart+touchend+preventDefault替代pointerdown防按压弹跳"
-    ],
+    "kb": [],
     "token_summary": ""
   },
   "ai_news": {
@@ -164,30 +158,6 @@
         "source": "新浪游戏",
         "link": "http://games.sina.com.cn/news/yw/2026-05-11/esports-inhxnwmr9157494.shtml",
         "category": "体育"
-      },
-      {
-        "title": "章若楠穿旗袍韵味十足",
-        "source": "新浪娱乐",
-        "link": "https://s.weibo.com/weibo?q=章若楠穿旗袍好有韵味",
-        "category": "娱乐"
-      },
-      {
-        "title": "权志龙vogue六月刊封面",
-        "source": "新浪娱乐",
-        "link": "https://s.weibo.com/weibo?q=权志龙vogue六月刊封面画报",
-        "category": "娱乐"
-      },
-      {
-        "title": "张艺兴戛纳行程",
-        "source": "新浪娱乐",
-        "link": "https://s.weibo.com/weibo?q=张艺兴戛纳电影节日程",
-        "category": "娱乐"
-      },
-      {
-        "title": "巩俐任戛纳主竞赛评委",
-        "source": "新浪娱乐",
-        "link": "https://weibo.com/1642591402/QFdHxjGSf",
-        "category": "娱乐"
       },
       {
         "title": "中国科学家发现001飞米颗粒",
