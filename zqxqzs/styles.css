@@ -30,18 +30,94 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .btn-purple{background:linear-gradient(135deg,#7c4dff,#651fff)}
 .btn-green{background:linear-gradient(135deg,#34c759,#30b350)}
 
-/* 语音 */
-.voice-card{border-left:4px solid #7c4dff}
-.v-head{font-size:18px;font-weight:700;color:#5e35b1;text-align:center}
-.v-hint{font-size:12px;color:#999;text-align:center;margin:6px 0 16px}
-.v-btn{display:block;width:180px;height:180px;border-radius:50%;background:linear-gradient(145deg,#7c4dff,#651fff);color:#fff;font-size:18px;font-weight:700;border:none;margin:0 auto;cursor:pointer;box-shadow:0 4px 16px rgba(101,31,255,.3);-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;outline:none}
-.v-btn:active{transform:scale(.94)}
-.v-btn.recording{background:linear-gradient(145deg,#e53935,#c62828);box-shadow:0 4px 24px rgba(229,57,53,.5)}
+/* ====== 语音英雄区 ====== */
+.voice-hero{
+  display:flex;flex-direction:column;align-items:center;
+  padding:28px 16px 20px;margin-bottom:12px;
+  background:linear-gradient(180deg, rgba(124,77,255,0.04) 0%, transparent 100%);
+  border-radius:16px;
+}
 
-#voice-text-edit{width:100%;min-height:80px;border:2px solid #e0e0e0;border-radius:8px;padding:12px;font-size:15px;color:#333;background:#fff;resize:vertical;margin-bottom:12px}
+/* 波纹外圈 */
+.voice-ring{
+  width:200px;height:200px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  margin-bottom:20px;
+}
+/* 空闲态波纹 */
+.voice-ring::before{
+  content:'';position:absolute;inset:-8px;border-radius:50%;
+  border:2px solid rgba(124,77,255,0.15);
+  animation:ring-pulse 2.5s ease-in-out infinite;
+}
+.voice-ring::after{
+  content:'';position:absolute;inset:-18px;border-radius:50%;
+  border:1px solid rgba(124,77,255,0.08);
+  animation:ring-pulse 2.5s ease-in-out infinite 0.5s;
+}
+.voice-ring-inner{
+  width:184px;height:184px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  z-index:1;
+}
+
+/* 录音态波纹变色 */
+.voice-ring.recording::before{animation:ring-pulse-rec 1.2s ease-in-out infinite;border-color:rgba(229,57,53,0.35)}
+.voice-ring.recording::after{animation:ring-pulse-rec 1.2s ease-in-out infinite 0.3s;border-color:rgba(229,57,53,0.18)}
+
+@keyframes ring-pulse{
+  0%,100%{transform:scale(1);opacity:1}
+  50%{transform:scale(1.06);opacity:0.4}
+}
+@keyframes ring-pulse-rec{
+  0%,100%{transform:scale(1);opacity:1}
+  50%{transform:scale(1.08);opacity:0.5}
+}
+
+/* 主角语音按钮 */
+.v-btn-hero{
+  width:180px;height:180px;border-radius:50%;
+  background:linear-gradient(145deg,#7c4dff,#651fff);
+  color:#fff;font-size:20px;font-weight:700;
+  border:none;cursor:pointer;
+  box-shadow:0 6px 28px rgba(101,31,255,.35);
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;user-select:none;
+  -webkit-user-select:none;-webkit-touch-callout:none;outline:none;
+  transition:transform .15s,box-shadow .15s;
+}
+.v-btn-hero:active{transform:scale(.94);box-shadow:0 2px 12px rgba(101,31,255,.25)}
+.v-btn-hero.recording{
+  background:linear-gradient(145deg,#e53935,#c62828);
+  box-shadow:0 6px 32px rgba(229,57,53,.5);
+  font-size:18px;
+}
+
+/* 引导文字 */
+.voice-guide{
+  font-size:14px;color:#999;text-align:center;margin-bottom:12px;
+}
+.voice-status{
+  text-align:center;color:#7c4dff;font-size:13px;min-height:20px;
+}
+
+/* ====== 打字兜底 ====== */
+#voice-text-edit{
+  width:100%;min-height:80px;border:2px solid #e0e0e0;border-radius:8px;
+  padding:12px;font-size:15px;color:#333;background:#fff;
+  resize:vertical;margin-bottom:12px;
+}
 #voice-text-edit:focus{border-color:#7c4dff;outline:none}
 
-/* AI 结果 */
+.type-toggle-wrap{text-align:center;margin-bottom:12px}
+.type-toggle{
+  background:none;border:none;color:#999;font-size:13px;
+  cursor:pointer;padding:8px 16px;border-bottom:1px dashed #ddd;
+}
+.type-toggle:active{color:#7c4dff}
+
+/* ====== AI 结果 ====== */
 .ai-result{margin-top:16px;padding:16px;background:linear-gradient(135deg,#e8f5e9,#f1f8e9);border-radius:10px;border-left:4px solid #34c759}
 .ai-result h3{font-size:16px;color:#2e7d32;margin-bottom:8px}
 .ai-customer{font-size:14px;padding:8px 12px;background:#fff;border-radius:6px;margin-bottom:8px}
@@ -51,7 +127,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .ai-item .name{color:#1a73e8;font-weight:500}
 .ai-item .qty{color:#999;background:#f0f0f0;padding:2px 12px;border-radius:12px;font-size:12px}
 
-/* 需求清单 */
+/* ====== 需求清单 ====== */
 .order-box{margin-top:20px;background:#fff;border-radius:12px;padding:16px;box-shadow:0 1px 6px rgba(0,0,0,.06)}
 .order-box h3{font-size:18px;font-weight:700;text-align:center;margin-bottom:16px}
 .order-row{display:flex;margin-bottom:8px;font-size:14px}

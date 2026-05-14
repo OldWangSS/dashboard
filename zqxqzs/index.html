@@ -47,24 +47,38 @@
   <button class="btn" id="btn-register" disabled>开始使用</button>
 </div>
 
-<!-- 主页 -->
+<!-- 主页 — 语音为主角 -->
 <div id="page-main" class="page" style="display:none">
   <div class="header">
     <div class="greeting" id="greeting"></div>
     <div class="badge">政企产品</div>
   </div>
 
-  <!-- 语音卡片 -->
-  <div class="card voice-card">
-    <div class="v-head">📝 录入需求</div>
-    <div class="v-hint">打字或说话，AI 自动识别并推荐产品</div>
+  <!-- ===== 语音英雄区 ===== -->
+  <div class="voice-hero">
+    <div class="voice-ring" id="voice-ring">
+      <div class="voice-ring-inner">
+        <button id="voice-btn" class="v-btn-hero">🎙️ 按住说话</button>
+      </div>
+    </div>
+    <div class="voice-guide" id="voice-guide">松开发送，AI 自动识别并推荐产品</div>
+    <div id="voice-status" class="voice-status"></div>
+  </div>
 
-    <textarea id="voice-text-edit" placeholder="请描述客户需求，例如：给公安局装50个摄像头，需要30天存储"></textarea>
-    <div id="voice-status" style="display:none;text-align:center;color:#7c4dff;margin:8px 0;font-size:13px"></div>
-    <button id="voice-btn" class="v-btn">🎙️ 按住说话</button>
+  <!-- AI 分析按钮（语音识别有结果后出现） -->
+  <button class="btn btn-purple" id="btn-analyze" style="display:none">🤖 AI 智能推荐产品</button>
+  <div id="voice-ai-result" style="display:none"></div>
 
-    <button class="btn btn-purple" id="btn-analyze" style="margin-top:12px">🤖 AI 智能推荐产品</button>
-    <div id="voice-ai-result" style="display:none"></div>
+  <!-- ===== 打字兜底（默认隐藏）===== -->
+  <div id="type-fallback" style="display:none">
+    <div class="card">
+      <div class="card-title">⌨️ 手动输入需求</div>
+      <textarea id="voice-text-edit" placeholder="请描述客户需求，例如：给公安局装50个摄像头，需要30天存储"></textarea>
+      <button class="btn btn-purple" id="btn-analyze-type" style="margin-top:8px">🤖 AI 智能推荐产品</button>
+    </div>
+  </div>
+  <div class="type-toggle-wrap">
+    <button class="type-toggle" id="btn-toggle-type">⌨️ 打字输入</button>
   </div>
 
   <!-- 客户名称 -->

@@ -70,8 +70,10 @@ function initMain() {
   $('greeting').textContent = `你好，${state.user.name}`;
   renderProductCards();
   initVoice();
+  initTypeFallback();
 }
 
+// ============ PRODUCT CARDS ============
 function renderProductCards() {
   const html = state.products.map((p,i) => `
     <div class="card">
@@ -99,7 +101,6 @@ function renderProductCards() {
     </div>`).join('');
   $('product-cards').innerHTML = html;
 
-  // Event listeners
   document.querySelectorAll('.sel-product').forEach(sel => {
     sel.onchange = function() {
       const i = +this.dataset.idx;
@@ -118,7 +119,8 @@ function renderProductCards() {
   });
   document.querySelectorAll('.sel-sub2').forEach(sel => {
     sel.onchange = function() {
-      state.products[i] = +this.dataset.idx;
+      const i = +this.dataset.idx;
+      state.products[i].sub2 = this.value;
       renderProductCards();
     };
   });
@@ -127,7 +129,6 @@ function renderProductCards() {
 function renderSub1(p) {
   if (!p.product || !SUB_OPTS[p.product]) return '';
   const opts = SUB_OPTS[p.product];
-  const lbl = $('.lbl-sub1') || {}; // ignore
   return ['请选择',...opts.L1].map(o => `<option ${p.sub1===o?'selected':''}>${o}</option>`).join('');
 }
 function renderSub2(p) {
@@ -143,38 +144,43 @@ function hasL2(p) {
 }
 function upd(i, key, val) { state.products[i][key] = val; }
 
-// ============ VOICE ============
+// ============ VOICE — 主角 ============
 function initVoice() {
   const btn = $('voice-btn');
+  const ring = $('voice-ring');
+  const guide = $('voice-guide');
+  const status = $('voice-status');
   const ua = navigator.userAgent;
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
   // 微信内置浏览器不支持
   if (/MicroMessenger/i.test(ua)) {
-    btn.textContent = '📱 微信内不支持语音';
+    btn.textContent = '📱 微信不支持';
     btn.disabled = true;
-    $('voice-status').innerHTML = '请点击右上角 <b>「···」→「在浏览器中打开」</b>';
-    $('voice-status').style.display = '';
+    guide.textContent = '请用系统浏览器打开';
     return;
   }
 
   // iOS 全系不支持
   if (/iPhone|iPad|iPod/i.test(ua)) {
-    btn.textContent = '⚠️ iOS 暂不支持语音';
+    btn.textContent = '⚠️ iOS 不支持';
     btn.disabled = true;
-    $('voice-status').textContent = '请使用安卓手机或电脑端 Chrome';
-    $('voice-status').style.display = '';
+    guide.textContent = '请使用安卓手机或电脑 Chrome';
+    // 打字入口自动展开
+    $('btn-toggle-type').click();
     return;
   }
 
   if (!SpeechRecognition) {
-    btn.textContent = '⚠️ 浏览器不支持语音';
+    btn.textContent = '⚠️ 不支持';
     btn.disabled = true;
+    guide.textContent = '浏览器不支持语音，请使用打字输入';
+    $('btn-toggle-type').click();
     return;
   }
 
   let rec = null;
-  let pressed = false; // 按钮是否在按压态
+  let pressed = false;
 
   function makeRec() {
     const r = new SpeechRecognition();
@@ -183,24 +189,18 @@ function initVoice() {
     r.continuous = true;
     r.maxAlternatives = 1;
 
-    r.onstart = () => {
-      $('voice-status').textContent = '🎤 说话中...';
-      $('voice-status').style.display = '';
-    };
-
     r.onspeechstart = () => {
-      $('voice-status').textContent = '🎤 正在识别...';
+      status.textContent = '🎤 正在识别...';
     };
 
     r.onresult = (e) => {
-      // 持续模式下结果会累积，取最新的
       let text = '';
       for (let i = e.resultIndex; i < e.results.length; i++) {
         text += e.results[i][0].transcript;
       }
       state.voiceText = text;
-      $('voice-text-edit').value = text;
-      $('voice-text-edit').focus();
+      // 实时回显
+      status.textContent = '🎤 ' + text;
     };
 
     r.onerror = (e) => {
@@ -209,51 +209,50 @@ function initVoice() {
 
     r.onend = () => {
       state.recEnded = true;
-      if (!pressed) {
-        if (state.voiceText) {
-          $('voice-status').style.display = 'none';
-        } else {
-          $('voice-status').textContent = '未检测到语音，请重试';
-          $('voice-status').style.display = '';
-        }
+      if (!pressed && !state.voiceText) {
+        status.textContent = '未检测到语音，请重试';
       }
     };
 
     return r;
   }
 
-  function resetBtn() {
-    pressed = false;
-    state.recording = false;
-    btn.classList.remove('recording');
-    btn.textContent = '🎙️ 按住说话';
+  function setRecording(on) {
+    if (on) {
+      pressed = true;
+      btn.classList.add('recording');
+      ring.classList.add('recording');
+      btn.textContent = '🔴 松开发送';
+      guide.textContent = '正在聆听...';
+      status.textContent = '';
+      state.voiceText = '';
+      $('voice-ai-result').style.display = 'none';
+      $('btn-analyze').style.display = 'none';
+    } else {
+      pressed = false;
+      state.recording = false;
+      btn.classList.remove('recording');
+      ring.classList.remove('recording');
+      btn.textContent = '🎙️ 按住说话';
+      guide.textContent = '松开发送，AI 自动识别并推荐产品';
+    }
   }
 
   function startRecord(e) {
     e.preventDefault();
     e.stopPropagation();
     if (pressed) return;
-    pressed = true;
+    setRecording(true);
 
-    btn.classList.add('recording');
-    btn.textContent = '🔴 松开发送';
-    state.voiceText = '';
-    $('voice-ai-result').style.display = 'none';
-    $('voice-status').textContent = '⏳ 准备录音...';
-    $('voice-status').style.display = '';
-
-    // 延迟 500ms 后真正启动，让按钮视觉先稳定
     clearTimeout(state.holdTimer);
     state.holdTimer = setTimeout(() => {
-      if (!pressed) return; // 用户已经松开了
+      if (!pressed) return;
       state.recording = true;
       rec = makeRec();
       try {
         rec.start();
       } catch(err) {
-        $('voice-status').textContent = '启动失败: ' + err.message;
-        $('voice-status').style.display = '';
-        // 保持按钮红色，不自动弹回
+        status.textContent = '启动失败: ' + err.message;
       }
     }, 500);
   }
@@ -263,15 +262,17 @@ function initVoice() {
     clearTimeout(state.holdTimer);
 
     if (!pressed) return;
-    resetBtn();
+    setRecording(false);
 
     if (rec && state.recording) {
       try { rec.abort(); } catch(err) {}
-      // 等 onend 回调后处理结果
       setTimeout(() => {
         if (state.voiceText) {
-          $('voice-status').style.display = 'none';
+          // ✅ 语音识别成功 — 显示 AI 分析按钮
+          status.textContent = '✅ 识别完成：「' + state.voiceText.slice(0,30) + (state.voiceText.length > 30 ? '...' : '') + '」';
+          $('btn-analyze').style.display = '';
         } else {
+          // 失败提示
           if (state.lastRecError) {
             const msgs = {
               'not-allowed': '🎙️ 请先授权麦克风权限',
@@ -279,18 +280,16 @@ function initVoice() {
               'audio-capture': '未找到麦克风设备',
               'network': '网络连接失败，请重试'
             };
-            $('voice-status').textContent = msgs[state.lastRecError] || ('识别失败: ' + state.lastRecError);
+            status.textContent = msgs[state.lastRecError] || ('识别失败: ' + state.lastRecError);
           } else {
-            $('voice-status').textContent = '未检测到语音，请长按后说话';
+            status.textContent = '未检测到语音，请长按后说话';
           }
-          $('voice-status').style.display = '';
         }
         state.lastRecError = null;
         state.recEnded = false;
       }, 300);
     } else if (!state.recording) {
-      $('voice-status').textContent = '请长按按钮说话';
-      $('voice-status').style.display = '';
+      guide.textContent = '请长按按钮说话';
     }
   }
 
@@ -309,10 +308,7 @@ function initVoice() {
     if (pressed) stopRecord(e);
   });
 
-  // 文字修改
-  $('voice-text-edit').oninput = function() { state.voiceText = this.value; };
-
-  // AI 分析
+  // AI 分析按钮 — 语音版
   $('btn-analyze').onclick = async () => {
     if (!state.voiceText) return;
     $('btn-analyze').textContent = '🤖 AI 分析中...';
@@ -324,12 +320,51 @@ function initVoice() {
       renderAiResult(result);
     } catch(e) {
       $('voice-ai-result').innerHTML = '<div class="alert-err">分析失败: ' + e.message + '</div>';
+      $('voice-ai-result').style.display = '';
     }
     $('btn-analyze').textContent = '🤖 AI 智能推荐产品';
     $('btn-analyze').disabled = false;
   };
 }
 
+// ============ 打字兜底 ============
+function initTypeFallback() {
+  const toggle = $('btn-toggle-type');
+  const fallback = $('type-fallback');
+
+  toggle.onclick = () => {
+    const showing = fallback.style.display !== 'none';
+    fallback.style.display = showing ? 'none' : '';
+    toggle.textContent = showing ? '⌨️ 打字输入' : '🎙️ 语音输入';
+    // 滚动到打字区
+    if (!showing) setTimeout(() => fallback.scrollIntoView({behavior:'smooth'}), 100);
+  };
+
+  // 打字版 AI 分析
+  $('voice-text-edit').oninput = function() { state.voiceText = this.value; };
+
+  $('btn-analyze-type').onclick = async () => {
+    if (!state.voiceText) return;
+    $('btn-analyze-type').textContent = '🤖 AI 分析中...';
+    $('btn-analyze-type').disabled = true;
+
+    try {
+      const result = mockNlu(state.voiceText);
+      state.voiceResult = result;
+      renderAiResult(result);
+      // 结果出来后折叠打字区
+      fallback.style.display = 'none';
+      toggle.textContent = '⌨️ 打字输入';
+    } catch(e) {
+      $('voice-ai-result').innerHTML = '<div class="alert-err">分析失败: ' + e.message + '</div>';
+      $('voice-ai-result').style.display = '';
+    }
+    $('btn-analyze-type').textContent = '🤖 AI 智能推荐产品';
+    $('btn-analyze-type').disabled = false;
+  };
+}
+
+// ============ AI 结果渲染 ============
 function renderAiResult(result) {
   const wrap = $('voice-ai-result');
   wrap.style.display = '';
@@ -344,6 +379,7 @@ function renderAiResult(result) {
       `).join('') : '<p style="font-size:14px;color:#999">未识别到具体产品，请手动选择</p>'}
       <button class="btn btn-green" onclick="fillForm()" style="margin-top:12px">📋 一键填入表单</button>
     </div>`;
+  wrap.scrollIntoView({behavior:'smooth'});
 }
 
 function fillForm() {
@@ -363,7 +399,8 @@ function fillForm() {
     slot++;
   });
   renderProductCards();
-  alert('已填入表单！');
+  // 滚动到产品区
+  $('product-cards').scrollIntoView({behavior:'smooth'});
 }
 
 // ============ NLU (Mock) ============
@@ -420,4 +457,5 @@ $('btn-submit').onclick = () => {
     </div>`;
   $('order-result').innerHTML = html;
   $('order-result').style.display = '';
+  $('order-result').scrollIntoView({behavior:'smooth'});
 };
