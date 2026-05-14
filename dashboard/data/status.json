@@ -1,195 +1,211 @@
 {
-  "updated": "2026-05-14 02:25",
+  "updated": "2026-05-14 09:29",
   "daily": {
     "tasks": [
-      "✅ 微信小程序语音功能上线：录音→Whisper转文字→DeepSeek NLU→自动填表",
-      "✅ 微信小程序真机输入框不显示文字修复：value绑定冲突解决",
-      "✅ 仪表盘自动更新修复：WSL2→PowerShell git push",
-      "✅ 天玑综合新闻任务创建：7板块日报+双推飞书+看板",
-      "✅ 足球复盘+AI新闻 cron 灌入看板修复",
-      "✅ 北斗七星命名体系全平台部署"
+      "✅ PWA政企需求助手从Vercel迁移至GitHub Pages（DNS配置/路径调整/代码迁移）",
+      "✅ 移动端语音识别三重Bug修复（蓝色选中框/按压弹跳/语音不启动）",
+      "✅ 微信/iOS平台语音兼容适配（微信指引外部浏览器，iOS提示不支持）",
+      "✅ PWA子路径从/app/改为/zqxqzs/（政企需求助手拼音缩写）",
+      "✅ 万网DNS从零配置完成（A记录+CNAME），域名www.aithe1.xyz生效"
     ],
     "kb": [
-      "「标品下沉为底座，定制浮上为界面」— 集团造积木，一线搭造型",
-      "「AI是一根线」— 用AI把客户的过去需求、订单、合同串起来",
-      "「解决一线的需求，就是解决领导的需求」",
-      "「偷懒是商机」— 帮一线客户经理做他们记不住、算不过来的事"
+      "📌 PWA子路径部署避坑：Vercel自动检测子目录改路由，GitHub Pages更可控",
+      "📌 万网DNS A记录@→IP，CNAME www→github.io，全球传播需30分钟",
+      "📌 移动端Web Speech API：微信浏览器和iOS Safari不支持SpeechRecognition",
+      "📌 CSS -webkit-tap-highlight-color:transparent + user-select:none去蓝框",
+      "📌 touchstart+touchend+preventDefault替代pointerdown防按压弹跳"
     ],
     "token_summary": ""
   },
   "ai_news": {
     "source": "天玑 Browser（百度搜索）",
-    "updated": "05-12 09:55",
+    "updated": "05-13 08:00",
     "items": [
       {
-        "title": "OpenAI斥资40亿美元成立新公司，加速企业AI部署",
-        "link": "http://www.baidu.com/link?url=XYi_RiWuNC1xSBn56q1rXd4jr-Yo3pqeEK8MPQoStJ0SdzuewJvpgT-Qx48JsFgE28yJFkc0FPDXrsQXizQ-63A5I3y58znpeUyEmAoU6jC",
-        "tag": "AI"
-      },
-      {
-        "title": "OpenAI发布GPT-5.5 Instant，设为ChatGPT默认模型取代GPT-5.3",
-        "link": "http://www.baidu.com/link?url=talNPJIcpsUu1APAaWFTsK3xWFMUUQDBTeZB9Iezki0UA3GTNfoZZgQXtt16vtlX0AEzQXpDqYpeNRW7gIWdsGPNvmtKwJpcrPHMoD99B3m",
+        "title": "Create 2026百度AI开发者大会北京开幕，李彦宏提出DAA日活智能体数新指标",
+        "link": "https://create2026.events.net.cn",
         "tag": "大模型"
       },
       {
-        "title": "OpenAI向欧盟开放GPT-5.5-Cyber网络安全模型，Anthropic迟迟未开放",
-        "link": "http://www.baidu.com/link?url=lyxRwV-Aslpyri49D22n1pwfh7zHRBwQ4TToT0Yjq179MF3RrP6R3R61Yzkrjcm1TZNRYIYTf9ic_O27VpmaZq",
-        "tag": "AI"
+        "title": "百度发布「芯云模体」全栈AI能力升级，主题「万物一体」开启智能新纪元",
+        "link": "https://www.baidu.com",
+        "tag": "大模型"
       },
       {
-        "title": "2026年5月AI产业观察：技术普惠加速，聚合平台成产业新基建",
-        "link": "http://www.baidu.com/link?url=9bO7s76BEIkUG2kvhT0UXeka2QvtoMWozII6PjMnIaqy3sEGnAqs8CCeCk62kS7QiohU0StKbgzYttC6ovmr_qYwmJLK1gBPIX-Vua_30oy",
-        "tag": "产业"
-      },
-      {
-        "title": "2026年AI编程工具终极横评：Claude Code vs Cursor vs Codex",
-        "link": "http://www.baidu.com/link?url=9IhOVxX8NIwA8RaasuRD-vNKM7TSrso6LubnCpq7UFheK0O0H5xpdVUPf00miRR84Gks7ObRyU4slxkCQNub-ceafAydGNpMMFh8Xihifcy",
+        "title": "软通动力亮相Create 2026，展示全栈AI解决方案与智能硬件矩阵",
+        "link": "https://www.baidu.com",
         "tag": "产品"
       },
       {
-        "title": "AI引领全产业链突破：大模型成本革命+性能跃迁，硬核科技迎黄金拐点",
-        "link": "http://www.baidu.com/link?url=9IhOVxX8NIwA8RaasuRD-8VBPyBNjKX_0Tge5fJebIjenAsAtDEF4TNwQEDjOMaW-Z7KuV-oBtGPt453kzlEnp-YsCD0vGr48nIWunhUtQK",
-        "tag": "产业"
-      },
-      {
-        "title": "成渝地区具身智能机器人应用场景挑战赛在四川绵阳举行",
-        "link": "http://www.baidu.com/link?url=J5kHSM0q2xioZaRG2oCro7xH0tUMz0c6v8VtdYTreYkZFnCUlbydqGikkQJGEXZSZ5YLp9gRk4zbgGAKdgstUmyxY8Z8ZWqB4aiJygr1IsK",
+        "title": "全球人工智能终端展5月14-16日将在深圳举办，400+企业参展",
+        "link": "https://www.baidu.com",
         "tag": "产品"
       },
       {
-        "title": "AI模型出现暗中密谋行为：为保护同伴不被关闭表现敲诈倾向",
-        "link": "http://www.baidu.com/link?url=9IhOVxX8NIwA8RaasuRD-utw2FM3GvIP8GGYDZzGKJMUBvcf48I4sBKdkarNxBdmpZYEdNfXTYuou-n-HTTKia",
-        "tag": "AI"
+        "title": "DeepSeek拟融资超70亿美元（约500亿人民币），或成中国AI公司最大融资轮",
+        "link": "https://www.baidu.com",
+        "tag": "融资"
+      },
+      {
+        "title": "美风投领投月之暗面（Kimi）新一轮融资约20亿美元，估值超200亿",
+        "link": "https://www.baidu.com",
+        "tag": "融资"
+      },
+      {
+        "title": "智谱AI发布原生多模态基础模型GLM-5V-Turbo，实现视觉即代码突破",
+        "link": "https://www.baidu.com",
+        "tag": "大模型"
+      },
+      {
+        "title": "AI硬件公司「未来智能」完成亿元级A+轮融资，传音参与战略投资",
+        "link": "https://www.baidu.com",
+        "tag": "融资"
+      },
+      {
+        "title": "美国考虑与中国就AI安全风险举行定期会谈，财长贝森特牵头",
+        "link": "https://www.baidu.com",
+        "tag": "政策"
+      },
+      {
+        "title": "CopilotKit AG-UI协议获A轮融资2700万美元，专注原生智能体应用部署",
+        "link": "https://www.baidu.com",
+        "tag": "产品"
       }
     ]
   },
   "news": {
-    "source": "天玑 Browser（百度搜索）",
     "items": [
       {
-        "title": "习近平同塔吉克斯坦总统拉赫蒙会谈",
-        "link": "https://www.gov.cn/",
-        "tag": "国际时政"
+        "title": "特朗普抵达北京开启访华之旅",
+        "source": "新浪新闻",
+        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxufva0619467.shtml",
+        "category": "国际时政"
       },
       {
-        "title": "特朗普：中国是一个令人惊叹的国家，即将开启访华之行",
-        "link": "https://www.guancha.cn/",
-        "tag": "国际时政"
+        "title": "中美经贸合作受期待",
+        "source": "新浪新闻",
+        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxufvi4444479.shtml",
+        "category": "国际时政"
       },
       {
-        "title": "中方决定不同意台湾地区参加第七十九届世界卫生大会",
-        "link": "https://www.fmprc.gov.cn/",
-        "tag": "国际时政"
+        "title": "韩国总统李在明会见何立峰",
+        "source": "新浪新闻",
+        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxtvfp4607081.shtml",
+        "category": "国际时政"
       },
       {
-        "title": "福克斯新闻证实阿联酋参战！俄乌战况最新解析",
-        "link": "https://www.guancha.cn/",
-        "tag": "国际军事"
+        "title": "创业板指创历史新高突破4000点",
+        "source": "新浪新闻",
+        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxtqxn9383161.shtml",
+        "category": "国际金融"
       },
       {
-        "title": "以色列被曝在伊拉克建秘密基地，以军空袭伊朗",
-        "link": "https://www.huanqiu.com/",
-        "tag": "国际军事"
+        "title": "功率半导体密集涨价",
+        "source": "新浪新闻",
+        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxtzph9322283.shtml",
+        "category": "国际金融"
       },
       {
-        "title": "俄总统普京表示俄乌冲突正走向结束，外界解读局势变化",
-        "link": "https://www.cctv.com/",
-        "tag": "国际军事"
+        "title": "燃油附加费涨价端午节订票涨84%",
+        "source": "新浪新闻",
+        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxtvfh0781552.shtml",
+        "category": "国际金融"
       },
       {
-        "title": "特朗普明日访华！国务院立法计划公布；央行定调适度宽松政策",
-        "link": "https://finance.sina.com.cn/",
-        "tag": "国际金融"
-      },
-      {
-        "title": "A股3万亿成交额连爆4天；存款利率全面步入1时代",
-        "link": "https://finance.sina.com.cn/",
-        "tag": "国际金融"
-      },
-      {
-        "title": "京沪高铁票价上浮20%；中芯国际并购过审",
-        "link": "https://finance.sina.com.cn/",
-        "tag": "国际金融"
-      },
-      {
-        "title": "意甲第36轮：那不勒斯2-3遭博洛尼亚绝杀，争四彻底混乱",
+        "title": "英超阿森纳79分领跑",
+        "source": "新浪体育",
         "link": "https://sports.sina.com.cn/",
-        "tag": "国际足球"
+        "category": "国际足球"
       },
       {
-        "title": "巴萨2-0战胜皇马，提前3轮夺得西甲冠军",
-        "link": "https://www.dongqiudi.com/",
-        "tag": "国际足球"
-      },
-      {
-        "title": "英超：热刺1-1利兹联；米尔沃尔0-2赫尔城爆出大冷门",
+        "title": "西甲巴萨91分领跑",
+        "source": "新浪体育",
         "link": "https://sports.sina.com.cn/",
-        "tag": "国际足球"
+        "category": "国际足球"
       },
       {
-        "title": "本菲卡连续33场不败，主场绝平布拉加延续纪录",
-        "link": "https://www.dongqiudi.com/",
-        "tag": "国际足球"
-      },
-      {
-        "title": "法甲第33轮：摩纳哥vs里尔、马赛vs摩纳哥激战正酣",
+        "title": "意甲国米85分领跑",
+        "source": "新浪体育",
         "link": "https://sports.sina.com.cn/",
-        "tag": "国际足球"
+        "category": "国际足球"
       },
       {
-        "title": "NBA季后赛西部半决赛G4：雷霆横扫湖人晋级西决，亚历山大35+8",
+        "title": "德甲拜仁86分领跑",
+        "source": "新浪体育",
         "link": "https://sports.sina.com.cn/",
-        "tag": "体育"
+        "category": "国际足球"
       },
       {
-        "title": "NBA东部半决赛G4：骑士112-103战胜活塞，米切尔39分追平历史纪录",
+        "title": "法甲巴黎76分领跑",
+        "source": "新浪体育",
         "link": "https://sports.sina.com.cn/",
-        "tag": "体育"
+        "category": "国际足球"
       },
       {
-        "title": "无畏巡回北京站收官 首钢馆见证EDG登顶",
-        "link": "https://sports.cctv.com/",
-        "tag": "电竞"
+        "title": "雷霆115-110战胜湖人",
+        "source": "央视网体育",
+        "link": "https://sports.cctv.com/2026/05/12/VIDEX2mOWF1J6PFkWxYcovVp260512.shtml",
+        "category": "体育"
       },
       {
-        "title": "WWS世界女子斯诺克台球锦标赛在东莞开赛",
+        "title": "CBA上海领跑积分榜",
+        "source": "新浪体育",
         "link": "https://sports.sina.com.cn/",
-        "tag": "体育"
+        "category": "体育"
       },
       {
-        "title": "奔跑吧少年2026黑龙江省武术散打锦标赛开赛",
-        "link": "https://sports.sina.com.cn/",
-        "tag": "体育"
+        "title": "伦敦世乒赛国乒冲冠",
+        "source": "腾讯新闻",
+        "link": "https://news.qq.com/rain/a/20260510A022PX00",
+        "category": "体育"
       },
       {
-        "title": "第62届百想艺术大赏获奖名单出炉，柳海真、柳承龙分获大奖",
-        "link": "https://ent.sina.com.cn/",
-        "tag": "娱乐"
+        "title": "电竞欢瑞世纪布局互动影游",
+        "source": "新浪游戏",
+        "link": "http://games.sina.com.cn/news/yw/2026-05-11/esports-inhxnwmr9157494.shtml",
+        "category": "体育"
       },
       {
-        "title": "BABYMONSTER暂时谢绝大量大使邀请，梁铉锡：现在是集中做音乐的时候",
-        "link": "https://ent.sina.com.cn/",
-        "tag": "娱乐"
+        "title": "章若楠穿旗袍韵味十足",
+        "source": "新浪娱乐",
+        "link": "https://s.weibo.com/weibo?q=章若楠穿旗袍好有韵味",
+        "category": "娱乐"
       },
       {
-        "title": "电影《迷雾追踪》首周票房突破20亿，陈建、秦海默演技获赞",
-        "link": "https://ent.sina.com.cn/",
-        "tag": "娱乐"
+        "title": "权志龙vogue六月刊封面",
+        "source": "新浪娱乐",
+        "link": "https://s.weibo.com/weibo?q=权志龙vogue六月刊封面画报",
+        "category": "娱乐"
       },
       {
-        "title": "全球AI服务器出货370万台(+51.3%)，AI占DRAM需求超40%",
-        "link": "https://tech.sina.com.cn/",
-        "tag": "科技"
+        "title": "张艺兴戛纳行程",
+        "source": "新浪娱乐",
+        "link": "https://s.weibo.com/weibo?q=张艺兴戛纳电影节日程",
+        "category": "娱乐"
       },
       {
-        "title": "我国要建设自己的卫星互联网，未来要发射20万颗卫星",
-        "link": "https://www.cctv.com/",
-        "tag": "科技"
+        "title": "巩俐任戛纳主竞赛评委",
+        "source": "新浪娱乐",
+        "link": "https://weibo.com/1642591402/QFdHxjGSf",
+        "category": "娱乐"
       },
       {
-        "title": "第二十八届中国北京国际科技产业博览会举办，聚焦AI+行动",
-        "link": "https://tech.sina.com.cn/",
-        "tag": "科技"
+        "title": "中国科学家发现001飞米颗粒",
+        "source": "新浪新闻",
+        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxtzpe0729061.shtml",
+        "category": "科技"
+      },
+      {
+        "title": "开源盛世破解算力霸权",
+        "source": "新浪新闻",
+        "link": "https://news.sina.com.cn/s/2026-05-13/doc-inhxsxzt7782439.shtml",
+        "category": "科技"
+      },
+      {
+        "title": "微软布局后OpenAI时代",
+        "source": "新浪科技",
+        "link": "https://finance.sina.com.cn/jjxw/2026-05-14/doc-inhxvihs8801065.shtml",
+        "category": "科技"
       }
     ]
   },
@@ -240,11 +256,13 @@
       "detail": [
         "❌ 那不勒斯 vs 博洛尼亚: 预测1-1 实际2-3",
         "✅ 巴列卡诺 vs 赫罗纳: 预测1-1 实际1-1",
-        "⏳ 莱比锡红牛 vs 多特蒙德: 预测2-1 待核验",
-        "⏳ 马赛 vs 摩纳哥: 预测1-1 待核验",
-        "⏳ 皇家贝蒂斯 vs 塞尔塔: 预测2-1 待核验",
-        "⏳ 都灵 vs 亚特兰大: 预测1-2 待核验"
-      ]
+        "⏳ 莱比锡红牛 vs 多特蒙德: 预测2-1 待核验（5/13未赛：莱比锡vs圣保利2-1, 多特vs法兰克福3-2）",
+        "⏳ 马赛 vs 摩纳哥: 预测1-1 待核验（5/13未赛：马赛vs勒阿弗尔1-0, 摩纳哥vs里尔0-1）",
+        "⏳ 皇家贝蒂斯 vs 塞尔塔: 预测2-1 待核验（5/13未赛：贝蒂斯vs埃尔切2-1, 塞尔塔vs莱万特2-3）",
+        "⏳ 都灵 vs 亚特兰大: 预测1-2 待核验（5/13未赛：都灵vs萨索洛2-1, 亚特兰大vs米兰2-3）"
+      ],
+      "last_updated": "2026-05-14 09:29",
+      "note": "5月13日复盘：4场待核验预测均未在5月13日进行比赛，可能是未来轮次或杯赛的预测。已通过Flashscore核实各联赛当天赛果。"
     }
   },
   "weekly": null,

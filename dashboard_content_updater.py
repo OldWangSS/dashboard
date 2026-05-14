@@ -9,7 +9,7 @@ import json, sys, os, argparse
 from datetime import datetime
 
 def _data_file():
-    """根据操作系统自动选择路径"""
+    """根据操作系统自动选择路径 — 与 dashboard_updater.py 写入同一文件"""
     if sys.platform == "win32":
         return r"F:\AgentDownload\dashboard\dashboard\data\status.json"
     else:
