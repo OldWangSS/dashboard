@@ -528,14 +528,27 @@ const link = g.append("g").selectAll("line")
   .attr("stroke-opacity", 0.5)
   .attr("stroke-width", 1);
 
-// Nodes
+// Nodes — drag with built-in click detection
+const dragBehavior = d3.drag()
+    .on("start", (e,d) => {
+      if(!e.active) sim.alphaTarget(0.3).restart();
+      d.fx = d.x; d.fy = d.y;
+      d._wasDragged = false;
+    })
+    .on("drag", (e,d) => {
+      d.fx = e.x; d.fy = e.y;
+      d._wasDragged = true;
+    })
+    .on("end", (e,d) => {
+      if(!e.active) sim.alphaTarget(0);
+      d.fx = null; d.fy = null;
+      if (!d._wasDragged) handleNodeClick(d);
+    });
+
 const node = g.append("g").selectAll("g")
   .data(NODES).join("g")
   .attr("class", "node")
-  .call(d3.drag()
-    .on("start", (e,d) => { if(!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
-    .on("drag", (e,d) => { d.fx = e.x; d.fy = e.y; })
-    .on("end", (e,d) => { if(!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }));
+  .call(dragBehavior);
 
 node.append("circle")
   .attr("r", d => catRadius[d.type] || 6)
@@ -565,22 +578,11 @@ node.on("mouseenter", function(e,d) {
     tooltip.classed("show", false);
   });
 
-// Click → modal + highlight (use mousedown/up to avoid D3 drag conflict)
+// Click handler — fires from drag.end when no actual drag occurred
 let lastClicked = null;
 let highlightActive = false;
-let clickStart = null;
 
-node.on("mousedown", function(e, d) {
-  clickStart = [e.clientX, e.clientY];
-});
-
-node.on("mouseup", function(e, d) {
-  if (!clickStart) return;
-  const dx = e.clientX - clickStart[0];
-  const dy = e.clientY - clickStart[1];
-  clickStart = null;
-  if (Math.abs(dx) > 3 || Math.abs(dy) > 3) return; // was a drag, not a click
-
+function handleNodeClick(d) {
   // Reset all from previous click
   resetHighlight();
   highlightActive = true;
@@ -636,7 +638,7 @@ node.on("mouseup", function(e, d) {
   tag.style.color = catColors[d.type];
   document.getElementById("modal-desc").innerHTML = md2html(d.desc || "暂无详细描述");
   document.getElementById("modal-overlay").classList.add("show");
-});
+}
 
 function resetHighlight() {
   if (!highlightActive) return;
