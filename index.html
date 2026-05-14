@@ -565,14 +565,24 @@ node.on("mouseenter", function(e,d) {
     tooltip.classed("show", false);
   });
 
-// Click → modal + highlight connected links & node
+// Click → modal + highlight (use mousedown/up to avoid D3 drag conflict)
 let lastClicked = null;
 let highlightActive = false;
+let clickStart = null;
 
-node.on("click", function(e,d) {
+node.on("mousedown", function(e, d) {
+  clickStart = [e.clientX, e.clientY];
+});
+
+node.on("mouseup", function(e, d) {
+  if (!clickStart) return;
+  const dx = e.clientX - clickStart[0];
+  const dy = e.clientY - clickStart[1];
+  clickStart = null;
+  if (Math.abs(dx) > 3 || Math.abs(dy) > 3) return; // was a drag, not a click
+
   // Reset all from previous click
   resetHighlight();
-
   highlightActive = true;
   lastClicked = d;
 
