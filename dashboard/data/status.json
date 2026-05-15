@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-15 00:16",
+  "updated": "2026-05-15 22:32",
   "daily": {
     "tasks": [
       "✅ PWA政企需求助手从Vercel迁移至GitHub Pages（DNS配置/路径调整/代码迁移）",
@@ -73,118 +73,158 @@
       }
     ]
   },
-  "news": {
-    "items": [
-      {
-        "title": "特朗普抵达北京开启访华之旅",
-        "source": "新浪新闻",
-        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxufva0619467.shtml",
-        "category": "国际时政"
-      },
-      {
-        "title": "中美经贸合作受期待",
-        "source": "新浪新闻",
-        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxufvi4444479.shtml",
-        "category": "国际时政"
-      },
-      {
-        "title": "韩国总统李在明会见何立峰",
-        "source": "新浪新闻",
-        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxtvfp4607081.shtml",
-        "category": "国际时政"
-      },
-      {
-        "title": "创业板指创历史新高突破4000点",
-        "source": "新浪新闻",
-        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxtqxn9383161.shtml",
-        "category": "国际金融"
-      },
-      {
-        "title": "功率半导体密集涨价",
-        "source": "新浪新闻",
-        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxtzph9322283.shtml",
-        "category": "国际金融"
-      },
-      {
-        "title": "燃油附加费涨价端午节订票涨84%",
-        "source": "新浪新闻",
-        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxtvfh0781552.shtml",
-        "category": "国际金融"
-      },
-      {
-        "title": "英超阿森纳79分领跑",
-        "source": "新浪体育",
-        "link": "https://sports.sina.com.cn/",
-        "category": "国际足球"
-      },
-      {
-        "title": "西甲巴萨91分领跑",
-        "source": "新浪体育",
-        "link": "https://sports.sina.com.cn/",
-        "category": "国际足球"
-      },
-      {
-        "title": "意甲国米85分领跑",
-        "source": "新浪体育",
-        "link": "https://sports.sina.com.cn/",
-        "category": "国际足球"
-      },
-      {
-        "title": "德甲拜仁86分领跑",
-        "source": "新浪体育",
-        "link": "https://sports.sina.com.cn/",
-        "category": "国际足球"
-      },
-      {
-        "title": "法甲巴黎76分领跑",
-        "source": "新浪体育",
-        "link": "https://sports.sina.com.cn/",
-        "category": "国际足球"
-      },
-      {
-        "title": "雷霆115-110战胜湖人",
-        "source": "央视网体育",
-        "link": "https://sports.cctv.com/2026/05/12/VIDEX2mOWF1J6PFkWxYcovVp260512.shtml",
-        "category": "体育"
-      },
-      {
-        "title": "CBA上海领跑积分榜",
-        "source": "新浪体育",
-        "link": "https://sports.sina.com.cn/",
-        "category": "体育"
-      },
-      {
-        "title": "伦敦世乒赛国乒冲冠",
-        "source": "腾讯新闻",
-        "link": "https://news.qq.com/rain/a/20260510A022PX00",
-        "category": "体育"
-      },
-      {
-        "title": "电竞欢瑞世纪布局互动影游",
-        "source": "新浪游戏",
-        "link": "http://games.sina.com.cn/news/yw/2026-05-11/esports-inhxnwmr9157494.shtml",
-        "category": "体育"
-      },
-      {
-        "title": "中国科学家发现001飞米颗粒",
-        "source": "新浪新闻",
-        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxtzpe0729061.shtml",
-        "category": "科技"
-      },
-      {
-        "title": "开源盛世破解算力霸权",
-        "source": "新浪新闻",
-        "link": "https://news.sina.com.cn/s/2026-05-13/doc-inhxsxzt7782439.shtml",
-        "category": "科技"
-      },
-      {
-        "title": "微软布局后OpenAI时代",
-        "source": "新浪科技",
-        "link": "https://finance.sina.com.cn/jjxw/2026-05-14/doc-inhxvihs8801065.shtml",
-        "category": "科技"
-      }
-    ]
-  },
+  "news": [
+    {
+      "title": "特朗普时隔9年再度访华",
+      "source": "央视网",
+      "url": "https://news.cctv.cn/2026/05/13/ARTIuhppF9jaRdccX0QeWT4N260513.shtml",
+      "category": "国际时政"
+    },
+    {
+      "title": "中美经贸会谈正式启动",
+      "source": "腾讯新闻",
+      "url": "https://news.qq.com/rain/a/20260511A03T8W00",
+      "category": "国际时政"
+    },
+    {
+      "title": "5·13美国总统访华",
+      "source": "百度百科",
+      "url": "https://baike.baidu.com/item/5%C2%B713%E7%BE%8E%E5%9B%BD%E6%80%BB%E7%BB%9F%E8%AE%BF%E5%8D%8E/67765529",
+      "category": "国际时政"
+    },
+    {
+      "title": "俄军对乌军实施打击 击落572架无人机",
+      "source": "央广网军事",
+      "url": "http://military.cnr.cn/gj/",
+      "category": "国际军事"
+    },
+    {
+      "title": "联黎部队无人机爆炸危及维和人员",
+      "source": "央广网军事",
+      "url": "http://military.cnr.cn/gj/",
+      "category": "国际军事"
+    },
+    {
+      "title": "巴基斯坦否认伊朗飞机军事用途",
+      "source": "百家号",
+      "url": "",
+      "category": "国际军事"
+    },
+    {
+      "title": "特朗普访华期间中美经贸关系引关注",
+      "source": "央视网",
+      "url": "",
+      "category": "国际金融"
+    },
+    {
+      "title": "全球金融市场聚焦中美会谈",
+      "source": "央视网",
+      "url": "",
+      "category": "国际金融"
+    },
+    {
+      "title": "人民币汇率走势受关注",
+      "source": "网易财经",
+      "url": "",
+      "category": "国际金融"
+    },
+    {
+      "title": "2025-2026赛季英超联赛激战正酣",
+      "source": "Premier League",
+      "url": "https://www.premierleague.com/",
+      "category": "国际足球"
+    },
+    {
+      "title": "英超赛程表更新",
+      "source": "球迷屋",
+      "url": "https://www.qiumiwu.com/league/yingchao/game",
+      "category": "国际足球"
+    },
+    {
+      "title": "切尔西等豪门赛季末冲刺",
+      "source": "英超官网",
+      "url": "",
+      "category": "国际足球"
+    },
+    {
+      "title": "欧洲足球五大联赛动态",
+      "source": "百度百科",
+      "url": "https://baike.baidu.com/item/%E8%8B%B1%E6%A0%BC%E5%85%B0%E8%B6%B3%E7%90%83%E8%B6%85%E7%BA%A7%E8%81%94%E8%B5%9B/1552935",
+      "category": "国际足球"
+    },
+    {
+      "title": "英超实时比分服务",
+      "source": "365Scores",
+      "url": "https://www.365scores.com/zh-tw/football/league/premier-league-7",
+      "category": "国际足球"
+    },
+    {
+      "title": "2026浙江省电子体育大赛义乌落幕",
+      "source": "百家号",
+      "url": "https://baijiahao.baidu.com/s?id=1865084787232901692",
+      "category": "体育+电竞"
+    },
+    {
+      "title": "虚拟体育破圈发力",
+      "source": "百家号",
+      "url": "http://baijiahao.baidu.com/s?id=1865085774241987738",
+      "category": "体育+电竞"
+    },
+    {
+      "title": "何猷君电竞体育文旅项目落户三亚",
+      "source": "新浪",
+      "url": "http://k.sina.com.cn/article_7857201856_1d45362c001905f07q.html",
+      "category": "体育+电竞"
+    },
+    {
+      "title": "CCTV-5+体育赛事全程直播",
+      "source": "央视网",
+      "url": "https://tv.cctv.com/live/cctv5plus/",
+      "category": "体育+电竞"
+    },
+    {
+      "title": "运动健身成热潮",
+      "source": "综合",
+      "url": "",
+      "category": "体育+电竞"
+    },
+    {
+      "title": "央视综艺国际时讯5月13日",
+      "source": "央视网",
+      "url": "https://tv.cctv.com/2026/05/13/VIDEUfFnI0MoEd4F0bXTniRe260513.shtml",
+      "category": "娱乐"
+    },
+    {
+      "title": "明星演唱会动态",
+      "source": "综合",
+      "url": "",
+      "category": "娱乐"
+    },
+    {
+      "title": "影视圈近期动态",
+      "source": "综合",
+      "url": "",
+      "category": "娱乐"
+    },
+    {
+      "title": "申昊科技携手中移动签署战略合作协议",
+      "source": "网易",
+      "url": "https://m.163.com/dy/article/KSSV5DEH05118K7K.html",
+      "category": "科技"
+    },
+    {
+      "title": "新兴技术及应用产业日报05.13",
+      "source": "网易",
+      "url": "https://m.163.com/dy/article/KSSV5DEH05118K7K.html",
+      "category": "科技"
+    },
+    {
+      "title": "AI大模型发展引关注",
+      "source": "综合",
+      "url": "",
+      "category": "科技"
+    }
+  ],
   "football": {
     "predictions": [
       {
