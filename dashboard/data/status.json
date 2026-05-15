@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-16 07:28",
+  "updated": "2026-05-16 07:34",
   "daily": {
     "tasks": [
       "✅ PWA政企需求助手从Vercel迁移至GitHub Pages（DNS配置/路径调整/代码迁移）",
@@ -228,24 +228,136 @@
   "football": {
     "predictions": [
       {
-        "home": "巴伦西亚",
-        "away": "巴列卡诺",
-        "prediction": "2-1",
-        "league": "西班牙甲级",
+        "home": "水户蜀葵",
+        "away": "东京绿茵",
+        "prediction": "1-1",
+        "league": "日本职业足球J1联赛",
         "hit": null
       },
       {
-        "home": "赫罗纳",
-        "away": "皇家社会",
-        "prediction": "2-1",
-        "league": "西班牙甲级",
+        "home": "浦和红钻",
+        "away": "FC东京",
+        "prediction": "1-1",
+        "league": "日本职业足球J1联赛",
         "hit": null
       },
       {
-        "home": "皇家马德里",
-        "away": "皇家奥维耶多",
+        "home": "横滨水手",
+        "away": "柏太阳神",
+        "prediction": "2-1",
+        "league": "日本职业足球J1联赛",
+        "hit": null
+      },
+      {
+        "home": "纽卡斯尔喷气机",
+        "away": "悉尼FC",
+        "prediction": "3-1",
+        "league": "澳大利亚超级联赛",
+        "hit": null
+      },
+      {
+        "home": "武汉三镇",
+        "away": "辽宁铁人",
+        "prediction": "2-1",
+        "league": "中国超级联赛",
+        "hit": null
+      },
+      {
+        "home": "山东泰山",
+        "away": "重庆铜梁龙",
+        "prediction": "2-1",
+        "league": "中国超级联赛",
+        "hit": null
+      },
+      {
+        "home": "云南玉昆",
+        "away": "上海申花",
         "prediction": "2-2",
-        "league": "西班牙甲级",
+        "league": "中国超级联赛",
+        "hit": null
+      },
+      {
+        "home": "勒沃库森",
+        "away": "汉堡",
+        "prediction": "3-0",
+        "league": "德国甲级",
+        "hit": null
+      },
+      {
+        "home": "拜仁慕尼黑",
+        "away": "科隆",
+        "prediction": "3-1",
+        "league": "德国甲级",
+        "hit": null
+      },
+      {
+        "home": "柏林联合",
+        "away": "奥格斯堡",
+        "prediction": "2-2",
+        "league": "德国甲级",
+        "hit": null
+      },
+      {
+        "home": "法兰克福",
+        "away": "斯图加特",
+        "prediction": "3-2",
+        "league": "德国甲级",
+        "hit": null
+      },
+      {
+        "home": "柏林联合",
+        "away": "奥格斯堡",
+        "prediction": "1-1",
+        "league": "德国甲级",
+        "hit": null
+      },
+      {
+        "home": "海登海姆",
+        "away": "美因茨",
+        "prediction": "2-2",
+        "league": "德国甲级",
+        "hit": null
+      },
+      {
+        "home": "拜仁慕尼黑",
+        "away": "1. FC Köln",
+        "prediction": "1-1",
+        "league": "德国甲级",
+        "hit": null
+      },
+      {
+        "home": "勒沃库森",
+        "away": "Hamburger SV",
+        "prediction": "1-1",
+        "league": "德国甲级",
+        "hit": null
+      },
+      {
+        "home": "圣保利",
+        "away": "沃尔夫斯堡",
+        "prediction": "2-2",
+        "league": "德国甲级",
+        "hit": null
+      },
+      {
+        "home": "云达不莱梅",
+        "away": "多特蒙德",
+        "prediction": "2-2",
+        "league": "德国甲级",
+        "hit": null
+      },
+      {
+        "home": "门兴格拉德巴赫",
+        "away": "霍芬海姆",
+        "prediction": "3-0",
+        "league": "德国甲级",
+        "hit": null
+      },
+      {
+        "home": "弗赖堡",
+        "away": "RB莱比锡",
+        "prediction": "3-1",
+        "league": "德国甲级",
         "hit": null
       }
     ],
