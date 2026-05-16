@@ -39,7 +39,9 @@ def main():
         if sys.stdin.isatty():
             print("ERROR: no --json arg and no stdin pipe", file=sys.stderr)
             sys.exit(1)
-        raw = sys.stdin.read()
+        # Windows 上 sys.stdin.read() 默认用 GBK/CP936 解码，中文变问号
+        # 必须显式用 UTF-8 读取 raw bytes
+        raw = sys.stdin.buffer.read().decode('utf-8')
 
     try:
         incoming = json.loads(raw)

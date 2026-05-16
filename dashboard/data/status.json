@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-16 09:28",
+  "updated": "2026-05-16 09:29",
   "daily": {
     "tasks": [
       "✅ PWA政企需求助手从Vercel迁移至GitHub Pages（DNS配置/路径调整/代码迁移）",
@@ -76,136 +76,130 @@
   "news": {
     "items": [
       {
-        "title": "????????????????????",
-        "source": "???",
+        "title": "内塔尼亚胡称将对《纽约时报》提起诽谤诉讼",
+        "source": "新华社",
         "link": "https://news.china.com/international/1000/20260515/49495769.html",
-        "category": "????"
+        "category": "国际时政"
       },
       {
-        "title": "???????????? ??????",
-        "source": "???",
+        "title": "利比亚发生大规模球迷骚乱 总理府遭纵火",
+        "source": "新华社",
         "link": "https://news.china.com/international/1000/20260515/49495751.html",
-        "category": "????"
+        "category": "国际时政"
       },
       {
-        "title": "????????????????",
-        "source": "???????",
+        "title": "高市急推“紧急事态条款”打的什么算盘？",
+        "source": "央视新闻",
         "link": "https://news.china.com/international/1000/20260515/49494589.html",
-        "category": "????"
+        "category": "国际时政"
       },
       {
-        "title": "????????????????",
-        "source": "???",
+        "title": "黎以“停火”以来已有上百名黎儿童伤亡",
+        "source": "新华社",
         "link": "https://news.china.com/international/1000/20260515/49494577.html",
-        "category": "????"
+        "category": "国际时政"
       },
       {
-        "title": "???????????????",
-        "source": "????",
+        "title": "凯文·沃什确认接棒美联储“掌门人”",
+        "source": "环球时报",
         "link": "https://news.china.com/international/1000/20260515/49494567.html",
-        "category": "????"
+        "category": "国际时政"
       },
       {
-        "title": "???????????????",
-        "source": "????",
-        "link": "https://news.china.com/international/1000/20260515/49494567.html",
-        "category": "????"
-      },
-      {
-        "title": "???????? ???????",
-        "source": "???",
-        "link": "https://news.china.com/socialgd/10000169/20260515/49496385.html",
-        "category": "????"
-      },
-      {
-        "title": "??????3.74% ????????",
-        "source": "????",
-        "link": "https://news.china.com/socialgd/10000169/20260515/49496426.html",
-        "category": "????"
-      },
-      {
-        "title": "????????FPV?????",
+        "title": "以色列军队将开设FPV无人机工厂",
         "source": "Mil.in.ua",
         "link": "https://mil.in.ua/",
-        "category": "????"
+        "category": "国际军事"
       },
       {
-        "title": "?????????????????",
-        "source": "???",
+        "title": "美股三大股指低开 芯片股集体下挫",
+        "source": "金融界",
+        "link": "https://news.china.com/socialgd/10000169/20260515/49496385.html",
+        "category": "国际金融"
+      },
+      {
+        "title": "黄金概念下跌3.74% 板块资金大幅流出",
+        "source": "证券时报",
+        "link": "https://news.china.com/socialgd/10000169/20260515/49496426.html",
+        "category": "国际金融"
+      },
+      {
+        "title": "世界杯转播权：央视获独家全媒体权利",
+        "source": "光明网",
         "link": "https://news.china.com/socialgd/10000169/20260515/49496383.html",
-        "category": "????"
+        "category": "国际足球"
       },
       {
-        "title": "?????????????? ????",
-        "source": "???",
+        "title": "国际足联回应央视世界杯版权费 达成共识",
+        "source": "光明网",
         "link": "https://news.china.com/socialgd/10000169/20260515/49496360.html",
-        "category": "????"
+        "category": "国际足球"
       },
       {
-        "title": "?????????????",
-        "source": "???",
+        "title": "印度仍未谈妥世界杯转播协议 谈判停滞引关注",
+        "source": "懂球帝",
         "link": "https://news.china.com/socialgd/10000169/20260515/49496421.html",
-        "category": "????"
+        "category": "国际足球"
       },
       {
-        "title": "??????????????",
-        "source": "???",
+        "title": "坎特入选法国队世界杯最终名单",
+        "source": "环球网",
         "link": "https://news.china.com/socialgd/10000169/20260515/49496375.html",
-        "category": "????"
+        "category": "国际足球"
       },
       {
-        "title": "???????????????",
-        "source": "????",
+        "title": "张雪机车捷克站自由练习赛第一名",
+        "source": "驱动之家",
         "link": "https://news.china.com/socialgd/10000169/20260515/49496339.html",
-        "category": "????"
+        "category": "体育"
       },
       {
-        "title": "???????????????",
-        "source": "???",
+        "title": "斯特鲁斯：哈登是真正的职业球员",
+        "source": "北青网",
         "link": "https://news.china.com/socialgd/10000169/20260515/49496398.html",
-        "category": "????"
+        "category": "体育"
       },
       {
-        "title": "??????????????",
-        "source": "???",
+        "title": "《给阿栅的情书》凭什么让观众追捧",
+        "source": "百家号",
         "link": "https://news.china.com/socialgd/10000169/20260515/49496393.html",
-        "category": "??"
+        "category": "娱乐"
       },
       {
-        "title": "??????????? 719?????",
-        "source": "?????",
+        "title": "金鹰奖即将启动网络投票 719部作品参评",
+        "source": "中国新闻网",
         "link": "https://news.china.com/socialgd/10000169/20260516/49496439.html",
-        "category": "??"
+        "category": "娱乐"
       },
       {
-        "title": "??????? ????????",
-        "source": "????",
+        "title": "岳云鹏探望蔡磊 相约未来同看演出",
+        "source": "山西晚报",
         "link": "https://news.china.com/socialgd/10000169/20260515/49496330.html",
-        "category": "??"
+        "category": "娱乐"
       },
       {
-        "title": "????????????? ????????",
-        "source": "???",
+        "title": "比亚迪王传福：电池产能紧张 多车型进入爬坡期",
+        "source": "金融界",
         "link": "https://news.china.com/socialgd/10000169/20260516/49496431.html",
-        "category": "??"
+        "category": "科技"
       },
       {
-        "title": "?????FF?? ????AI???",
-        "source": "??",
+        "title": "贾跃亭凭什么重掌FF大权 带着“物理AI”杀回来",
+        "source": "知顿",
         "link": "https://news.china.com/socialgd/10000169/20260515/49496416.html",
-        "category": "??"
+        "category": "科技"
       },
       {
-        "title": "????????MPV??",
-        "source": "IT??",
+        "title": "鸿蒙智行首款旗舰MPV上市 重塑高端MPV标准",
+        "source": "IT之家",
         "link": "https://news.china.com/socialgd/10000169/20260515/49496347.html",
-        "category": "??"
+        "category": "科技"
       },
       {
-        "title": "????????????????",
-        "source": "?????",
+        "title": "中国首颗能源工程专用卫星成功发射",
+        "source": "中国新闻网",
         "link": "https://news.china.com/socialgd/10000169/20260515/49496343.html",
-        "category": "??"
+        "category": "科技"
       }
     ]
   },
