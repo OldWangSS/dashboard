@@ -229,7 +229,10 @@ function renderFootball(f) {
   document.getElementById('predictions').innerHTML = preds.length 
     ? preds.map(m => {
         const cls = m.hit===true?'hit':m.hit===false?'miss':'pending';
-        return `<div class="match"><span>${m.home||'?'} vs ${m.away||'?'}</span><span class="score ${cls}">${m.prediction||'--'}</span></div>`;
+        const home = m.home||m.home_team||'?';
+        const away = m.away||m.away_team||'?';
+        const pred = m.prediction_cn||m.prediction||'--';
+        return `<div class="match"><span>${home} vs ${away}</span><span class="score ${cls}">${pred}</span></div>`;
       }).join('')
     : '<div class="item">--</div>';
   
