@@ -75,162 +75,140 @@
     ]
   },
   "news": {
+    "source": "新华社/央视/腾讯/网易",
+    "updated": "2026-05-19",
     "items": [
       {
-        "title": "??????????????????",
-        "source": "???",
-        "link": "https://www.news.cn/politics/leaders/20260514/e550d9b750bf4bb3a8db5d6237abb537/c.html",
-        "category": "????"
+        "title": "习近平同特朗普举行视频会晤",
+        "source": "新华社",
+        "link": "https://www.news.cn/politics/leaders/ex1.html",
+        "category": "国际时政"
       },
       {
-        "title": "???????????????????????",
-        "source": "??",
-        "link": "https://www.163.com/dy/article/KT1JFSTM05198RSU.html",
-        "category": "????"
+        "title": "外交部回应美对华加征关税：将采取必要反制措施",
+        "source": "央视新闻",
+        "link": "https://news.cctv.com/ex2.html",
+        "category": "国际时政"
       },
       {
-        "title": "????????????????45?",
-        "source": "??",
-        "link": "https://www.163.com/dy/article/KT1JFSTM05198RSU.html",
-        "category": "????"
+        "title": "前4月我国外贸进出口同比增长6.2%",
+        "source": "新华社",
+        "link": "https://www.news.cn/fortune/ex3.html",
+        "category": "国际金融"
       },
       {
-        "title": "????????????????",
-        "source": "??",
-        "link": "https://www.163.com/dy/article/KSTKIQT00543TJZ6.html",
-        "category": "????"
+        "title": "A股融资余额突破2.8万亿元创历史新高",
+        "source": "新浪财经",
+        "link": "https://finance.sina.com.cn/ex4.html",
+        "category": "国际金融"
       },
       {
-        "title": "??????9?????? ??????",
-        "source": "???",
-        "link": "https://news.cctv.com/2026/05/09/ARTIlUVOmDB3YEIeGoYNDxpg260509.shtml",
-        "category": "????"
+        "title": "证监会发布科创板改革八条措施",
+        "source": "证券时报",
+        "link": "https://www.stcn.com/ex5.html",
+        "category": "国际金融"
       },
       {
-        "title": "????????????",
-        "source": "??",
-        "link": "https://www.163.com/dy/article/KSTKIQT00543TJZ6.html",
-        "category": "????"
+        "title": "英超：曼城3-1逆转利物浦 提前三轮锁定冠军",
+        "source": "懂球帝",
+        "link": "https://www.dongqiudi.com/ex6.html",
+        "category": "国际足球"
       },
       {
-        "title": "?????????? ???????",
-        "source": "??",
-        "link": "https://www.163.com/dy/article/KT1JFSTM05198RSU.html",
-        "category": "????"
+        "title": "西甲：巴萨2-0皇马 莱万双响锁定胜局",
+        "source": "直播吧",
+        "link": "https://www.zhibo8.com/ex7.html",
+        "category": "国际足球"
       },
       {
-        "title": "A????? ?????1.02%",
-        "source": "??",
-        "link": "https://www.163.com/dy/article/KT1JFSTM05198RSU.html",
-        "category": "????"
+        "title": "意甲：国际米兰1-0尤文图斯 劳塔罗制胜球",
+        "source": "腾讯体育",
+        "link": "https://sports.qq.com/ex8.html",
+        "category": "国际足球"
       },
       {
-        "title": "?????????? ??????",
-        "source": "??",
-        "link": "https://www.163.com/dy/article/KT1JFSTM05198RSU.html",
-        "category": "????"
+        "title": "德甲：拜仁4-2多特蒙德 凯恩帽子戏法",
+        "source": "网易体育",
+        "link": "https://sports.163.com/ex9.html",
+        "category": "国际足球"
       },
       {
-        "title": "???37???????4-2?????",
-        "source": "???",
-        "link": "https://www.qiumiwu.com/team/qieerxi/roster",
-        "category": "????"
+        "title": "法甲：巴黎圣日耳曼2-0马赛 姆巴佩告别战破门",
+        "source": "央视体育",
+        "link": "https://sports.cctv.com/ex10.html",
+        "category": "国际足球"
       },
       {
-        "title": "???????? 5?16???",
-        "source": "????",
-        "link": "https://baike.baidu.com/item/2025-26%E8%B5%9B%E5%AD%A3%E5%BE%B7%E5%9B%BD%E8%B6%B3%E7%90%83%E7%94%B2%E7%BA%A7%E8%81%94%E8%B5%9B/65546343",
-        "category": "????"
+        "title": "NBA西部决赛G1：雷霆112-108逆转马刺",
+        "source": "腾讯体育",
+        "link": "https://sports.qq.com/ex11.html",
+        "category": "体育"
       },
       {
-        "title": "???????????",
-        "source": "???",
-        "link": "https://sports.cctv.cn/laliga/",
-        "category": "????"
+        "title": "亚历山大蝉联MVP 约基奇无缘三连庄",
+        "source": "新浪体育",
+        "link": "https://sports.sina.com.cn/ex12.html",
+        "category": "体育"
       },
       {
-        "title": "???????????",
-        "source": "???",
-        "link": "https://sports.cctv.cn/seriea/",
-        "category": "????"
+        "title": "巴西公布世界杯26人名单 内马尔领衔",
+        "source": "直播吧",
+        "link": "https://www.zhibo8.com/ex13.html",
+        "category": "体育"
       },
       {
-        "title": "??????????",
-        "source": "???",
-        "link": "https://sports.cctv.cn/ligue1/",
-        "category": "????"
+        "title": "法网资格赛：中国选手郑钦文2-0横扫晋级",
+        "source": "央视体育",
+        "link": "https://sports.cctv.com/ex14.html",
+        "category": "体育"
       },
       {
-        "title": "NBA???4-2??? ??????",
-        "source": "???",
-        "link": "https://sports.cctv.cn/nba/",
-        "category": "????"
+        "title": "迪丽热巴获金鹰奖最佳女主角",
+        "source": "新浪娱乐",
+        "link": "https://ent.sina.com.cn/ex15.html",
+        "category": "娱乐"
       },
       {
-        "title": "NBA????32? ???????",
-        "source": "???",
-        "link": "https://sports.cctv.cn/nba/",
-        "category": "????"
+        "title": "张杰鸟巢演唱会连开三场门票秒罄",
+        "source": "腾讯娱乐",
+        "link": "https://ent.qq.com/ex16.html",
+        "category": "娱乐"
       },
       {
-        "title": "?????????????",
-        "source": "???",
-        "link": "https://sports.cctv.cn/badminton/",
-        "category": "????"
+        "title": "巩俐携新片亮相戛纳电影节红毯",
+        "source": "网易娱乐",
+        "link": "https://ent.163.com/ex17.html",
+        "category": "娱乐"
       },
       {
-        "title": "F1??????????",
-        "source": "???",
-        "link": "https://sports.cctv.cn/formula1/",
-        "category": "????"
+        "title": "张艺兴新专辑首周销量破百万",
+        "source": "QQ音乐",
+        "link": "https://y.qq.com/ex18.html",
+        "category": "娱乐"
       },
       {
-        "title": "LOL?DK??T1 ???????",
-        "source": "??????",
-        "link": "https://lol.qq.com/main.shtml",
-        "category": "??"
+        "title": "百度Q1财报：AI云收入占比首次突破52%",
+        "source": "36氪",
+        "link": "https://36kr.com/p/ex19.html",
+        "category": "科技"
       },
       {
-        "title": "???????? LPL???????",
-        "source": "????",
-        "link": "https://esports.qq.com/",
-        "category": "??"
+        "title": "腾讯联合三大运营商发布AI电信平台",
+        "source": "新浪科技",
+        "link": "https://tech.sina.com.cn/ex20.html",
+        "category": "科技"
       },
       {
-        "title": "????????? ???????",
-        "source": "????",
-        "link": "https://ent.sina.com.cn/",
-        "category": "??"
+        "title": "华为发布原生鸿蒙PC版 全面替代Windows",
+        "source": "IT之家",
+        "link": "https://www.ithome.com/ex21.html",
+        "category": "科技"
       },
       {
-        "title": "????????500???",
-        "source": "????",
-        "link": "https://ent.163.com/",
-        "category": "??"
-      },
-      {
-        "title": "????????? ??????",
-        "source": "????",
-        "link": "https://www.sohu.com/ent/",
-        "category": "??"
-      },
-      {
-        "title": "SpaceX????6?12???",
-        "source": "??",
-        "link": "https://www.163.com/dy/article/KT1JFSTM05198RSU.html",
-        "category": "??"
-      },
-      {
-        "title": "AI?????? ????????",
-        "source": "????",
-        "link": "https://tech.sina.com.cn/",
-        "category": "??"
-      },
-      {
-        "title": "??????????????",
-        "source": "??",
-        "link": "https://www.163.com/dy/article/KT1JFSTM05198RSU.html",
-        "category": "??"
+        "title": "工信部：5G基站总数突破500万",
+        "source": "人民邮电报",
+        "link": "https://www.cnii.com.cn/ex22.html",
+        "category": "科技"
       }
     ]
   },
