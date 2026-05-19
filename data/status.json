@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-14 09:29",
+  "updated": "2026-05-19 23:04",
   "daily": {
     "tasks": [
       "✅ PWA政企需求助手从Vercel迁移至GitHub Pages（DNS配置/路径调整/代码迁移）",
@@ -9,261 +9,1322 @@
       "✅ 万网DNS从零配置完成（A记录+CNAME），域名www.aithe1.xyz生效"
     ],
     "kb": [
-      "📌 PWA子路径部署避坑：Vercel自动检测子目录改路由，GitHub Pages更可控",
-      "📌 万网DNS A记录@→IP，CNAME www→github.io，全球传播需30分钟",
-      "📌 移动端Web Speech API：微信浏览器和iOS Safari不支持SpeechRecognition",
-      "📌 CSS -webkit-tap-highlight-color:transparent + user-select:none去蓝框",
-      "📌 touchstart+touchend+preventDefault替代pointerdown防按压弹跳"
+      "📌 “先让你的AI看懂你，再让你的AI帮助你” — 理解先于执行，AI不是工具是伙伴",
+      "📌 Token经济：AI时代的“石油”与“电力”——推理成本降280倍，总支出反增2.4倍（杰文斯悖论）。中国AI云市场2024-2029 CAGR 72%，从150亿→2200亿。中国模型OpenRouter份额从5%→32%，定价权重归。移动云作为国企底座，不拼价格拼场景深度。",
+      "📌 Token产业链五环：芯片→智算中心→MaaS→AI应用→社会影响。全栈AI能力（芯片+云+模型+应用）是区分赢家输家的结构性优势。阿里全栈闭环 vs 字节资本+2C生态 vs 腾讯微信入口。电信/华为国企云在创新速度+芯片获取上为双重劣势。",
+      "📌 定价权回归：2024Q2-2025Q1 API价格普降70-90%，2025Q2触底反弹，平均输入价+80%。AWS+15%，谷歌云大幅上扬。每10%涨价→阿里云利润率+4%。行业从“价格战”转向“价值战”——“谁懂行业用谁”替代“谁便宜用谁”。",
+      "📌 商业化隐忧：阿里云AI收入358亿/年 vs 1200亿资本开支。劳动收入份额60%→45%，幽灵GDP——产出增长未转化为工资。算力=国家主权战略资源。2026政府工作报告：实施超大规模智算集群、算电协同等新基建工程。",
+      "📌 舒展关联：标品是底座，定制是界面=Token是底层标品，行业应用是消费界面。AI是一根线=Token是线的计量单位，串起客户需求→模型调用→商业价值。移动的政企客户关系=最大价值锚点。Token经济最后一公里在应用层，不在算力层。"
     ],
     "token_summary": ""
   },
   "ai_news": {
-    "source": "天玑 Browser（百度搜索）",
-    "updated": "05-13 08:00",
+    "source": "百度搜索",
+    "updated": "05-14 10:00",
     "items": [
       {
-        "title": "Create 2026百度AI开发者大会北京开幕，李彦宏提出DAA日活智能体数新指标",
-        "link": "https://create2026.events.net.cn",
-        "tag": "大模型"
+        "title": "DeepSeek拟融资500亿元，投后估值3500亿，刷新中国AI企业融资纪录",
+        "link": "https://www.baidu.com",
+        "tag": "融资"
       },
       {
-        "title": "百度发布「芯云模体」全栈AI能力升级，主题「万物一体」开启智能新纪元",
+        "title": "腾讯Q1财报：AI战略迈入商业转化关键年，营收1964亿同比增9%，净利增21%",
         "link": "https://www.baidu.com",
         "tag": "大模型"
       },
       {
-        "title": "软通动力亮相Create 2026，展示全栈AI解决方案与智能硬件矩阵",
+        "title": "联发科天玑开发者大会MDDC 2026开幕，发布AI开发套件3.0，阶跃星辰音乐模型端侧部署",
         "link": "https://www.baidu.com",
         "tag": "产品"
       },
       {
-        "title": "全球人工智能终端展5月14-16日将在深圳举办，400+企业参展",
-        "link": "https://www.baidu.com",
-        "tag": "产品"
-      },
-      {
-        "title": "DeepSeek拟融资超70亿美元（约500亿人民币），或成中国AI公司最大融资轮",
-        "link": "https://www.baidu.com",
-        "tag": "融资"
-      },
-      {
-        "title": "美风投领投月之暗面（Kimi）新一轮融资约20亿美元，估值超200亿",
-        "link": "https://www.baidu.com",
-        "tag": "融资"
-      },
-      {
-        "title": "智谱AI发布原生多模态基础模型GLM-5V-Turbo，实现视觉即代码突破",
-        "link": "https://www.baidu.com",
-        "tag": "大模型"
-      },
-      {
-        "title": "AI硬件公司「未来智能」完成亿元级A+轮融资，传音参与战略投资",
-        "link": "https://www.baidu.com",
-        "tag": "融资"
-      },
-      {
-        "title": "美国考虑与中国就AI安全风险举行定期会谈，财长贝森特牵头",
+        "title": "网信办：3-4月新增72款生成式AI服务备案，累计868款完成备案",
         "link": "https://www.baidu.com",
         "tag": "政策"
       },
       {
-        "title": "CopilotKit AG-UI协议获A轮融资2700万美元，专注原生智能体应用部署",
+        "title": "中信建投AI中期策略：北美CSP Q1资本开支同比增70%，算力需求持续强劲",
+        "link": "https://www.baidu.com",
+        "tag": "大模型"
+      },
+      {
+        "title": "工信部发布AI终端智能化分级国标：L1响应级→L4协同级四级体系",
+        "link": "https://www.baidu.com",
+        "tag": "政策"
+      },
+      {
+        "title": "Anthropic计划今夏融资数百亿美元，估值冲击万亿美元超越OpenAI",
+        "link": "https://www.baidu.com",
+        "tag": "融资"
+      },
+      {
+        "title": "2026世界数字教育大会杭州举办：AI+教育从「答题工具」升级为「成长伙伴」",
         "link": "https://www.baidu.com",
         "tag": "产品"
+      },
+      {
+        "title": "特斯拉接入中国本土大模型，智能汽车AI竞争转向本地化服务能力较量",
+        "link": "https://www.baidu.com",
+        "tag": "产品"
+      },
+      {
+        "title": "央行/发改委/工信部联手引爆AI与半导体，招商证券预测CSP资本开支8300亿美元",
+        "link": "https://www.baidu.com",
+        "tag": "政策"
       }
     ]
   },
   "news": {
     "items": [
       {
-        "title": "特朗普抵达北京开启访华之旅",
-        "source": "新浪新闻",
-        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxufva0619467.shtml",
+        "title": "特朗普访华：中美元首同意建立中美建设性战略稳定关系新定位",
+        "source": "新华网",
+        "link": "https://www.news.cn/world/20260518/228dfc7940aa41b29efcb1af112301bf/c.html",
         "category": "国际时政"
       },
       {
-        "title": "中美经贸合作受期待",
-        "source": "新浪新闻",
-        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxufvi4444479.shtml",
+        "title": "外交部：中方愿同美方不断丰富中美建设性战略稳定关系内涵",
+        "source": "新华网",
+        "link": "https://www.news.cn/world/20260518/228dfc7940aa41b29efcb1af112301bf/c.html",
         "category": "国际时政"
       },
       {
-        "title": "韩国总统李在明会见何立峰",
-        "source": "新浪新闻",
-        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxtvfp4607081.shtml",
+        "title": "前4月中国经济数据出炉：规上工业增加值增5.6%，进出口增14.9%",
+        "source": "新华网",
+        "link": "http://www.news.cn/fortune/20260519/32857790c3fa4551bbb3214c8a17c375/c.html",
         "category": "国际时政"
       },
       {
-        "title": "创业板指创历史新高突破4000点",
-        "source": "新浪新闻",
-        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxtqxn9383161.shtml",
+        "title": "A股融资余额首破2.8万亿创历史新高，杠杆资金抱团AI与半导体",
+        "source": "新浪财经",
+        "link": "https://finance.sina.com.cn/roll/2026-05-13/doc-inhxsxzu9475183.shtml",
         "category": "国际金融"
       },
       {
-        "title": "功率半导体密集涨价",
-        "source": "新浪新闻",
-        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxtzph9322283.shtml",
+        "title": "证监会：科技企业并购重组审核提速至5个工作日，科创板设成长层",
+        "source": "东方财富",
+        "link": "https://caifuhao.eastmoney.com/news/20260518213748253326710",
         "category": "国际金融"
       },
       {
-        "title": "燃油附加费涨价端午节订票涨84%",
-        "source": "新浪新闻",
-        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxtvfh0781552.shtml",
+        "title": "A股三大指数小幅收跌，科创50逆势涨0.81%，成交缩至2.89万亿",
+        "source": "东方财富",
+        "link": "https://caifuhao.eastmoney.com/news/20260518213748253326710",
         "category": "国际金融"
       },
       {
-        "title": "英超阿森纳79分领跑",
+        "title": "英超阿森纳一球小胜伯恩利继续领跑积分榜",
+        "source": "央视体育",
+        "link": "https://sports.cctv.com/",
+        "category": "国际足球"
+      },
+      {
+        "title": "西甲巴萨91分领跑积分榜，冠军在望",
         "source": "新浪体育",
         "link": "https://sports.sina.com.cn/",
         "category": "国际足球"
       },
       {
-        "title": "西甲巴萨91分领跑",
+        "title": "意甲国米85分领跑积分榜",
         "source": "新浪体育",
         "link": "https://sports.sina.com.cn/",
         "category": "国际足球"
       },
       {
-        "title": "意甲国米85分领跑",
+        "title": "德甲拜仁86分领跑积分榜",
         "source": "新浪体育",
         "link": "https://sports.sina.com.cn/",
         "category": "国际足球"
       },
       {
-        "title": "德甲拜仁86分领跑",
+        "title": "法甲巴黎76分领跑积分榜",
         "source": "新浪体育",
         "link": "https://sports.sina.com.cn/",
         "category": "国际足球"
       },
       {
-        "title": "法甲巴黎76分领跑",
-        "source": "新浪体育",
-        "link": "https://sports.sina.com.cn/",
-        "category": "国际足球"
-      },
-      {
-        "title": "雷霆115-110战胜湖人",
-        "source": "央视网体育",
-        "link": "https://sports.cctv.com/2026/05/12/VIDEX2mOWF1J6PFkWxYcovVp260512.shtml",
-        "category": "体育"
-      },
-      {
-        "title": "CBA上海领跑积分榜",
-        "source": "新浪体育",
-        "link": "https://sports.sina.com.cn/",
-        "category": "体育"
-      },
-      {
-        "title": "伦敦世乒赛国乒冲冠",
+        "title": "NBA官宣亚历山大蝉联MVP！雷霆64胜联盟第一，现役第5位连庄",
         "source": "腾讯新闻",
-        "link": "https://news.qq.com/rain/a/20260510A022PX00",
+        "link": "https://news.qq.com/rain/a/20260518A02FDJ00",
         "category": "体育"
       },
       {
-        "title": "电竞欢瑞世纪布局互动影游",
-        "source": "新浪游戏",
-        "link": "http://games.sina.com.cn/news/yw/2026-05-11/esports-inhxnwmr9157494.shtml",
+        "title": "NBA西决G1：马刺122-115客场胜雷霆，文班亚马41+24",
+        "source": "央视体育",
+        "link": "https://sports.cctv.com/2026/05/19/VIDE8v66SPqh9kY9O8dj98nV260519.shtml",
         "category": "体育"
       },
       {
-        "title": "章若楠穿旗袍韵味十足",
+        "title": "巴西队公布26人世界杯名单，内马尔领衔入选",
+        "source": "央视体育",
+        "link": "https://sports.cctv.com/",
+        "category": "体育"
+      },
+      {
+        "title": "法网资格赛开打，中国选手周意出战男单",
+        "source": "腾讯体育",
+        "link": "https://sports.qq.com/",
+        "category": "体育"
+      },
+      {
+        "title": "迪丽热巴双剧入围金鹰奖：利剑玫瑰与枭起青壤引关注",
         "source": "新浪娱乐",
-        "link": "https://s.weibo.com/weibo?q=章若楠穿旗袍好有韵味",
+        "link": "https://www.sina.cn/news/detail/5299677515745026.html",
         "category": "娱乐"
       },
       {
-        "title": "权志龙vogue六月刊封面",
+        "title": "张杰鸟巢16连开创华语演唱会纪录，演出市场持续升温",
         "source": "新浪娱乐",
-        "link": "https://s.weibo.com/weibo?q=权志龙vogue六月刊封面画报",
+        "link": "https://ent.sina.com.cn/",
         "category": "娱乐"
       },
       {
-        "title": "张艺兴戛纳行程",
+        "title": "巩俐出任第79届戛纳电影节主竞赛单元评委",
         "source": "新浪娱乐",
-        "link": "https://s.weibo.com/weibo?q=张艺兴戛纳电影节日程",
+        "link": "https://ent.sina.com.cn/",
         "category": "娱乐"
       },
       {
-        "title": "巩俐任戛纳主竞赛评委",
+        "title": "张艺兴赴戛纳电影节，新片备受期待",
         "source": "新浪娱乐",
-        "link": "https://weibo.com/1642591402/QFdHxjGSf",
+        "link": "https://ent.sina.com.cn/",
         "category": "娱乐"
       },
       {
-        "title": "中国科学家发现001飞米颗粒",
-        "source": "新浪新闻",
-        "link": "https://news.sina.com.cn/c/2026-05-13/doc-inhxtzpe0729061.shtml",
+        "title": "百度Q1财报：AI业务收入占比首超50%达52%，文心大模型5.1上线",
+        "source": "人民网",
+        "link": "http://finance.people.com.cn/n1/2026/0519/c1004-40722881.html",
         "category": "科技"
       },
       {
-        "title": "开源盛世破解算力霸权",
-        "source": "新浪新闻",
-        "link": "https://news.sina.com.cn/s/2026-05-13/doc-inhxsxzt7782439.shtml",
+        "title": "腾讯电信高德同日发布重磅AI平台，算力Token低至9.9元",
+        "source": "数据猿",
+        "link": "http://www.datayuan.cn/article/23661.htm",
         "category": "科技"
       },
       {
-        "title": "微软布局后OpenAI时代",
+        "title": "百度地图首发地图原生智能三层架构，铺就AI落地高速公路",
         "source": "新浪科技",
-        "link": "https://finance.sina.com.cn/jjxw/2026-05-14/doc-inhxvihs8801065.shtml",
+        "link": "https://finance.sina.com.cn/tech/roll/2026-05-14/doc-inhxvtwn8763335.shtml",
         "category": "科技"
       }
     ]
   },
   "football": {
+    "review": {
+      "hit": 1,
+      "total": 19,
+      "direction": 0,
+      "rate": "1/19",
+      "detail": [
+        "❌ 水户蜀葵 vs 东京绿茵: 预测1-1 实际0-1",
+        "❌ 浦和红钻 vs FC东京: 预测1-1 实际0-0",
+        "❌ 横滨水手 vs 柏太阳神: 预测2-1 实际0-1",
+        "❌ 纽卡斯尔喷气机 vs 悉尼FC: 预测3-1 实际1-1",
+        "❌ 武汉三镇 vs 辽宁铁人: 预测2-1 实际2-2",
+        "❌ 山东泰山 vs 重庆铜梁龙: 预测2-1 实际3-1",
+        "❌ 云南玉昆 vs 上海申花: 预测2-2 实际1-0",
+        "❌ 勒沃库森 vs 汉堡: 预测3-0 实际1-1",
+        "❌ 拜仁慕尼黑 vs 科隆: 预测3-1 实际5-1",
+        "❌ 柏林联合 vs 奥格斯堡: 预测2-2 实际4-0",
+        "❌ 法兰克福 vs 斯图加特: 预测3-2 实际2-2",
+        "❌ 柏林联合 vs 奥格斯堡: 预测1-1 实际4-0",
+        "❌ 海登海姆 vs 美因茨: 预测2-2 实际0-2",
+        "❌ 拜仁慕尼黑 vs 1. FC Köln: 预测1-1 实际5-1",
+        "✅ 勒沃库森 vs Hamburger SV: 预测1-1 实际1-1",
+        "❌ 圣保利 vs 沃尔夫斯堡: 预测2-2 实际1-3",
+        "❌ 云达不莱梅 vs 多特蒙德: 预测2-2 实际0-2",
+        "❌ 门兴格拉德巴赫 vs 霍芬海姆: 预测3-0 实际4-0",
+        "❌ 弗赖堡 vs RB莱比锡: 预测3-1 实际4-1"
+      ],
+      "last_updated": "2026-05-17 09:16",
+      "note": "2026-05-16复盘：19场中1场命中(5.3%)。仅勒沃库森1-1汉堡命中。J1/澳超/中超经Flashscore手动核实，德甲经FD4 API核实。"
+    },
     "predictions": [
       {
-        "home": "那不勒斯",
-        "away": "博洛尼亚",
+        "match_id": "2915997",
+        "league": "日本职业足球J1联赛",
+        "home_team": "Mito HollyHock",
+        "away_team": "东京绿茵",
+        "home_team_cn": "水户蜀葵",
+        "away_team_cn": "东京绿茵",
+        "kickoff": "12:00",
+        "utc_date": "2026-05-16T12:00:00+08:00",
+        "has_result": true,
         "prediction": "1-1",
+        "prediction_cn": "1-1",
+        "confidence_level": "低",
+        "score_prediction": {
+          "primary": "1-1",
+          "secondary": "1-2",
+          "tertiary": "2-1",
+          "confidence_level": "低",
+          "primary_prob": 11.2,
+          "secondary_prob": 8.8,
+          "ge_home": 1.56,
+          "ge_away": 1.56,
+          "ou_display": "大2.0",
+          "ha_display": "-",
+          "description": "1.6 vs 1.6"
+        },
+        "tactical_prediction": {
+          "home_style": "低位防守+边路突击",
+          "away_style": "整体战术",
+          "home_formation": "442",
+          "away_formation": "433",
+          "home_key_strength": "密集防守执行，战术纪律，转换速度，跑动积极",
+          "away_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "home_weakness": "进攻创造力有限，锋线效率低",
+          "away_weakness": "缺乏超级球星，关键时刻个人能力有限"
+        },
+        "script_prediction": [
+          {
+            "type": "opener",
+            "text": "水户蜀葵（低位防守+边路突击）坐镇主场迎战东京绿茵（整体战术），联赛类型为日本职业足球J1联赛。"
+          },
+          {
+            "type": "key_duel",
+            "text": "关键对位：Mito HollyHock的442阵型对阵东京绿茵的433，水户蜀葵将依靠密集防守执行，战术纪律，……，而东京绿茵则试图利用缺乏超级球星，关键时刻个……。"
+          },
+          {
+            "type": "script",
+            "text": "双方最终握手言和。水户蜀葵的密集防守执行，战术纪律，……与东京绿茵的战术执行纪律强，跑动积极……势均力敌，1-1的比分合理反映了比赛走势。"
+          }
+        ],
+        "ou": "2",
+        "ha": "平手",
+        "ge_home": 1.56,
+        "ge_away": 1.56,
+        "actual_result": "0-1",
         "hit": false
       },
       {
-        "home": "巴列卡诺",
-        "away": "赫罗纳",
+        "match_id": "2915998",
+        "league": "日本职业足球J1联赛",
+        "home_team": "Urawa Red Diamonds",
+        "away_team": "FC东京",
+        "home_team_cn": "浦和红钻",
+        "away_team_cn": "FC东京",
+        "kickoff": "14:00",
+        "utc_date": "2026-05-16T14:00:00+08:00",
+        "has_result": true,
         "prediction": "1-1",
-        "hit": true
+        "prediction_cn": "1-1",
+        "confidence_level": "低",
+        "score_prediction": {
+          "primary": "1-1",
+          "secondary": "1-2",
+          "tertiary": "2-1",
+          "confidence_level": "低",
+          "primary_prob": 9.9,
+          "secondary_prob": 8.6,
+          "ge_home": 1.76,
+          "ge_away": 1.76,
+          "ou_display": "大2.25",
+          "ha_display": "-",
+          "description": "1.8 vs 1.8"
+        },
+        "tactical_prediction": {
+          "home_style": "整体战术",
+          "away_style": "整体战术",
+          "home_formation": "433",
+          "away_formation": "433",
+          "home_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "away_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "home_weakness": "缺乏超级球星，关键时刻个人能力有限",
+          "away_weakness": "缺乏超级球星，关键时刻个人能力有限"
+        },
+        "script_prediction": [
+          {
+            "type": "opener",
+            "text": "浦和红钻（整体战术）坐镇主场迎战FC东京（整体战术），联赛类型为日本职业足球J1联赛。"
+          },
+          {
+            "type": "key_duel",
+            "text": "关键对位：Urawa Red Diamonds的433阵型对阵FC东京的433，浦和红钻将依靠战术执行纪律强，跑动积极……，而FC东京则试图利用缺乏超级球星，关键时刻个……。"
+          },
+          {
+            "type": "script",
+            "text": "双方最终握手言和。浦和红钻的战术执行纪律强，跑动积极……与FC东京的战术执行纪律强，跑动积极……势均力敌，1-1的比分合理反映了比赛走势。"
+          }
+        ],
+        "ou": "2/2.5",
+        "ha": "平手",
+        "ge_home": 1.76,
+        "ge_away": 1.76,
+        "actual_result": "0-0",
+        "hit": false
       },
       {
-        "home": "莱比锡红牛",
-        "away": "多特蒙德",
+        "match_id": "2915999",
+        "league": "日本职业足球J1联赛",
+        "home_team": "Yokohama F. Marinos",
+        "away_team": "Kashiwa Reysol",
+        "home_team_cn": "横滨水手",
+        "away_team_cn": "柏太阳神",
+        "kickoff": "15:00",
+        "utc_date": "2026-05-16T15:00:00+08:00",
+        "has_result": true,
         "prediction": "2-1",
-        "hit": null
+        "prediction_cn": "2-1",
+        "confidence_level": "低",
+        "score_prediction": {
+          "primary": "2-1",
+          "secondary": "1-1",
+          "tertiary": "3-1",
+          "confidence_level": "低",
+          "primary_prob": 9.9,
+          "secondary_prob": 8.2,
+          "ge_home": 2.44,
+          "ge_away": 1.46,
+          "ou_display": "大2.5",
+          "ha_display": "主让0.25",
+          "description": "2.4 vs 1.5"
+        },
+        "tactical_prediction": {
+          "home_style": "传控+边路突击",
+          "away_style": "低位防守+快速转换",
+          "home_formation": "433",
+          "away_formation": "442",
+          "home_key_strength": "技术流打法，安德森·洛佩斯禁区终结，中场控制力强",
+          "away_key_strength": "密集防守执行，战术纪律，跑动积极，转换速度",
+          "home_weakness": "防线身前空间大",
+          "away_weakness": "进攻创造力有限，顶级球员缺乏"
+        },
+        "script_prediction": [
+          {
+            "type": "opener",
+            "text": "横滨水手（传控+边路突击）坐镇主场迎战柏太阳神（低位防守+快速转换），联赛类型为日本职业足球J1联赛。"
+          },
+          {
+            "type": "key_duel",
+            "text": "关键对位：Yokohama F. Marinos的433阵型对阵Kashiwa Reysol的442，横滨水手将依靠技术流打法，安德森·洛佩……，而柏太阳神则试图利用进攻创造力有限，顶级球员……。"
+          },
+          {
+            "type": "script",
+            "text": "横滨水手在主场展现出更强的战术执行力，技术流打法，安德森·洛佩斯禁区……。尽管柏太阳神的密集防守执行，战术纪……制造了威胁，但横滨水手凭借更高效的进攻以2-1险胜对手，主队胜利。"
+          }
+        ],
+        "ou": "2.5",
+        "ha": "* 平/半",
+        "ge_home": 2.44,
+        "ge_away": 1.46,
+        "actual_result": "0-1",
+        "hit": false
       },
       {
-        "home": "马赛",
-        "away": "摩纳哥",
+        "match_id": "2983485",
+        "league": "澳大利亚超级联赛",
+        "home_team": "Newcastle Jets",
+        "away_team": "Sydney FC",
+        "home_team_cn": "纽卡斯尔喷气机",
+        "away_team_cn": "悉尼FC",
+        "kickoff": "16:40",
+        "utc_date": "2026-05-16T16:40:00+08:00",
+        "has_result": true,
+        "prediction": "3-1",
+        "prediction_cn": "3-1",
+        "confidence_level": "低",
+        "score_prediction": {
+          "primary": "3-1",
+          "secondary": "3-2",
+          "tertiary": "2-1",
+          "confidence_level": "低",
+          "primary_prob": 8.4,
+          "secondary_prob": 8.0,
+          "ge_home": 3.17,
+          "ge_away": 1.9,
+          "ou_display": "大3.25",
+          "ha_display": "主让0.25",
+          "description": "3.2 vs 1.9"
+        },
+        "tactical_prediction": {
+          "home_style": "整体战术",
+          "away_style": "边路传中+定位球",
+          "home_formation": "433",
+          "away_formation": "433",
+          "home_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "away_key_strength": "经验丰富，边路爆破，定位球进攻有针对性",
+          "home_weakness": "缺乏超级球星，关键时刻个人能力有限",
+          "away_weakness": "防线老将转身慢"
+        },
+        "script_prediction": [
+          {
+            "type": "opener",
+            "text": "纽卡斯尔喷气机（整体战术）坐镇主场迎战悉尼FC（边路传中+定位球），联赛类型为澳大利亚超级联赛。"
+          },
+          {
+            "type": "key_duel",
+            "text": "关键对位：Newcastle Jets的433阵型对阵Sydney FC的433，纽卡斯尔喷气机将依靠战术执行纪律强，跑动积极……，而悉尼FC则试图利用防线老将转身慢……。"
+          },
+          {
+            "type": "script",
+            "text": "纽卡斯尔喷气机从开场便掌控节奏，战术执行纪律强，跑动积极，攻守……成为决定比赛的关键。第3球早早杀死悬念，悉尼FC的防线老将转身慢……被完全放大，最终纽卡斯尔喷气机以3-1完胜，主队胜利。"
+          }
+        ],
+        "ou": "3/3.5",
+        "ha": "平/半",
+        "ge_home": 3.17,
+        "ge_away": 1.9,
+        "actual_result": "1-1",
+        "hit": false
+      },
+      {
+        "match_id": "2944700",
+        "league": "中国超级联赛",
+        "home_team": "武汉三镇",
+        "away_team": "辽宁铁人",
+        "home_team_cn": "武汉三镇",
+        "away_team_cn": "辽宁铁人",
+        "kickoff": "18:00",
+        "utc_date": "2026-05-16T18:00:00+08:00",
+        "has_result": true,
+        "prediction": "2-1",
+        "prediction_cn": "2-1",
+        "confidence_level": "低",
+        "score_prediction": {
+          "primary": "2-1",
+          "secondary": "3-1",
+          "tertiary": "2-2",
+          "confidence_level": "低",
+          "primary_prob": 9.4,
+          "secondary_prob": 8.4,
+          "ge_home": 2.68,
+          "ge_away": 1.61,
+          "ou_display": "大2.75",
+          "ha_display": "主让0.25",
+          "description": "2.7 vs 1.6"
+        },
+        "tactical_prediction": {
+          "home_style": "整体战术",
+          "away_style": "整体战术",
+          "home_formation": "433",
+          "away_formation": "433",
+          "home_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "away_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "home_weakness": "缺乏超级球星，关键时刻个人能力有限",
+          "away_weakness": "缺乏超级球星，关键时刻个人能力有限"
+        },
+        "script_prediction": [
+          {
+            "type": "opener",
+            "text": "武汉三镇（整体战术）坐镇主场迎战辽宁铁人（整体战术），联赛类型为中国超级联赛。"
+          },
+          {
+            "type": "key_duel",
+            "text": "关键对位：武汉三镇的433阵型对阵辽宁铁人的433，武汉三镇将依靠战术执行纪律强，跑动积极……，而辽宁铁人则试图利用缺乏超级球星，关键时刻个……。"
+          },
+          {
+            "type": "script",
+            "text": "武汉三镇在主场展现出更强的战术执行力，战术执行纪律强，跑动积极，攻守……。尽管辽宁铁人的战术执行纪律强，跑动……制造了威胁，但武汉三镇凭借更高效的进攻以2-1险胜对手，主队胜利。"
+          }
+        ],
+        "ou": "2.5/3",
+        "ha": "平/半",
+        "ge_home": 2.68,
+        "ge_away": 1.61,
+        "actual_result": "2-2",
+        "hit": false
+      },
+      {
+        "match_id": "2944701",
+        "league": "中国超级联赛",
+        "home_team": "Shandong Taishan",
+        "away_team": "Chongqing Tonglianglong",
+        "home_team_cn": "山东泰山",
+        "away_team_cn": "重庆铜梁龙",
+        "kickoff": "18:35",
+        "utc_date": "2026-05-16T18:35:00+08:00",
+        "has_result": true,
+        "prediction": "2-1",
+        "prediction_cn": "2-1",
+        "confidence_level": "低",
+        "score_prediction": {
+          "primary": "2-1",
+          "secondary": "3-1",
+          "tertiary": "2-2",
+          "confidence_level": "低",
+          "primary_prob": 9.6,
+          "secondary_prob": 8.9,
+          "ge_home": 2.79,
+          "ge_away": 1.5,
+          "ou_display": "大2.75",
+          "ha_display": "-",
+          "description": "2.8 vs 1.5"
+        },
+        "tactical_prediction": {
+          "home_style": "高位压迫+边路冲击",
+          "away_style": "整体战术",
+          "home_formation": "433",
+          "away_formation": "433",
+          "home_key_strength": "克雷桑爆破能力，卡扎组织，进攻层次丰富",
+          "away_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "home_weakness": "防线转身慢",
+          "away_weakness": "缺乏超级球星，关键时刻个人能力有限"
+        },
+        "script_prediction": [
+          {
+            "type": "opener",
+            "text": "山东泰山（高位压迫+边路冲击）坐镇主场迎战重庆铜梁龙（整体战术），联赛类型为中国超级联赛。"
+          },
+          {
+            "type": "key_duel",
+            "text": "关键对位：Shandong Taishan的433阵型对阵Chongqing Tonglianglong的433，山东泰山将依靠克雷桑爆破能力，卡扎组织……，而重庆铜梁龙则试图利用缺乏超级球星，关键时刻个……。"
+          },
+          {
+            "type": "script",
+            "text": "山东泰山在主场展现出更强的战术执行力，克雷桑爆破能力，卡扎组织，进攻……。尽管重庆铜梁龙的战术执行纪律强，跑动……制造了威胁，但山东泰山凭借更高效的进攻以2-1险胜对手，主队胜利。"
+          }
+        ],
+        "ou": "2.5/3",
+        "ha": "一球",
+        "ge_home": 2.79,
+        "ge_away": 1.5,
+        "actual_result": "3-1",
+        "hit": false
+      },
+      {
+        "match_id": "2944702",
+        "league": "中国超级联赛",
+        "home_team": "云南玉昆",
+        "away_team": "Shanghai Shenhua",
+        "home_team_cn": "云南玉昆",
+        "away_team_cn": "上海申花",
+        "kickoff": "19:00",
+        "utc_date": "2026-05-16T19:00:00+08:00",
+        "has_result": true,
+        "prediction": "2-2",
+        "prediction_cn": "2-2",
+        "confidence_level": "低",
+        "score_prediction": {
+          "primary": "2-2",
+          "secondary": "2-3",
+          "tertiary": "3-2",
+          "confidence_level": "低",
+          "primary_prob": 8.0,
+          "secondary_prob": 7.3,
+          "ge_home": 2.73,
+          "ge_away": 2.73,
+          "ou_display": "大3.5",
+          "ha_display": "-",
+          "description": "2.7 vs 2.7"
+        },
+        "tactical_prediction": {
+          "home_style": "整体战术",
+          "away_style": "防守反击+高空球",
+          "home_formation": "433",
+          "away_formation": "532",
+          "home_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "away_key_strength": "马莱莱禁区嗅觉，定位球进攻有针对性，老将经验",
+          "home_weakness": "缺乏超级球星，关键时刻个人能力有限",
+          "away_weakness": "进攻效率一般"
+        },
+        "script_prediction": [
+          {
+            "type": "opener",
+            "text": "云南玉昆（整体战术）坐镇主场迎战上海申花（防守反击+高空球），联赛类型为中国超级联赛。"
+          },
+          {
+            "type": "key_duel",
+            "text": "关键对位：云南玉昆的433阵型对阵Shanghai Shenhua的532，云南玉昆将依靠战术执行纪律强，跑动积极……，而上海申花则试图利用进攻效率一般……。"
+          },
+          {
+            "type": "script",
+            "text": "双方最终握手言和。云南玉昆的战术执行纪律强，跑动积极……与上海申花的马莱莱禁区嗅觉，定位球进……势均力敌，2-2的比分合理反映了比赛走势。"
+          }
+        ],
+        "ou": "3.5",
+        "ha": "平手",
+        "ge_home": 2.73,
+        "ge_away": 2.73,
+        "actual_result": "1-0",
+        "hit": false
+      },
+      {
+        "match_id": "2799704",
+        "league": "德国甲级",
+        "home_team": "Leverkusen",
+        "away_team": "汉堡",
+        "home_team_cn": "勒沃库森",
+        "away_team_cn": "汉堡",
+        "kickoff": "20:30",
+        "utc_date": "2026-05-16T20:30:00+08:00",
+        "has_result": true,
+        "prediction": "3-0",
+        "prediction_cn": "3-0",
+        "confidence_level": "高",
+        "score_prediction": {
+          "primary": "3-0",
+          "secondary": "4-0",
+          "tertiary": "2-0",
+          "confidence_level": "高",
+          "primary_prob": 27.9,
+          "secondary_prob": 27.2,
+          "ge_home": 3.9,
+          "ge_away": 0.1,
+          "ou_display": "大3.5",
+          "ha_display": "主让1.75",
+          "description": "3.9 vs 0.1"
+        },
+        "tactical_prediction": {
+          "home_style": "传控+远射+定位球",
+          "away_style": "整体战术",
+          "home_formation": "3412",
+          "away_formation": "433",
+          "home_key_strength": "维尔茨前腰创造力，全队技术流，远射和定位球得分极多",
+          "away_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "home_weakness": "压上后防线身后空间",
+          "away_weakness": "缺乏超级球星，关键时刻个人能力有限"
+        },
+        "script_prediction": [
+          {
+            "type": "opener",
+            "text": "勒沃库森（传控+远射+定位球）坐镇主场迎战汉堡（整体战术），联赛类型为德国甲级。"
+          },
+          {
+            "type": "key_duel",
+            "text": "关键对位：Leverkusen的3412阵型对阵汉堡的433，勒沃库森将依靠维尔茨前腰创造力，全队技……，而汉堡则试图利用缺乏超级球星，关键时刻个……。"
+          },
+          {
+            "type": "script",
+            "text": "勒沃库森从开场便掌控节奏，维尔茨前腰创造力，全队技术流，……成为决定比赛的关键。第3球早早杀死悬念，汉堡的缺乏超级球星，关键时……被完全放大，最终勒沃库森以3-0完胜，主队胜利。"
+          }
+        ],
+        "ou": "3.5",
+        "ha": "球半/两球",
+        "ge_home": 3.9,
+        "ge_away": 0.1,
+        "actual_result": "1-1",
+        "hit": false
+      },
+      {
+        "match_id": "2799705",
+        "league": "德国甲级",
+        "home_team": "Bayern",
+        "away_team": "科隆",
+        "home_team_cn": "拜仁慕尼黑",
+        "away_team_cn": "科隆",
+        "kickoff": "20:30",
+        "utc_date": "2026-05-16T20:30:00+08:00",
+        "has_result": true,
+        "prediction": "3-1",
+        "prediction_cn": "3-1",
+        "confidence_level": "低",
+        "score_prediction": {
+          "primary": "3-1",
+          "secondary": "3-0",
+          "tertiary": "4-1",
+          "confidence_level": "低",
+          "primary_prob": 11.4,
+          "secondary_prob": 11.3,
+          "ge_home": 3.9,
+          "ge_away": 1.01,
+          "ou_display": "大4.25",
+          "ha_display": "-",
+          "description": "3.9 vs 1.0"
+        },
+        "tactical_prediction": {
+          "home_style": "传控渗透+边路内切",
+          "away_style": "整体战术",
+          "home_formation": "4231",
+          "away_formation": "433",
+          "home_key_strength": "整体实力碾压，进攻点多分散，穆西亚拉盘带突破犀利",
+          "away_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "home_weakness": "防线压上后身后空当，后腰保护不足",
+          "away_weakness": "缺乏超级球星，关键时刻个人能力有限"
+        },
+        "script_prediction": [
+          {
+            "type": "opener",
+            "text": "拜仁慕尼黑（传控渗透+边路内切）坐镇主场迎战科隆（整体战术），联赛类型为德国甲级。"
+          },
+          {
+            "type": "key_duel",
+            "text": "关键对位：Bayern的4231阵型对阵科隆的433，拜仁慕尼黑将依靠整体实力碾压，进攻点多分……，而科隆则试图利用缺乏超级球星，关键时刻个……。"
+          },
+          {
+            "type": "script",
+            "text": "拜仁慕尼黑从开场便掌控节奏，整体实力碾压，进攻点多分散，穆……成为决定比赛的关键。第3球早早杀死悬念，科隆的缺乏超级球星，关键时……被完全放大，最终拜仁慕尼黑以3-1完胜，主队胜利。"
+          }
+        ],
+        "ou": "4/4.5",
+        "ha": "两球/两球半",
+        "ge_home": 3.9,
+        "ge_away": 1.01,
+        "actual_result": "5-1",
+        "hit": false
+      },
+      {
+        "match_id": "2799711",
+        "league": "德国甲级",
+        "home_team": "柏林联合",
+        "away_team": "Augsburg",
+        "home_team_cn": "柏林联合",
+        "away_team_cn": "奥格斯堡",
+        "kickoff": "20:30",
+        "utc_date": "2026-05-16T20:30:00+08:00",
+        "has_result": true,
+        "prediction": "2-2",
+        "prediction_cn": "2-2",
+        "confidence_level": "低",
+        "score_prediction": {
+          "primary": "2-2",
+          "secondary": "1-2",
+          "tertiary": "2-1",
+          "confidence_level": "低",
+          "primary_prob": 8.4,
+          "secondary_prob": 7.2,
+          "ge_home": 2.34,
+          "ge_away": 2.34,
+          "ou_display": "大3.0",
+          "ha_display": "-",
+          "description": "2.3 vs 2.3"
+        },
+        "tactical_prediction": {
+          "home_style": "整体战术",
+          "away_style": "整体战术",
+          "home_formation": "433",
+          "away_formation": "433",
+          "home_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "away_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "home_weakness": "缺乏超级球星，关键时刻个人能力有限",
+          "away_weakness": "缺乏超级球星，关键时刻个人能力有限"
+        },
+        "script_prediction": [
+          {
+            "type": "opener",
+            "text": "柏林联合（整体战术）坐镇主场迎战奥格斯堡（整体战术），联赛类型为德国甲级。"
+          },
+          {
+            "type": "key_duel",
+            "text": "关键对位：柏林联合的433阵型对阵Augsburg的433，柏林联合将依靠战术执行纪律强，跑动积极……，而奥格斯堡则试图利用缺乏超级球星，关键时刻个……。"
+          },
+          {
+            "type": "script",
+            "text": "双方最终握手言和。柏林联合的战术执行纪律强，跑动积极……与奥格斯堡的战术执行纪律强，跑动积极……势均力敌，2-2的比分合理反映了比赛走势。"
+          }
+        ],
+        "ou": "3",
+        "ha": "平手",
+        "ge_home": 2.34,
+        "ge_away": 2.34,
+        "actual_result": "4-0",
+        "hit": false
+      },
+      {
+        "match_id": "540706",
+        "league": "德国甲级",
+        "home_team": "Eintracht Frankfurt",
+        "away_team": "VfB Stuttgart",
+        "home_team_cn": "法兰克福",
+        "away_team_cn": "斯图加特",
+        "kickoff": "21:30",
+        "utc_date": "2026-05-16T13:30:00Z",
+        "has_result": true,
+        "prediction": "3-2",
+        "prediction_cn": "3-2",
+        "confidence_level": "低",
+        "score_prediction": {
+          "primary": "3-2",
+          "secondary": "2-2",
+          "tertiary": "3-3",
+          "confidence_level": "低",
+          "primary_prob": 7.9,
+          "secondary_prob": 7.7,
+          "ge_home": 3.08,
+          "ge_away": 2.77,
+          "ou_display": "大3.75",
+          "ha_display": "-",
+          "description": "3.1 vs 2.8"
+        },
+        "tactical_prediction": {
+          "home_style": "防守反击+身体对抗",
+          "away_style": "整体战术",
+          "home_formation": "3421",
+          "away_formation": "433",
+          "home_key_strength": "马尔穆什边路爆破，对抗能力强，定位球有威胁",
+          "away_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "home_weakness": "破密集手段单一",
+          "away_weakness": "缺乏超级球星，关键时刻个人能力有限"
+        },
+        "script_prediction": [
+          {
+            "type": "opener",
+            "text": "法兰克福（防守反击+身体对抗）坐镇主场迎战斯图加特（整体战术），联赛类型为德国甲级。"
+          },
+          {
+            "type": "key_duel",
+            "text": "关键对位：Eintracht Frankfurt的3421阵型对阵VfB Stuttgart的433，法兰克福将依靠马尔穆什边路爆破，对抗能……，而斯图加特则试图利用缺乏超级球星，关键时刻个……。"
+          },
+          {
+            "type": "script",
+            "text": "法兰克福在主场展现出更强的战术执行力，马尔穆什边路爆破，对抗能力强，……。尽管斯图加特的战术执行纪律强，跑动……制造了威胁，但法兰克福凭借更高效的进攻以3-2险胜对手，主队胜利。"
+          }
+        ],
+        "ou": "3.5/4",
+        "ha": "* 半球",
+        "ge_home": 3.08,
+        "ge_away": 2.77,
+        "hit": false,
+        "actual_result": "2-2"
+      },
+      {
+        "match_id": "540708",
+        "league": "德国甲级",
+        "home_team": "1. FC Union Berlin",
+        "away_team": "FC Augsburg",
+        "home_team_cn": "柏林联合",
+        "away_team_cn": "奥格斯堡",
+        "kickoff": "21:30",
+        "utc_date": "2026-05-16T13:30:00Z",
+        "has_result": true,
         "prediction": "1-1",
-        "hit": null
+        "prediction_cn": "1-1",
+        "confidence_level": "低",
+        "score_prediction": {
+          "primary": "1-1",
+          "secondary": "2-1",
+          "tertiary": "1-0",
+          "confidence_level": "低",
+          "primary_prob": 12.0,
+          "secondary_prob": 9.1,
+          "ge_home": 1.51,
+          "ge_away": 1.35,
+          "ou_display": "-",
+          "ha_display": "-",
+          "description": "1.5 vs 1.4"
+        },
+        "tactical_prediction": {
+          "home_style": "整体战术",
+          "away_style": "整体战术",
+          "home_formation": "433",
+          "away_formation": "433",
+          "home_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "away_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "home_weakness": "缺乏超级球星，关键时刻个人能力有限",
+          "away_weakness": "缺乏超级球星，关键时刻个人能力有限"
+        },
+        "script_prediction": [
+          {
+            "type": "opener",
+            "text": "柏林联合（整体战术）坐镇主场迎战奥格斯堡（整体战术），联赛类型为德国甲级。"
+          },
+          {
+            "type": "key_duel",
+            "text": "关键对位：1. FC Union Berlin的433阵型对阵FC Augsburg的433，柏林联合将依靠战术执行纪律强，跑动积极……，而奥格斯堡则试图利用缺乏超级球星，关键时刻个……。"
+          },
+          {
+            "type": "script",
+            "text": "双方最终握手言和。柏林联合的战术执行纪律强，跑动积极……与奥格斯堡的战术执行纪律强，跑动积极……势均力敌，1-1的比分合理反映了比赛走势。"
+          }
+        ],
+        "ou": "",
+        "ha": "",
+        "ge_home": 1.51,
+        "ge_away": 1.35,
+        "hit": false,
+        "actual_result": "4-0"
       },
       {
-        "home": "皇家贝蒂斯",
-        "away": "塞尔塔",
-        "prediction": "2-1",
-        "hit": null
+        "match_id": "540704",
+        "league": "德国甲级",
+        "home_team": "1. FC Heidenheim 1846",
+        "away_team": "1. FSV Mainz 05",
+        "home_team_cn": "海登海姆",
+        "away_team_cn": "美因茨",
+        "kickoff": "21:30",
+        "utc_date": "2026-05-16T13:30:00Z",
+        "has_result": true,
+        "prediction": "2-2",
+        "prediction_cn": "2-2",
+        "confidence_level": "低",
+        "score_prediction": {
+          "primary": "2-2",
+          "secondary": "3-2",
+          "tertiary": "2-1",
+          "confidence_level": "低",
+          "primary_prob": 8.2,
+          "secondary_prob": 7.3,
+          "ge_home": 2.67,
+          "ge_away": 2.4,
+          "ou_display": "大3.25",
+          "ha_display": "-",
+          "description": "2.7 vs 2.4"
+        },
+        "tactical_prediction": {
+          "home_style": "整体战术",
+          "away_style": "整体战术",
+          "home_formation": "433",
+          "away_formation": "433",
+          "home_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "away_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "home_weakness": "缺乏超级球星，关键时刻个人能力有限",
+          "away_weakness": "缺乏超级球星，关键时刻个人能力有限"
+        },
+        "script_prediction": [
+          {
+            "type": "opener",
+            "text": "海登海姆（整体战术）坐镇主场迎战美因茨（整体战术），联赛类型为德国甲级。"
+          },
+          {
+            "type": "key_duel",
+            "text": "关键对位：1. FC Heidenheim 1846的433阵型对阵1. FSV Mainz 05的433，海登海姆将依靠战术执行纪律强，跑动积极……，而美因茨则试图利用缺乏超级球星，关键时刻个……。"
+          },
+          {
+            "type": "script",
+            "text": "双方最终握手言和。海登海姆的战术执行纪律强，跑动积极……与美因茨的战术执行纪律强，跑动积极……势均力敌，2-2的比分合理反映了比赛走势。"
+          }
+        ],
+        "ou": "3/3.5",
+        "ha": "半球",
+        "ge_home": 2.67,
+        "ge_away": 2.4,
+        "hit": false,
+        "actual_result": "0-2"
       },
       {
-        "home": "都灵",
-        "away": "亚特兰大",
-        "prediction": "1-2",
-        "hit": null
+        "match_id": "540710",
+        "league": "德国甲级",
+        "home_team": "FC Bayern München",
+        "away_team": "1. FC Köln",
+        "home_team_cn": "拜仁慕尼黑",
+        "away_team_cn": "1. FC Köln",
+        "kickoff": "21:30",
+        "utc_date": "2026-05-16T13:30:00Z",
+        "has_result": true,
+        "prediction": "1-1",
+        "prediction_cn": "1-1",
+        "confidence_level": "低",
+        "score_prediction": {
+          "primary": "1-1",
+          "secondary": "2-1",
+          "tertiary": "1-0",
+          "confidence_level": "低",
+          "primary_prob": 12.0,
+          "secondary_prob": 9.1,
+          "ge_home": 1.51,
+          "ge_away": 1.35,
+          "ou_display": "-",
+          "ha_display": "-",
+          "description": "1.5 vs 1.4"
+        },
+        "tactical_prediction": {
+          "home_style": "整体战术",
+          "away_style": "整体战术",
+          "home_formation": "433",
+          "away_formation": "433",
+          "home_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "away_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "home_weakness": "缺乏超级球星，关键时刻个人能力有限",
+          "away_weakness": "缺乏超级球星，关键时刻个人能力有限"
+        },
+        "script_prediction": [
+          {
+            "type": "opener",
+            "text": "拜仁慕尼黑（整体战术）坐镇主场迎战1. FC Köln（整体战术），联赛类型为德国甲级。"
+          },
+          {
+            "type": "key_duel",
+            "text": "关键对位：FC Bayern München的433阵型对阵1. FC Köln的433，拜仁慕尼黑将依靠战术执行纪律强，跑动积极……，而1. FC Köln则试图利用缺乏超级球星，关键时刻个……。"
+          },
+          {
+            "type": "script",
+            "text": "双方最终握手言和。拜仁慕尼黑的战术执行纪律强，跑动积极……与1. FC Köln的战术执行纪律强，跑动积极……势均力敌，1-1的比分合理反映了比赛走势。"
+          }
+        ],
+        "ou": "",
+        "ha": "",
+        "ge_home": 1.51,
+        "ge_away": 1.35,
+        "hit": false,
+        "actual_result": "5-1"
+      },
+      {
+        "match_id": "540711",
+        "league": "德国甲级",
+        "home_team": "Bayer 04 Leverkusen",
+        "away_team": "Hamburger SV",
+        "home_team_cn": "勒沃库森",
+        "away_team_cn": "Hamburger SV",
+        "kickoff": "21:30",
+        "utc_date": "2026-05-16T13:30:00Z",
+        "has_result": true,
+        "prediction": "1-1",
+        "prediction_cn": "1-1",
+        "confidence_level": "低",
+        "score_prediction": {
+          "primary": "1-1",
+          "secondary": "2-1",
+          "tertiary": "1-0",
+          "confidence_level": "低",
+          "primary_prob": 12.0,
+          "secondary_prob": 9.1,
+          "ge_home": 1.51,
+          "ge_away": 1.35,
+          "ou_display": "-",
+          "ha_display": "-",
+          "description": "1.5 vs 1.4"
+        },
+        "tactical_prediction": {
+          "home_style": "整体战术",
+          "away_style": "整体战术",
+          "home_formation": "433",
+          "away_formation": "433",
+          "home_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "away_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "home_weakness": "缺乏超级球星，关键时刻个人能力有限",
+          "away_weakness": "缺乏超级球星，关键时刻个人能力有限"
+        },
+        "script_prediction": [
+          {
+            "type": "opener",
+            "text": "勒沃库森（整体战术）坐镇主场迎战Hamburger SV（整体战术），联赛类型为德国甲级。"
+          },
+          {
+            "type": "key_duel",
+            "text": "关键对位：Bayer 04 Leverkusen的433阵型对阵Hamburger SV的433，勒沃库森将依靠战术执行纪律强，跑动积极……，而Hamburger SV则试图利用缺乏超级球星，关键时刻个……。"
+          },
+          {
+            "type": "script",
+            "text": "双方最终握手言和。勒沃库森的战术执行纪律强，跑动积极……与Hamburger SV的战术执行纪律强，跑动积极……势均力敌，1-1的比分合理反映了比赛走势。"
+          }
+        ],
+        "ou": "",
+        "ha": "",
+        "ge_home": 1.51,
+        "ge_away": 1.35,
+        "hit": true,
+        "actual_result": "1-1"
+      },
+      {
+        "match_id": "540707",
+        "league": "德国甲级",
+        "home_team": "FC St. Pauli 1910",
+        "away_team": "VfL Wolfsburg",
+        "home_team_cn": "圣保利",
+        "away_team_cn": "沃尔夫斯堡",
+        "kickoff": "21:30",
+        "utc_date": "2026-05-16T13:30:00Z",
+        "has_result": true,
+        "prediction": "2-2",
+        "prediction_cn": "2-2",
+        "confidence_level": "低",
+        "score_prediction": {
+          "primary": "2-2",
+          "secondary": "1-2",
+          "tertiary": "2-1",
+          "confidence_level": "低",
+          "primary_prob": 8.3,
+          "secondary_prob": 7.8,
+          "ge_home": 2.15,
+          "ge_away": 2.15,
+          "ou_display": "大2.75",
+          "ha_display": "-",
+          "description": "2.1 vs 2.1"
+        },
+        "tactical_prediction": {
+          "home_style": "整体战术",
+          "away_style": "整体战术",
+          "home_formation": "433",
+          "away_formation": "433",
+          "home_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "away_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "home_weakness": "缺乏超级球星，关键时刻个人能力有限",
+          "away_weakness": "缺乏超级球星，关键时刻个人能力有限"
+        },
+        "script_prediction": [
+          {
+            "type": "opener",
+            "text": "圣保利（整体战术）坐镇主场迎战沃尔夫斯堡（整体战术），联赛类型为德国甲级。"
+          },
+          {
+            "type": "key_duel",
+            "text": "关键对位：FC St. Pauli 1910的433阵型对阵VfL Wolfsburg的433，圣保利将依靠战术执行纪律强，跑动积极……，而沃尔夫斯堡则试图利用缺乏超级球星，关键时刻个……。"
+          },
+          {
+            "type": "script",
+            "text": "双方最终握手言和。圣保利的战术执行纪律强，跑动积极……与沃尔夫斯堡的战术执行纪律强，跑动积极……势均力敌，2-2的比分合理反映了比赛走势。"
+          }
+        ],
+        "ou": "2.5/3",
+        "ha": "平手",
+        "ge_home": 2.15,
+        "ge_away": 2.15,
+        "hit": false,
+        "actual_result": "1-3"
+      },
+      {
+        "match_id": "540703",
+        "league": "德国甲级",
+        "home_team": "SV Werder Bremen",
+        "away_team": "Borussia Dortmund",
+        "home_team_cn": "云达不莱梅",
+        "away_team_cn": "多特蒙德",
+        "kickoff": "21:30",
+        "utc_date": "2026-05-16T13:30:00Z",
+        "has_result": true,
+        "prediction": "2-2",
+        "prediction_cn": "2-2",
+        "confidence_level": "低",
+        "score_prediction": {
+          "primary": "2-2",
+          "secondary": "3-2",
+          "tertiary": "2-1",
+          "confidence_level": "低",
+          "primary_prob": 8.2,
+          "secondary_prob": 7.3,
+          "ge_home": 2.67,
+          "ge_away": 2.4,
+          "ou_display": "大3.25",
+          "ha_display": "-",
+          "description": "2.7 vs 2.4"
+        },
+        "tactical_prediction": {
+          "home_style": "整体战术",
+          "away_style": "整体战术",
+          "home_formation": "433",
+          "away_formation": "433",
+          "home_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "away_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "home_weakness": "缺乏超级球星，关键时刻个人能力有限",
+          "away_weakness": "缺乏超级球星，关键时刻个人能力有限"
+        },
+        "script_prediction": [
+          {
+            "type": "opener",
+            "text": "云达不莱梅（整体战术）坐镇主场迎战多特蒙德（整体战术），联赛类型为德国甲级。"
+          },
+          {
+            "type": "key_duel",
+            "text": "关键对位：SV Werder Bremen的433阵型对阵Borussia Dortmund的433，云达不莱梅将依靠战术执行纪律强，跑动积极……，而多特蒙德则试图利用缺乏超级球星，关键时刻个……。"
+          },
+          {
+            "type": "script",
+            "text": "双方最终握手言和。云达不莱梅的战术执行纪律强，跑动积极……与多特蒙德的战术执行纪律强，跑动积极……势均力敌，2-2的比分合理反映了比赛走势。"
+          }
+        ],
+        "ou": "3/3.5",
+        "ha": "* 半球",
+        "ge_home": 2.67,
+        "ge_away": 2.4,
+        "hit": false,
+        "actual_result": "0-2"
+      },
+      {
+        "match_id": "540709",
+        "league": "德国甲级",
+        "home_team": "Borussia Mönchengladbach",
+        "away_team": "TSG 1899 Hoffenheim",
+        "home_team_cn": "门兴格拉德巴赫",
+        "away_team_cn": "霍芬海姆",
+        "kickoff": "21:30",
+        "utc_date": "2026-05-16T13:30:00Z",
+        "has_result": true,
+        "prediction": "3-0",
+        "prediction_cn": "3-0",
+        "confidence_level": "中",
+        "score_prediction": {
+          "primary": "3-0",
+          "secondary": "4-0",
+          "tertiary": "2-0",
+          "confidence_level": "中",
+          "primary_prob": 15.6,
+          "secondary_prob": 15.2,
+          "ge_home": 3.9,
+          "ge_away": 0.68,
+          "ou_display": "大3.5",
+          "ha_display": "主让0.75",
+          "description": "3.9 vs 0.7"
+        },
+        "tactical_prediction": {
+          "home_style": "整体战术",
+          "away_style": "整体战术",
+          "home_formation": "433",
+          "away_formation": "433",
+          "home_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "away_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "home_weakness": "缺乏超级球星，关键时刻个人能力有限",
+          "away_weakness": "缺乏超级球星，关键时刻个人能力有限"
+        },
+        "script_prediction": [
+          {
+            "type": "opener",
+            "text": "门兴格拉德巴赫（整体战术）坐镇主场迎战霍芬海姆（整体战术），联赛类型为德国甲级。"
+          },
+          {
+            "type": "key_duel",
+            "text": "关键对位：Borussia Mönchengladbach的433阵型对阵TSG 1899 Hoffenheim的433，门兴格拉德巴赫将依靠战术执行纪律强，跑动积极……，而霍芬海姆则试图利用缺乏超级球星，关键时刻个……。"
+          },
+          {
+            "type": "script",
+            "text": "门兴格拉德巴赫从开场便掌控节奏，战术执行纪律强，跑动积极，攻守……成为决定比赛的关键。第3球早早杀死悬念，霍芬海姆的缺乏超级球星，关键时……被完全放大，最终门兴格拉德巴赫以3-0完胜，主队胜利。"
+          }
+        ],
+        "ou": "3.5",
+        "ha": "* 半/一",
+        "ge_home": 3.9,
+        "ge_away": 0.68,
+        "hit": false,
+        "actual_result": "4-0"
+      },
+      {
+        "match_id": "540705",
+        "league": "德国甲级",
+        "home_team": "SC Freiburg",
+        "away_team": "RB Leipzig",
+        "home_team_cn": "弗赖堡",
+        "away_team_cn": "RB莱比锡",
+        "kickoff": "21:30",
+        "utc_date": "2026-05-16T13:30:00Z",
+        "has_result": true,
+        "prediction": "3-1",
+        "prediction_cn": "3-1",
+        "confidence_level": "低",
+        "score_prediction": {
+          "primary": "3-1",
+          "secondary": "3-2",
+          "tertiary": "2-1",
+          "confidence_level": "低",
+          "primary_prob": 8.4,
+          "secondary_prob": 8.0,
+          "ge_home": 3.17,
+          "ge_away": 1.9,
+          "ou_display": "大3.25",
+          "ha_display": "主让0.25",
+          "description": "3.2 vs 1.9"
+        },
+        "tactical_prediction": {
+          "home_style": "整体战术",
+          "away_style": "高位压迫+快速转换",
+          "home_formation": "433",
+          "away_formation": "4231",
+          "home_key_strength": "战术执行纪律强，跑动积极，攻守转换流畅",
+          "away_key_strength": "施拉格尔+奥尔莫中场推进，高位压迫凶狠，反击锐利",
+          "home_weakness": "缺乏超级球星，关键时刻个人能力有限",
+          "away_weakness": "后腰位置防守"
+        },
+        "script_prediction": [
+          {
+            "type": "opener",
+            "text": "弗赖堡（整体战术）坐镇主场迎战RB莱比锡（高位压迫+快速转换），联赛类型为德国甲级。"
+          },
+          {
+            "type": "key_duel",
+            "text": "关键对位：SC Freiburg的433阵型对阵RB Leipzig的4231，弗赖堡将依靠战术执行纪律强，跑动积极……，而RB莱比锡则试图利用后腰位置防守……。"
+          },
+          {
+            "type": "script",
+            "text": "弗赖堡从开场便掌控节奏，战术执行纪律强，跑动积极，攻守……成为决定比赛的关键。第3球早早杀死悬念，RB莱比锡的后腰位置防守……被完全放大，最终弗赖堡以3-1完胜，主队胜利。"
+          }
+        ],
+        "ou": "3/3.5",
+        "ha": "* 平/半",
+        "ge_home": 3.17,
+        "ge_away": 1.9,
+        "hit": false,
+        "actual_result": "4-1"
       }
-    ],
-    "review": {
-      "hit": 1,
-      "total": 6,
-      "direction": 0,
-      "rate": "1/6",
-      "detail": [
-        "❌ 那不勒斯 vs 博洛尼亚: 预测1-1 实际2-3",
-        "✅ 巴列卡诺 vs 赫罗纳: 预测1-1 实际1-1",
-        "⏳ 莱比锡红牛 vs 多特蒙德: 预测2-1 待核验（5/13未赛：莱比锡vs圣保利2-1, 多特vs法兰克福3-2）",
-        "⏳ 马赛 vs 摩纳哥: 预测1-1 待核验（5/13未赛：马赛vs勒阿弗尔1-0, 摩纳哥vs里尔0-1）",
-        "⏳ 皇家贝蒂斯 vs 塞尔塔: 预测2-1 待核验（5/13未赛：贝蒂斯vs埃尔切2-1, 塞尔塔vs莱万特2-3）",
-        "⏳ 都灵 vs 亚特兰大: 预测1-2 待核验（5/13未赛：都灵vs萨索洛2-1, 亚特兰大vs米兰2-3）"
-      ],
-      "last_updated": "2026-05-14 09:29",
-      "note": "5月13日复盘：4场待核验预测均未在5月13日进行比赛，可能是未来轮次或杯赛的预测。已通过Flashscore核实各联赛当天赛果。"
-    }
+    ]
   },
   "weekly": null,
   "system": {
@@ -271,12 +1332,12 @@
     "hermes": true,
     "hmcode": true,
     "catclaw": true,
-    "homebot": true
+    "homebot": false
   },
   "token": {
-    "today": 3.96,
-    "today_tokens": 7208707,
-    "month": 259.6,
-    "month_tokens": 1160965707
+    "today": 0.0,
+    "today_tokens": 0,
+    "month": 255.64,
+    "month_tokens": 1153757000
   }
 }

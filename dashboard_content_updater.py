@@ -9,11 +9,32 @@ import json, sys, os, argparse
 from datetime import datetime
 
 def _data_file():
-    """根据操作系统自动选择路径 — 与 dashboard_updater.py 写入同一文件"""
+    """根据操作系统自动选择路径 — 与 dashboard_updater.py 写入同一文件
+
+    优先级：环境变量 DASHBOARD_DATA > 自动检测 > 相对路径
+    """
+    # 1) 环境变量显式指定
+    env_path = os.environ.get("DASHBOARD_DATA", "").strip()
+    if env_path:
+        return env_path
+
+    # 2) 云 Windows / WSL2 常用路径
     if sys.platform == "win32":
-        return r"F:\AgentDownload\dashboard\dashboard\data\status.json"
+        candidate = r"F:\AgentDownload\dashboard\dashboard\data\status.json"
     else:
-        return "/mnt/f/AgentDownload/dashboard/dashboard/data/status.json"
+        candidate = "/mnt/f/AgentDownload/dashboard/dashboard/data/status.json"
+
+    if os.path.exists(candidate):
+        return candidate
+
+    # 3) 回退：相对于脚本所在目录查找 (repo 根下 dashboard/data/status.json)
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    fallback = os.path.join(script_dir, "dashboard", "data", "status.json")
+    if os.path.exists(fallback):
+        return fallback
+
+    # 4) 最后尝试 CWD 相对路径
+    return os.path.join("dashboard", "data", "status.json")
 
 DATA_FILE = _data_file()
 
