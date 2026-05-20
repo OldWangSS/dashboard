@@ -3,676 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI不AI</title>
+<title>AI不AI · 舒展知识图谱</title>
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <style>
-  :root {
-    --bg: #0d0d0d; --text: #c9d1d9; --dim: #6e7681;
-    --line: #3a3a3a; --card: #151515; --border: #2a2a2a;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    background: var(--bg); color: var(--text);
-    font-family: -apple-system, 'Segoe UI', sans-serif;
-    overflow: hidden; height: 100vh; user-select: none;
-  }
-  .topbar {
-    position: fixed; top:0; left:0; right:0; z-index:100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 14px 24px;
-    background: linear-gradient(180deg, rgba(13,13,13,0.98) 60%, rgba(13,13,13,0));
-    pointer-events: none;
-  }
-  .topbar>*{pointer-events:auto}
-  .logo { font-size: 1.1em; font-weight: 700; letter-spacing: 0.05em; color: #ffd54f; }
-  .topbar-btns { display: flex; gap: 10px; }
-  .topbar-btn {
-    padding: 8px 18px; border: 1px solid var(--border); border-radius: 6px;
-    background: var(--card); color: var(--text); font-size: 0.85em;
-    cursor: pointer; transition: all 0.2s; text-decoration: none;
-  }
-  .topbar-btn:hover { border-color: #ff8a65; color: #ff8a65; }
-  .topbar-btn.primary { background: #4fc3f7; color: #000; border-color: #4fc3f7; font-weight: 600; }
-
-  #graph { width: 100vw; height: 100vh; cursor: grab; }
-  #graph:active { cursor: grabbing; }
-
-  .node circle { cursor: pointer; transition: r 0.25s, fill 0.25s; }
-  .node text { pointer-events: none; transition: fill 0.25s; }
-  .link { }
-
-  /* Modal */
-  .modal-overlay {
-    position: fixed; inset: 0; z-index: 300;
-    background: rgba(0,0,0,0.7);
-    display: none; align-items: center; justify-content: center;
-  }
-  .modal-overlay.show { display: flex; }
-  .modal {
-    position: relative;
-    background: #1a1a1a; border: 1px solid #333;
-    border-radius: 12px; padding: 24px 28px;
-    max-width: 540px; width: 92%; max-height: 80vh;
-    overflow-y: auto;
-    box-shadow: 0 12px 48px rgba(0,0,0,0.8);
-  }
-  .modal h2 { font-size: 1.2em; color: #ff8a65; margin-bottom: 8px; }
-  .modal .tag {
-    display: inline-block; padding: 2px 10px; border-radius: 10px;
-    font-size: 0.75em; margin-bottom: 14px;
-  }
-  .modal p { font-size: 0.9em; color: #b0b0b0; line-height: 1.7; margin-bottom: 10px; }
-  .modal h2 { font-size: 1.1em; color: #ffb74d; margin: 14px 0 6px; }
-  .modal h3 { font-size: 1em; color: #81c784; margin: 12px 0 4px; }
-  .modal ul { padding-left: 18px; margin: 6px 0 10px; }
-  .modal li { color: #b0b0b0; font-size: 0.88em; line-height: 1.6; }
-  .modal blockquote { border-left: 3px solid #ff8a65; padding: 4px 12px; margin: 8px 0; color: #999; font-style: italic; }
-  .modal strong { color: #ffd54f; }
-  .modal-close {
-    position: absolute; top: 12px; right: 20px;
-    font-size: 1.4em; color: #888; cursor: pointer;
-    background: none; border: none;
-  }
-  .modal-close:hover { color: #fff; }
-
-  .tooltip {
-    position: fixed; z-index: 250;
-    background: #1a1a1a; border: 1px solid #333;
-    border-radius: 6px; padding: 8px 14px; max-width: 220px;
-    pointer-events: none; opacity: 0;
-    transition: opacity 0.15s;
-  }
-  .tooltip.show { opacity: 1; }
-  .tooltip h3 { font-size: 0.9em; color: #ffd54f; margin-bottom: 2px; }
-  .tooltip p { font-size: 0.75em; color: #888; }
-  .footer {
-    position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%);
-    font-size: 0.75em; color: #555; z-index: 100;
-  }
-  .legend {
-    position: fixed; bottom: 14px; right: 20px; z-index: 100;
-    font-size: 0.72em; display: flex; gap: 12px; opacity: 0.55;
-  }
-  .legend-item { display: flex; align-items: center; gap: 5px; }
-  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
-  .link { pointer-events: none; }
-  .node { cursor: pointer; }
-  .node circle { transition: r 0.2s, stroke 0.2s, opacity 0.2s; }
-  .link { transition: stroke 0.2s, stroke-opacity 0.2s, stroke-width 0.2s; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#0d1117; overflow:hidden; font-family:"Microsoft YaHei","PingFang SC",sans-serif; }
+svg { width:100vw; height:100vh; }
+.node circle { stroke:#30363d; stroke-width:2px; cursor:pointer; }
+.node text { fill:#c9d1d9; font-size:11px; pointer-events:none; text-anchor:middle; }
+.link { stroke:#21262d; stroke-width:1px; stroke-opacity:0.6; }
+.link.highlight { stroke:#58a6ff; stroke-width:2px; stroke-opacity:1; }
+.node.highlight text { fill:#58a6ff; font-size:14px; font-weight:bold; }
+.node.highlight circle { stroke:#58a6ff; stroke-width:3px; }
+.legend { position:fixed; top:20px; left:20px; background:rgba(22,27,34,0.9); padding:15px; border-radius:8px; border:1px solid #30363d; }
+.legend-item { display:flex; align-items:center; margin:4px 0; color:#c9d1d9; font-size:12px; }
+.legend-dot { width:10px; height:10px; border-radius:50%; margin-right:8px; }
+.title { position:fixed; top:20px; right:20px; color:#8b949e; font-size:24px; letter-spacing:4px; }
+.subtitle { position:fixed; bottom:20px; right:20px; color:#484f58; font-size:11px; }
 </style>
 </head>
 <body>
-
-<div class="topbar">
-  <span class="logo">AI不AI</span>
-  <div class="topbar-btns">
-    <a href="/dashboard/" class="topbar-btn">📊 王叔的任务看板</a>
-    <a href="/zqxqzs/" class="topbar-btn primary">📱 政企需求助手</a>
-  </div>
-</div>
-
-<svg id="graph"></svg>
-<div class="tooltip" id="tooltip"><h3 id="tip-title"></h3><p id="tip-desc"></p></div>
-<div class="footer">拖拽节点 · 滚轮缩放</div>
+<div class="title">AI不AI</div>
+<div class="subtitle">ainoai.cn · 自动更新于 {{date}}</div>
 <div class="legend" id="legend"></div>
-
-<!-- Modal -->
-<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)closeModal()">
-  <div class="modal" id="modal">
-    <h2 id="modal-title"></h2>
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div class="tag" id="modal-tag"></div>
-    <p id="modal-desc"></p>
-  </div>
-</div>
-
+<svg id="graph"></svg>
 <script>
-const W = window.innerWidth, H = window.innerHeight;
-const svg = d3.select("#graph");
+const data = {
+  nodes: [{"id": "概念关系图谱", "category": "概念", "color": "#ff6b6b", "filename": "概念图谱.md"}, {"id": "舒展 AI 知识库", "category": "概念", "color": "#ff6b6b", "filename": "索引.md"}, {"id": "2026移动云大会 — 四大分论坛要点", "category": "外部", "color": "#74b9ff", "filename": "2026移动云大会分论坛要点.md"}, {"id": "AI智能体赋能行业发展白皮书（2026）要点", "category": "外部", "color": "#74b9ff", "filename": "AI智能体赋能行业发展白皮书2026.md"}, {"id": "辽宁省数字政府建设实施方案（2025-2027）", "category": "外部", "color": "#74b9ff", "filename": "辽宁省数字政府建设实施方案2025-2027.md"}, {"id": "专线", "category": "政企产品", "color": "#4ecdc4", "filename": "专线.md"}, {"id": "云视讯（移动会议）", "category": "政企产品", "color": "#4ecdc4", "filename": "云视讯.md"}, {"id": "千里眼", "category": "政企产品", "color": "#4ecdc4", "filename": "千里眼.md"}, {"id": "和对讲 — 中国移动政企产品知识库", "category": "政企产品", "color": "#4ecdc4", "filename": "和对讲.md"}, {"id": "和车队", "category": "政企产品", "color": "#4ecdc4", "filename": "和车队.md"}, {"id": "物联网", "category": "政企产品", "color": "#4ecdc4", "filename": "物联网.md"}, {"id": "短彩信", "category": "政企产品", "color": "#4ecdc4", "filename": "短彩信.md"}, {"id": "移动云", "category": "政企产品", "color": "#4ecdc4", "filename": "移动云.md"}, {"id": "移动政企产品知识库", "category": "政企产品", "color": "#4ecdc4", "filename": "索引.md"}, {"id": "2026 移动云大会", "category": "概念", "color": "#ff6b6b", "filename": "2026移动云大会.md"}, {"id": "40岁零基础的诚实", "category": "概念", "color": "#ff6b6b", "filename": "40岁零基础的诚实.md"}, {"id": "AI 不是搜索引擎", "category": "概念", "color": "#ff6b6b", "filename": "AI不是搜索引擎.md"}, {"id": "AI 的命运取决于使用者", "category": "概念", "color": "#ff6b6b", "filename": "AI命运取决于使用者.md"}, {"id": "MoMA — 移动模型服务聚合引擎", "category": "概念", "color": "#ff6b6b", "filename": "MoMA平台.md"}, {"id": "Token 效率革命", "category": "概念", "color": "#ff6b6b", "filename": "Token效率革命.md"}, {"id": "Token 经销商：客户经理的新身份", "category": "概念", "color": "#ff6b6b", "filename": "Token经销商-客户经理新身份.md"}, {"id": "三层算力", "category": "概念", "color": "#ff6b6b", "filename": "三层算力.md"}, {"id": "两条线交汇", "category": "概念", "color": "#ff6b6b", "filename": "两条线交汇.md"}, {"id": "九天大模型", "category": "概念", "color": "#ff6b6b", "filename": "九天大模型.md"}, {"id": "五次社会矛盾框架", "category": "概念", "color": "#ff6b6b", "filename": "五次社会矛盾框架.md"}, {"id": "从零到五虎将", "category": "概念", "color": "#ff6b6b", "filename": "从零到五虎将.md"}, {"id": "你训练的 AI 的价值 = 你自身的价值", "category": "概念", "color": "#ff6b6b", "filename": "你训练的AI价值=你的价值.md"}, {"id": "偷懒是商机", "category": "概念", "color": "#ff6b6b", "filename": "偷懒是商机.md"}, {"id": "算力是发动机，AI全链路是一辆车", "category": "概念", "color": "#ff6b6b", "filename": "发动机加高速路.md"}, {"id": "有得选 → 不用选", "category": "概念", "color": "#ff6b6b", "filename": "有得选到不用选.md"}, {"id": "标品下沉，定制上浮", "category": "概念", "color": "#ff6b6b", "filename": "标品下沉定制上浮.md"}, {"id": "标品是底座，定制是界面", "category": "概念", "color": "#ff6b6b", "filename": "标品是底座，定制是界面.md"}, {"id": "永不关机的硬盘", "category": "概念", "color": "#ff6b6b", "filename": "永不关机的硬盘.md"}, {"id": "灵感串联之线", "category": "概念", "color": "#ff6b6b", "filename": "灵感串联之线.md"}, {"id": "生产力到消费品的最后一公里", "category": "概念", "color": "#ff6b6b", "filename": "生产力到消费品的最后一公里.md"}, {"id": "国家AI战略 = 电车模式再现", "category": "概念", "color": "#ff6b6b", "filename": "电车模式再现.md"}, {"id": "私人AI = 个人资产", "category": "概念", "color": "#ff6b6b", "filename": "私人AI=个人资产.md"}, {"id": "中国移动在AI时代的三个卡位", "category": "概念", "color": "#ff6b6b", "filename": "移动AI三个卡位.md"}, {"id": "认知决定接触层级", "category": "概念", "color": "#ff6b6b", "filename": "认知决定接触层级.md"}, {"id": "飞书承载私人AI对话 → 抢占入口", "category": "概念", "color": "#ff6b6b", "filename": "飞书抢入口.md"}, {"id": "AI Token = 新货币·四大央行", "category": "视频笔记", "color": "#a29bfe", "filename": "AI Token 新货币四大央行.md"}, {"id": "AI对社会的影响——普通人如何应对", "category": "视频笔记", "color": "#a29bfe", "filename": "AI对现代社会的影响-普通人如何应对.md"}, {"id": "《AI、就业和社保》——卓贤万字长文深度分析", "category": "视频笔记", "color": "#a29bfe", "filename": "AI就业和社保-卓贤万字长文分析.md"}, {"id": "Claude Code + Obsidian：AI 思考伙伴", "category": "视频笔记", "color": "#a29bfe", "filename": "Claude Code + Obsidian 思考伙伴.md"}, {"id": "DeepSeek V4：历史性的杠杆窗口", "category": "视频笔记", "color": "#a29bfe", "filename": "DeepSeek V4 杠杆窗口.md"}, {"id": "The Agency — 144位AI专家开源项目", "category": "视频笔记", "color": "#a29bfe", "filename": "The Agency 144位AI专家.md"}, {"id": "一句\"废话\"推导整个经济学", "category": "视频笔记", "color": "#a29bfe", "filename": "一句废话推导经济学-奥地利学派.md"}, {"id": "《The Mixer》(Michael Cox) — 英超战术史", "category": "足球知识库", "color": "#fd79a8", "filename": "《The Mixer》笔记.md"}, {"id": "《倒转金字塔》(Inverting the Pyramid)", "category": "足球知识库", "color": "#fd79a8", "filename": "《倒转金字塔》笔记.md"}, {"id": "传控体系（Possession Systems）", "category": "足球知识库", "color": "#fd79a8", "filename": "传控体系.md"}, {"id": "比赛复盘框架（预测与复盘专用）", "category": "足球知识库", "color": "#fd79a8", "filename": "复盘框架.md"}, {"id": "球员评估维度", "category": "足球知识库", "color": "#fd79a8", "filename": "球员评估.md"}, {"id": "空间理论（战术基础）", "category": "足球知识库", "color": "#fd79a8", "filename": "空间理论.md"}, {"id": "足球知识库", "category": "足球知识库", "color": "#fd79a8", "filename": "索引.md"}, {"id": "阵型演变史（Formation Evolution）", "category": "足球知识库", "color": "#fd79a8", "filename": "阵型演化史.md"}, {"id": "高位压迫体系（Pressing Systems）", "category": "足球知识库", "color": "#fd79a8", "filename": "高位压迫.md"}],
+  links: [{"source": "舒展 AI 知识库", "target": "认知决定接触层级"}, {"source": "舒展 AI 知识库", "target": "DeepSeek V4：历史性的杠杆窗口"}, {"source": "舒展 AI 知识库", "target": "Claude Code + Obsidian：AI 思考伙伴"}, {"source": "2026移动云大会 — 四大分论坛要点", "target": "2026 移动云大会"}, {"source": "2026移动云大会 — 四大分论坛要点", "target": "九天大模型"}, {"source": "2026移动云大会 — 四大分论坛要点", "target": "MoMA — 移动模型服务聚合引擎"}, {"source": "辽宁省数字政府建设实施方案（2025-2027）", "target": "标品是底座，定制是界面"}, {"source": "辽宁省数字政府建设实施方案（2025-2027）", "target": "中国移动在AI时代的三个卡位"}, {"source": "专线", "target": "移动云"}, {"source": "专线", "target": "物联网"}, {"source": "专线", "target": "短彩信"}, {"source": "专线", "target": "标品是底座，定制是界面"}, {"source": "专线", "target": "中国移动在AI时代的三个卡位"}, {"source": "云视讯（移动会议）", "target": "移动云"}, {"source": "云视讯（移动会议）", "target": "千里眼"}, {"source": "云视讯（移动会议）", "target": "和对讲 — 中国移动政企产品知识库"}, {"source": "云视讯（移动会议）", "target": "标品是底座，定制是界面"}, {"source": "千里眼", "target": "移动云"}, {"source": "千里眼", "target": "和对讲 — 中国移动政企产品知识库"}, {"source": "千里眼", "target": "标品是底座，定制是界面"}, {"source": "和对讲 — 中国移动政企产品知识库", "target": "和车队"}, {"source": "和对讲 — 中国移动政企产品知识库", "target": "标品是底座，定制是界面"}, {"source": "和车队", "target": "物联网"}, {"source": "和车队", "target": "移动云"}, {"source": "和车队", "target": "标品是底座，定制是界面"}, {"source": "物联网", "target": "移动云"}, {"source": "物联网", "target": "短彩信"}, {"source": "物联网", "target": "标品是底座，定制是界面"}, {"source": "物联网", "target": "中国移动在AI时代的三个卡位"}, {"source": "短彩信", "target": "移动云"}, {"source": "短彩信", "target": "标品是底座，定制是界面"}, {"source": "移动云", "target": "标品是底座，定制是界面"}, {"source": "移动云", "target": "中国移动在AI时代的三个卡位"}, {"source": "移动云", "target": "2026 移动云大会"}, {"source": "移动政企产品知识库", "target": "专线"}, {"source": "移动政企产品知识库", "target": "短彩信"}, {"source": "移动政企产品知识库", "target": "千里眼"}, {"source": "移动政企产品知识库", "target": "云视讯（移动会议）"}, {"source": "移动政企产品知识库", "target": "和对讲 — 中国移动政企产品知识库"}, {"source": "移动政企产品知识库", "target": "和车队"}, {"source": "移动政企产品知识库", "target": "移动云"}, {"source": "移动政企产品知识库", "target": "物联网"}, {"source": "40岁零基础的诚实", "target": "私人AI = 个人资产"}, {"source": "40岁零基础的诚实", "target": "从零到五虎将"}, {"source": "40岁零基础的诚实", "target": "你训练的 AI 的价值 = 你自身的价值"}, {"source": "40岁零基础的诚实", "target": "有得选 → 不用选"}, {"source": "AI 不是搜索引擎", "target": "私人AI = 个人资产"}, {"source": "AI 不是搜索引擎", "target": "AI 的命运取决于使用者"}, {"source": "AI 的命运取决于使用者", "target": "你训练的 AI 的价值 = 你自身的价值"}, {"source": "Token 经销商：客户经理的新身份", "target": "五次社会矛盾框架"}, {"source": "Token 经销商：客户经理的新身份", "target": "AI Token = 新货币·四大央行"}, {"source": "Token 经销商：客户经理的新身份", "target": "偷懒是商机"}, {"source": "Token 经销商：客户经理的新身份", "target": "AI 不是搜索引擎"}, {"source": "Token 经销商：客户经理的新身份", "target": "Token 效率革命"}, {"source": "Token 经销商：客户经理的新身份", "target": "中国移动在AI时代的三个卡位"}, {"source": "Token 经销商：客户经理的新身份", "target": "标品是底座，定制是界面"}, {"source": "Token 经销商：客户经理的新身份", "target": "专线"}, {"source": "Token 经销商：客户经理的新身份", "target": "移动云"}, {"source": "三层算力", "target": "国家AI战略 = 电车模式再现"}, {"source": "三层算力", "target": "算力是发动机，AI全链路是一辆车"}, {"source": "三层算力", "target": "MoMA — 移动模型服务聚合引擎"}, {"source": "两条线交汇", "target": "五次社会矛盾框架"}, {"source": "两条线交汇", "target": "AI 不是搜索引擎"}, {"source": "五次社会矛盾框架", "target": "《AI、就业和社保》——卓贤万字长文深度分析"}, {"source": "五次社会矛盾框架", "target": "偷懒是商机"}, {"source": "五次社会矛盾框架", "target": "生产力到消费品的最后一公里"}, {"source": "你训练的 AI 的价值 = 你自身的价值", "target": "灵感串联之线"}, {"source": "偷懒是商机", "target": "生产力到消费品的最后一公里"}, {"source": "偷懒是商机", "target": "有得选 → 不用选"}, {"source": "偷懒是商机", "target": "认知决定接触层级"}, {"source": "算力是发动机，AI全链路是一辆车", "target": "国家AI战略 = 电车模式再现"}, {"source": "算力是发动机，AI全链路是一辆车", "target": "2026 移动云大会"}, {"source": "有得选 → 不用选", "target": "五次社会矛盾框架"}, {"source": "永不关机的硬盘", "target": "私人AI = 个人资产"}, {"source": "永不关机的硬盘", "target": "灵感串联之线"}, {"source": "生产力到消费品的最后一公里", "target": "私人AI = 个人资产"}, {"source": "国家AI战略 = 电车模式再现", "target": "五次社会矛盾框架"}, {"source": "私人AI = 个人资产", "target": "灵感串联之线"}, {"source": "私人AI = 个人资产", "target": "DeepSeek V4：历史性的杠杆窗口"}, {"source": "飞书承载私人AI对话 → 抢占入口", "target": "私人AI = 个人资产"}, {"source": "飞书承载私人AI对话 → 抢占入口", "target": "MoMA — 移动模型服务聚合引擎"}, {"source": "AI Token = 新货币·四大央行", "target": "五次社会矛盾框架"}, {"source": "AI Token = 新货币·四大央行", "target": "偷懒是商机"}, {"source": "AI Token = 新货币·四大央行", "target": "Token 效率革命"}, {"source": "AI对社会的影响——普通人如何应对", "target": "AI 的命运取决于使用者"}, {"source": "AI对社会的影响——普通人如何应对", "target": "偷懒是商机"}, {"source": "AI对社会的影响——普通人如何应对", "target": "五次社会矛盾框架"}, {"source": "《AI、就业和社保》——卓贤万字长文深度分析", "target": "偷懒是商机"}, {"source": "《AI、就业和社保》——卓贤万字长文深度分析", "target": "生产力到消费品的最后一公里"}, {"source": "Claude Code + Obsidian：AI 思考伙伴", "target": "从零到五虎将"}, {"source": "Claude Code + Obsidian：AI 思考伙伴", "target": "私人AI = 个人资产"}, {"source": "DeepSeek V4：历史性的杠杆窗口", "target": "2026 移动云大会"}, {"source": "DeepSeek V4：历史性的杠杆窗口", "target": "MoMA — 移动模型服务聚合引擎"}, {"source": "The Agency — 144位AI专家开源项目", "target": "从零到五虎将"}, {"source": "The Agency — 144位AI专家开源项目", "target": "私人AI = 个人资产"}, {"source": "The Agency — 144位AI专家开源项目", "target": "AI 的命运取决于使用者"}, {"source": "一句\"废话\"推导整个经济学", "target": "五次社会矛盾框架"}, {"source": "《The Mixer》(Michael Cox) — 英超战术史", "target": "传控体系（Possession Systems）"}, {"source": "《The Mixer》(Michael Cox) — 英超战术史", "target": "空间理论（战术基础）"}, {"source": "《The Mixer》(Michael Cox) — 英超战术史", "target": "阵型演变史（Formation Evolution）"}, {"source": "《The Mixer》(Michael Cox) — 英超战术史", "target": "高位压迫体系（Pressing Systems）"}, {"source": "《倒转金字塔》(Inverting the Pyramid)", "target": "阵型演变史（Formation Evolution）"}, {"source": "《倒转金字塔》(Inverting the Pyramid)", "target": "传控体系（Possession Systems）"}, {"source": "《倒转金字塔》(Inverting the Pyramid)", "target": "空间理论（战术基础）"}, {"source": "《倒转金字塔》(Inverting the Pyramid)", "target": "高位压迫体系（Pressing Systems）"}, {"source": "传控体系（Possession Systems）", "target": "空间理论（战术基础）"}, {"source": "传控体系（Possession Systems）", "target": "高位压迫体系（Pressing Systems）"}, {"source": "传控体系（Possession Systems）", "target": "阵型演变史（Formation Evolution）"}, {"source": "比赛复盘框架（预测与复盘专用）", "target": "球员评估维度"}, {"source": "比赛复盘框架（预测与复盘专用）", "target": "空间理论（战术基础）"}, {"source": "比赛复盘框架（预测与复盘专用）", "target": "传控体系（Possession Systems）"}, {"source": "比赛复盘框架（预测与复盘专用）", "target": "高位压迫体系（Pressing Systems）"}, {"source": "球员评估维度", "target": "空间理论（战术基础）"}, {"source": "球员评估维度", "target": "传控体系（Possession Systems）"}, {"source": "空间理论（战术基础）", "target": "高位压迫体系（Pressing Systems）"}, {"source": "空间理论（战术基础）", "target": "阵型演变史（Formation Evolution）"}, {"source": "足球知识库", "target": "空间理论（战术基础）"}, {"source": "足球知识库", "target": "传控体系（Possession Systems）"}, {"source": "足球知识库", "target": "高位压迫体系（Pressing Systems）"}, {"source": "足球知识库", "target": "阵型演变史（Formation Evolution）"}, {"source": "足球知识库", "target": "比赛复盘框架（预测与复盘专用）"}, {"source": "足球知识库", "target": "球员评估维度"}, {"source": "足球知识库", "target": "《倒转金字塔》(Inverting the Pyramid)"}, {"source": "足球知识库", "target": "《The Mixer》(Michael Cox) — 英超战术史"}, {"source": "阵型演变史（Formation Evolution）", "target": "高位压迫体系（Pressing Systems）"}]
+};
+const categories = {"概念": {"color": "#ff6b6b", "name": "核心概念"}, "政企产品": {"color": "#4ecdc4", "name": "政企产品"}, "读书": {"color": "#ffe66d", "name": "读书笔记"}, "视频笔记": {"color": "#a29bfe", "name": "视频消化"}, "足球知识库": {"color": "#fd79a8", "name": "足球知识"}, "外部": {"color": "#74b9ff", "name": "外部验证"}};
+
+// Build legend
+const legend = d3.select("#legend");
+Object.entries(categories).forEach(([key, val]) => {
+  legend.append("div")
+    .attr("class", "legend-item")
+    .html(`<div class="legend-dot" style="background:${val.color}"></div>${val.name}`);
+});
+
+const svg = d3.select("#graph"),
+    width = window.innerWidth,
+    height = window.innerHeight;
+
 const g = svg.append("g");
 
-const tooltip = d3.select("#tooltip");
-const tipTitle = d3.select("#tip-title");
-const tipDesc = d3.select("#tip-desc");
+const simulation = d3.forceSimulation(data.nodes)
+    .force("link", d3.forceLink(data.links).id(d => d.id).distance(120))
+    .force("charge", d3.forceManyBody().strength(-300))
+    .force("center", d3.forceCenter(width/2, height/2))
+    .force("collision", d3.forceCollide(40));
 
-// Zoom
-svg.call(d3.zoom().extent([[0,0],[W,H]]).scaleExtent([0.2, 5])
-  .on("zoom", e => g.attr("transform", e.transform)));
+const link = g.append("g")
+    .selectAll("line")
+    .data(data.links)
+    .join("line")
+    .attr("class", "link");
 
-// Category config — more saturated colors
-const catColors = {
-  "concept": "#29b6f6", "product": "#66bb6a", "reading": "#ce93d8",
-  "video": "#ff7043", "football": "#26c6da", "tech": "#78909c",
-  "external": "#a1887f", "core": "#fdd835"
-};
-const catStroke = {
-  "concept": "#0288d1", "product": "#388e3c", "reading": "#7b1fa2",
-  "video": "#e64a19", "football": "#00838f", "tech": "#455a64",
-  "external": "#5d4037", "core": "#f9a825"
-};
-const catRadius = {
-  "core": 18, "concept": 8, "product": 7, "reading": 6,
-  "video": 6, "football": 6, "tech": 6, "external": 6
-};
-const catLabels = {
-  "concept": "理念", "product": "产品", "reading": "阅读", "video": "视频",
-  "football": "足球", "tech": "技术", "external": "外部", "core": "核心"
-};
-
-// Link colors — warm + vibrant (never white)
-const linkColors = ["#f4a460","#ffb74d","#ff8a65","#4dd0e1","#81c784","#ce93d8","#90caf9"];
-
-// Legend
-const legend = d3.select("#legend");
-Object.entries(catLabels).forEach(([cat, label]) => {
-  legend.append("div").attr("class", "legend-item")
-    .html(`<span class="legend-dot" style="background:${catColors[cat]}"></span>${label}`);
-});
-
-// Data
-const NODES = [
-  {
-    "id": "王叔的知识库",
-    "name": "王叔的知识库",
-    "type": "core",
-    "desc": "舒展（王叔）从2026年3月开始搭建的个人AI知识体系，覆盖产品、技术、战略、足球、阅读等多个维度。核心理念是「AI是一根线」——把碎片化的知识、想法、需求串成一张可生长的网络。目前已有55+知识节点，按类别分为：核心概念(23个)、产品(8个)、视频(6个)、足球(7个)、外部资料(2个)。每个节点都是舒展亲自思考、提炼、写下的原创内容。这是整个知识图谱的中心枢纽。"
-  },
-  {
-    "id": "标品下沉，定制上浮",
-    "name": "标品下沉，定制上浮",
-    "type": "concept",
-    "desc": "舒展在2026移动云大会上形成的核心论点。传统运营商卖标准化产品（专线、云视讯等），但AI时代客户需求千人千面。标品应该下沉为底座——集团提供算力、模型、管道这些「积木块」；定制浮上为界面——一线客户经理用AI把这些积木拼成客户要的样子。「标品是底座、定制是界面」这一金句替代了早期的「标品是底座、定制是未来」，更精准地描述了分层关系。"
-  },
-  {
-    "id": "概念关系图谱",
-    "name": "概念关系图谱",
-    "type": "concept",
-    "desc": "2026年5月8日生成，是舒展AI知识体系的可视化呈现。以D3.js力导向图展示所有知识节点及其关联关系。这不是简单的思维导图——每一条连线代表两个概念之间有逻辑推导或灵感触发关系，比如「偷懒是商机」←→「标品是底座、定制是界面」的连线，意味着偷懒驱动了标准化→定制化的转变。图谱目前有55个节点、60+条边，持续生长。"
-  },
-  {
-    "id": "2026 移动云大会",
-    "name": "2026 移动云大会",
-    "type": "concept",
-    "desc": "2026年5月7-9日在苏州金鸡湖会议中心举行。主题「移动云·智能新空间」。董事长陈忠岳主旨演讲发布AI-eSIM、MobileClaw、开放式超节点、算网大脑、MoMA、九天大模型六大产品。舒展在现场发现自己的「分散AI工作流」概念与MoMA不谋而合——集团的顶层设计验证了他一个半月前的直觉。大会的四大分论坛要点（算力网络、行业大模型、安全可信、生态开放）被收录为单独的外部资料节点。"
-  },
-  {
-    "id": "40岁零基础的诚实",
-    "name": "40岁零基础的诚实",
-    "type": "concept",
-    "desc": "舒展给自己的标签，也是最强的武器。40岁、零编程基础、地市级产品经理——在AI浪潮中看似毫无优势。但正是这份诚实让他不装懂、不怕问、不设限。一个半月从「Python是什么」到搭建WSL2+Ollama+SD+双Agent系统，完成了职业程序员都未必能做到的事。「零基础」不是借口，「诚实面对零基础」才是起点。"
-  },
-  {
-    "id": "AI 不是搜索引擎",
-    "name": "AI 不是搜索引擎",
-    "type": "concept",
-    "desc": "舒展对AI最基础的认知转变。大多数人在用AI查资料、写文案——这是把法拉利当买菜车。真正的用法是：把AI当思考伙伴。你扔给它半成品的想法，它帮你打磨成形；你说出碎片化的观察，它帮你串成体系。AI不是给你答案的工具，是陪你思考的人。这一观点直接影响了整个知识库的结构——不是FAQ式问答，而是关系网络式的思想生长。"
-  },
-  {
-    "id": "AI 的命运取决于使用者",
-    "name": "AI 的命运取决于使用者",
-    "type": "concept",
-    "desc": "舒展对AI本质的洞察：同一个模型，有人用来做高考题，有人用来写黄文，有人用来搭企业级AI系统。模型参数是固定的，但使用者的认知决定了AI能走到哪一步。这句话也是舒展的自我鞭策——他不想做那个「把AI当搜索引擎用」的人，而要成为「训练AI、驾驭AI、让AI成为个人资产」的人。"
-  },
-  {
-    "id": "MoMA — 移动模型服务聚合引擎",
-    "name": "MoMA — 移动模型服务聚合引擎",
-    "type": "concept",
-    "desc": "中国移动云大会发布的模型服务聚合平台。MoMA（Mobile Model Aggregation）的核心思路是：不绑定单一模型，而是聚合DeepSeek、豆包、文心一言、九天等多家模型，让企业按需调用。这个概念跟舒展的「多Agent协同」异曲同工——不是找一个万能模型，而是让各模型在各自擅长的领域协作。MoMA的价值在于打破模型锁定（vendor lock-in），降低企业AI使用门槛。"
-  },
-  {
-    "id": "Token 效率革命",
-    "name": "Token 效率革命",
-    "type": "concept",
-    "desc": "舒展从成本角度提出的AI使用策略：不是造最牛的模型，而是让小模型干绝大部分活，大模型只在需要时当顾问。类比：你不用雇一个教授来给你开门——门卫就够了。同样，问答用4b模型、执行用9b、深度推理才用DeepSeek V4。这套「分层模型策略」每月省下上百刀Token费，是真正把AI当生产工具而非玩具的思维。"
-  },
-  {
-    "id": "Token 经销商：客户经理的新身份",
-    "name": "Token 经销商：客户经理的新身份",
-    "type": "concept",
-    "desc": "舒展给一线客户经理设计的未来角色：我不需要客户懂AI，我帮他们把需求翻译成AI能理解的语言，AI产出结果，我收Token费。这就像我不是发电厂，但我是卖电的人。把这个模型移植到运营商客户经理身上——他们本来就面对客户、了解需求，只需要学会「用AI翻译需求」这一步，就能从「卖专线的人」变成「卖AI解决方案的人」。"
-  },
-  {
-    "id": "三层算力",
-    "name": "三层算力",
-    "type": "concept",
-    "desc": "舒展对国家算力战略的通俗解读：低级算力（普通人闲聊、娱乐）→ 中级算力（企业、行业消耗）→ 高级算力（科研、军事）。中国的策略是「以市场规模反推技术成熟」——先让14亿人用AI产生海量低级算力需求，养活产业链；然后用中级算力做行业渗透；最后用高级算力突破核心技术。这跟「电车模式」同理：先让老百姓买电车建充电桩，产业链成熟后自然能造更好的电车。"
-  },
-  {
-    "id": "两条线交汇",
-    "name": "两条线交汇",
-    "type": "concept",
-    "desc": "舒展对AI时代社会变革的宏观判断：AI Agent（替代脑力重复劳动）+ 具身智能（替代体力重复劳动），两条线在同一个历史节点交汇。这意味着未来5-10年，大量白领和蓝领工作都会同时被冲击。但舒展不是恐慌，而是在这个交汇点上找自己的位置——做那个「用AI帮客户经理不被替代」的人。"
-  },
-  {
-    "id": "九天大模型",
-    "name": "九天大模型",
-    "type": "concept",
-    "desc": "中国移动自主研发的行业垂直大模型。与通用模型（DeepSeek、豆包等）的最大区别在于「行业深度」——九天不是做聊天机器人的，而是做政务、医疗、教育、工业等垂直场景的。舒展认为九天代表了中国移动在AI时代的野心：不只做管道，要做「有行业知识的AI」。但九天目前面临通用模型快速迭代的挤压——DeepSeek V4在通用能力上已经远超九天，九天必须靠行业数据壁垒守住阵地。"
-  },
-  {
-    "id": "五次社会矛盾框架",
-    "name": "五次社会矛盾框架",
-    "type": "concept",
-    "desc": "舒展2026年5月7日提出的分析框架，将人类社会矛盾分为五个阶段：1)人与自然 2)人与人（阶级） 3)人与机器（工业革命） 4)人与信息（互联网） 5)人与AI（当前）。每个阶段的核心矛盾不同，解决方案也不同。第五阶段的核心矛盾是「人的价值被AI稀释」——不是AI要消灭人类，而是大多数人不知道自己还能干什么。舒展的答案：重新定义人的价值——不是跟AI比算力，而是做AI做不了的事（情感、创造、决策）。"
-  },
-  {
-    "id": "从零到五虎将",
-    "name": "从零到五虎将",
-    "type": "concept",
-    "desc": "舒展在一个半月内从零搭建的AI协同系统演变史。第一阶段：WSL2装Ubuntu+Ollama跑本地模型。第二阶段：Stable Diffusion生成头像（黑洞奇点风格）。第三阶段：Abyss（飞书AI助手）上线，实现飞书私聊交互。第四阶段：CatClaw+HomeBot加入，形成「大脑+执行+兜底」三角。第五阶段：升级为北斗七星体系（天枢Abyss/天璇HomeBot/天玑CatClaw/玉衡CLI/开阳VS Code/天权文学/瑶光视觉），七星各司其职。"
-  },
-  {
-    "id": "你训练的 AI 的价值 = 你自身的价值",
-    "name": "你训练的 AI 的价值 = 你自身的价值",
-    "type": "concept",
-    "desc": "舒展对AI投资的底层逻辑：AI不是买来的产品，是训练出来的资产。你花的时间、思考、试错，都会内化为AI的能力——而AI的能力，就是你的能力边界。这就是为什么「把AI当搜索引擎用」的人永远无法获得超额回报——他们没有投入训练成本。舒展花了一个半月调教Abyss，结果Abyss比大多数产品经理更懂政企产品、更懂客户经理痛点。"
-  },
-  {
-    "id": "偷懒是商机",
-    "name": "偷懒是商机",
-    "type": "concept",
-    "desc": "舒展最喜欢的金句之一。「大部分人的偷懒，是小部分人的商机」——客户经理懒得记产品参数→做个语音录入小程序；领导懒得看日报→做个自动生成看板；自己懒得每次手动部署→做cron自动推送。偷懒不是贬义词，是需求信号。发现别人（和自己）的偷懒，就是在发现商机。这个观点与「解决一线的需求就是解决领导的需求」一脉相承。"
-  },
-  {
-    "id": "算力是发动机，AI全链路是一辆车",
-    "name": "算力是发动机，AI全链路是一辆车",
-    "type": "concept",
-    "desc": "舒展对运营商角色的重新定位。中国的AI生态：互联网公司造车（应用）、硬件厂商造零件（GPU）——但谁来修路？移动的网络就是AI时代的高速公路，而且「是收费的」。算力是发动机，但发动机再好，没有路（网络）、没有加油站（边缘计算）、没有导航（算力调度），车也跑不远。移动的5G+光纤+边缘节点就是基础设施优势——不是最性感的角色，但是最稳的收租人。"
-  },
-  {
-    "id": "有得选 → 不用选",
-    "name": "有得选 → 不用选",
-    "type": "concept",
-    "desc": "舒展对幸福感的独特定义。美好生活不是「拥有一切想要的」，而是「有选择权」。有得选本身就是最大的奢侈——可以不做自己不想做的事，可以去探索自己想做的事。这个哲学也映射到他做AI系统的态度：不是追求最牛的单一方案，而是搭建一个「有得选」的体系——DeepSeek不行换豆包，本地不行上云端，总有一条路通。"
-  },
-  {
-    "id": "标品是底座，定制是界面",
-    "name": "标品是底座，定制是界面",
-    "type": "concept",
-    "desc": "「标品下沉、定制上浮」的精简版。集团提供标准化的能力积木（API、模型、管道），一线客户经理用AI把这些积木拼成客户眼前的具体方案。这个分工本质上是把「懂产品」和「懂客户」拆开——集团不需要懂每一个客户，客户经理不需要懂每一个产品参数。AI在中间做翻译。"
-  },
-  {
-    "id": "永不关机的硬盘",
-    "name": "永不关机的硬盘",
-    "type": "concept",
-    "desc": "舒展对AI助手的定位。Abyss不是「用完即弃的工具」，而是一个24小时在线的思考伙伴和知识存储。舒展会随时把灵感、想法、会议笔记扔给Abyss——然后Abyss帮他记住、整理、关联。这就是为什么这个知识库能在一个半月内生长到55个节点——因为随时随地都在往里灌，从不停机。"
-  },
-  {
-    "id": "灵感串联之线",
-    "name": "灵感串联之线",
-    "type": "concept",
-    "desc": "AI最被低估的能力：不是生成内容，而是发现「A和B居然有关系」。舒展发现，当他随口说「客户经理偷懒」和「标准化产品卖不动」时，AI能把这些碎片串成「偷懒是商机→标品是底座定制是界面→小程序语音录入」这条完整链路。这不叫创造力，叫「关联力」——但关联力在信息爆炸的时代比创造力更稀缺。"
-  },
-  {
-    "id": "生产力到消费品的最后一公里",
-    "name": "生产力到消费品的最后一公里",
-    "type": "concept",
-    "desc": "舒展的核心商业洞察。从技术到赚钱之间有一段无人问津的「最后一公里」——大厂把AI当生产力工具卖给企业，但没人把AI包装成老百姓能用的消费品。舒展要做就是这「最后一公里」：不是造引擎，而是把引擎装进车里，再把车开到消费者面前。小程序、看板、语音录入都是这个思路的产物——不炫技，只解决实际问题。"
-  },
-  {
-    "id": "国家AI战略 = 电车模式再现",
-    "name": "国家AI战略 = 电车模式再现",
-    "type": "concept",
-    "desc": "舒展对中国AI发展路径的类比。十年前中国推电动车：补贴买车→建充电桩→培育比亚迪/宁德时代→现在全球领先。AI同理：先降低使用门槛→全民用AI→培育模型/芯片产业链→最终技术自主。这个框架解释了为什么中国对AI的态度是「先用起来再说」而非「等技术成熟再推广」——市场规模本身就是技术催化剂。"
-  },
-  {
-    "id": "私人AI = 个人资产",
-    "name": "私人AI = 个人资产",
-    "type": "concept",
-    "desc": "舒展对AI所有权的前瞻判断。现在的AI服务（ChatGPT、豆包）是「租用」——你没产权，服务商随时可以涨价、降质、关停。私人部署的AI（Ollama+本地模型+自己训练）才是「资产」——永久属于你，越用越值钱。这跟租房vs买房的逻辑一样。舒展把Abyss部署在自己的WSL2上，就是在「买AI的房」。"
-  },
-  {
-    "id": "中国移动在AI时代的三个卡位",
-    "name": "中国移动在AI时代的三个卡位",
-    "type": "concept",
-    "desc": "舒展认为移动在AI时代有三个天然优势：1) 网络管道——AI推理需要低延迟高带宽，移动有5G+光纤；2) 政企客户关系——几十万客户经理覆盖全国每一个县，是任何互联网公司都没有的触达力；3) 行业数据——政务、医疗、教育的数据在移动云上，训练行业模型有壁垒。但问题在于：移动能不能把这三个优势转化为AI收入，而不是继续卖专线和流量。"
-  },
-  {
-    "id": "飞书承载私人AI对话 → 抢占入口",
-    "name": "飞书承载私人AI对话 → 抢占入口",
-    "type": "concept",
-    "desc": "舒展选择飞书作为Abyss交互平台的前瞻性决策。微信是社交入口、抖音是内容入口——AI助手的入口在哪里？舒展认为在IM。飞书允许个人版免费使用+开放API，是承载私人AI对话的最佳平台。他把这个叫「先发优势」——等大家反应过来AI应该在IM里，他已经训练好了一个深度理解自己业务的AI助手。"
-  },
-  {
-    "id": "AI Token = 新货币·四大央行",
-    "name": "AI Token = 新货币·四大央行",
-    "type": "video",
-    "desc": "舒展从视频中提炼的Token经济学观点。OpenAI、Anthropic、Google、Meta是AI时代的「四大央行」——它们发行Token（货币），制定「利率」（定价），控制「货币供应量」（模型能力）。而中国移动做MoMA就是做「Token的银联」——不发行货币，但做跨行结算。对客户经理来说，Token就是他们要卖的新产品——不是专线，是「让客户用AI的能力」。"
-  },
-  {
-    "id": "Token经济全景",
-    "name": "Token经济全景",
-    "type": "external",
-    "desc": "摩根士丹利+清新研究+国信证券四份报告精华。Token=AI时代石油/电力，中国AI云CAGR 72%→2029年2200亿。中国模型份额5%→32%，定价权回归API涨80%。产业链五环：芯片→智算中心→MaaS→AI应用→社会影响。阿里全栈 vs 字节资本 vs 国企云劣势。移动政企关系=价值锚点，Token经济最后一公里在应用层。"
-  },
-  {
-    "id": "2026移动云大会 — 四大分论坛要点",
-    "name": "2026移动云大会 — 四大分论坛要点",
-    "type": "external",
-    "desc": "四大分论坛核心内容：1) 算力网络——移动的云边端三级算力架构，「算力像水电一样即取即用」；2) 行业大模型——九天在政务、医疗、教育等垂直场景的应用案例；3) 安全可信——AI安全涉及数据隐私、模型防攻击、内容合规，移动主打「国家队可信」；4) 生态开放——MobileClaw的150+Skills生态，鼓励开发者在移动云上构建AI应用。"
-  },
-  {
-    "id": "辽宁省数字政府建设实施方案（2025-2027）",
-    "name": "辽宁省数字政府建设实施方案（2025-2027）",
-    "type": "external",
-    "desc": "辽宁省政府2025年发布的数字化建设规划文件。核心目标：到2027年实现政务「一网通办、一网统管、一网协同」。对舒展的意义在于——这证明地市级政企客户未来3年有大量数字化/AI建设需求，而移动作为「数字政府首选运营商」有天然优势。舒展的小程序+AI解决方案可以直接嵌入到「一网通办」框架中。"
-  },
-  {
-    "id": "专线",
-    "name": "专线",
-    "type": "product",
-    "desc": "中国移动政企产品线的基石产品。为客户提供点对点专用网络连接，保障带宽、低延迟、高安全。典型客户：银行网点互联、政府内网、企业总部-分支互联。带宽从2M到100G不等。在AI时代，专线的新价值是「AI推理的低延迟管道」——边缘节点到中心云之间的专线需求将爆发式增长。"
-  },
-  {
-    "id": "云视讯（移动会议）",
-    "name": "云视讯（移动会议）",
-    "type": "product",
-    "desc": "中国移动的视频会议产品，基于移动云提供高清视频会议服务。支持Web/PC/手机三端入会，最大500方并发。核心卖点是「运营商级网络保障」——不像Zoom/腾讯会议走公网，云视讯走移动专网，画质和稳定性更好。在AI时代增加了实时字幕、会议纪要自动生成等AI功能。典型应用：政府远程会议、企业跨区域协作、应急指挥调度。"
-  },
-  {
-    "id": "千里眼",
-    "name": "千里眼",
-    "type": "product",
-    "desc": "中国移动的视频监控云平台产品。基于移动云+5G网络提供远程视频监控、AI智能分析（人脸识别、车牌识别、烟火检测等）。核心场景：平安城市（公安天网）、智慧工地、明厨亮灶（餐饮监管）、智慧农业。千里眼的差异化在于「云边协同」——摄像头端AI芯片做实时分析，云端做长期存储和深度检索，比传统NVR方案更智能。"
-  },
-  {
-    "id": "和对讲 — 中国移动政企产品知识库",
-    "name": "和对讲 — 中国移动政企产品知识库",
-    "type": "product",
-    "desc": "中国移动的公网对讲产品，替代传统对讲机的数字化方案。基于4G/5G网络实现全国范围一键对讲，不限距离。核心功能：群组对讲、实时定位、SOS报警、录音回放。相比传统对讲机，和对讲的优势是无距离限制+可视化调度。典型客户：物流车队、安保公司、城管执法、大型活动保障（如马拉松赛事调度）。"
-  },
-  {
-    "id": "和车队",
-    "name": "和车队",
-    "type": "product",
-    "desc": "中国移动的车队管理SaaS产品。通过OBD设备+4G网络实时监控车辆位置、油耗、行驶轨迹、驾驶行为。核心功能：实时定位追踪、电子围栏、油耗分析、驾驶行为评分、维保提醒。面向物流公司、企事业单位车队。在AI时代增加了「AI路线规划」和「异常行为预警」（如疲劳驾驶检测），从「管车」升级到「管安全」。"
-  },
-  {
-    "id": "物联网",
-    "name": "物联网",
-    "type": "product",
-    "desc": "中国移动的物联网连接管理平台（OneLink）+设备管理平台（OneNET）。提供2G/4G/5G/NB-IoT多种网络制式的物联网卡和连接管理。核心场景：智能表计（水电气远程抄表）、车联网、智慧农业、工业物联网。移动物联网的差异化在于「连接即服务」——不是卖SIM卡，而是卖连接管理能力（流量池、远程诊断、安全认证）。"
-  },
-  {
-    "id": "短彩信",
-    "name": "短彩信",
-    "type": "product",
-    "desc": "中国移动的行业短信和彩信群发产品。面向政企客户的验证码、通知、营销短信发送服务。虽然看起来「传统」，但在AI时代有新玩法：结合AI做智能短信（根据用户画像自动生成个性化文案）、结合5G消息做富媒体互动（RCS）。而且短彩信是运营商为数不多「不需要客户经理解释」就能卖的产品——所有企业都需要发验证码。"
-  },
-  {
-    "id": "移动云",
-    "name": "移动云",
-    "type": "product",
-    "desc": "中国移动的公有云品牌。2026年已进入国内云计算第一梯队，主打「云网融合」差异化——计算+存储+网络一站式交付。核心产品：云主机、对象存储、CDN、云安全、AI推理服务（部署DeepSeek等模型）。相对于阿里云/华为云，移动云的核心优势是「政企关系+网络能力+安全合规（国家队）」——政府客户更信任央企云。"
-  },
-  {
-    "id": "移动政企产品知识库",
-    "name": "移动政企产品知识库",
-    "type": "product",
-    "desc": "舒展整理的8大政企产品完整知识体系，包括专线、短彩信、千里眼、云视讯、和对讲、和车队、移动云、物联网。每个产品都涵盖产品定义、核心功能、典型客户、竞争优势、销售话术五个维度。这个知识库是微信小程序「政企需求助手」的数据底座——客户经理语音录入需求后，AI从这个知识库匹配最合适的产品组合。"
-  },
-  {
-    "id": "认知决定接触层级",
-    "name": "认知决定接触层级",
-    "type": "concept",
-    "desc": "舒展对信息茧房的清醒认知。不是「有钱人有机会」，而是「高认知的人能看到更多机会」。同一个AI工具、同一个新闻事件，认知水平不同的人看到的东西完全不同。舒展的应对策略：大量输入（他每天刷B站/抖音/公众号的AI内容）+ 深度思考（写笔记而不是收藏）+ AI辅助关联（让Abyss帮他发现隐含联系）。"
-  },
-  {
-    "id": "AI对社会的影响——普通人如何应对",
-    "name": "AI对社会的影响——普通人如何应对",
-    "type": "video",
-    "desc": "一个探讨AI社会影响的视频内容。核心观点：AI不会让所有人失业，但会让「拒绝使用AI的人」失业。普通人的对策不是学编程，而是学会「用AI解决自己工作里的具体问题」。这跟舒展的做法完全一致——他不需要成为程序员，但他可以用AI+小程序解决客户经理的语音录入需求。关键是找到自己领域里「AI能帮的忙」。"
-  },
-  {
-    "id": "《AI、就业和社保》——卓贤万字长文深度分析",
-    "name": "《AI、就业和社保》——卓贤万字长文深度分析",
-    "type": "video",
-    "desc": "一篇关于AI对就业影响的深度分析文章。核心论点：AI不是「替代人」而是「替代任务」——一个岗位有10项任务，AI可能替代其中6项，但剩下4项仍然需要人。这意味着社会保障体系需要从「保障失业」转向「保障转型」——不是给失业金，而是给学习补贴和时间。舒展从这里得到启发：客户经理不会被AI替代，但「不会用AI的客户经理」会被「会用AI的客户经理」替代。"
-  },
-  {
-    "id": "Claude Code + Obsidian：AI 思考伙伴",
-    "name": "Claude Code + Obsidian：AI 思考伙伴",
-    "type": "video",
-    "desc": "Anthropic的Claude Code与Obsidian笔记工具结合的实践。Claude Code可以在终端里直接读Obsidian的markdown笔记，然后做关联分析、补全、提问。舒展从这里学到：AI最好的角色不是「替你写」，而是「帮你思考」——它指出你笔记里的矛盾、补充你遗漏的关联、挑战你的假设。这也是Abyss核心交互模式的来源：不直接给答案，而是陪你梳理思路。"
-  },
-  {
-    "id": "DeepSeek V4：历史性的杠杆窗口",
-    "name": "DeepSeek V4：历史性的杠杆窗口",
-    "type": "video",
-    "desc": "DeepSeek V4发布的分析视频。核心观点：V4的性能接近Claude Opus 4但价格只有1/50——这不是技术突破，是「定价权突破」。对舒展这样的个人用户来说，V4意味着他可以用白菜价获得世界顶级AI能力。这也是Abyss选择DeepSeek V4 Pro作为主模型的原因——性能够用、价格友好、国产可控。"
-  },
-  {
-    "id": "The Agency — 144位AI专家开源项目",
-    "name": "The Agency — 144位AI专家开源项目",
-    "type": "video",
-    "desc": "一个开源AI Agent协作框架，由144位AI/ML专家共同维护。核心思路：不是单一Agent，而是多个专业化Agent协作完成任务。舒展从这里学到了多Agent架构理念，直接催生了五虎将→北斗七星的进化。关键takeaway：与其训练一个万能Agent，不如训练一组各司其职的专业Agent——前者永远做不好每件事，后者每个人做好一件事就够了。"
-  },
-  {
-    "id": "一句\"废话\"推导整个经济学",
-    "name": "一句\"废话\"推导整个经济学",
-    "type": "video",
-    "desc": "一个展示逻辑推导能力的视频。从一个看似「废话」的经济学公理出发（如「人偏好更多而非更少」），通过严密逻辑逐步推导出整个微观经济学体系。舒展从这里学到：复杂系统可以从简单原则推导出来——他的AI知识库也是同样的方法论：从「偷懒是商机」「标品是底座」这几个核心原则出发，推导出整个小程序+Agent+知识库的产品体系。"
-  },
-  {
-    "id": "《The Mixer》(Michael Cox) — 英超战术史",
-    "name": "《The Mixer》(Michael Cox) — 英超战术史",
-    "type": "football",
-    "desc": "Michael Cox的经典足球战术著作，以英超1992年成立以来的战术演变为主线。核心内容：从4-4-2的长传冲吊到温格的传控革命，从穆里尼奥的防守反击到瓜迪奥拉的极致传控，再到克洛普的高位压迫。舒展把足球战术分析的方法论移植到AI系统设计中——每个Agent有位置（role）、有战术（prompt）、有配合（多Agent协作），就像一支足球队。"
-  },
-  {
-    "id": "《倒转金字塔》(Inverting the Pyramid)",
-    "name": "《倒转金字塔》(Inverting the Pyramid)",
-    "type": "football",
-    "desc": "Jonathan Wilson的足球战术史经典。从1872年英格兰vs苏格兰的2-2-6阵型讲起，一直写到瓜迪奥拉的极致传控。核心主题：足球战术的本质是「如何在场上创造人数优势」——每一次阵型变革（从2-3-5到4-4-2到4-3-3）都是为了在关键区域多一个人。舒展把这种思维用在Agent编排上：不是增加Agent数量，而是在关键任务上「创造计算资源的人数优势」。"
-  },
-  {
-    "id": "传控体系（Possession Systems）",
-    "name": "传控体系（Possession Systems）",
-    "type": "football",
-    "desc": "以控球为核心的足球战术体系，代表人物：瓜迪奥拉。核心原则：通过短传控制比赛节奏，用球权替代防守——「对手没球就不能进球」。舒展的AI类比：不是被动响应问题，而是主动控制上下文——Abyss通过记忆系统和知识库保持对舒展业务的全面理解，就像巴萨通过控球保持比赛控制权。控球率=上下文完整度。"
-  },
-  {
-    "id": "比赛复盘框架（预测与复盘专用）",
-    "name": "比赛复盘框架（预测与复盘专用）",
-    "type": "football",
-    "desc": "舒展用于足球预测的系统化复盘方法论。四步走：1) 赛前预测记录（比分+方向+理由）；2) 赛后结果比对（命中/方向对/全错）；3) 错题分析（为什么错？信息遗漏？模型偏差？运气？）；4) 知识库更新（把新的认知写入对应战术节点）。这个框架后来被移植到AI系统的整体自我改进中——每次对话、每次任务都有记录+复盘+知识沉淀。"
-  },
-  {
-    "id": "球员评估维度",
-    "name": "球员评估维度",
-    "type": "football",
-    "desc": "舒展的足球球员分析框架，包含技术、身体、战术、心理、数据五个维度。技术：控球、传球、射门、盘带；身体：速度、力量、耐力、弹跳；战术：位置感、跑位、防守意识；心理：抗压、领导力、决断；数据：xG、进球、助攻、抢断等。这套框架也被用来评估AI Agent——准确性(技术)、响应速度(身体)、任务编排(战术)、错误恢复(心理)、Token消耗(数据)。"
-  },
-  {
-    "id": "空间理论（战术基础）",
-    "name": "空间理论（战术基础）",
-    "type": "football",
-    "desc": "足球战术的空间维度分析。核心概念：球场被分为18个区域（纵向3条×横向6列），每支球队需要在进攻时「拉开空间」、防守时「压缩空间」。克洛普的利物浦是最极端的空间压缩者——丢球后5秒内全员疯抢，不让对手有任何处理球的空间。舒展把空间理论用在AI资源分配上：关键任务给足「空间」（Token预算+计算时间），次要任务压缩资源。"
-  },
-  {
-    "id": "足球知识库",
-    "name": "足球知识库",
-    "type": "football",
-    "desc": "舒展AI知识库中的足球子模块，包含战术体系（传控/压迫/防反）、阵型演变、球员评估、复盘框架四个板块。虽然不是舒展的主业，但足球战术分析的方法论深度影响了他的AI系统设计——团队协作、角色分工、战术应变，这些足球概念全被翻译成了Agent架构设计原则。"
-  },
-  {
-    "id": "阵型演变史（Formation Evolution）",
-    "name": "阵型演变史（Formation Evolution）",
-    "type": "football",
-    "desc": "足球150年阵型变化全景：2-2-6(1872)→2-3-5(金字塔)→WM(3-2-2-3)→4-2-4(巴西)→4-4-2(经典)→4-3-3(荷兰全攻全守)→3-5-2/4-2-3-1(现代)。每一次演变都是在「攻守平衡」上做微调。舒展把Agent架构也看作阵型调整——北斗七星(1-3-2-1)就是一种「阵型」：1个大脑(天枢)+3个执行(天璇天玑天权)+2个专业(玉衡开阳)+1个视觉(瑶光)。"
-  },
-  {
-    "id": "高位压迫体系（Pressing Systems）",
-    "name": "高位压迫体系（Pressing Systems）",
-    "type": "football",
-    "desc": "以失去球权后立即反抢为核心的战术体系，代表人物：克洛普、瓜迪奥拉。核心理念：不在本方半场等对手犯错，而是在对方半场主动制造错误。对舒展的启发：AI系统不应该「等用户问了才动」——要主动监控、主动提醒、主动关联。这就是Abyss的Proactive模式来源：像利物浦的前场压迫一样，持续扫描信息流，在问题发生之前预警。"
-  }
-];
-const LINKS = [{"source": "王叔的知识库", "target": "永不关机的硬盘"}, {"source": "王叔的知识库", "target": "灵感串联之线"}, {"source": "王叔的知识库", "target": "40岁零基础的诚实"}, {"source": "王叔的知识库", "target": "从零到五虎将"}, {"source": "王叔的知识库", "target": "五次社会矛盾框架"}, {"source": "王叔的知识库", "target": "国家AI战略 = 电车模式再现"}, {"source": "王叔的知识库", "target": "三层算力"}, {"source": "王叔的知识库", "target": "生产力到消费品的最后一公里"}, {"source": "王叔的知识库", "target": "两条线交汇"}, {"source": "王叔的知识库", "target": "偷懒是商机"}, {"source": "王叔的知识库", "target": "标品是底座，定制是界面"}, {"source": "王叔的知识库", "target": "九天大模型"}, {"source": "王叔的知识库", "target": "认知决定接触层级"}, {"source": "王叔的知识库", "target": "2026移动云大会 — 四大分论坛要点"}, {"source": "王叔的知识库", "target": "足球知识库"}, {"source": "标品下沉，定制上浮", "target": "偷懒是商机"}, {"source": "概念关系图谱", "target": "永不关机的硬盘"}, {"source": "概念关系图谱", "target": "灵感串联之线"}, {"source": "概念关系图谱", "target": "40岁零基础的诚实"}, {"source": "概念关系图谱", "target": "五次社会矛盾框架"}, {"source": "概念关系图谱", "target": "国家AI战略 = 电车模式再现"}, {"source": "概念关系图谱", "target": "三层算力"}, {"source": "概念关系图谱", "target": "生产力到消费品的最后一公里"}, {"source": "概念关系图谱", "target": "两条线交汇"}, {"source": "概念关系图谱", "target": "偷懒是商机"}, {"source": "概念关系图谱", "target": "2026移动云大会 — 四大分论坛要点"}, {"source": "2026 移动云大会", "target": "三层算力"}, {"source": "2026 移动云大会", "target": "国家AI战略 = 电车模式再现"}, {"source": "2026 移动云大会", "target": "生产力到消费品的最后一公里"}, {"source": "2026 移动云大会", "target": "偷懒是商机"}, {"source": "AI 的命运取决于使用者", "target": "40岁零基础的诚实"}, {"source": "MoMA — 移动模型服务聚合引擎", "target": "三层算力"}, {"source": "Token 效率革命", "target": "三层算力"}, {"source": "Token 效率革命", "target": "偷懒是商机"}, {"source": "Token 经销商：客户经理的新身份", "target": "五次社会矛盾框架"}, {"source": "Token 经销商：客户经理的新身份", "target": "偷懒是商机"}, {"source": "三层算力", "target": "国家AI战略 = 电车模式再现"}, {"source": "两条线交汇", "target": "五次社会矛盾框架"}, {"source": "九天大模型", "target": "三层算力"}, {"source": "从零到五虎将", "target": "灵感串联之线"}, {"source": "从零到五虎将", "target": "40岁零基础的诚实"}, {"source": "你训练的 AI 的价值 = 你自身的价值", "target": "灵感串联之线"}, {"source": "偷懒是商机", "target": "生产力到消费品的最后一公里"}, {"source": "偷懒是商机", "target": "五次社会矛盾框架"}, {"source": "偷懒是商机", "target": "认知决定接触层级"}, {"source": "算力是发动机，AI全链路是一辆车", "target": "三层算力"}, {"source": "算力是发动机，AI全链路是一辆车", "target": "国家AI战略 = 电车模式再现"}, {"source": "算力是发动机，AI全链路是一辆车", "target": "2026移动云大会 — 四大分论坛要点"}, {"source": "有得选 → 不用选", "target": "五次社会矛盾框架"}, {"source": "标品是底座，定制是界面", "target": "偷懒是商机"}, {"source": "标品是底座，定制是界面", "target": "生产力到消费品的最后一公里"}, {"source": "永不关机的硬盘", "target": "灵感串联之线"}, {"source": "国家AI战略 = 电车模式再现", "target": "五次社会矛盾框架"}, {"source": "私人AI = 个人资产", "target": "永不关机的硬盘"}, {"source": "私人AI = 个人资产", "target": "灵感串联之线"}, {"source": "私人AI = 个人资产", "target": "足球知识库"}, {"source": "中国移动在AI时代的三个卡位", "target": "九天大模型"}, {"source": "中国移动在AI时代的三个卡位", "target": "标品是底座，定制是界面"}, {"source": "中国移动在AI时代的三个卡位", "target": "偷懒是商机"}, {"source": "AI Token = 新货币·四大央行", "target": "五次社会矛盾框架"}, {"source": "AI Token = 新货币·四大央行", "target": "偷懒是商机"}, {"source": "移动政企产品知识库", "target": "专线"}, {"source": "移动政企产品知识库", "target": "短彩信"}, {"source": "移动政企产品知识库", "target": "千里眼"}, {"source": "移动政企产品知识库", "target": "云视讯（移动会议）"}, {"source": "移动政企产品知识库", "target": "和对讲 — 中国移动政企产品知识库"}, {"source": "移动政企产品知识库", "target": "和车队"}, {"source": "移动政企产品知识库", "target": "移动云"}, {"source": "移动政企产品知识库", "target": "物联网"}, {"source": "移动政企产品知识库", "target": "标品是底座，定制是界面"}, {"source": "认知决定接触层级", "target": "标品是底座，定制是界面"}, {"source": "足球知识库", "target": "空间理论（战术基础）"}, {"source": "足球知识库", "target": "传控体系（Possession Systems）"}, {"source": "足球知识库", "target": "高位压迫体系（Pressing Systems）"}, {"source": "足球知识库", "target": "比赛复盘框架（预测与复盘专用）"}, {"source": "足球知识库", "target": "球员评估维度"}, {"source": "王叔的知识库", "target": "AI 不是搜索引擎"}, {"source": "王叔的知识库", "target": "飞书承载私人AI对话 → 抢占入口"}, {"source": "王叔的知识库", "target": "AI对社会的影响——普通人如何应对"}, {"source": "王叔的知识库", "target": "《AI、就业和社保》——卓贤万字长文深度分析"}, {"source": "王叔的知识库", "target": "Claude Code + Obsidian：AI 思考伙伴"}, {"source": "王叔的知识库", "target": "DeepSeek V4：历史性的杠杆窗口"}, {"source": "王叔的知识库", "target": "The Agency — 144位AI专家开源项目"}, {"source": "王叔的知识库", "target": "一句\"废话\"推导整个经济学"}, {"source": "足球知识库", "target": "《The Mixer》(Michael Cox) — 英超战术史"}, {"source": "足球知识库", "target": "《倒转金字塔》(Inverting the Pyramid)"}, {"source": "足球知识库", "target": "阵型演变史（Formation Evolution）"}, {"source": "王叔的知识库", "target": "辽宁省数字政府建设实施方案（2025-2027）"}, {"source": "辽宁省数字政府建设实施方案（2025-2027）", "target": "中国移动在AI时代的三个卡位"}, {"source": "偷懒是商机", "target": "Token 经销商：客户经理的新身份"}, {"source": "AI 不是搜索引擎", "target": "AI 的命运取决于使用者"}, {"source": "飞书承载私人AI对话 → 抢占入口", "target": "私人AI = 个人资产"}, {"source": "MoMA — 移动模型服务聚合引擎", "target": "九天大模型"}, {"source": "你训练的 AI 的价值 = 你自身的价值", "target": "私人AI = 个人资产"}, {"source": "有得选 → 不用选", "target": "从零到五虎将"}, {"source": "Claude Code + Obsidian：AI 思考伙伴", "target": "灵感串联之线"}, {"source": "DeepSeek V4：历史性的杠杆窗口", "target": "Token 效率革命"}, {"source": "The Agency — 144位AI专家开源项目", "target": "从零到五虎将"}, {"source": "高位压迫体系（Pressing Systems）", "target": "永不关机的硬盘"}, {"source": "空间理论（战术基础）", "target": "球员评估维度"}, {"source": "传控体系（Possession Systems）", "target": "比赛复盘框架（预测与复盘专用）"}, {"source": "球员评估维度", "target": "比赛复盘框架（预测与复盘专用）"}, {"source": "专线", "target": "移动云"}, {"source": "云视讯（移动会议）", "target": "千里眼"}, {"source": "和对讲 — 中国移动政企产品知识库", "target": "和车队"}, {"source": "物联网", "target": "移动云"}, {"source": "短彩信", "target": "专线"}, {"source": "移动政企产品知识库", "target": "专线"}, {"source": "移动政企产品知识库", "target": "物联网"}, {"source": "Token经济全景", "target": "Token 效率革命"}, {"source": "Token经济全景", "target": "Token 经销商：客户经理的新身份"}, {"source": "Token经济全景", "target": "AI Token = 新货币·四大央行"}, {"source": "Token经济全景", "target": "标品是底座，定制是界面"}, {"source": "Token经济全景", "target": "中国移动在AI时代的三个卡位"}, {"source": "Token经济全景", "target": "偷懒是商机"}, {"source": "Token经济全景", "target": "三层算力"}, {"source": "Token经济全景", "target": "生产力到消费品的最后一公里"}, {"source": "Token经济全景", "target": "国家AI战略 = 电车模式再现"}, {"source": "王叔的知识库", "target": "Token经济全景"}];
-
-// Assign each link a random warm color
-LINKS.forEach(l => l._color = linkColors[Math.floor(Math.random()*linkColors.length)]);
-
-// Sim — tighter layout
-const sim = d3.forceSimulation(NODES)
-  .force("link", d3.forceLink(LINKS).id(d => d.id).distance(45))
-  .force("charge", d3.forceManyBody().strength(-550))
-  .force("center", d3.forceCenter(W/2, H/2))
-  .force("collision", d3.forceCollide(d => (catRadius[d.type]||7)+2));
-
-// Links — colored
-const link = g.append("g").selectAll("line")
-  .data(LINKS).join("line")
-  .attr("class", "link")
-  .attr("stroke", d => d._color)
-  .attr("stroke-opacity", 0.5)
-  .attr("stroke-width", 1);
-
-// Nodes — drag with built-in click detection
-const dragBehavior = d3.drag()
-    .on("start", (e,d) => {
-      if(!e.active) sim.alphaTarget(0.3).restart();
-      d.fx = d.x; d.fy = d.y;
-      d._wasDragged = false;
-    })
-    .on("drag", (e,d) => {
-      d.fx = e.x; d.fy = e.y;
-      d._wasDragged = true;
-    })
-    .on("end", (e,d) => {
-      if(!e.active) sim.alphaTarget(0);
-      d.fx = null; d.fy = null;
-      if (!d._wasDragged) handleNodeClick(d);
-    });
-
-const node = g.append("g").selectAll("g")
-  .data(NODES).join("g")
-  .attr("class", "node")
-  .call(dragBehavior);
+const node = g.append("g")
+    .selectAll("g")
+    .data(data.nodes)
+    .join("g")
+    .attr("class", "node")
+    .call(d3.drag()
+        .on("start", (e,d) => { if(!e.active) simulation.alphaTarget(0.3).restart(); d.fx=d.x; d.fy=d.y; })
+        .on("drag", (e,d) => { d.fx=e.x; d.fy=e.y; })
+        .on("end", (e,d) => { if(!e.active) simulation.alphaTarget(0); d.fx=null; d.fy=null; })
+    );
 
 node.append("circle")
-  .attr("r", d => catRadius[d.type] || 6)
-  .attr("fill", d => catColors[d.type] || "#666")
-  .attr("stroke", d => catStroke[d.type] || "#444")
-  .attr("stroke-width", 1.2);
+    .attr("r", d => {
+        const conns = data.links.filter(l => l.source.id===d.id || l.target.id===d.id).length;
+        return 4 + conns * 0.5;
+    })
+    .attr("fill", d => d.color);
 
 node.append("text")
-  .text(d => d.name.length > 10 ? d.name.slice(0,9)+"…" : d.name)
-  .attr("text-anchor", "middle")
-  .attr("dy", d => (catRadius[d.type]||6) + 12)
-  .attr("fill", "#8b949e")
-  .attr("font-size", d => d.type==="core"?"11px":(d.type==="concept"?"10px":"8px"));
+    .attr("dy", 20)
+    .text(d => d.id);
 
-// Hover
-node.on("mouseenter", function(e,d) {
-    d3.select(this).select("circle").transition().duration(200)
-      .attr("r", (catRadius[d.type]||6)*1.6);
-    tipTitle.text(d.name);
-    tipDesc.text(catLabels[d.type]||d.type);
-    tooltip.classed("show", true);
-  })
-  .on("mousemove", e => tooltip.style("left",(e.pageX+14)+"px").style("top",(e.pageY-46)+"px"))
-  .on("mouseleave", function(e,d) {
-    d3.select(this).select("circle").transition().duration(200)
-      .attr("r", catRadius[d.type]||6);
-    tooltip.classed("show", false);
-  });
-
-// Click handler — fires from drag.end when no actual drag occurred
-let lastClicked = null;
-let highlightActive = false;
-
-function handleNodeClick(d) {
-  // Reset all from previous click
-  resetHighlight();
-  highlightActive = true;
-  lastClicked = d;
-
-  // Highlight connected links in red
-  link
-    .attr("stroke", l => {
-      const src = l.source.id || l.source;
-      const tgt = l.target.id || l.target;
-      if (src === d.id || tgt === d.id) return "#ff3333";
-      return l._color || "#555";
-    })
-    .attr("stroke-opacity", l => {
-      const src = l.source.id || l.source;
-      const tgt = l.target.id || l.target;
-      return (src === d.id || tgt === d.id) ? 0.9 : 0.2;
-    })
-    .attr("stroke-width", l => {
-      const src = l.source.id || l.source;
-      const tgt = l.target.id || l.target;
-      return (src === d.id || tgt === d.id) ? 3 : 1;
-    });
-
-  // Highlight clicked node circle — glow + enlarge
-  node.select("circle")
-    .attr("stroke", n => {
-      if (n.id === d.id) return "#ff3333";
-      const connected = LINKS.some(l => {
+// Click for highlight
+let clickStart = null;
+node.on("mousedown", (e,d) => { clickStart = [e.clientX, e.clientY]; });
+node.on("mouseup", (e,d) => {
+    if (!clickStart) return;
+    const dx = e.clientX - clickStart[0], dy = e.clientY - clickStart[1];
+    clickStart = null;
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) return;
+    
+    // Reset all
+    node.classed("highlight", false);
+    link.classed("highlight", false);
+    
+    // Highlight connected
+    const connected = new Set();
+    connected.add(d.id);
+    data.links.forEach(l => {
         const src = l.source.id || l.source;
         const tgt = l.target.id || l.target;
-        return (src === d.id && tgt === n.id) || (tgt === d.id && src === n.id);
-      });
-      return connected ? catStroke[n.type] || "#444" : "#333";
-    })
-    .attr("stroke-width", n => n.id === d.id ? 3 : 1.2)
-    .attr("r", n => n.id === d.id ? (catRadius[n.type]||6)*1.5 : (catRadius[n.type]||6))
-    .attr("opacity", n => {
-      if (n.id === d.id) return 1;
-      const connected = LINKS.some(l => {
+        if (src === d.id) connected.add(tgt);
+        if (tgt === d.id) connected.add(src);
+    });
+    
+    node.classed("highlight", n => connected.has(n.id));
+    link.classed("highlight", l => {
         const src = l.source.id || l.source;
         const tgt = l.target.id || l.target;
-        return (src === d.id && tgt === n.id) || (tgt === d.id && src === n.id);
-      });
-      return connected ? 0.85 : 0.2;
+        return src === d.id || tgt === d.id;
     });
-
-  // Modal
-  document.getElementById("modal-title").textContent = d.name;
-  const tag = document.getElementById("modal-tag");
-  tag.textContent = catLabels[d.type] || d.type;
-  tag.style.background = catColors[d.type] + "33";
-  tag.style.color = catColors[d.type];
-  document.getElementById("modal-desc").innerHTML = md2html(d.desc || "暂无详细描述");
-  document.getElementById("modal-overlay").classList.add("show");
-}
-
-function resetHighlight() {
-  if (!highlightActive) return;
-  highlightActive = false;
-  link
-    .attr("stroke", l => l._color || "#555")
-    .attr("stroke-opacity", 0.5)
-    .attr("stroke-width", 1);
-  node.select("circle")
-    .attr("stroke", n => catStroke[n.type] || "#444")
-    .attr("stroke-width", 1.2)
-    .attr("r", n => catRadius[n.type] || 6)
-    .attr("opacity", 1);
-}
-
-function closeModal() {
-  document.getElementById("modal-overlay").classList.remove("show");
-  resetHighlight();
-  lastClicked = null;
-}
-
-// Simple markdown → HTML for modal content
-function md2html(md) {
-  return md
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .split('\n\n').map(p => '<p>' + p.replace(/\n/g, '<br>') + '</p>').join('');
-}
-
-sim.on("tick", () => {
-  link.attr("x1", d => d.source.x).attr("y1", d => d.source.y)
-      .attr("x2", d => d.target.x).attr("y2", d => d.target.y);
-  node.attr("transform", d => `translate(${d.x},${d.y})`);
+    
+    // Pop connected nodes forward
+    simulation.alpha(0.1).restart();
 });
+
+simulation.on("tick", () => {
+    link.attr("x1", d => d.source.x)
+        .attr("y1", d => d.source.y)
+        .attr("x2", d => d.target.x)
+        .attr("y2", d => d.target.y);
+    node.attr("transform", d => `translate(${d.x},${d.y})`);
+});
+
+// Zoom
+svg.call(d3.zoom().scaleExtent([0.3, 5]).on("zoom", (e) => {
+    g.attr("transform", e.transform);
+}));
 </script>
 </body>
 </html>
