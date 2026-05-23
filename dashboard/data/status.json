@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-17 19:36",
+  "updated": "2026-05-24 00:53",
   "daily": {
     "tasks": [
       "✅ PWA政企需求助手从Vercel迁移至GitHub Pages（DNS配置/路径调整/代码迁移）",
@@ -19,196 +19,93 @@
     "token_summary": ""
   },
   "ai_news": {
-    "source": "百度搜索",
-    "updated": "05-14 10:00",
+    "source": "百度搜索/搜索引擎综合",
+    "updated": "05月22日 08:00",
     "items": [
       {
-        "title": "DeepSeek拟融资500亿元，投后估值3500亿，刷新中国AI企业融资纪录",
-        "link": "https://www.baidu.com",
-        "tag": "融资"
+        "title": "GAITC 2026今日杭州开幕:交叉融合相生共赢",
+        "link": "",
+        "tag": "🔥重磅"
       },
       {
-        "title": "腾讯Q1财报：AI战略迈入商业转化关键年，营收1964亿同比增9%，净利增21%",
-        "link": "https://www.baidu.com",
-        "tag": "大模型"
+        "title": "Google I/O发布Gemini 4.0:200万上下文窗口",
+        "link": "",
+        "tag": "🔥重磅"
       },
       {
-        "title": "联发科天玑开发者大会MDDC 2026开幕，发布AI开发套件3.0，阶跃星辰音乐模型端侧部署",
-        "link": "https://www.baidu.com",
-        "tag": "产品"
+        "title": "中国AI大模型调用量首次超越美国(2.11倍)",
+        "link": "",
+        "tag": "🔥重磅"
       },
       {
-        "title": "网信办：3-4月新增72款生成式AI服务备案，累计868款完成备案",
-        "link": "https://www.baidu.com",
-        "tag": "政策"
+        "title": "中美AI政府间对话启动,两国元首达成合作共识",
+        "link": "",
+        "tag": "🇨🇳国内"
       },
       {
-        "title": "中信建投AI中期策略：北美CSP Q1资本开支同比增70%，算力需求持续强劲",
-        "link": "https://www.baidu.com",
-        "tag": "大模型"
+        "title": "清华孙茂松:生成式AI不能反客为主",
+        "link": "",
+        "tag": "🇨🇳国内"
       },
       {
-        "title": "工信部发布AI终端智能化分级国标：L1响应级→L4协同级四级体系",
-        "link": "https://www.baidu.com",
-        "tag": "政策"
+        "title": "深技大x华为签署生物制药AI精英班合作",
+        "link": "",
+        "tag": "🏢企业"
       },
       {
-        "title": "Anthropic计划今夏融资数百亿美元，估值冲击万亿美元超越OpenAI",
-        "link": "https://www.baidu.com",
-        "tag": "融资"
+        "title": "全国AI产业发展大会:智赋新质生产力",
+        "link": "",
+        "tag": "🇨🇳国内"
       },
       {
-        "title": "2026世界数字教育大会杭州举办：AI+教育从「答题工具」升级为「成长伙伴」",
-        "link": "https://www.baidu.com",
-        "tag": "产品"
-      },
-      {
-        "title": "特斯拉接入中国本土大模型，智能汽车AI竞争转向本地化服务能力较量",
-        "link": "https://www.baidu.com",
-        "tag": "产品"
-      },
-      {
-        "title": "央行/发改委/工信部联手引爆AI与半导体，招商证券预测CSP资本开支8300亿美元",
-        "link": "https://www.baidu.com",
-        "tag": "政策"
+        "title": "5月科技圈四大突破:AI/量子/航天/6G并进",
+        "link": "",
+        "tag": "💡技术"
       }
     ]
   },
   "news": {
-    "source": "新华社/央视/腾讯/网易",
-    "updated": "2026-05-19",
+    "source": "百度搜索/搜索引擎综合",
     "items": [
       {
-        "title": "习近平同特朗普举行视频会晤",
-        "source": "新华社",
-        "link": "https://www.news.cn/politics/leaders/ex1.html",
-        "category": "国际时政"
+        "title": "GAITC 2026今日杭州开幕:交叉融合相生共赢",
+        "link": "",
+        "tag": "🔥重磅"
       },
       {
-        "title": "外交部回应美对华加征关税：将采取必要反制措施",
-        "source": "央视新闻",
-        "link": "https://news.cctv.com/ex2.html",
-        "category": "国际时政"
+        "title": "Google I/O发布Gemini 4.0:200万上下文窗口",
+        "link": "",
+        "tag": "🔥重磅"
       },
       {
-        "title": "前4月我国外贸进出口同比增长6.2%",
-        "source": "新华社",
-        "link": "https://www.news.cn/fortune/ex3.html",
-        "category": "国际金融"
+        "title": "中国AI大模型调用量首次超越美国(2.11倍)",
+        "link": "",
+        "tag": "🔥重磅"
       },
       {
-        "title": "A股融资余额突破2.8万亿元创历史新高",
-        "source": "新浪财经",
-        "link": "https://finance.sina.com.cn/ex4.html",
-        "category": "国际金融"
+        "title": "中美AI政府间对话启动,两国元首达成合作共识",
+        "link": "",
+        "tag": "🇨🇳国内"
       },
       {
-        "title": "证监会发布科创板改革八条措施",
-        "source": "证券时报",
-        "link": "https://www.stcn.com/ex5.html",
-        "category": "国际金融"
+        "title": "清华孙茂松:生成式AI不能反客为主",
+        "link": "",
+        "tag": "🇨🇳国内"
       },
       {
-        "title": "英超：曼城3-1逆转利物浦 提前三轮锁定冠军",
-        "source": "懂球帝",
-        "link": "https://www.dongqiudi.com/ex6.html",
-        "category": "国际足球"
+        "title": "深技大x华为签署生物制药AI精英班合作",
+        "link": "",
+        "tag": "🏢企业"
       },
       {
-        "title": "西甲：巴萨2-0皇马 莱万双响锁定胜局",
-        "source": "直播吧",
-        "link": "https://www.zhibo8.com/ex7.html",
-        "category": "国际足球"
+        "title": "全国AI产业发展大会:智赋新质生产力",
+        "link": "",
+        "tag": "🇨🇳国内"
       },
       {
-        "title": "意甲：国际米兰1-0尤文图斯 劳塔罗制胜球",
-        "source": "腾讯体育",
-        "link": "https://sports.qq.com/ex8.html",
-        "category": "国际足球"
-      },
-      {
-        "title": "德甲：拜仁4-2多特蒙德 凯恩帽子戏法",
-        "source": "网易体育",
-        "link": "https://sports.163.com/ex9.html",
-        "category": "国际足球"
-      },
-      {
-        "title": "法甲：巴黎圣日耳曼2-0马赛 姆巴佩告别战破门",
-        "source": "央视体育",
-        "link": "https://sports.cctv.com/ex10.html",
-        "category": "国际足球"
-      },
-      {
-        "title": "NBA西部决赛G1：雷霆112-108逆转马刺",
-        "source": "腾讯体育",
-        "link": "https://sports.qq.com/ex11.html",
-        "category": "体育"
-      },
-      {
-        "title": "亚历山大蝉联MVP 约基奇无缘三连庄",
-        "source": "新浪体育",
-        "link": "https://sports.sina.com.cn/ex12.html",
-        "category": "体育"
-      },
-      {
-        "title": "巴西公布世界杯26人名单 内马尔领衔",
-        "source": "直播吧",
-        "link": "https://www.zhibo8.com/ex13.html",
-        "category": "体育"
-      },
-      {
-        "title": "法网资格赛：中国选手郑钦文2-0横扫晋级",
-        "source": "央视体育",
-        "link": "https://sports.cctv.com/ex14.html",
-        "category": "体育"
-      },
-      {
-        "title": "迪丽热巴获金鹰奖最佳女主角",
-        "source": "新浪娱乐",
-        "link": "https://ent.sina.com.cn/ex15.html",
-        "category": "娱乐"
-      },
-      {
-        "title": "张杰鸟巢演唱会连开三场门票秒罄",
-        "source": "腾讯娱乐",
-        "link": "https://ent.qq.com/ex16.html",
-        "category": "娱乐"
-      },
-      {
-        "title": "巩俐携新片亮相戛纳电影节红毯",
-        "source": "网易娱乐",
-        "link": "https://ent.163.com/ex17.html",
-        "category": "娱乐"
-      },
-      {
-        "title": "张艺兴新专辑首周销量破百万",
-        "source": "QQ音乐",
-        "link": "https://y.qq.com/ex18.html",
-        "category": "娱乐"
-      },
-      {
-        "title": "百度Q1财报：AI云收入占比首次突破52%",
-        "source": "36氪",
-        "link": "https://36kr.com/p/ex19.html",
-        "category": "科技"
-      },
-      {
-        "title": "腾讯联合三大运营商发布AI电信平台",
-        "source": "新浪科技",
-        "link": "https://tech.sina.com.cn/ex20.html",
-        "category": "科技"
-      },
-      {
-        "title": "华为发布原生鸿蒙PC版 全面替代Windows",
-        "source": "IT之家",
-        "link": "https://www.ithome.com/ex21.html",
-        "category": "科技"
-      },
-      {
-        "title": "工信部：5G基站总数突破500万",
-        "source": "人民邮电报",
-        "link": "https://www.cnii.com.cn/ex22.html",
-        "category": "科技"
+        "title": "5月科技圈四大突破:AI/量子/航天/6G并进",
+        "link": "",
+        "tag": "💡技术"
       }
     ]
   },
@@ -1331,10 +1228,10 @@
   "weekly": null,
   "system": {
     "abyss": true,
+    "catclaw": true,
     "hermes": true,
     "hmcode": true,
-    "catclaw": true,
-    "homebot": false
+    "homebot": true
   },
   "token": {
     "today": 0.0,
