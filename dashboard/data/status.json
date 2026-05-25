@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-25 14:00",
+  "updated": "2026-05-25 14:12",
   "daily": {
     "tasks": [
       "✅ PWA政企需求助手从Vercel迁移至GitHub Pages（DNS配置/路径调整/代码迁移）",
@@ -1145,16 +1145,53 @@
   },
   "weekly": null,
   "system": {
-    "abyss": true,
-    "catclaw": true,
-    "hermes": true,
-    "hmcode": true,
-    "homebot": true
+    "tianshu": {
+      "name": "天枢·贪狼",
+      "model": "DeepSeek V4 Pro",
+      "role": "大脑中枢",
+      "status": true
+    },
+    "tianxuan": {
+      "name": "天璇·巨门",
+      "model": "GLM-5.1+Qwen3.6",
+      "role": "守夜人+记忆守护",
+      "status": true
+    },
+    "tianji": {
+      "name": "天玑·禄存",
+      "model": "MiniMax M2.7",
+      "role": "执行部署",
+      "status": true
+    },
+    "tianquan": {
+      "name": "天权·文曲",
+      "model": "Qwen3-Max",
+      "role": "文案润色",
+      "status": true
+    },
+    "yuheng": {
+      "name": "玉衡·廉贞",
+      "model": "DeepSeek V3.2",
+      "role": "代码审查",
+      "status": true
+    },
+    "kaiyang": {
+      "name": "开阳·武曲",
+      "model": "Qwen3.6-Plus",
+      "role": "编码实现",
+      "status": true
+    },
+    "yaoguang": {
+      "name": "瑶光·破军",
+      "model": "MiniMax M2.7",
+      "role": "视觉理解",
+      "status": true
+    }
   },
   "token": {
-    "today": 0.0,
     "today_tokens": 0,
-    "month": 255.64,
-    "month_tokens": 1153757000
+    "month_tokens": 1153757000,
+    "today_approx": "--",
+    "note": "按API调用次数估算，非精确计量"
   }
 }
