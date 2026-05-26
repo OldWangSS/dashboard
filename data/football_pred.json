@@ -1,5 +1,6 @@
 {
   "predictions": [],
-  "updated": "2026-05-25 16:17",
-  "note": "web_search工具不可用，无法抓取实时预测数据。请手动更新或配置web_search工具后重新运行。"
+  "updated": "2026-05-26T20:00:00+08:00",
+  "status": "failed",
+  "reason": "缺少 web_search 工具，无法执行网络搜索。当前可用工具：patch, read_file, search_files, write_file。请为 Agent 添加 web_search 能力。"
 }
