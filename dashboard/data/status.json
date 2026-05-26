@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-26 20:00",
+  "updated": "2026-05-26 22:01",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -11,13 +11,14 @@
   },
   "news": {
     "source": "session",
-    "updated": "2026-05-26T20:00:33.755423+08:00",
+    "updated": "2026-05-26T22:01:22.465826+08:00",
     "items": []
   },
   "football": {
     "predictions": [],
-    "updated": "2026-05-26 04:00",
-    "note": "无web_search工具，无法联网获取实时预测。请配置网络搜索能力后重试。"
+    "updated": "2026-05-26T20:00:00+08:00",
+    "status": "failed",
+    "reason": "缺少 web_search 工具，无法执行网络搜索。当前可用工具：patch, read_file, search_files, write_file。请为 Agent 添加 web_search 能力。"
   },
   "weekly": null,
   "system": {
@@ -39,7 +40,7 @@
     },
     "tianquan": {
       "name": "天权·文曲",
-      "status": false
+      "status": true
     },
     "tianxuan": {
       "name": "天璇·巨门",
