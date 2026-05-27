@@ -269,7 +269,7 @@ function renderSystemCharts() {
   const tokens = snaps.map(s => s.tokens_today || 0);
   const ctx2 = document.getElementById('chartTokens').getContext('2d');
   if (chartTokens) chartTokens.destroy();
-  chartTokens = new Chart(ctx2, {type:'line',data:{labels:times,datasets:[{label:'Tokens',data:tokens,borderColor:'#a371f7',backgroundColor:'rgba(163,113,247,0.1)',fill:true,tension:0.3,pointRadius:1}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false}},scales:{y:{grid:{color:'#21262d'},ticks:{color:'#8b949e',callback:v=>v>1000?(v/1000).toFixed(1)+'k':v}},x:{ticks:{color:'#8b949e',font:{size:9},maxTicksLimit:8}}}});
+  chartTokens = new Chart(ctx2, {type:'line',data:{labels:times,datasets:[{label:'Tokens',data:tokens,borderColor:'#a371f7',backgroundColor:'rgba(163,113,247,0.1)',fill:true,tension:0.3,pointRadius:1}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false}},scales:{y:{grid:{color:'#21262d'},ticks:{color:'#8b949e',callback:v=>v>1000?(v/1000).toFixed(1)+'k':v}},x:{ticks:{color:'#8b949e',font:{size:9},maxTicksLimit:8}}}}});
 }
 
 function drawEmptyCharts(snaps) {
@@ -278,8 +278,8 @@ function drawEmptyCharts(snaps) {
   const labels = AGENTS.map(a => a.name.replace('·','\n'));
   if (chartUptime) chartUptime.destroy();
   if (chartTokens) chartTokens.destroy();
-  chartUptime = new Chart(ctx1, {type:'bar',data:{labels,datasets:[{label:'%',data:AGENTS.map(()=>100),backgroundColor:'rgba(63,185,80,0.3)',borderColor:'#3fb950',borderWidth:1}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{min:0,max:100,grid:{color:'#21262d'},ticks:{color:'#8b949e'}},x:{ticks:{color:'#8b949e',font:{size:10}}}}});
-  chartTokens = new Chart(ctx2, {type:'line',data:{labels:snaps.length?[snaps[0].time]:['--'],datasets:[{label:'',data:snaps.map(s=>s.tokens_today||0),borderColor:'#a371f7',backgroundColor:'rgba(163,113,247,0.1)',fill:true,tension:0.3,pointRadius:3}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{grid:{color:'#21262d'},ticks:{color:'#8b949e'}},x:{ticks:{color:'#8b949e',font:{size:9}}}}});
+  chartUptime = new Chart(ctx1, {type:'bar',data:{labels,datasets:[{label:'%',data:AGENTS.map(()=>100),backgroundColor:'rgba(63,185,80,0.3)',borderColor:'#3fb950',borderWidth:1}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{min:0,max:100,grid:{color:'#21262d'},ticks:{color:'#8b949e'}},x:{ticks:{color:'#8b949e',font:{size:10}}}}}});
+  chartTokens = new Chart(ctx2, {type:'line',data:{labels:snaps.length?[snaps[0].time]:['--'],datasets:[{label:'',data:snaps.map(s=>s.tokens_today||0),borderColor:'#a371f7',backgroundColor:'rgba(163,113,247,0.1)',fill:true,tension:0.3,pointRadius:3}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{grid:{color:'#21262d'},ticks:{color:'#8b949e'}},x:{ticks:{color:'#8b949e',font:{size:9}}}}}});
 }
 
 // Fallback: today's actual activity
