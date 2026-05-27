@@ -163,18 +163,6 @@
   </details>
 </div>
 
-<!-- Curator 技能管家 -->
-<div class="card">
-  <details open>
-    <summary>🧹 技能管家</summary>
-    <div class="stat-row" id="curatorStats"></div>
-    <div class="section-title">🔥 最活跃技能 Top 3</div>
-    <div id="curatorSkills" class="loading">--</div>
-    <div class="section-title">📝 上次摘要</div>
-    <div id="curatorSummary" class="loading">--</div>
-  </details>
-</div>
-
 <footer>北斗系统 · <span id="refreshInfo"></span></footer>
 
 <script>
@@ -203,7 +191,6 @@ async function load() {
     renderAiNews(d.ai_news);
     renderNews(d.news);
     renderFootball(d.football);
-    renderCurator(d.curator);
     document.getElementById('costToday').textContent = '$'+(d.token?.today||0).toFixed(2);
     document.getElementById('costMonth').textContent = '$'+(d.token?.month||0).toFixed(2);
     document.getElementById('tokensToday').textContent = fmt(d.token?.today_tokens);
@@ -321,10 +308,14 @@ function renderAiNews(n) {
 
 function renderNews(n) {
   document.getElementById('newsSource').textContent = n?.source || '';
-  if (!n?.items?.length) { document.getElementById('newsList').innerHTML='<div class="news-item">2026-05-27 神舟二十三号发射成功</div><div class="news-item">华为发布韬定律：半导体领域新突破</div><div class="news-item">最高检挂牌督办山西沁源煤矿爆炸案</div>'; return; }
+  if (!n?.items?.length) { document.getElementById('newsList').innerHTML='<div class="news-item">暂无新闻</div>'; return; }
   document.getElementById('newsList').innerHTML = n.items.map(i => {
-    const tag = i.tag ? `<span class="tag">${i.tag}</span>` : '';
-    return `<div class="news-item">${tag}<a href="${i.link||'#'}" target="_blank">${i.title}</a></div>`;
+    const tag = i.tag ? '<span class="tag">'+i.tag+'</span>' : '';
+    const txt = i.title||i;
+    if (i.link && i.link !== '#' && !i.link.startsWith('http')) i.link = '#';  // sanitize
+    return i.link && i.link !== '#' 
+      ? '<div class="news-item">'+tag+'<a href="'+i.link+'" target="_blank">'+txt+'</a></div>'
+      : '<div class="news-item">'+tag+txt+'</div>';
   }).join('');
 }
 
@@ -334,16 +325,22 @@ function renderFootball(f) {
   document.getElementById('predictions').innerHTML = preds.length 
     ? preds.map(m => {
         const cls = m.hit===true?'hit':m.hit===false?'miss':'pending';
-        const home = m.home||m.home_team||'?';
-        const away = m.away||m.away_team||'?';
+        // Support both match="A vs B" format and home/away format
+        let home = m.home||m.home_team;
+        let away = m.away||m.away_team;
+        if (!home && m.match) {
+          const parts = m.match.split(/\s+vs\s+/i);
+          home = parts[0]||'?';
+          away = parts[1]||'?';
+        }
         const pred = m.prediction_cn||m.prediction||'--';
-        return `<div class="match"><span>${home} vs ${away}</span><span class="score ${cls}">${pred}</span></div>`;
+        return '<div class="match"><span>'+(home||'?')+' vs '+(away||'?')+'</span><span class="score '+cls+'">'+pred+'</span></div>';
       }).join('')
     : '<div class="item">今日无比赛</div>';
   
-  if (review) {
-    let html = `<div class="item">命中 ${review.hit}/${review.total} (比分) + ${review.direction||0}/${review.total} (方向)</div>`;
-    if (review.detail?.length) html += review.detail.map(d => `<div class="review-item">${d}</div>`).join('');
+  if (review && (review.hit !== undefined || review.total)) {
+    let html = '<div class="item">命中 '+review.hit+'/'+review.total+' (比分) + '+(review.direction||0)+'/'+review.total+' (方向)</div>';
+    if (review.detail?.length) html += review.detail.map(d => '<div class="review-item">'+d+'</div>').join('');
     document.getElementById('review').innerHTML = html;
   } else {
     document.getElementById('review').innerHTML = '<div class="item">暂无复盘数据</div>';
