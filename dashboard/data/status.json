@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-27 20:00",
+  "updated": "2026-05-27 22:01",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -169,8 +169,9 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-05-27 20:00",
+    "updated": "2026-05-27 22:01",
     "recent": [
+      "05-27 电网效应",
       "05-27 偷懒是商机",
       "05-27 飞书抢入口",
       "05-27 生产力到消费品的最后一公里",
@@ -189,8 +190,7 @@
       "05-26 多Agent协作根本问题",
       "05-26 指挥七个AI才真正学会了当领导",
       "05-26 从零到五虎将",
-      "05-26 2026移动云大会",
-      "05-26 40岁零基础的诚实"
+      "05-26 2026移动云大会"
     ]
   },
   "curator": {
@@ -208,6 +208,6 @@
       "ai-daily-briefing"
     ],
     "last_summary": "auto: no changes; llm: ## Consolidation pass complete — 27 → 12 agent-created skills",
-    "updated": "2026-05-27 20:00"
+    "updated": "2026-05-27 22:01"
   }
 }
