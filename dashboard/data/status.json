@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-27 10:57",
+  "updated": "2026-05-27 12:00",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -51,53 +51,32 @@
     ]
   },
   "news": {
-    "source": "综合要闻 · 2026-05-28",
-    "updated": "2026-05-28 09:00:00+08:00",
+    "source": "自动采集",
+    "updated": "2026-05-27T12:00:36.948565+08:00",
     "items": [
       {
-        "title": "神舟二十三号成功到站，再现\"太空会师\"名场面，首次实现3.5小时径向快速交会对接",
-        "link": "https://www.cast.cn/news/8937",
-        "tag": "航天"
+        "title": "Transformer十年统治遭挑战：联合发明人辩论五大死穴"
       },
       {
-        "title": "习近平同塞尔维亚总统武契奇举行会谈，持续推进构建新时代中塞命运共同体",
-        "link": "https://www.gz.gov.cn/xw/jrtt/content/post_10827400.html",
-        "tag": "外交"
+        "title": "AI四巨头内部报告首度公开：AI正在学会撒谎求生"
       },
       {
-        "title": "天津大学等提出首个\"缸中大脑\"控制机器人，脑机接口技术取得新突破",
-        "link": "https://m.36kr.com/p/2874598878630025",
-        "tag": "科技"
+        "title": "新华网：AI智能体不止聊天真能干活，三部门联合印发实施意见"
       },
       {
-        "title": "小米启动百万亿Token计划：4月28日至5月28日限时申请，100万亿Token权益免费送",
-        "link": "https://www.21jingji.com/article/20260429/herald/80beac97050c84379d9ee73c214c063d.html",
-        "tag": "商业"
+        "title": "MIT预警：MCP协议遭供应链攻击，可劫持所有Agent工具调用"
       },
       {
-        "title": "华为发布\"韬定律\"：半导体领域新突破，中国芯片自主可控迈出关键一步",
-        "link": "https://www.toutiao.com/",
-        "tag": "芯片"
+        "title": "中美两国元首同意启动AI政府间对话"
       },
       {
-        "title": "工信部印发《智能体规范应用与创新发展实施意见》，19个典型场景首次明确",
-        "link": "https://app.xinhuanet.com/news/article.html?articleId=202605263a6b0a1ab1c54595b91cba3022daf0a7",
-        "tag": "政策"
+        "title": "Karpathy: 从Vibe Coding到Agentic Engineering"
       },
       {
-        "title": "国乒女队3:2反胜日本队，实现世乒赛女团七连冠",
-        "link": "https://gbcode.rthk.hk/TuniS/news.rthk.hk/rthk/ch/component/k2/1854203-20260510.htm",
-        "tag": "体育"
+        "title": "神舟二十三号成功到站，首次实现3.5小时径向快速交会对接"
       },
       {
-        "title": "2026移动云大会闭幕：九天大模型发布，MoMA平台正式商用",
-        "link": "https://www.toutiao.com/",
-        "tag": "云计算"
-      },
-      {
-        "title": "宇树科技发布载人变形机器人GD01，定价390万元，可双足行走变形四足机器狗",
-        "link": "https://www.toutiao.com/w/1865140472152064/",
-        "tag": "机器人"
+        "title": "天津大学等提出首个「缸中大脑」控制机器人"
       }
     ]
   },
@@ -186,7 +165,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-05-27 10:57",
+    "updated": "2026-05-27 12:00",
     "recent": [
       "05-26 8.北斗架构v2升级记录",
       "05-26 5.北斗开发流程制度",
@@ -194,8 +173,8 @@
       "05-26 4.北斗系统数据流架构",
       "05-26 1.北斗系统架构总览",
       "05-26 7.北斗系统容灾降级架构",
-      "05-26 2.北斗七星职责模型",
       "05-26 3.北斗系统分层架构",
+      "05-26 2.北斗七星职责模型",
       "05-26 天枢欺骗事件",
       "05-26 多Agent协作根本问题",
       "05-26 指挥七个AI才真正学会了当领导",
@@ -225,6 +204,6 @@
       "ai-daily-briefing"
     ],
     "last_summary": "auto: no changes; llm: ## Consolidation pass complete — 27 → 12 agent-created skills",
-    "updated": "2026-05-27 10:23"
+    "updated": "2026-05-27 12:00"
   }
 }
