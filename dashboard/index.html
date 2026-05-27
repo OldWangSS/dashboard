@@ -199,6 +199,7 @@ async function load() {
     const d = await r.json();
     renderSystem(d.system);
     renderDaily(d.daily);
+    renderKnowledge(d.knowledge);
     renderAiNews(d.ai_news);
     renderNews(d.news);
     renderFootball(d.football);
@@ -295,10 +296,15 @@ function renderDefaultData() {
 }
 
 function renderDaily(d) {
-  if (!d || !d.tasks?.length) { renderDefaultData(); return; }
-  document.getElementById('dailyTasks').innerHTML = d.tasks.map(t=>`<div class="item">${t}</div>`).join('');
-  document.getElementById('dailyKB').innerHTML = d.kb?.map(k=>`<div class="item">${k}</div>`).join('')||'<div class="item">--</div>';
-  document.getElementById('dailyToken').innerHTML = `<div class="item">${d.token_summary||'--'}</div>`;
+  if (!d || !d.tasks?.length) { renderDefaultData(); }
+  else { document.getElementById('dailyTasks').innerHTML = d.tasks.map(t=>'<div class="item">'+t+'</div>').join(''); }
+}
+
+function renderKnowledge(k) {
+  const el = document.getElementById('dailyKB');
+  const items = k?.recent;
+  if (!items?.length) { el.innerHTML = '<div class="item">暂无更新</div>'; return; }
+  el.innerHTML = items.map(t => '<div class="item">'+t+'</div>').join('');
 }
 
 function renderAiNews(n) {
