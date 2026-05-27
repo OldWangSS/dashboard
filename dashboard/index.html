@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>北斗系统任务看板</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
   :root {
     --bg: #0d1117; --card: #161b22; --border: #21262d;
@@ -63,6 +64,13 @@
   .review-item:last-child { border:none; }
   .full-width { width:100%; }
   .label-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+  .chart-row { display:flex; gap:12px; flex-wrap:wrap; }
+  .chart-box { background:rgba(255,255,255,0.01); border-radius:6px; padding:8px; }
+  .chart-box h3 { font-size:0.75em; color:var(--dim); margin-bottom:4px; text-align:center; }
+  .stat-box { flex:1; min-width:120px; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:6px; padding:10px; text-align:center; }
+  .stat-box .num { font-size:1.3em; font-weight:bold; color:var(--purple); }
+  .stat-box .label { font-size:0.7em; color:var(--dim); margin-top:4px; }
+  .stat-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:8px; }
   .stat-row { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:12px; }
   .stat-box { flex:1; min-width:120px; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:8px; padding:12px; text-align:center; }
   .stat-box .num { font-size:1.2em; font-weight:bold; color:var(--purple); }
@@ -146,6 +154,12 @@
     <div class="agents-row" id="agents"></div>
     <div class="cost">今日成本 <b id="costToday">¥--</b> · 本月 <b id="costMonth">¥--</b></div>
     <div class="token-num">今日 <b id="tokensToday">--</b> tokens · 本月 <b id="tokensMonth">--</b> tokens</div>
+    <div id="systemInsight" style="margin-top:12px;font-size:0.8em;color:var(--dim);text-align:center;"></div>
+    <div class="chart-row" style="margin-top:14px;">
+      <div class="chart-box" style="flex:1;min-width:250px;max-height:220px;"><h3>📡 Agent可用率</h3><canvas id="chartUptime"></canvas></div>
+      <div class="chart-box" style="flex:1;min-width:250px;max-height:220px;"><h3>💰 Token消耗趋势</h3><canvas id="chartTokens"></canvas></div>
+    </div>
+    <div id="historyNote" style="text-align:center;font-size:0.72em;color:var(--dim);margin-top:8px;"></div>
   </details>
 </div>
 
@@ -176,6 +190,9 @@ const AGENTS = [
 
 function fmt(n) { return n ? n.toLocaleString() : '--'; }
 
+let historyData = null;
+let chartUptime = null, chartTokens = null;
+
 async function load() {
   try {
     const r = await fetch('data/status.json?t='+Date.now());
@@ -191,10 +208,22 @@ async function load() {
     document.getElementById('tokensToday').textContent = fmt(d.token?.today_tokens);
     document.getElementById('tokensMonth').textContent = fmt(d.token?.month_tokens);
     document.getElementById('clock').textContent = '更新于 '+(d.updated||'--');
-    document.getElementById('refreshInfo').textContent = '每5分钟自动刷新';
+    document.getElementById('refreshInfo').textContent = '每2小时自动刷新';
+    // Load history separately
+    loadHistory();
   } catch(e) { 
     document.getElementById('clock').textContent = '数据加载失败 - ' + e.message;
     renderDefaultData();
+  }
+}
+
+async function loadHistory() {
+  try {
+    const r = await fetch('../data/history.json?t='+Date.now());
+    historyData = await r.json();
+    renderSystemCharts();
+  } catch(e) {
+    document.getElementById('historyNote').textContent = '📡 历史数据积攒中…每2小时一个快照';
   }
 }
 
@@ -202,12 +231,54 @@ function renderSystem(sys) {
   if (!sys) return;
   document.getElementById('agents').innerHTML = AGENTS.map(a => {
     const ok = sys[a.id] ? sys[a.id].status : false;
-    return `<div class="agent ${ok?'on':'off'}">
-      <span class="icon">${a.icon}</span>
-      <span class="dot ${ok?'on':'off'}"></span>${a.name}
-      <div style="font-size:0.65em;color:var(--dim)">${a.role}</div>
-    </div>`;
+    return '<div class="agent '+(ok?'on':'off')+'"><span class="icon">'+a.icon+'</span><span class="dot '+(ok?'on':'off')+'"></span>'+a.name+'<div style="font-size:0.65em;color:var(--dim)">'+a.role+'</div></div>';
   }).join('');
+  
+  // System insight
+  const total = Object.keys(sys).length;
+  const online = Object.values(sys).filter(v => v.status).length;
+  const pct = Math.round(online/total*100);
+  const el = document.getElementById('systemInsight');
+  if (pct === 100) el.innerHTML = '<span style="color:var(--green)">✅ 全系统健康 · 7/7 Agent在线</span>';
+  else if (pct >= 70) el.innerHTML = '<span style="color:var(--orange)">⚠️ '+online+'/'+total+' Agent在线 ('+pct+'%)</span>';
+  else el.innerHTML = '<span style="color:var(--red)">🔴 '+online+'/'+total+' Agent在线 ('+pct+'%)</span>';
+}
+
+function renderSystemCharts() {
+  const snaps = historyData?.snapshots || [];
+  if (snaps.length < 2) {
+    document.getElementById('historyNote').textContent = '📡 历史数据积攒中…已采集 '+snaps.length+' 个快照 (每2小时)';
+    drawEmptyCharts(snaps);
+    return;
+  }
+  
+  document.getElementById('historyNote').textContent = '📊 共 '+snaps.length+' 个历史快照 · 最新: '+snaps[snaps.length-1].time;
+  
+  const labels = AGENTS.map(a => a.name.replace('·','\n'));
+  const availData = AGENTS.map(a => {
+    const ups = snaps.filter(s => s.agents_detail?.[a.id]).length;
+    return Math.round(ups / snaps.length * 100);
+  });
+  
+  const ctx1 = document.getElementById('chartUptime').getContext('2d');
+  if (chartUptime) chartUptime.destroy();
+  chartUptime = new Chart(ctx1, {type:'bar',data:{labels,datasets:[{label:'可用率 %',data:availData,backgroundColor:availData.map(v=>v===100?'rgba(63,185,80,0.6)':v>=80?'rgba(210,153,34,0.6)':'rgba(248,81,73,0.6)'),borderColor:availData.map(v=>v===100?'#3fb950':v>=80?'#d29922':'#f85149'),borderWidth:1}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false}},scales:{y:{min:0,max:100,grid:{color:'#21262d'},ticks:{color:'#8b949e',callback:v=>v+'%'}},x:{ticks:{color:'#8b949e',font:{size:10}}}}}});
+  
+  const times = snaps.map(s => s.time);
+  const tokens = snaps.map(s => s.tokens_today || 0);
+  const ctx2 = document.getElementById('chartTokens').getContext('2d');
+  if (chartTokens) chartTokens.destroy();
+  chartTokens = new Chart(ctx2, {type:'line',data:{labels:times,datasets:[{label:'Tokens',data:tokens,borderColor:'#a371f7',backgroundColor:'rgba(163,113,247,0.1)',fill:true,tension:0.3,pointRadius:1}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false}},scales:{y:{grid:{color:'#21262d'},ticks:{color:'#8b949e',callback:v=>v>1000?(v/1000).toFixed(1)+'k':v}},x:{ticks:{color:'#8b949e',font:{size:9},maxTicksLimit:8}}}});
+}
+
+function drawEmptyCharts(snaps) {
+  const ctx1 = document.getElementById('chartUptime').getContext('2d');
+  const ctx2 = document.getElementById('chartTokens').getContext('2d');
+  const labels = AGENTS.map(a => a.name.replace('·','\n'));
+  if (chartUptime) chartUptime.destroy();
+  if (chartTokens) chartTokens.destroy();
+  chartUptime = new Chart(ctx1, {type:'bar',data:{labels,datasets:[{label:'%',data:AGENTS.map(()=>100),backgroundColor:'rgba(63,185,80,0.3)',borderColor:'#3fb950',borderWidth:1}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{min:0,max:100,grid:{color:'#21262d'},ticks:{color:'#8b949e'}},x:{ticks:{color:'#8b949e',font:{size:10}}}}});
+  chartTokens = new Chart(ctx2, {type:'line',data:{labels:snaps.length?[snaps[0].time]:['--'],datasets:[{label:'',data:snaps.map(s=>s.tokens_today||0),borderColor:'#a371f7',backgroundColor:'rgba(163,113,247,0.1)',fill:true,tension:0.3,pointRadius:3}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{grid:{color:'#21262d'},ticks:{color:'#8b949e'}},x:{ticks:{color:'#8b949e',font:{size:9}}}}});
 }
 
 // Fallback: today's actual activity

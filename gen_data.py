@@ -269,6 +269,52 @@ def fetch_curator():
 # ═══════════════════════════════════════════
 # 聚合
 # ═══════════════════════════════════════════
+HISTORY_PATH = os.path.join(REPO, "data", "history.json")
+MAX_HISTORY = 84  # 保留最近84个快照（约7天×12次/天）
+
+def record_history(data):
+    """追加系统快照到 history.json，保留最近84条"""
+    try:
+        snapshots = []
+        if os.path.exists(HISTORY_PATH):
+            with open(HISTORY_PATH, encoding="utf-8") as f:
+                hist = json.load(f)
+                snapshots = hist.get("snapshots", [])
+        
+        sys = data.get("system", {})
+        tok = data.get("token", {})
+        daily = data.get("daily", {})
+        
+        agents_detail = {}
+        online = 0
+        for aid, info in sys.items():
+            ok = info.get("status", False)
+            agents_detail[aid] = ok
+            if ok:
+                online += 1
+        
+        snap = {
+            "time": datetime.now(CST).strftime("%m-%d %H:%M"),
+            "agents_online": online,
+            "agents_total": len(agents_detail),
+            "agents_detail": agents_detail,
+            "tokens_today": tok.get("today_tokens", 0),
+            "tasks_today": len(daily.get("tasks", [])),
+            "kb_updated": len(data.get("knowledge", {}).get("recent", [])),
+            "curator_skills": data.get("curator", {}).get("skills_active", 0),
+        }
+        snapshots.append(snap)
+        
+        # 裁剪
+        if len(snapshots) > MAX_HISTORY:
+            snapshots = snapshots[-MAX_HISTORY:]
+        
+        os.makedirs(os.path.dirname(HISTORY_PATH), exist_ok=True)
+        with open(HISTORY_PATH, "w", encoding="utf-8") as f:
+            json.dump({"snapshots": snapshots, "updated": snap["time"]}, f, ensure_ascii=False, indent=2)
+    except Exception:
+        pass  # History recording is non-critical
+
 def main():
     data = {}
     if os.path.exists(STATUS_PATH):
@@ -287,10 +333,13 @@ def main():
     os.makedirs(os.path.dirname(STATUS_PATH), exist_ok=True)
     with open(STATUS_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
+    
+    # 记录历史快照（非关键）
+    record_history(data)
 
     # Git push
     os.chdir(REPO)
-    subprocess.run(["git", "add", "dashboard/data/status.json"], check=True)
+    subprocess.run(["git", "add", "dashboard/data/status.json", "data/history.json"], check=True)
     r = subprocess.run(["git", "diff", "--cached", "--quiet"])
     if r.returncode != 0:
         ts = datetime.now(CST).strftime("%m-%d %H:%M")
