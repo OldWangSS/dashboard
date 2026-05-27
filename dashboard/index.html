@@ -63,6 +63,10 @@
   .review-item:last-child { border:none; }
   .full-width { width:100%; }
   .label-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+  .stat-row { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:12px; }
+  .stat-box { flex:1; min-width:120px; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:8px; padding:12px; text-align:center; }
+  .stat-box .num { font-size:1.2em; font-weight:bold; color:var(--purple); }
+  .stat-box .label { font-size:0.7em; color:var(--dim); margin-top:4px; }
 </style>
 </head>
 <body>
@@ -145,6 +149,18 @@
   </details>
 </div>
 
+<!-- Curator 技能管家 -->
+<div class="card">
+  <details open>
+    <summary>🧹 技能管家</summary>
+    <div class="stat-row" id="curatorStats"></div>
+    <div class="section-title">🔥 最活跃技能 Top 3</div>
+    <div id="curatorSkills" class="loading">--</div>
+    <div class="section-title">📝 上次摘要</div>
+    <div id="curatorSummary" class="loading">--</div>
+  </details>
+</div>
+
 <footer>北斗系统 · <span id="refreshInfo"></span></footer>
 
 <script>
@@ -169,6 +185,7 @@ async function load() {
     renderAiNews(d.ai_news);
     renderNews(d.news);
     renderFootball(d.football);
+    renderCurator(d.curator);
     document.getElementById('costToday').textContent = '$'+(d.token?.today||0).toFixed(2);
     document.getElementById('costMonth').textContent = '$'+(d.token?.month||0).toFixed(2);
     document.getElementById('tokensToday').textContent = fmt(d.token?.today_tokens);
@@ -254,6 +271,26 @@ function renderFootball(f) {
   } else {
     document.getElementById('review').innerHTML = '<div class="item">暂无复盘数据</div>';
   }
+}
+
+function renderCurator(c) {
+  if (!c) return;
+  const enabled = c.enabled !== false;
+  const statusDot = enabled ? 'on' : 'off';
+  const statusText = enabled ? '运行中' : '已停用';
+  document.getElementById('curatorStats').innerHTML = [
+    `<div class="stat-box"><div class="num"><span class="dot ${statusDot}"></span> ${statusText}</div><div class="label">状态</div></div>`,
+    `<div class="stat-box"><div class="num">${c.last_run||'--'}</div><div class="label">上次运行</div></div>`,
+    `<div class="stat-box"><div class="num">${c.skills_total||0}</div><div class="label">技能总数</div></div>`,
+    `<div class="stat-box"><div class="num"><span style="color:var(--green)">${c.skills_active||0}</span> / <span style="color:var(--orange)">${c.skills_stale||0}</span></div><div class="label">活跃 / 过期</div></div>`,
+  ].join('');
+  const skills = c.most_active_skills||[];
+  document.getElementById('curatorSkills').innerHTML = skills.length
+    ? skills.slice(0,3).map((s,i) => `<div class="item"><span class="tag">#${i+1}</span>${s}</div>`).join('')
+    : '<div class="item">暂无数据</div>';
+  const summary = c.last_summary||'--';
+  const shortSummary = summary.length > 200 ? summary.slice(0,200)+'…' : summary;
+  document.getElementById('curatorSummary').innerHTML = `<div class="item" style="font-size:0.85em;color:var(--dim);line-height:1.6">${shortSummary}</div>`;
 }
 
 load();
