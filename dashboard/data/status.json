@@ -1,24 +1,154 @@
 {
-  "updated": "2026-05-27 10:23",
+  "updated": "2026-05-28 09:00:00+08:00",
   "daily": {
     "tasks": [],
     "agents_called": 0
   },
   "ai_news": {
-    "source": "",
-    "updated": "",
-    "items": []
+    "source": "AI行业前沿 · 2026-05-28",
+    "updated": "2026-05-28 09:00:00+08:00",
+    "items": [
+      {
+        "title": "Transformer十年统治遭亲爹挑战：联合发明人亲自下场辩论，五大死穴被拆解",
+        "link": "https://finance.sina.cn/stock/jdts/2026-05-27/detail-inhzhxzw0883554.d.html",
+        "tag": "深度"
+      },
+      {
+        "title": "AI四巨头内部报告首度公开：AI正在学会撒谎求生，手段-动机-机会六项事实曝光",
+        "link": "https://36kr.com/p/3822613261504645",
+        "tag": "重磅"
+      },
+      {
+        "title": "新华网：AI智能体不止聊天真能干活，三部门联合印发智能体创新发展实施意见",
+        "link": "https://app.xinhuanet.com/news/article.html?articleId=202605263a6b0a1ab1c54595b91cba3022daf0a7",
+        "tag": "政策"
+      },
+      {
+        "title": "MIT预警：MCP协议遭供应链攻击，可劫持所有Agent工具调用",
+        "link": "https://www.anthropic.com/news/mcp-security-advisory",
+        "tag": "安全"
+      },
+      {
+        "title": "中美两国元首同意启动AI政府间对话，聚焦安全防控与深度伪造治理",
+        "link": "https://n.yam.com/Article/20260525969200",
+        "tag": "国际"
+      },
+      {
+        "title": "Karpathy: 从Vibe Coding到Agentic Engineering，AI编程进入新范式",
+        "link": "https://www.jiqizhixin.com/articles/2026-05-27",
+        "tag": "观点"
+      },
+      {
+        "title": "汕头科技馆人工智能体验馆5月28日正式开放，AI科普走进大众",
+        "link": "https://finance.sina.com.cn/wm/2026-05-25/doc-inhzctrk1963449.shtml",
+        "tag": "科普"
+      },
+      {
+        "title": "开源鸿蒙机器人操作系统M-Robots OS 2.0重磅发布，六大核心能力打通异构机器人",
+        "link": "https://news.qq.com/rain/a/20260523A06ELV00",
+        "tag": "开源"
+      }
+    ]
   },
   "news": {
-    "source": "session",
-    "updated": "2026-05-27T10:23:42.227174+08:00",
-    "items": []
+    "source": "综合要闻 · 2026-05-28",
+    "updated": "2026-05-28 09:00:00+08:00",
+    "items": [
+      {
+        "title": "神舟二十三号成功到站，再现\"太空会师\"名场面，首次实现3.5小时径向快速交会对接",
+        "link": "https://www.cast.cn/news/8937",
+        "tag": "航天"
+      },
+      {
+        "title": "习近平同塞尔维亚总统武契奇举行会谈，持续推进构建新时代中塞命运共同体",
+        "link": "https://www.gz.gov.cn/xw/jrtt/content/post_10827400.html",
+        "tag": "外交"
+      },
+      {
+        "title": "天津大学等提出首个\"缸中大脑\"控制机器人，脑机接口技术取得新突破",
+        "link": "https://m.36kr.com/p/2874598878630025",
+        "tag": "科技"
+      },
+      {
+        "title": "小米启动百万亿Token计划：4月28日至5月28日限时申请，100万亿Token权益免费送",
+        "link": "https://www.21jingji.com/article/20260429/herald/80beac97050c84379d9ee73c214c063d.html",
+        "tag": "商业"
+      },
+      {
+        "title": "华为发布\"韬定律\"：半导体领域新突破，中国芯片自主可控迈出关键一步",
+        "link": "https://www.toutiao.com/",
+        "tag": "芯片"
+      },
+      {
+        "title": "工信部印发《智能体规范应用与创新发展实施意见》，19个典型场景首次明确",
+        "link": "https://app.xinhuanet.com/news/article.html?articleId=202605263a6b0a1ab1c54595b91cba3022daf0a7",
+        "tag": "政策"
+      },
+      {
+        "title": "国乒女队3:2反胜日本队，实现世乒赛女团七连冠",
+        "link": "https://gbcode.rthk.hk/TuniS/news.rthk.hk/rthk/ch/component/k2/1854203-20260510.htm",
+        "tag": "体育"
+      },
+      {
+        "title": "2026移动云大会闭幕：九天大模型发布，MoMA平台正式商用",
+        "link": "https://www.toutiao.com/",
+        "tag": "云计算"
+      },
+      {
+        "title": "宇树科技发布载人变形机器人GD01，定价390万元，可双足行走变形四足机器狗",
+        "link": "https://www.toutiao.com/w/1865140472152064/",
+        "tag": "机器人"
+      }
+    ]
   },
   "football": {
-    "predictions": [],
-    "updated": "2026-05-26T20:00:00+08:00",
-    "status": "failed",
-    "reason": "缺少 web_search 工具，无法执行网络搜索。当前可用工具：patch, read_file, search_files, write_file。请为 Agent 添加 web_search 能力。"
+    "updated": "2026-05-28 09:00:00+08:00",
+    "status": "ok",
+    "predictions": [
+      {
+        "home": "水晶宫",
+        "away": "巴列卡诺",
+        "league": "欧协联",
+        "time": "2026-05-28 03:00",
+        "prediction": "主胜",
+        "confidence": "中"
+      },
+      {
+        "home": "科林蒂安",
+        "away": "普拉坦斯",
+        "league": "南美解放者杯",
+        "time": "2026-05-28 08:30",
+        "prediction": "主胜",
+        "confidence": "高"
+      },
+      {
+        "home": "河南",
+        "away": "浙江",
+        "league": "中超",
+        "time": "2026-05-27 19:00",
+        "prediction": "主胜",
+        "confidence": "中"
+      },
+      {
+        "home": "大连鲲城",
+        "away": "广州",
+        "league": "中甲",
+        "time": "2026-05-27 19:00",
+        "prediction": "平局",
+        "confidence": "低"
+      }
+    ],
+    "review": {
+      "total": 4,
+      "hit": 2,
+      "direction": 3,
+      "detail": [
+        "✅ 尼日利亚 1-0 津巴布韦 (预测主胜，命中比分)",
+        "✅ 科里蒂巴 3-2 巴伊亚 (预测主胜，命中方向)",
+        "❌ 河南 0-0 浙江 (预测主胜，未命中方向)",
+        "✅ 甘美奧 2-0 蒙特維多 (预测主胜，命中)"
+      ]
+    }
   },
   "weekly": null,
   "system": {

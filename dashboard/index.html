@@ -69,22 +69,12 @@
 
 <div class="nav-buttons">
   <a href="/" class="nav-btn home">← 返回 ainoai</a>
-  <a href="/dashboard/curator/" class="nav-btn curator">🧹 技能管家详情</a>
+  <a href="/dashboard/curator/" class="nav-btn curator">🧹 北斗系统管家</a>
 </div>
 <header>
   <h1>🛡️ 北斗系统任务看板</h1>
   <div class="time" id="clock">加载中...</div>
 </header>
-
-<!-- 系统状态 (七大北斗Agent) -->
-<div class="card">
-  <details open>
-    <summary>🛡️ 系统状态</summary>
-    <div class="agents-row" id="agents"></div>
-    <div class="cost">今日成本 <b id="costToday">¥--</b> · 本月 <b id="costMonth">¥--</b></div>
-    <div class="token-num">今日 <b id="tokensToday">--</b> tokens · 本月 <b id="tokensMonth">--</b> tokens</div>
-  </details>
-</div>
 
 <!-- 运行日报 -->
 <div class="card">
@@ -142,6 +132,16 @@
         <div class="scroll-box"><div id="review" class="loading">--</div></div>
       </div>
     </div>
+  </details>
+</div>
+
+<!-- 系统状态 (七大北斗Agent) -->
+<div class="card">
+  <details>
+    <summary>🛡️ 系统状态</summary>
+    <div class="agents-row" id="agents"></div>
+    <div class="cost">今日成本 <b id="costToday">¥--</b> · 本月 <b id="costMonth">¥--</b></div>
+    <div class="token-num">今日 <b id="tokensToday">--</b> tokens · 本月 <b id="tokensMonth">--</b> tokens</div>
   </details>
 </div>
 

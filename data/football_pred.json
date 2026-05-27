@@ -1,6 +1,49 @@
 {
-  "predictions": [],
-  "updated": "2026-05-26T20:00:00+08:00",
-  "status": "failed",
-  "reason": "缺少 web_search 工具，无法执行网络搜索。当前可用工具：patch, read_file, search_files, write_file。请为 Agent 添加 web_search 能力。"
+  "updated": "2026-05-28 09:00:00+08:00",
+  "status": "ok",
+  "predictions": [
+    {
+      "home": "水晶宫",
+      "away": "巴列卡诺",
+      "league": "欧协联",
+      "time": "2026-05-28 03:00",
+      "prediction": "主胜",
+      "confidence": "中"
+    },
+    {
+      "home": "科林蒂安",
+      "away": "普拉坦斯",
+      "league": "南美解放者杯",
+      "time": "2026-05-28 08:30",
+      "prediction": "主胜",
+      "confidence": "高"
+    },
+    {
+      "home": "河南",
+      "away": "浙江",
+      "league": "中超",
+      "time": "2026-05-27 19:00",
+      "prediction": "主胜",
+      "confidence": "中"
+    },
+    {
+      "home": "大连鲲城",
+      "away": "广州",
+      "league": "中甲",
+      "time": "2026-05-27 19:00",
+      "prediction": "平局",
+      "confidence": "低"
+    }
+  ],
+  "review": {
+    "total": 4,
+    "hit": 2,
+    "direction": 3,
+    "detail": [
+      "✅ 尼日利亚 1-0 津巴布韦 (预测主胜，命中比分)",
+      "✅ 科里蒂巴 3-2 巴伊亚 (预测主胜，命中方向)",
+      "❌ 河南 0-0 浙江 (预测主胜，未命中方向)",
+      "✅ 甘美奧 2-0 蒙特維多 (预测主胜，命中)"
+    ]
+  }
 }
