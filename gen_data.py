@@ -13,7 +13,6 @@ PROFILE_SESSIONS = [
     os.path.expanduser("~/.hermes/profiles/yuheng/sessions"),
     os.path.expanduser("~/.hermes/profiles/kaiyang/sessions"),
 ]
-OBSIDIAN = os.path.expanduser("~/Obsidian")  # 若有则 git log
 
 def safe(default):
     """装饰器：异常时返回 default"""
@@ -130,19 +129,39 @@ def fetch_news():
     return {"source": "自动采集", "updated": datetime.now(CST).isoformat(), "items": items[:10]}
 
 # ═══════════════════════════════════════════
-# 数据源4: 知识库更新
+# 数据源4: 知识库更新（SSH到云Win拉Obsidian最近文件）
 # ═══════════════════════════════════════════
-@safe({"updated": "无Obsidian", "recent": []})
+OBSIDIAN_PS1 = "D:/Obsidian/fetch_recent.ps1"
+
+@safe({"updated": "获取失败", "recent": []})
 def fetch_knowledge():
-    if not os.path.isdir(OBSIDIAN):
-        return {"updated": "Obsidian目录不存在", "recent": []}
+    """通过SSH在云Win执行PowerShell脚本，获取Obsidian最近20个修改文件"""
+    # 确保脚本存在
     try:
-        r = subprocess.run(["git", "-C", OBSIDIAN, "log", "--since=7 days ago", "--oneline", "--", "*.md"],
-                          capture_output=True, text=True, timeout=15)
-        lines = [l for l in r.stdout.strip().split("\n") if l][:10]
-        return {"updated": datetime.now(CST).strftime("%Y-%m-%d"), "recent": lines}
+        subprocess.run(
+            ["ssh", "cloudwin", "powershell", "-ExecutionPolicy", "Bypass", "-File", OBSIDIAN_PS1],
+            capture_output=True, text=True, timeout=30
+        )
     except:
-        return {"updated": "git失败", "recent": []}
+        pass
+    
+    # 执行获取
+    r = subprocess.run(
+        ["ssh", "cloudwin", "powershell", "-ExecutionPolicy", "Bypass", "-File", OBSIDIAN_PS1],
+        capture_output=True, text=True, timeout=30
+    )
+    
+    recent = []
+    for line in r.stdout.strip().split("\n"):
+        line = line.strip()
+        if "|" in line:
+            ts, name = line.split("|", 1)
+            # 格式化为 MM-DD 文件名
+            date_part = ts[5:] if len(ts) >= 10 else ts  # "05-26 23:17"
+            short = name.split("/")[-1][:30]
+            recent.append(f"{date_part[:5]} {short}")
+    
+    return {"updated": datetime.now(CST).strftime("%Y-%m-%d %H:%M"), "recent": recent[:20]}
 
 # ═══════════════════════════════════════════
 # 数据源5: 运行日报
