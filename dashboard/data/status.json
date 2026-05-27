@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-27 12:00",
+  "updated": "2026-05-27 12:02",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -52,7 +52,7 @@
   },
   "news": {
     "source": "自动采集",
-    "updated": "2026-05-27T12:00:36.948565+08:00",
+    "updated": "2026-05-27T12:02:42.429269+08:00",
     "items": [
       {
         "title": "Transformer十年统治遭挑战：联合发明人辩论五大死穴"
@@ -81,53 +81,33 @@
     ]
   },
   "football": {
-    "updated": "2026-05-28 09:00:00+08:00",
-    "status": "ok",
     "predictions": [
       {
-        "home": "水晶宫",
-        "away": "巴列卡诺",
-        "league": "欧协联",
-        "time": "2026-05-28 03:00",
-        "prediction": "主胜",
-        "confidence": "中"
-      },
-      {
-        "home": "科林蒂安",
-        "away": "普拉坦斯",
-        "league": "南美解放者杯",
-        "time": "2026-05-28 08:30",
-        "prediction": "主胜",
-        "confidence": "高"
-      },
-      {
-        "home": "河南",
-        "away": "浙江",
+        "match": "河南 vs 浙江",
         "league": "中超",
-        "time": "2026-05-27 19:00",
-        "prediction": "主胜",
-        "confidence": "中"
+        "date": "2026-05-27",
+        "prediction": "主胜"
       },
       {
-        "home": "大连鲲城",
-        "away": "广州",
+        "match": "大连鲲城 vs 广州",
         "league": "中甲",
-        "time": "2026-05-27 19:00",
-        "prediction": "平局",
-        "confidence": "低"
+        "date": "2026-05-27",
+        "prediction": "平局"
+      },
+      {
+        "match": "水晶宫 vs 巴列卡诺",
+        "league": "欧协联",
+        "date": "2026-05-28",
+        "prediction": "主胜"
+      },
+      {
+        "match": "科林蒂安 vs 普拉坦斯",
+        "league": "南美解放者杯",
+        "date": "2026-05-28",
+        "prediction": "主胜"
       }
     ],
-    "review": {
-      "total": 4,
-      "hit": 2,
-      "direction": 3,
-      "detail": [
-        "✅ 尼日利亚 1-0 津巴布韦 (预测主胜，命中比分)",
-        "✅ 科里蒂巴 3-2 巴伊亚 (预测主胜，命中方向)",
-        "❌ 河南 0-0 浙江 (预测主胜，未命中方向)",
-        "✅ 甘美奧 2-0 蒙特維多 (预测主胜，命中)"
-      ]
-    }
+    "updated": "2026-05-27T12:00:00+08:00"
   },
   "weekly": null,
   "system": {
@@ -165,7 +145,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-05-27 12:00",
+    "updated": "2026-05-27 12:02",
     "recent": [
       "05-26 8.北斗架构v2升级记录",
       "05-26 5.北斗开发流程制度",
@@ -204,6 +184,6 @@
       "ai-daily-briefing"
     ],
     "last_summary": "auto: no changes; llm: ## Consolidation pass complete — 27 → 12 agent-created skills",
-    "updated": "2026-05-27 12:00"
+    "updated": "2026-05-27 12:02"
   }
 }

@@ -1,0 +1,23 @@
+{
+  "snapshots": [
+    {
+      "time": "05-27 12:02",
+      "agents_online": 7,
+      "agents_total": 7,
+      "agents_detail": {
+        "tianshu": true,
+        "yuheng": true,
+        "kaiyang": true,
+        "tianji": true,
+        "tianquan": true,
+        "tianxuan": true,
+        "yaoguang": true
+      },
+      "tokens_today": 0,
+      "tasks_today": 0,
+      "kb_updated": 20,
+      "curator_skills": 3
+    }
+  ],
+  "updated": "05-27 12:02"
+}
