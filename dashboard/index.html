@@ -146,7 +146,17 @@
   </details>
 </div>
 
-<!-- 5. 系统状态 -->
+<!-- 5. Curator 技能管家 -->
+<div class="card">
+  <details open>
+    <summary>🧹 技能管家 (Curator)</summary>
+    <div id="curatorStatus" class="loading">--</div>
+    <div class="section-title">🔥 最活跃技能</div>
+    <div id="curatorSkills" class="loading">--</div>
+  </details>
+</div>
+
+<!-- 6. 系统状态 -->
 <div class="card">
   <details open>
     <summary>🛡️ 系统状态</summary>
@@ -174,6 +184,7 @@ async function load() {
     const r = await fetch('data/status.json?t='+Date.now());
     const d = await r.json();
     renderSystem(d.system);
+    renderCurator(d.curator);
     renderDaily(d.daily);
     renderAiNews(d.ai_news);
     renderNews(d.news);
@@ -186,6 +197,28 @@ async function load() {
     document.getElementById('clock').textContent = '更新于 '+(d.updated||'--');
     document.getElementById('refreshInfo').textContent = '每5分钟自动刷新';
   } catch(e) { document.getElementById('clock').textContent = '数据加载失败'; }
+}
+
+function renderCurator(c) {
+  if (!c || c.status==='error') {
+    document.getElementById('curatorStatus').innerHTML = '<div class="item">Curator 未运行</div>';
+    document.getElementById('curatorSkills').innerHTML = '<div class="item">--</div>';
+    return;
+  }
+  const statusHtml = [
+    `<span class="tag">${c.enabled ? '✅ 运行中' : '⏸ 已暂停'}</span>`,
+    `<span class="tag">运行次数: ${c.total_runs||0}</span>`,
+    `<span class="tag">上次: ${c.last_run||'--'}</span>`,
+    `<span class="tag">周期: ${c.interval||'--'}</span>`,
+    `<span class="tag">技能: ${c.skills_active||0}活跃 / ${c.skills_stale||0}僵尸 / ${c.skills_total||0}总计</span>`,
+  ].join(' ');
+  document.getElementById('curatorStatus').innerHTML = `<div class="item">${statusHtml}</div>` +
+    (c.last_summary ? `<div class="cost">${c.last_summary}</div>` : '');
+  
+  const skills = c.most_active_skills||[];
+  document.getElementById('curatorSkills').innerHTML = skills.length
+    ? skills.map(s => `<div class="item"><span class="tag">${s}</span></div>`).join('')
+    : '<div class="item">--</div>';
 }
 
 function renderSystem(sys) {
