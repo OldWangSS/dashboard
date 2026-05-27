@@ -129,6 +129,42 @@ def fetch_news():
     return {"source": "自动采集", "updated": datetime.now(CST).isoformat(), "items": items[:10]}
 
 # ═══════════════════════════════════════════
+# 数据源3b: AI 新闻（同上，独立内容源）
+# ═══════════════════════════════════════════
+@safe({"source": "离线缓存", "items": []})
+def fetch_ai_news():
+    """AI专属新闻，从天玑早报灌入的 session 历史或离线缓存获取"""
+    items = []
+    # Try session history first
+    for d in [SESSIONS_DIR] + PROFILE_SESSIONS:
+        if not os.path.isdir(d): continue
+        for f in sorted(os.listdir(d), reverse=True)[:20]:
+            if not f.endswith(".jsonl"): continue
+            try:
+                with open(os.path.join(d, f)) as fh:
+                    for line in fh:
+                        try:
+                            rec = json.loads(line)
+                            content = str(rec.get("content", ""))
+                            if "每日早报" in content or "AI 行业前沿" in content:
+                                lines = content.split('\n')
+                                for l in lines:
+                                    l = l.strip()
+                                    if l and (l.startswith('- ') or l.startswith('1.')):
+                                        title = l.lstrip('- 1234567890. ').strip()
+                                        if len(title) > 10:
+                                            items.append({"title": title[:200]})
+                        except: pass
+            except: pass
+            if len(items) >= 5: break
+        if items: break
+    if not items:
+        items = [{"title": "Transformer十年统治遭挑战：联合发明人辩论五大死穴"},
+                 {"title": "AI四巨头内部报告首度公开：AI正在学会撒谎求生"},
+                 {"title": "新华网：AI智能体不止聊天真能干活，三部门联合印发实施意见"}]
+    return {"source": "天玑早报", "updated": datetime.now(CST).isoformat(), "items": items[:8]}
+
+# ═══════════════════════════════════════════
 # 数据源4: 知识库更新（SSH到云Win拉Obsidian最近文件）
 # ═══════════════════════════════════════════
 OBSIDIAN_PS1 = "D:/Obsidian/fetch_recent.ps1"
@@ -323,7 +359,16 @@ def main():
 
     data["system"] = fetch_system()
     data["token"] = fetch_token()
-    data["news"] = fetch_news()
+    
+    # 新闻：天玑每天灌 ≥25 条，gen_data 不要覆盖
+    # 只在现有数据为空或明显不足时才用离线缓存
+    existing_news = data.get("news", {}).get("items", [])
+    if len(existing_news) < 5:
+        data["news"] = fetch_news()
+    existing_ai = data.get("ai_news", {}).get("items", [])
+    if len(existing_ai) < 3:
+        data["ai_news"] = fetch_ai_news()
+    
     data["knowledge"] = fetch_knowledge()
     data["daily"] = fetch_daily()
     data["football"] = fetch_football()
