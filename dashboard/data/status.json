@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-27 14:38",
+  "updated": "2026-05-27 14:51",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -52,7 +52,7 @@
   },
   "news": {
     "source": "自动采集",
-    "updated": "2026-05-27T14:38:35.644757+08:00",
+    "updated": "2026-05-27T14:51:17.086210+08:00",
     "items": [
       {
         "title": "Transformer十年统治遭挑战：联合发明人辩论五大死穴"
@@ -145,7 +145,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-05-27 14:38",
+    "updated": "2026-05-27 14:51",
     "recent": [
       "05-26 8.北斗架构v2升级记录",
       "05-26 5.北斗开发流程制度",
@@ -184,6 +184,6 @@
       "ai-daily-briefing"
     ],
     "last_summary": "auto: no changes; llm: ## Consolidation pass complete — 27 → 12 agent-created skills",
-    "updated": "2026-05-27 14:38"
+    "updated": "2026-05-27 14:51"
   }
 }
