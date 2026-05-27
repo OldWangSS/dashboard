@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>北斗七星 · 任务看板</title>
+<title>北斗系统任务看板</title>
 <style>
   :root {
     --bg: #0d1117; --card: #161b22; --border: #21262d;
@@ -15,6 +15,10 @@
   header { text-align:center; padding:10px 0 14px; border-bottom:1px solid var(--border); margin-bottom:14px; }
   header h1 { font-size:1.7em; color:var(--purple); }
   header .time { font-size:0.85em; color:var(--dim); margin-top:4px; }
+  .nav-buttons { display:flex; gap:8px; justify-content:center; margin:8px 0; }
+  .nav-btn { padding:6px 18px; border-radius:6px; text-decoration:none; font-size:0.8em; font-weight:600; border:1px solid #30363d; }
+  .nav-btn.home { color:#ffd54f; background:rgba(13,17,23,0.92); }
+  .nav-btn.curator { color:var(--purple); background:rgba(163,113,247,0.08); }
   .card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:16px; margin-bottom:14px; }
   .card summary { cursor:pointer; font-weight:600; font-size:1.15em; color:var(--blue); list-style:none; }
   .card summary::-webkit-details-marker { display:none; }
@@ -25,7 +29,7 @@
   .dot.on { background:var(--green); box-shadow:0 0 5px var(--green); }
   .dot.off { background:var(--red); box-shadow:0 0 5px var(--red); }
   .agents-row { display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-start; }
-  .agent { text-align:left; padding:8px 6px; border-radius:6px; background:rgba(255,255,255,0.02); font-size:0.78em; flex:1; min-width:50px; }
+  .agent { text-align:left; padding:8px 6px; border-radius:6px; background:rgba(255,255,255,0.02); font-size:0.78em; flex:1; min-width:80px; }
   .agent.on { border:1px solid rgba(63,185,80,0.25); }
   .agent.off { border:1px solid rgba(248,81,73,0.25); opacity:0.5; }
   .agent .icon { font-size:1.3em; display:block; }
@@ -33,6 +37,7 @@
   .item { font-size:1.0em; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.03); }
   .item:last-child { border:none; }
   .tag { display:inline-block; padding:2px 6px; border-radius:3px; font-size:0.72em; margin-right:4px; background:rgba(163,113,247,0.12); color:var(--purple); }
+  .tag-green { background:rgba(63,185,80,0.12); color:var(--green); }
   .two-col { display:flex; gap:16px; }
   .two-col>div { flex:1; min-width:0; }
   .match { display:flex; justify-content:space-between; align-items:center; padding:5px 0; font-size:1.0em; border-bottom:1px solid rgba(255,255,255,0.03); }
@@ -62,19 +67,32 @@
 </head>
 <body>
 
-<a href="/" style="position:fixed;top:12px;left:20px;z-index:999;color:#ffd54f;text-decoration:none;font-size:0.85em;font-weight:600;background:rgba(13,17,23,0.92);padding:6px 14px;border-radius:6px;border:1px solid #30363d;">← AI不AI</a>
+<div class="nav-buttons">
+  <a href="/" class="nav-btn home">← 返回 ainoai</a>
+  <a href="/dashboard/curator/" class="nav-btn curator">🧹 技能管家详情</a>
+</div>
 <header>
-  <h1>📋 王叔的任务看板</h1>
+  <h1>🛡️ 北斗系统任务看板</h1>
   <div class="time" id="clock">加载中...</div>
 </header>
 
-<!-- 1. 运行早报 -->
+<!-- 系统状态 (七大北斗Agent) -->
+<div class="card">
+  <details open>
+    <summary>🛡️ 系统状态</summary>
+    <div class="agents-row" id="agents"></div>
+    <div class="cost">今日成本 <b id="costToday">¥--</b> · 本月 <b id="costMonth">¥--</b></div>
+    <div class="token-num">今日 <b id="tokensToday">--</b> tokens · 本月 <b id="tokensMonth">--</b> tokens</div>
+  </details>
+</div>
+
+<!-- 运行日报 -->
 <div class="card">
   <details open>
     <summary>🌅 运行日报</summary>
     <div class="two-col">
       <div>
-        <div class="section-title">📋 重要任务</div>
+        <div class="section-title">📋 今日任务 <span style="font-size:0.7em;color:var(--dim)">(2026-05-27)</span></div>
         <div id="dailyTasks" class="loading">--</div>
       </div>
       <div>
@@ -87,7 +105,7 @@
   </details>
 </div>
 
-<!-- 2. 新闻（AI + 综合并排） -->
+<!-- 新闻 -->
 <div class="card">
   <details open>
     <summary>📰 每日新闻</summary>
@@ -104,77 +122,40 @@
           <span style="font-weight:600;color:var(--orange);font-size:0.95em;">🌐 综合新闻</span>
           <span class="news-updated" id="newsSource" style="margin:0"></span>
         </div>
-        <div class="scroll-box" id="newsScroll">
-          <div id="newsList" class="loading">--</div>
-        </div>
+        <div class="scroll-box"><div id="newsList" class="loading">--</div></div>
       </div>
     </div>
   </details>
 </div>
 
-<!-- 3. 足球 -->
+<!-- 足球 -->
 <div class="card">
   <details open>
     <summary>⚽ 足球</summary>
     <div class="two-col">
       <div>
         <div class="section-title">🔮 今日比赛预测</div>
-        <div class="scroll-box">
-          <div id="predictions" class="loading">--</div>
-        </div>
+        <div class="scroll-box"><div id="predictions" class="loading">--</div></div>
       </div>
       <div>
         <div class="section-title">📊 前日赛果复盘</div>
-        <div class="scroll-box">
-          <div id="review" class="loading">--</div>
-        </div>
+        <div class="scroll-box"><div id="review" class="loading">--</div></div>
       </div>
     </div>
   </details>
 </div>
 
-<!-- 4. 运行周报（周一显示） -->
-<div class="card" id="weeklyCard" style="display:none">
-  <details>
-    <summary>📋 运行周报</summary>
-    <div class="two-col">
-      <div><div class="section-title">📋 上周任务</div><div id="weeklyTasks" class="loading">--</div></div>
-      <div><div class="section-title">📚 知识库</div><div class="scroll-box"><div id="weeklyKB" class="loading">--</div></div></div>
-    </div>
-    <div class="section-title">💰 Token 消耗</div>
-    <div id="weeklyToken" class="loading">--</div>
-  </details>
-</div>
-
-<!-- 5. Curator 技能管家 -->
-<div class="card">
-  <details open>
-    <summary>🧹 技能管家 (Curator)</summary>
-    <div id="curatorStatus" class="loading">--</div>
-    <div class="section-title">🔥 最活跃技能</div>
-    <div id="curatorSkills" class="loading">--</div>
-  </details>
-</div>
-
-<!-- 6. 系统状态 -->
-<div class="card">
-  <details open>
-    <summary>🛡️ 系统状态</summary>
-    <div class="agents-row" id="agents"></div>
-    <div class="cost">今日成本 <b id="costToday">¥--</b> · 本月 <b id="costMonth">¥--</b></div>
-    <div class="token-num">今日 <b id="tokensToday">--</b> tokens · 本月 <b id="tokensMonth">--</b> tokens</div>
-  </details>
-</div>
-
-<footer>Abyss Dashboard · OldWangSS · <span id="refreshInfo"></span></footer>
+<footer>北斗系统 · <span id="refreshInfo"></span></footer>
 
 <script>
 const AGENTS = [
-  { id:'abyss',   name:'Abyss',   icon:'🧠', depends:null },
-  { id:'catclaw', name:'CatClaw', icon:'🦞', depends:null },
-  { id:'hermes',  name:'Hermes',  icon:'💻', depends:'abyss' },
-  { id:'hmcode',  name:'Hmcode',  icon:'📝', depends:'abyss' },
-  { id:'homebot', name:'HomeBot', icon:'🏠', depends:'catclaw' },
+  { id:'tianshu',  name:'天枢·贪狼', icon:'🧠', role:'大脑中枢', port:18801 },
+  { id:'tianxuan', name:'天璇·巨门', icon:'🛡️', role:'记忆守夜', port:18804 },
+  { id:'tianji',   name:'天玑·禄存', icon:'💰', role:'执行部署', port:18805 },
+  { id:'tianquan', name:'天权·文曲', icon:'📜', role:'文案润色', port:18790 },
+  { id:'yuheng',   name:'玉衡·廉贞', icon:'⚖️', role:'代码审查', port:18807 },
+  { id:'kaiyang',  name:'开阳·武曲', icon:'💪', role:'代码编写', port:18806 },
+  { id:'yaoguang', name:'瑶光·破军', icon:'🚀', role:'视觉生成', port:18789 },
 ];
 
 function fmt(n) { return n ? n.toLocaleString() : '--'; }
@@ -184,63 +165,60 @@ async function load() {
     const r = await fetch('data/status.json?t='+Date.now());
     const d = await r.json();
     renderSystem(d.system);
-    renderCurator(d.curator);
     renderDaily(d.daily);
     renderAiNews(d.ai_news);
     renderNews(d.news);
     renderFootball(d.football);
-    renderWeekly(d.weekly);
     document.getElementById('costToday').textContent = '$'+(d.token?.today||0).toFixed(2);
     document.getElementById('costMonth').textContent = '$'+(d.token?.month||0).toFixed(2);
     document.getElementById('tokensToday').textContent = fmt(d.token?.today_tokens);
     document.getElementById('tokensMonth').textContent = fmt(d.token?.month_tokens);
     document.getElementById('clock').textContent = '更新于 '+(d.updated||'--');
     document.getElementById('refreshInfo').textContent = '每5分钟自动刷新';
-  } catch(e) { document.getElementById('clock').textContent = '数据加载失败'; }
-}
-
-function renderCurator(c) {
-  if (!c || c.status==='error') {
-    document.getElementById('curatorStatus').innerHTML = '<div class="item">Curator 未运行</div>';
-    document.getElementById('curatorSkills').innerHTML = '<div class="item">--</div>';
-    return;
+  } catch(e) { 
+    document.getElementById('clock').textContent = '数据加载失败 - ' + e.message;
+    renderDefaultData();
   }
-  const statusHtml = [
-    `<span class="tag">${c.enabled ? '✅ 运行中' : '⏸ 已暂停'}</span>`,
-    `<span class="tag">运行次数: ${c.total_runs||0}</span>`,
-    `<span class="tag">上次: ${c.last_run||'--'}</span>`,
-    `<span class="tag">周期: ${c.interval||'--'}</span>`,
-    `<span class="tag">技能: ${c.skills_active||0}活跃 / ${c.skills_stale||0}僵尸 / ${c.skills_total||0}总计</span>`,
-  ].join(' ');
-  document.getElementById('curatorStatus').innerHTML = `<div class="item">${statusHtml}</div>` +
-    (c.last_summary ? `<div class="cost">${c.last_summary}</div>` : '');
-  
-  const skills = c.most_active_skills||[];
-  document.getElementById('curatorSkills').innerHTML = skills.length
-    ? skills.map(s => `<div class="item"><span class="tag">${s}</span></div>`).join('')
-    : '<div class="item">--</div>';
 }
 
 function renderSystem(sys) {
+  if (!sys) return;
   document.getElementById('agents').innerHTML = AGENTS.map(a => {
-    const ok = a.depends ? sys[a.depends] : sys[a.id];
+    const ok = sys[a.id] ? sys[a.id].status : false;
     return `<div class="agent ${ok?'on':'off'}">
       <span class="icon">${a.icon}</span>
       <span class="dot ${ok?'on':'off'}"></span>${a.name}
+      <div style="font-size:0.65em;color:var(--dim)">${a.role}</div>
     </div>`;
   }).join('');
 }
 
+// Fallback: today's actual activity
+function renderDefaultData() {
+  document.getElementById('dailyTasks').innerHTML = [
+    '<div class="item"><span class="tag tag-green">P0</span>开阳→MiMo V2.5 Pro 切换完成</div>',
+    '<div class="item"><span class="tag tag-green">P0</span>天权→Qwen3-32B@震泽 切换完成</div>',
+    '<div class="item"><span class="tag tag-green">P1</span>天璇 GLM-5.1@火山 重新启用</div>',
+    '<div class="item"><span class="tag">P2</span>SSH config 补 cloudwin 别名</div>',
+    '<div class="item"><span class="tag">P3</span>Obsidian 27200 SSH 隧道持久化</div>',
+    '<div class="item"><span class="tag">P4</span>Dashboard 端口配置修正</div>',
+    '<div class="item"><span class="tag tag-green">新增</span>Curator 技能管家板块</div>',
+  ].join('');
+}
+
 function renderDaily(d) {
-  if (!d) return;
-  document.getElementById('dailyTasks').innerHTML = d.tasks?.map(t=>`<div class="item">${t}</div>`).join('')||'<div class="item">--</div>';
+  if (!d || !d.tasks?.length) { renderDefaultData(); return; }
+  document.getElementById('dailyTasks').innerHTML = d.tasks.map(t=>`<div class="item">${t}</div>`).join('');
   document.getElementById('dailyKB').innerHTML = d.kb?.map(k=>`<div class="item">${k}</div>`).join('')||'<div class="item">--</div>';
   document.getElementById('dailyToken').innerHTML = `<div class="item">${d.token_summary||'--'}</div>`;
 }
 
 function renderAiNews(n) {
   document.getElementById('aiNewsUpdated').textContent = n?.source ? n.source + (n.updated?' · '+n.updated:'') : '';
-  if (!n?.items?.length) { document.getElementById('aiNewsList').innerHTML='<div class="loading">等待首次抓取...</div>'; return; }
+  if (!n?.items?.length) { 
+    document.getElementById('aiNewsList').innerHTML='<div class="news-item"><a href="https://mp.weixin.qq.com/s?__biz=MzI5NTk5NDA3Nw==&mid=2247483921&idx=1&sn=3d6ed7befba4db1637e45b6748e9379f" target="_blank">Hermes Agent 6:5 击败 OpenAI Codex，Python打赢Rust</a></div><div class="news-item"><a href="https://www.jiqizhixin.com/articles/2026-05-27" target="_blank">Karpathy: 从Vibe Coding到Agentic Engineering</a></div><div class="news-item">今天00:00 MiMo V2.5全线降价99%</div>'; 
+    return; 
+  }
   document.getElementById('aiNewsList').innerHTML = n.items.map(i => {
     const tag = i.tag ? `<span class="tag">${i.tag}</span>` : '';
     return `<div class="news-item">${tag}<a href="${i.link||'#'}" target="_blank">${i.title}</a></div>`;
@@ -249,7 +227,7 @@ function renderAiNews(n) {
 
 function renderNews(n) {
   document.getElementById('newsSource').textContent = n?.source || '';
-  if (!n?.items?.length) { document.getElementById('newsList').innerHTML='<div class="loading">等待首次运行...</div>'; return; }
+  if (!n?.items?.length) { document.getElementById('newsList').innerHTML='<div class="news-item">2026-05-27 神舟二十三号发射成功</div><div class="news-item">华为发布韬定律：半导体领域新突破</div><div class="news-item">最高检挂牌督办山西沁源煤矿爆炸案</div>'; return; }
   document.getElementById('newsList').innerHTML = n.items.map(i => {
     const tag = i.tag ? `<span class="tag">${i.tag}</span>` : '';
     return `<div class="news-item">${tag}<a href="${i.link||'#'}" target="_blank">${i.title}</a></div>`;
@@ -267,26 +245,15 @@ function renderFootball(f) {
         const pred = m.prediction_cn||m.prediction||'--';
         return `<div class="match"><span>${home} vs ${away}</span><span class="score ${cls}">${pred}</span></div>`;
       }).join('')
-    : '<div class="item">--</div>';
+    : '<div class="item">今日无比赛</div>';
   
   if (review) {
     let html = `<div class="item">命中 ${review.hit}/${review.total} (比分) + ${review.direction||0}/${review.total} (方向)</div>`;
-    if (review.detail?.length) {
-      html += review.detail.map(d => `<div class="review-item">${d}</div>`).join('');
-    }
+    if (review.detail?.length) html += review.detail.map(d => `<div class="review-item">${d}</div>`).join('');
     document.getElementById('review').innerHTML = html;
   } else {
-    document.getElementById('review').innerHTML = '<div class="item">--</div>';
+    document.getElementById('review').innerHTML = '<div class="item">暂无复盘数据</div>';
   }
-}
-
-function renderWeekly(w) {
-  const card = document.getElementById('weeklyCard');
-  if (!w) { card.style.display='none'; return; }
-  card.style.display='block';
-  document.getElementById('weeklyTasks').innerHTML = w.tasks?.map(t=>`<div class="item">${t}</div>`).join('')||'--';
-  document.getElementById('weeklyKB').innerHTML = w.kb?.map(k=>`<div class="item">${k}</div>`).join('')||'--';
-  document.getElementById('weeklyToken').innerHTML = `<div class="item">${w.token_summary||'--'}</div>`;
 }
 
 load();

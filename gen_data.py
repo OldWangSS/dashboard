@@ -33,18 +33,18 @@ def safe(default):
 def fetch_system():
     import socket
     agents = {
-        "tianshu":   ("天枢·贪狼", 18801),
-        "yuheng":    ("玉衡·廉贞", 18802),
-        "kaiyang":   ("开阳·武曲", 18803),
-        "tianji":    ("天玑·禄存", 18789),
-        "tianquan":  ("天权·文曲", 18790),
-        "tianxuan":  ("天璇·巨门", 18789),
-        "yaoguang":  ("瑶光·破军", 18789),
+        "tianshu":   ("天枢·贪狼", 18801, "127.0.0.1"),
+        "yuheng":    ("玉衡·廉贞", 18807, "192.168.1.5"),
+        "kaiyang":   ("开阳·武曲", 18806, "192.168.1.5"),
+        "tianji":    ("天玑·禄存", 18805, "192.168.1.5"),
+        "tianquan":  ("天权·文曲", 18790, "192.168.1.5"),
+        "tianxuan":  ("天璇·巨门", 18804, "192.168.1.5"),
+        "yaoguang":  ("瑶光·破军", 18789, "192.168.1.5"),
     }
     result = {}
-    for aid, (name, port) in agents.items():
+    for aid, (name, port, host) in agents.items():
         try:
-            s = socket.create_connection(("192.168.1.5" if aid in ("tianji","tianquan","tianxuan","yaoguang") else "127.0.0.1", port), timeout=3)
+            s = socket.create_connection((host, port), timeout=3)
             s.close()
             result[aid] = {"name": name, "status": True}
         except:
@@ -164,6 +164,68 @@ def fetch_football():
             return json.load(f)
     return {"predictions": [], "note": "football_pred.json缺失"}
 
+@safe({"status": "disabled", "note": "无法获取"})
+def fetch_curator():
+    """数据源7: Curator 技能管家状态"""
+    try:
+        r = subprocess.run(
+            ["hermes", "curator", "status"],
+            capture_output=True, text=True, timeout=30
+        )
+        if r.returncode != 0:
+            return {"status": "error", "note": r.stderr[:200]}
+        
+        output = r.stdout
+        result = {"status": "enabled"}
+        
+        if "ENABLED" in output:
+            result["enabled"] = True
+        else:
+            result["enabled"] = False
+        
+        m = re.search(r"runs:\s+(\d+)", output)
+        if m: result["total_runs"] = int(m.group(1))
+        
+        m = re.search(r"last run:\s+(.+)", output)
+        if m: result["last_run"] = m.group(1).strip()
+        
+        m = re.search(r"interval:\s+(.+)", output)
+        if m: result["interval"] = m.group(1).strip()
+        
+        m = re.search(r"agent-created skills:\s+(\d+)\s+total", output)
+        if m: result["skills_total"] = int(m.group(1))
+        
+        m = re.search(r"active\s+(\d+)", output)
+        if m: result["skills_active"] = int(m.group(1))
+        
+        m = re.search(r"stale\s+(\d+)", output)
+        if m: result["skills_stale"] = int(m.group(1))
+        
+        # Most active skills
+        most_active = []
+        in_most = False
+        for line in output.split('\n'):
+            if 'most active' in line.lower():
+                in_most = True
+                continue
+            if in_most:
+                if 'least' in line.lower() or not line.strip():
+                    break
+                if 'activity=' in line:
+                    parts = line.strip().split()
+                    if parts:
+                        most_active.append(parts[0])
+        result["most_active_skills"] = most_active[:3]
+        
+        m = re.search(r"last summary:\s+(auto:.+)", output)
+        if m: result["last_summary"] = m.group(1).strip()[:300]
+        
+        result["updated"] = datetime.now(CST).strftime("%Y-%m-%d %H:%M")
+        return result
+    except Exception as e:
+        return {"status": "error", "note": str(e)[:200]}
+
+
 # ═══════════════════════════════════════════
 # 聚合
 # ═══════════════════════════════════════════
@@ -179,6 +241,7 @@ def main():
     data["knowledge"] = fetch_knowledge()
     data["daily"] = fetch_daily()
     data["football"] = fetch_football()
+    data["curator"] = fetch_curator()
     data["updated"] = datetime.now(CST).strftime("%Y-%m-%d %H:%M")
 
     os.makedirs(os.path.dirname(STATUS_PATH), exist_ok=True)

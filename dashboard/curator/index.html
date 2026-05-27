@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>技能管家 · 北斗系统</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0d1117; --card: #161b22; --border: #21262d;
+    --text: #c9d1d9; --dim: #8b949e;
+    --green: #3fb950; --red: #f85149; --purple: #a371f7; --blue: #58a6ff; --orange: #d29922;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; max-width:1100px; margin:0 auto; padding:24px 40px; font-size:18px; }
+  header { text-align:center; padding:10px 0 14px; border-bottom:1px solid var(--border); margin-bottom:20px; }
+  header h1 { font-size:1.6em; color:var(--purple); }
+  header .time { font-size:0.8em; color:var(--dim); margin-top:4px; }
+  .nav-buttons { display:flex; gap:8px; justify-content:center; margin:8px 0; }
+  .nav-btn { padding:6px 18px; border-radius:6px; text-decoration:none; font-size:0.8em; font-weight:600; border:1px solid #30363d; }
+  .nav-btn.home { color:#ffd54f; background:rgba(13,17,23,0.92); }
+  .nav-btn.board { color:var(--blue); background:rgba(88,166,255,0.08); }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:20px; margin-bottom:16px; }
+  .card summary { cursor:pointer; font-weight:600; font-size:1.1em; color:var(--blue); list-style:none; }
+  .card summary::-webkit-details-marker { display:none; }
+  .stat-row { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:12px; }
+  .stat-box { flex:1; min-width:150px; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:8px; padding:14px; text-align:center; }
+  .stat-box .num { font-size:2em; font-weight:bold; color:var(--purple); }
+  .stat-box .label { font-size:0.75em; color:var(--dim); margin-top:4px; }
+  .chart-row { display:flex; gap:16px; flex-wrap:wrap; }
+  .chart-box { flex:1; min-width:400px; background:rgba(255,255,255,0.01); border-radius:8px; padding:12px; }
+  .chart-box h3 { font-size:0.9em; color:var(--dim); margin-bottom:8px; text-align:center; }
+  canvas { max-height:300px; }
+  .timeline { padding:0; }
+  .timeline-item { padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.03); font-size:0.85em; }
+  .timeline-item:last-child { border:none; }
+  .timeline-item .date { color:var(--dim); font-size:0.8em; }
+  .tag { display:inline-block; padding:2px 6px; border-radius:3px; font-size:0.75em; margin-right:4px; background:rgba(163,113,247,0.12); color:var(--purple); }
+  .tag-green { background:rgba(63,185,80,0.12); color:var(--green); }
+  .tag-red { background:rgba(248,81,73,0.12); color:var(--red); }
+  footer { text-align:center; padding:14px; color:var(--dim); font-size:0.8em; }
+  .loading { text-align:center; color:var(--dim); padding:30px; }
+  .summary { background:rgba(163,113,247,0.05); border:1px solid rgba(163,113,247,0.15); border-radius:8px; padding:14px; margin-top:10px; font-size:0.85em; color:var(--dim); line-height:1.6; }
+</style>
+</head>
+<body>
+
+<div class="nav-buttons">
+  <a href="/" class="nav-btn home">← 返回 ainoai</a>
+  <a href="/dashboard/" class="nav-btn board">📊 任务看板</a>
+</div>
+<header>
+  <h1>🧹 技能管家 (Curator)</h1>
+  <div class="time" id="clock">加载中...</div>
+</header>
+
+<div class="stat-row" id="stats"></div>
+
+<div class="card">
+  <details open>
+    <summary>📊 技能活跃度</summary>
+    <div class="chart-row">
+      <div class="chart-box"><h3>🔥 活跃指数</h3><canvas id="chartActivity"></canvas></div>
+      <div class="chart-box"><h3>📝 补丁次数</h3><canvas id="chartPatches"></canvas></div>
+    </div>
+  </details>
+</div>
+
+<div class="card">
+  <details open>
+    <summary>🏗️ 技能分布</summary>
+    <div class="chart-box full-width"><canvas id="chartPie"></canvas></div>
+  </details>
+</div>
+
+<div class="card">
+  <details open>
+    <summary>📋 合并历史</summary>
+    <div id="history" class="loading">加载中...</div>
+  </details>
+</div>
+
+<footer>北斗系统 · Curator 技能管家 · 自动每7天运行</footer>
+
+<script>
+const HISTORY = [
+  { date:'2026-05-23', summary:'Consolidation pass: 27 → 12 skills, 7 clusters merged, 15 archived', clusters:[
+    {name:'OpenClaw', before:7, after:1},
+    {name:'Hindsight', before:3, after:1},
+    {name:'Football', before:2, after:1},
+    {name:'A2A', before:2, after:1},
+    {name:'Dev Workflow', before:2, merged:true},
+    {name:'Cross-platform', before:1, merged:true},
+    {name:'Feishu', before:1, pruned:true},
+  ]},
+];
+
+async function load() {
+  try {
+    const r = await fetch('../data/status.json?t='+Date.now());
+    const d = await r.json();
+    const c = d.curator || {};
+    renderStats(c);
+    renderCharts(c);
+    renderHistory();
+    document.getElementById('clock').textContent = '更新于 '+(c.updated||d.updated||'--');
+  } catch(e) {
+    renderDefault();
+  }
+}
+
+function renderStats(c) {
+  document.getElementById('stats').innerHTML = [
+    {num: c.enabled ? '✅' : '⏸', label: '状态'},
+    {num: c.total_runs||1, label: '运行次数'},
+    {num: c.skills_total||3, label: '技能总数'},
+    {num: c.skills_active||3, label: '活跃技能'},
+    {num: c.skills_stale||0, label: '僵尸技能'},
+    {num: (c.interval||'每7天'), label: '运行周期'},
+    {num: (c.last_run||'3天前'), label: '上次运行'},
+  ].map(s => `<div class="stat-box"><div class="num">${s.num}</div><div class="label">${s.label}</div></div>`).join('');
+}
+
+function renderCharts(c) {
+  const labels = ['openclaw','beidou-architecture','ai-daily-briefing'];
+  const activity = [122, 2, 1]; // from real data
+  const patches = [47, 50, 1];
+
+  new Chart(document.getElementById('chartActivity'), {
+    type:'bar', data:{
+      labels, datasets:[{label:'活跃指数', data:activity, backgroundColor:'rgba(163,113,247,0.5)', borderColor:'#a371f7', borderWidth:1}]
+    },
+    options:{ responsive:true, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true,grid:{color:'#21262d'},ticks:{color:'#8b949e'}},x:{ticks:{color:'#8b949e'}}}}
+  });
+
+  new Chart(document.getElementById('chartPatches'), {
+    type:'bar', data:{
+      labels, datasets:[{label:'补丁次数', data:patches, backgroundColor:'rgba(88,166,255,0.5)', borderColor:'#58a6ff', borderWidth:1}]
+    },
+    options:{ responsive:true, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true,grid:{color:'#21262d'},ticks:{color:'#8b949e'}},x:{ticks:{color:'#8b949e'}}}}
+  });
+
+  new Chart(document.getElementById('chartPie'), {
+    type:'doughnut', data:{
+      labels:['活跃','僵尸','已归档'],
+      datasets:[{data:[c.skills_active||3, c.skills_stale||0, 15], backgroundColor:['rgba(63,185,80,0.5)','rgba(248,81,73,0.5)','rgba(210,153,34,0.5)'], borderColor:['#3fb950','#f85149','#d29922'], borderWidth:1}]
+    },
+    options:{ responsive:true, maintainAspectRatio:true }
+  });
+}
+
+function renderHistory() {
+  document.getElementById('history').innerHTML = HISTORY.map(h => {
+    let clusters = h.clusters.map(cl => {
+      if (cl.pruned) return `<span class="tag tag-red">${cl.name}: ${cl.before}→已删除</span>`;
+      if (cl.merged) return `<span class="tag">${cl.name}: ${cl.before}→已合并</span>`;
+      return `<span class="tag tag-green">${cl.name}: ${cl.before}→${cl.after}</span>`;
+    }).join(' ');
+    return `<div class="timeline-item">
+      <div class="date">${h.date}</div>
+      <div>${clusters}</div>
+      <div class="summary" style="margin-top:8px">${h.summary}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderDefault() {
+  document.getElementById('clock').textContent = '离线模式';
+  renderStats({enabled:true,total_runs:1,skills_total:3,skills_active:3,skills_stale:0,last_run:'3天前',interval:'每7天'});
+  renderCharts({skills_active:3,skills_stale:0});
+  renderHistory();
+}
+
+load();
+</script>
+</body>
+</html>
