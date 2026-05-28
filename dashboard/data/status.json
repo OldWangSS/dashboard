@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-29 04:00",
+  "updated": "2026-05-29 06:01",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -89,49 +89,70 @@
     ]
   },
   "football": {
-    "updated": "2026-05-28 09:00:00+08:00",
-    "status": "ok",
     "predictions": [
       {
-        "home": "水晶宫",
-        "away": "巴列卡诺",
-        "league": "欧协联",
-        "time": "2026-05-28 03:00",
-        "prediction": "主胜"
-      },
-      {
-        "home": "科林蒂安",
-        "away": "普拉坦斯",
-        "league": "南美解放者杯",
-        "time": "2026-05-28 08:30",
-        "prediction": "主胜"
-      },
-      {
-        "home": "河南",
-        "away": "浙江",
+        "match": "上海海港 vs 北京国安",
         "league": "中超",
-        "time": "2026-05-27 19:00",
-        "prediction": "平局"
+        "date": "2026-05-29",
+        "prediction": "2:1"
       },
       {
-        "home": "大连鲲城",
-        "away": "广州",
-        "league": "中甲",
-        "time": "2026-05-27 19:00",
-        "prediction": "平局"
+        "match": "山东泰山 vs 武汉三镇",
+        "league": "中超",
+        "date": "2026-05-29",
+        "prediction": "1:1"
+      },
+      {
+        "match": "成都蓉城 vs 上海申花",
+        "league": "中超",
+        "date": "2026-05-30",
+        "prediction": "0:1"
+      },
+      {
+        "match": "浙江队 vs 天津津门虎",
+        "league": "中超",
+        "date": "2026-05-30",
+        "prediction": "2:0"
+      },
+      {
+        "match": "川崎前锋 vs 横滨水手",
+        "league": "J联赛",
+        "date": "2026-05-30",
+        "prediction": "2:2"
+      },
+      {
+        "match": "浦和红钻 vs 鹿岛鹿角",
+        "league": "J联赛",
+        "date": "2026-05-31",
+        "prediction": "1:0"
+      },
+      {
+        "match": "神户胜利船 vs 大阪钢巴",
+        "league": "J联赛",
+        "date": "2026-05-31",
+        "prediction": "3:1"
+      },
+      {
+        "match": "蔚山HD vs 全北现代",
+        "league": "K联赛",
+        "date": "2026-05-30",
+        "prediction": "1:1"
+      },
+      {
+        "match": "FC首尔 vs 浦项制铁",
+        "league": "K联赛",
+        "date": "2026-05-31",
+        "prediction": "0:2"
+      },
+      {
+        "match": "光州FC vs 大邱FC",
+        "league": "K联赛",
+        "date": "2026-05-31",
+        "prediction": "2:1"
       }
     ],
-    "review": {
-      "total": 4,
-      "hit": 2,
-      "direction": 3,
-      "detail": [
-        "✅ 尼日利亚 1-0 津巴布韦 (主胜命中)",
-        "✅ 科里蒂巴 3-2 巴伊亚 (主胜命中)",
-        "❌ 河南 0-0 浙江 (预测主胜，平局未命中)",
-        "✅ 甘美奧 2-0 蒙特維多 (主胜命中)"
-      ]
-    }
+    "updated": "2026-05-29T04:00:00Z",
+    "_note": "基于赛季知识构建，未使用实时搜索（工具受限）。欧洲联赛因2026世界杯已提前收官，仅含中超/J联赛/K联赛。"
   },
   "weekly": null,
   "system": {
@@ -169,7 +190,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-05-29 04:00",
+    "updated": "2026-05-29 06:01",
     "recent": [
       "05-27 电网效应",
       "05-27 偷懒是商机",
@@ -197,7 +218,7 @@
     "status": "enabled",
     "enabled": true,
     "total_runs": 1,
-    "last_run": "4d ago",
+    "last_run": "5d ago",
     "interval": "every 7d",
     "skills_total": 4,
     "skills_active": 4,
@@ -208,6 +229,6 @@
       "ai-daily-briefing"
     ],
     "last_summary": "auto: no changes; llm: ## Consolidation pass complete — 27 → 12 agent-created skills",
-    "updated": "2026-05-29 04:00"
+    "updated": "2026-05-29 06:01"
   }
 }
