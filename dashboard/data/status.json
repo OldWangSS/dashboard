@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-28 06:00",
+  "updated": "2026-05-28 08:00",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -169,7 +169,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-05-28 06:00",
+    "updated": "2026-05-28 08:00",
     "recent": [
       "05-27 电网效应",
       "05-27 偷懒是商机",
@@ -208,6 +208,6 @@
       "ai-daily-briefing"
     ],
     "last_summary": "auto: no changes; llm: ## Consolidation pass complete — 27 → 12 agent-created skills",
-    "updated": "2026-05-28 06:00"
+    "updated": "2026-05-28 08:00"
   }
 }
