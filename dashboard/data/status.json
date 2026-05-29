@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-29 20:00",
+  "updated": "2026-05-29 22:02",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -91,18 +91,6 @@
   "football": {
     "predictions": [
       {
-        "match": "上海海港 vs 北京国安",
-        "league": "中超",
-        "date": "2026-05-29",
-        "prediction": "2:1"
-      },
-      {
-        "match": "山东泰山 vs 武汉三镇",
-        "league": "中超",
-        "date": "2026-05-29",
-        "prediction": "1:1"
-      },
-      {
         "match": "成都蓉城 vs 上海申花",
         "league": "中超",
         "date": "2026-05-30",
@@ -121,6 +109,12 @@
         "prediction": "2:2"
       },
       {
+        "match": "蔚山HD vs 全北现代",
+        "league": "K联赛",
+        "date": "2026-05-30",
+        "prediction": "1:1"
+      },
+      {
         "match": "浦和红钻 vs 鹿岛鹿角",
         "league": "J联赛",
         "date": "2026-05-31",
@@ -133,12 +127,6 @@
         "prediction": "3:1"
       },
       {
-        "match": "蔚山HD vs 全北现代",
-        "league": "K联赛",
-        "date": "2026-05-30",
-        "prediction": "1:1"
-      },
-      {
         "match": "FC首尔 vs 浦项制铁",
         "league": "K联赛",
         "date": "2026-05-31",
@@ -149,10 +137,34 @@
         "league": "K联赛",
         "date": "2026-05-31",
         "prediction": "2:1"
+      },
+      {
+        "match": "河南队 vs 长春亚泰",
+        "league": "中超",
+        "date": "2026-06-01",
+        "prediction": "1:0"
+      },
+      {
+        "match": "沧州雄狮 vs 青岛西海岸",
+        "league": "中超",
+        "date": "2026-06-01",
+        "prediction": "1:1"
+      },
+      {
+        "match": "名古屋鲸八 vs 广岛三箭",
+        "league": "J联赛",
+        "date": "2026-06-01",
+        "prediction": "1:2"
+      },
+      {
+        "match": "济州联 vs 仁川联",
+        "league": "K联赛",
+        "date": "2026-06-01",
+        "prediction": "1:1"
       }
     ],
     "updated": "2026-05-29T12:00:00Z",
-    "_note": "无web_search工具，基于赛季知识构建。欧洲联赛因2026世界杯已提前收官，仅含中超/J联赛/K联赛未来3天赛程。"
+    "_note": "无web_search工具，基于赛季知识构建。欧洲联赛因2026世界杯已提前收官，仅含中超/J联赛/K联赛未来3天赛程(5/30-6/1)。"
   },
   "weekly": null,
   "system": {
@@ -190,7 +202,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-05-29 20:00",
+    "updated": "2026-05-29 22:02",
     "recent": [
       "05-29 移动AI三个卡位",
       "05-29 私人AI=个人资产",
@@ -229,6 +241,6 @@
       "ai-daily-briefing"
     ],
     "last_summary": "auto: no changes; llm: ## Consolidation pass complete — 27 → 12 agent-created skills",
-    "updated": "2026-05-29 20:00"
+    "updated": "2026-05-29 22:02"
   }
 }
