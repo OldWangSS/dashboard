@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-30 00:01",
+  "updated": "2026-05-30 02:00",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -174,7 +174,7 @@
     },
     "yuheng": {
       "name": "玉衡·廉贞",
-      "status": true
+      "status": false
     },
     "kaiyang": {
       "name": "开阳·武曲",
@@ -182,7 +182,7 @@
     },
     "tianji": {
       "name": "天玑·禄存",
-      "status": true
+      "status": false
     },
     "tianquan": {
       "name": "天权·文曲",
@@ -202,7 +202,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-05-30 00:01",
+    "updated": "2026-05-30 02:00",
     "recent": [
       "05-29 移动AI三个卡位",
       "05-29 私人AI=个人资产",
@@ -241,6 +241,6 @@
       "ai-daily-briefing"
     ],
     "last_summary": "auto: no changes; llm: ## Consolidation pass complete — 27 → 12 agent-created skills",
-    "updated": "2026-05-30 00:01"
+    "updated": "2026-05-30 02:00"
   }
 }
