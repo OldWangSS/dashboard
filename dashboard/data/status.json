@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-29 10:00",
+  "updated": "2026-05-29 12:01",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -151,8 +151,8 @@
         "prediction": "2:1"
       }
     ],
-    "updated": "2026-05-29T04:00:00Z",
-    "_note": "基于赛季知识构建，未使用实时搜索（工具受限）。欧洲联赛因2026世界杯已提前收官，仅含中超/J联赛/K联赛。"
+    "updated": "2026-05-29T12:00:00Z",
+    "_note": "无web_search工具，基于赛季知识构建。欧洲联赛因2026世界杯已提前收官，仅含中超/J联赛/K联赛未来3天赛程。"
   },
   "weekly": null,
   "system": {
@@ -190,8 +190,12 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-05-29 10:00",
+    "updated": "2026-05-29 12:01",
     "recent": [
+      "05-29 移动AI三个卡位",
+      "05-29 私人AI=个人资产",
+      "05-29 生产力到消费品的最后一公里",
+      "05-29 灵感串联之线",
       "05-27 电网效应",
       "05-27 偷懒是商机",
       "05-27 飞书抢入口",
@@ -205,13 +209,9 @@
       "05-26 4.北斗系统数据流架构",
       "05-26 1.北斗系统架构总览",
       "05-26 7.北斗系统容灾降级架构",
-      "05-26 3.北斗系统分层架构",
       "05-26 2.北斗七星职责模型",
-      "05-26 天枢欺骗事件",
-      "05-26 多Agent协作根本问题",
-      "05-26 指挥七个AI才真正学会了当领导",
-      "05-26 从零到五虎将",
-      "05-26 2026移动云大会"
+      "05-26 3.北斗系统分层架构",
+      "05-26 天枢欺骗事件"
     ]
   },
   "curator": {
@@ -220,8 +220,8 @@
     "total_runs": 1,
     "last_run": "5d ago",
     "interval": "every 7d",
-    "skills_total": 4,
-    "skills_active": 4,
+    "skills_total": 5,
+    "skills_active": 5,
     "skills_stale": 0,
     "most_active_skills": [
       "openclaw",
@@ -229,6 +229,6 @@
       "ai-daily-briefing"
     ],
     "last_summary": "auto: no changes; llm: ## Consolidation pass complete — 27 → 12 agent-created skills",
-    "updated": "2026-05-29 10:00"
+    "updated": "2026-05-29 12:01"
   }
 }
