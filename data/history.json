@@ -647,7 +647,25 @@
       "tasks_today": 0,
       "kb_updated": 20,
       "curator_skills": 5
+    },
+    {
+      "time": "05-30 08:03",
+      "agents_online": 3,
+      "agents_total": 7,
+      "agents_detail": {
+        "tianshu": true,
+        "yuheng": false,
+        "kaiyang": true,
+        "tianji": false,
+        "tianquan": true,
+        "tianxuan": false,
+        "yaoguang": false
+      },
+      "tokens_today": 0,
+      "tasks_today": 0,
+      "kb_updated": 20,
+      "curator_skills": 5
     }
   ],
-  "updated": "05-30 06:02"
+  "updated": "05-30 08:03"
 }
