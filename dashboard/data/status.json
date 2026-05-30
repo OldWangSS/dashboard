@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-31 04:01",
+  "updated": "2026-05-31 06:03",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -178,7 +178,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-05-31 04:01",
+    "updated": "2026-05-31 06:03",
     "recent": [
       "05-29 移动AI三个卡位",
       "05-29 私人AI=个人资产",
@@ -205,8 +205,8 @@
   "curator": {
     "status": "enabled",
     "enabled": true,
-    "total_runs": 1,
-    "last_run": "6d ago",
+    "total_runs": 2,
+    "last_run": "32m ago",
     "interval": "every 7d",
     "skills_total": 5,
     "skills_active": 5,
@@ -216,7 +216,7 @@
       "beidou-architecture",
       "ai-daily-briefing"
     ],
-    "last_summary": "auto: no changes; llm: ## Consolidation pass complete — 27 → 12 agent-created skills",
-    "updated": "2026-05-31 04:01"
+    "last_summary": "auto: no changes; llm: ## Analysis Complete",
+    "updated": "2026-05-31 06:03"
   }
 }
