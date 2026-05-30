@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-30 10:01",
+  "updated": "2026-05-30 12:03",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -129,7 +129,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-05-30 10:01",
+    "updated": "2026-05-30 12:03",
     "recent": [
       "05-29 移动AI三个卡位",
       "05-29 私人AI=个人资产",
@@ -168,6 +168,6 @@
       "ai-daily-briefing"
     ],
     "last_summary": "auto: no changes; llm: ## Consolidation pass complete — 27 → 12 agent-created skills",
-    "updated": "2026-05-30 10:01"
+    "updated": "2026-05-30 12:03"
   }
 }
