@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-01 14:03",
+  "updated": "2026-06-01 16:00",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -129,7 +129,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-06-01 14:03",
+    "updated": "2026-06-01 16:00",
     "recent": [
       "05-31 电车模式再现",
       "05-31 马斯克2026三小时访谈",
@@ -168,6 +168,6 @@
       "ai-daily-briefing"
     ],
     "last_summary": "auto: no changes; llm: ## Analysis Complete",
-    "updated": "2026-06-01 14:03"
+    "updated": "2026-06-01 16:00"
   }
 }
