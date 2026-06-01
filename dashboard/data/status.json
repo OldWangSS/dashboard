@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-01 10:03",
+  "updated": "2026-06-01 12:03",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -89,58 +89,9 @@
     ]
   },
   "football": {
-    "predictions": [
-      {
-        "match": "国米 vs 尤文",
-        "league": "意甲",
-        "date": "2026-06-01",
-        "prediction": "1-0"
-      },
-      {
-        "match": "拜仁 vs 多特",
-        "league": "德甲",
-        "date": "2026-06-01",
-        "prediction": "3-1"
-      },
-      {
-        "match": "横滨水手 vs 川崎前锋",
-        "league": "J联赛",
-        "date": "2026-06-01",
-        "prediction": "1-2"
-      },
-      {
-        "match": "巴黎 vs 马赛",
-        "league": "法甲",
-        "date": "2026-06-02",
-        "prediction": "2-0"
-      },
-      {
-        "match": "全北现代 vs 蔚山现代",
-        "league": "K联赛",
-        "date": "2026-06-02",
-        "prediction": "1-1"
-      },
-      {
-        "match": "阿森纳 vs 切尔西",
-        "league": "英超",
-        "date": "2026-06-03",
-        "prediction": "2-1"
-      },
-      {
-        "match": "马竞 vs 塞维利亚",
-        "league": "西甲",
-        "date": "2026-06-03",
-        "prediction": "1-0"
-      },
-      {
-        "match": "山东泰山 vs 武汉三镇",
-        "league": "中超",
-        "date": "2026-06-03",
-        "prediction": "2-0"
-      }
-    ],
-    "updated": "2026-06-01T04:00:00+08:00",
-    "note": "⚠️ web_search工具不可用，无法获取实时赛程与预测。当前为占位数据（窗口6/1-6/3），已排除5/31过期项、亚冠及2025前赛事。优先五大联赛+中超/J/K联赛。"
+    "predictions": [],
+    "updated": "2026-06-01T12:00:00Z",
+    "note": "web_search tool not available in this agent — unable to fetch live predictions. Predictions array is empty."
   },
   "weekly": null,
   "system": {
@@ -178,7 +129,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-06-01 10:03",
+    "updated": "2026-06-01 12:03",
     "recent": [
       "05-31 电车模式再现",
       "05-31 马斯克2026三小时访谈",
@@ -217,6 +168,6 @@
       "ai-daily-briefing"
     ],
     "last_summary": "auto: no changes; llm: ## Analysis Complete",
-    "updated": "2026-06-01 10:03"
+    "updated": "2026-06-01 12:03"
   }
 }
