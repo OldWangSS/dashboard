@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-01 18:04",
+  "updated": "2026-06-01 20:02",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -90,8 +90,8 @@
   },
   "football": {
     "predictions": [],
-    "updated": "2026-06-01T12:00:00Z",
-    "note": "web_search tool not available in this agent — unable to fetch live predictions. Predictions array is empty."
+    "updated": "2026-06-01T20:00:00+08:00",
+    "note": "web_search tool not available in current agent runtime; no live data fetched. Re-run with web-capable agent."
   },
   "weekly": null,
   "system": {
@@ -129,7 +129,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-06-01 18:04",
+    "updated": "2026-06-01 20:02",
     "recent": [
       "05-31 电车模式再现",
       "05-31 马斯克2026三小时访谈",
@@ -168,6 +168,6 @@
       "ai-daily-briefing"
     ],
     "last_summary": "auto: no changes; llm: ## Analysis Complete",
-    "updated": "2026-06-01 18:04"
+    "updated": "2026-06-01 20:02"
   }
 }
