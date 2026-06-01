@@ -1,14 +1,5 @@
 {
-  "predictions": [
-    {"match": "曼城 vs 利物浦", "league": "英超", "date": "2026-05-31", "prediction": "2-1"},
-    {"match": "皇马 vs 巴萨", "league": "西甲", "date": "2026-05-31", "prediction": "1-1"},
-    {"match": "国米 vs 尤文", "league": "意甲", "date": "2026-06-01", "prediction": "1-0"},
-    {"match": "拜仁 vs 多特", "league": "德甲", "date": "2026-06-01", "prediction": "3-1"},
-    {"match": "巴黎 vs 马赛", "league": "法甲", "date": "2026-06-02", "prediction": "2-0"},
-    {"match": "上海海港 vs 北京国安", "league": "中超", "date": "2026-05-31", "prediction": "2-2"},
-    {"match": "横滨水手 vs 川崎前锋", "league": "J联赛", "date": "2026-06-01", "prediction": "1-2"},
-    {"match": "全北现代 vs 蔚山现代", "league": "K联赛", "date": "2026-06-02", "prediction": "1-1"}
-  ],
-  "updated": "2026-05-31T20:00:00+08:00",
-  "note": "⚠️ web_search工具不可用，无法获取实时赛程与预测。当前为占位数据（覆盖未来3天：5/31-6/2），已排除亚冠及2025前赛事，优先五大联赛+中超/J/K联赛。"
+  "predictions": [],
+  "updated": "2026-06-01T20:00:00+08:00",
+  "note": "web_search tool not available in current agent runtime; no live data fetched. Re-run with web-capable agent."
 }
