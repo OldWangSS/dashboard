@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-02 14:04",
+  "updated": "2026-06-02 16:02",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -129,7 +129,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-06-02 14:04",
+    "updated": "2026-06-02 16:02",
     "recent": [
       "05-31 电车模式再现",
       "05-31 马斯克2026三小时访谈",
@@ -165,9 +165,9 @@
     "most_active_skills": [
       "openclaw",
       "beidou-architecture",
-      "policy-document-ppt"
+      "training-flow-ppt"
     ],
     "last_summary": "auto: no changes; llm: ## Analysis Complete",
-    "updated": "2026-06-02 14:04"
+    "updated": "2026-06-02 16:02"
   }
 }
