@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-03 04:01",
+  "updated": "2026-06-03 06:02",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -90,8 +90,8 @@
   },
   "football": {
     "predictions": [],
-    "updated": "2026-06-02T04:00:00+08:00",
-    "note": "web_search tool not available in current agent runtime; no live data fetched. Re-run with web-capable agent."
+    "updated": "2026-06-03T04:00:00+08:00",
+    "note": "web_search not available; no live data fetched. Re-run with web-capable agent."
   },
   "weekly": null,
   "system": {
@@ -129,7 +129,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-06-03 04:01",
+    "updated": "2026-06-03 06:02",
     "recent": [
       "06-02 伏雨集",
       "05-31 电车模式再现",
@@ -157,7 +157,7 @@
     "status": "enabled",
     "enabled": true,
     "total_runs": 2,
-    "last_run": "2d ago",
+    "last_run": "3d ago",
     "interval": "every 7d",
     "skills_total": 6,
     "skills_active": 6,
@@ -168,6 +168,6 @@
       "training-flow-ppt"
     ],
     "last_summary": "auto: no changes; llm: ## Analysis Complete",
-    "updated": "2026-06-03 04:01"
+    "updated": "2026-06-03 06:02"
   }
 }
