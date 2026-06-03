@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-03 06:02",
+  "updated": "2026-06-03 08:05",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -129,7 +129,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-06-03 06:02",
+    "updated": "2026-06-03 08:05",
     "recent": [
       "06-02 伏雨集",
       "05-31 电车模式再现",
@@ -168,6 +168,6 @@
       "training-flow-ppt"
     ],
     "last_summary": "auto: no changes; llm: ## Analysis Complete",
-    "updated": "2026-06-03 06:02"
+    "updated": "2026-06-03 08:05"
   }
 }
