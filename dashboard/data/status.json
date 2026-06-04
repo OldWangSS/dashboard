@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-04 12:00",
+  "updated": "2026-06-04 14:01",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -90,8 +90,8 @@
   },
   "football": {
     "predictions": [],
-    "updated": "2026-06-03T04:00:00+08:00",
-    "note": "web_search not available; no live data fetched. Re-run with web-capable agent."
+    "updated": "2026-06-04T12:00:00Z",
+    "note": "web_search工具不可用，无法获取实时预测数据"
   },
   "weekly": null,
   "system": {
@@ -129,7 +129,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-06-04 12:00",
+    "updated": "2026-06-04 14:01",
     "recent": [
       "06-03 你训练的AI价值=你的价值",
       "06-03 两条线交汇",
@@ -168,6 +168,6 @@
       "training-flow-ppt"
     ],
     "last_summary": "auto: no changes; llm: ## Analysis Complete",
-    "updated": "2026-06-04 12:00"
+    "updated": "2026-06-04 14:01"
   }
 }
