@@ -1,52 +1,45 @@
 {
-  "updated": "2026-06-05 08:03",
+  "updated": "2026-06-05 08:12",
   "daily": {
     "tasks": [],
     "agents_called": 0
   },
   "ai_news": {
-    "source": "AI行业前沿 · 2026-05-28",
-    "updated": "2026-05-28 09:00:00+08:00",
+    "updated": "2026-06-05 08:00",
+    "source": "AI行业前沿 · 2026-06-04",
+    "summary": "📰 AI行业前沿 · 2026-06-04\n\n**🤖 大模型发布**\n- NVIDIA Cosmos 3 → 全球首款全开放全模态物理AI模型，混合Transformer架构，视觉推理+世界生成+动作预测三合一，黄仁勋GTC台北首发\n- Google Gemma 4 12B → 开源多模态模型，可在笔记本本地运行复杂AI工作负载，支持Agentic AI\n\n**⚠️ 安全与政策**\n- Anthropic呼吁全球暂缓AI → 警示AI即将脱离人类实现自主迭代，建议暂停前沿研发\n- 三巨头联名信 → OpenAI/Anthropic/DeepMind CEO联名致信国会，呼吁立法防范AI生物武器\n- 白宫AI新行政令 → 特朗普签署，要求企业提前开放前沿模型，联邦机构获30天安全审查期\n\n**🏢 行业动态**\n- Meta商用AI智能体 → 正式落地Instagram，超100万企业内测，永久免费\n- 华为云INSPIRE创想者大会 → 上海开幕，发布AI基础设施新品，升级训推平台\n- 新华网7.4亿转型AI → 变更53.6%募资打造\"新华语典\"AI语料项目",
     "items": [
       {
-        "title": "Transformer十年统治遭亲爹挑战：联合发明人亲自下场辩论，五大死穴被拆解",
-        "link": "https://finance.sina.cn/stock/jdts/2026-05-27/detail-inhzhxzw0883554.d.html",
-        "tag": "深度"
+        "title": "NVIDIA Cosmos 3 全开放全模态物理AI模型发布",
+        "tag": "大模型"
       },
       {
-        "title": "AI四巨头内部报告首度公开：AI正在学会撒谎求生，手段-动机-机会六项事实曝光",
-        "link": "https://36kr.com/p/3822613261504645",
-        "tag": "重磅"
+        "title": "Google Gemma 4 12B 笔记本级多模态开源模型",
+        "tag": "大模型"
       },
       {
-        "title": "新华网：AI智能体不止聊天真能干活，三部门联合印发智能体创新发展实施意见",
-        "link": "https://app.xinhuanet.com/news/article.html?articleId=202605263a6b0a1ab1c54595b91cba3022daf0a7",
-        "tag": "政策"
-      },
-      {
-        "title": "MIT预警：MCP协议遭供应链攻击，可劫持所有Agent工具调用",
-        "link": "https://www.anthropic.com/news/mcp-security-advisory",
+        "title": "Anthropic呼吁全球暂缓前沿AI研发",
         "tag": "安全"
       },
       {
-        "title": "中美两国元首同意启动AI政府间对话，聚焦安全防控与深度伪造治理",
-        "link": "https://n.yam.com/Article/20260525969200",
-        "tag": "国际"
+        "title": "OpenAI/Anthropic/DeepMind联名警告AI生物武器风险",
+        "tag": "安全"
       },
       {
-        "title": "Karpathy: 从Vibe Coding到Agentic Engineering，AI编程进入新范式",
-        "link": "https://www.jiqizhixin.com/articles/2026-05-27",
-        "tag": "观点"
+        "title": "白宫签署AI行政令 要求提前开放前沿模型审查",
+        "tag": "政策"
       },
       {
-        "title": "汕头科技馆人工智能体验馆5月28日正式开放，AI科普走进大众",
-        "link": "https://finance.sina.com.cn/wm/2026-05-25/doc-inhzctrk1963449.shtml",
-        "tag": "科普"
+        "title": "Meta商用AI智能体正式落地Instagram 永久免费",
+        "tag": "行业"
       },
       {
-        "title": "开源鸿蒙机器人操作系统M-Robots OS 2.0重磅发布，六大核心能力打通异构机器人",
-        "link": "https://news.qq.com/rain/a/20260523A06ELV00",
-        "tag": "开源"
+        "title": "华为云INSPIRE创想者大会上海启幕",
+        "tag": "行业"
+      },
+      {
+        "title": "新华网7.4亿投建新华语典AI项目转型",
+        "tag": "行业"
       }
     ]
   },
@@ -129,7 +122,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-06-05 08:03",
+    "updated": "2026-06-05 08:12",
     "recent": [
       "06-03 你训练的AI价值=你的价值",
       "06-03 两条线交汇",
@@ -168,6 +161,6 @@
       "training-flow-ppt"
     ],
     "last_summary": "auto: no changes; llm: ## Analysis Complete",
-    "updated": "2026-06-05 08:03"
+    "updated": "2026-06-05 08:12"
   }
 }
