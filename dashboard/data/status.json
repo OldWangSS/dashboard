@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-07 10:03",
+  "updated": "2026-06-07 12:03",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -138,8 +138,8 @@
         "prediction": "0-1"
       }
     ],
-    "updated": "2026-06-07T04:00:00Z",
-    "note": "Built from 2026 season calendar; verify against live sources. European leagues (2025-26) concluded May 2026."
+    "updated": "2026-06-07T12:00:00Z",
+    "note": "Refreshed timestamp. European 2025-26 leagues concluded May 2026. Data unverified — web_search tool unavailable."
   },
   "weekly": null,
   "system": {
@@ -177,7 +177,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-06-07 10:03",
+    "updated": "2026-06-07 12:03",
     "recent": [
       "06-03 你训练的AI价值=你的价值",
       "06-03 两条线交汇",
@@ -205,7 +205,7 @@
     "status": "enabled",
     "enabled": true,
     "total_runs": 3,
-    "last_run": "3h ago",
+    "last_run": "5h ago",
     "interval": "every 7d",
     "skills_total": 6,
     "skills_active": 6,
@@ -216,6 +216,6 @@
       "policy-document-ppt"
     ],
     "last_summary": "auto: no changes; llm: Umbrella consolidation complete. Here's the summary:",
-    "updated": "2026-06-07 10:03"
+    "updated": "2026-06-07 12:03"
   }
 }
