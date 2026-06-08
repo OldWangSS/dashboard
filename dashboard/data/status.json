@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-08 18:01",
+  "updated": "2026-06-08 20:03",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -108,40 +108,9 @@
     ]
   },
   "football": {
-    "predictions": [
-      {
-        "match": "上海海港 vs 山东泰山",
-        "league": "中超",
-        "date": "2026-06-09",
-        "prediction": "2-1"
-      },
-      {
-        "match": "川崎前锋 vs 浦和红钻",
-        "league": "J联赛",
-        "date": "2026-06-10",
-        "prediction": "1-1"
-      },
-      {
-        "match": "蔚山现代 vs 全北现代",
-        "league": "K联赛",
-        "date": "2026-06-10",
-        "prediction": "1-2"
-      },
-      {
-        "match": "北京国安 vs 成都蓉城",
-        "league": "中超",
-        "date": "2026-06-09",
-        "prediction": "2-0"
-      },
-      {
-        "match": "横滨水手 vs 神户胜利船",
-        "league": "J联赛",
-        "date": "2026-06-08",
-        "prediction": "3-1"
-      }
-    ],
-    "updated": "2026-06-08T04:00:00Z",
-    "_note": "web_search工具不可用，以上为模型知识推算（欧洲联赛已休赛，仅含亚洲联赛）。建议手动验证。"
+    "predictions": [],
+    "updated": "2026-06-08T20:00:00+08:00",
+    "note": "web_search 工具在当前环境不可用（仅有 read_file/write_file/patch/search_files）。请在不依赖 web_search 的环境中重新执行，或通过 API 调用搜索服务后手动填充此文件。"
   },
   "weekly": null,
   "system": {
@@ -179,7 +148,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-06-08 18:01",
+    "updated": "2026-06-08 20:03",
     "recent": [
       "06-03 你训练的AI价值=你的价值",
       "06-03 两条线交汇",
@@ -218,6 +187,6 @@
       "policy-document-ppt"
     ],
     "last_summary": "auto: no changes; llm: Umbrella consolidation complete. Here's the summary:",
-    "updated": "2026-06-08 18:01"
+    "updated": "2026-06-08 20:03"
   }
 }
