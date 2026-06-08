@@ -1,15 +1,5 @@
 {
-  "predictions": [
-    {"match": "川崎前锋 vs 大阪钢巴", "league": "J联赛", "date": "2026-06-07", "prediction": "2-1"},
-    {"match": "蔚山现代 vs 全北现代", "league": "K联赛", "date": "2026-06-07", "prediction": "1-1"},
-    {"match": "上海海港 vs 山东泰山", "league": "中超", "date": "2026-06-07", "prediction": "2-0"},
-    {"match": "横滨水手 vs 浦和红钻", "league": "J联赛", "date": "2026-06-08", "prediction": "1-1"},
-    {"match": "浦项制铁 vs 大邱FC", "league": "K联赛", "date": "2026-06-08", "prediction": "2-1"},
-    {"match": "北京国安 vs 成都蓉城", "league": "中超", "date": "2026-06-08", "prediction": "1-0"},
-    {"match": "神户胜利船 vs 鹿岛鹿角", "league": "J联赛", "date": "2026-06-09", "prediction": "2-2"},
-    {"match": "光州FC vs 水原三星", "league": "K联赛", "date": "2026-06-09", "prediction": "1-2"},
-    {"match": "武汉三镇 vs 上海申花", "league": "中超", "date": "2026-06-09", "prediction": "0-1"}
-  ],
-  "updated": "2026-06-07T12:00:00Z",
-  "note": "Refreshed timestamp. European 2025-26 leagues concluded May 2026. Data unverified — web_search tool unavailable."
+  "predictions": [],
+  "updated": "2026-06-08T20:00:00+08:00",
+  "note": "web_search 工具在当前环境不可用（仅有 read_file/write_file/patch/search_files）。请在不依赖 web_search 的环境中重新执行，或通过 API 调用搜索服务后手动填充此文件。"
 }
