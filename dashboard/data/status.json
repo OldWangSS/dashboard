@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-09 00:04",
+  "updated": "2026-06-09 02:00",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -148,7 +148,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-06-09 00:04",
+    "updated": "2026-06-09 02:00",
     "recent": [
       "06-03 你训练的AI价值=你的价值",
       "06-03 两条线交汇",
@@ -187,6 +187,6 @@
       "policy-document-ppt"
     ],
     "last_summary": "auto: no changes; llm: Umbrella consolidation complete. Here's the summary:",
-    "updated": "2026-06-09 00:04"
+    "updated": "2026-06-09 02:00"
   }
 }
