@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-09 04:00",
+  "updated": "2026-06-09 06:03",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -109,8 +109,8 @@
   },
   "football": {
     "predictions": [],
-    "updated": "2026-06-08T20:00:00+08:00",
-    "note": "web_search 工具在当前环境不可用（仅有 read_file/write_file/patch/search_files）。请在不依赖 web_search 的环境中重新执行，或通过 API 调用搜索服务后手动填充此文件。"
+    "updated": "2026-06-09T04:00:00+08:00",
+    "note": "web_search 工具在当前 Agent 环境不可用（仅有 read_file/write_file/patch/search_files）。请由具备 web_search/tools_web 的天枢/天玑 Agent 执行本任务填充此文件，或手动运行 curl 抓取后填入。gen_data.py 的 fetch_football() 会从此文件读取数据。"
   },
   "weekly": null,
   "system": {
@@ -148,7 +148,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-06-09 04:00",
+    "updated": "2026-06-09 06:03",
     "recent": [
       "06-03 你训练的AI价值=你的价值",
       "06-03 两条线交汇",
@@ -187,6 +187,6 @@
       "policy-document-ppt"
     ],
     "last_summary": "auto: no changes; llm: Umbrella consolidation complete. Here's the summary:",
-    "updated": "2026-06-09 04:00"
+    "updated": "2026-06-09 06:03"
   }
 }
