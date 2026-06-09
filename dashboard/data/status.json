@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-09 06:03",
+  "updated": "2026-06-09 08:06",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -148,7 +148,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-06-09 06:03",
+    "updated": "2026-06-09 08:06",
     "recent": [
       "06-03 你训练的AI价值=你的价值",
       "06-03 两条线交汇",
@@ -176,7 +176,7 @@
     "status": "enabled",
     "enabled": true,
     "total_runs": 3,
-    "last_run": "1d ago",
+    "last_run": "2d ago",
     "interval": "every 7d",
     "skills_total": 6,
     "skills_active": 6,
@@ -184,9 +184,9 @@
     "most_active_skills": [
       "openclaw",
       "beidou-architecture",
-      "policy-document-ppt"
+      "ai-daily-briefing"
     ],
     "last_summary": "auto: no changes; llm: Umbrella consolidation complete. Here's the summary:",
-    "updated": "2026-06-09 06:03"
+    "updated": "2026-06-09 08:06"
   }
 }
