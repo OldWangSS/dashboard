@@ -1,5 +1,6 @@
 {
   "predictions": [],
-  "updated": "2026-06-10T12:00:00+08:00",
-  "note": "web_search 不可用。当前环境仅有 read_file/write_file/patch/search_files，无法执行网络搜索。需由具备 web/tools_web 能力的 Agent（天枢/天玑）填充真实预测数据，或手动运行 curl 抓取后写入。gen_data.py 的 fetch_football() 读取此文件。"
+  "updated": "2026-06-11T20:00:00Z",
+  "status": "skipped",
+  "reason": "web_search tool not available; no network access to fetch predictions"
 }
