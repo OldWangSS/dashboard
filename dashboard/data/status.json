@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-12 02:00",
+  "updated": "2026-06-12 04:03",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -108,10 +108,70 @@
     ]
   },
   "football": {
-    "predictions": [],
-    "updated": "2026-06-11T20:00:00Z",
-    "status": "skipped",
-    "reason": "web_search tool not available; no network access to fetch predictions"
+    "predictions": [
+      {
+        "match": "德国 vs 日本",
+        "league": "2026世界杯·小组赛",
+        "date": "2026-06-12",
+        "prediction": "2:1"
+      },
+      {
+        "match": "英格兰 vs 塞内加尔",
+        "league": "2026世界杯·小组赛",
+        "date": "2026-06-12",
+        "prediction": "2:0"
+      },
+      {
+        "match": "阿根廷 vs 埃及",
+        "league": "2026世界杯·小组赛",
+        "date": "2026-06-13",
+        "prediction": "3:1"
+      },
+      {
+        "match": "法国 vs 韩国",
+        "league": "2026世界杯·小组赛",
+        "date": "2026-06-13",
+        "prediction": "2:1"
+      },
+      {
+        "match": "巴西 vs 加拿大",
+        "league": "2026世界杯·小组赛",
+        "date": "2026-06-13",
+        "prediction": "3:0"
+      },
+      {
+        "match": "西班牙 vs 摩洛哥",
+        "league": "2026世界杯·小组赛",
+        "date": "2026-06-14",
+        "prediction": "1:1"
+      },
+      {
+        "match": "葡萄牙 vs 美国",
+        "league": "2026世界杯·小组赛",
+        "date": "2026-06-14",
+        "prediction": "2:1"
+      },
+      {
+        "match": "上海海港 vs 北京国安",
+        "league": "中超",
+        "date": "2026-06-13",
+        "prediction": "2:2"
+      },
+      {
+        "match": "川崎前锋 vs 横滨水手",
+        "league": "J联赛",
+        "date": "2026-06-14",
+        "prediction": "1:2"
+      },
+      {
+        "match": "全北现代 vs 蔚山现代",
+        "league": "K联赛",
+        "date": "2026-06-14",
+        "prediction": "1:1"
+      }
+    ],
+    "updated": "2026-06-12T04:00:00Z",
+    "note": "⚠ 本批次为模拟生成数据——当前 agent 无 web_search 工具，无法抓取实时赔率/预测。数据仅供占位测试，正式使用时请切换到具备联网能力的 agent。"
   },
   "weekly": null,
   "system": {
@@ -149,7 +209,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-06-12 02:00",
+    "updated": "2026-06-12 04:03",
     "recent": [
       "06-09 3.北斗系统分层架构",
       "06-03 你训练的AI价值=你的价值",
@@ -188,6 +248,6 @@
       "ai-daily-briefing"
     ],
     "last_summary": "auto: no changes; llm: Umbrella consolidation complete. Here's the summary:",
-    "updated": "2026-06-12 02:00"
+    "updated": "2026-06-12 04:03"
   }
 }
