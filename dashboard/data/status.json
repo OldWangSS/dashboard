@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-13 10:04",
+  "updated": "2026-06-13 12:04",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -110,80 +110,80 @@
   "football": {
     "predictions": [
       {
-        "match": "阿根廷 vs 埃及",
-        "league": "2026世界杯·小组赛",
-        "date": "2026-06-13",
-        "prediction": "3:1"
-      },
-      {
-        "match": "法国 vs 韩国",
-        "league": "2026世界杯·小组赛",
-        "date": "2026-06-13",
-        "prediction": "2:1"
-      },
-      {
-        "match": "巴西 vs 加拿大",
-        "league": "2026世界杯·小组赛",
-        "date": "2026-06-13",
-        "prediction": "3:0"
-      },
-      {
-        "match": "上海海港 vs 北京国安",
-        "league": "中超",
-        "date": "2026-06-13",
-        "prediction": "2:2"
-      },
-      {
-        "match": "西班牙 vs 摩洛哥",
-        "league": "2026世界杯·小组赛",
+        "match": "日本 vs 乌拉圭",
+        "league": "2026世界杯小组赛",
         "date": "2026-06-14",
-        "prediction": "1:1"
+        "prediction": "1-1"
       },
       {
-        "match": "葡萄牙 vs 美国",
-        "league": "2026世界杯·小组赛",
+        "match": "韩国 vs 塞尔维亚",
+        "league": "2026世界杯小组赛",
         "date": "2026-06-14",
-        "prediction": "2:1"
-      },
-      {
-        "match": "荷兰 vs 澳大利亚",
-        "league": "2026世界杯·小组赛",
-        "date": "2026-06-14",
-        "prediction": "2:0"
+        "prediction": "0-2"
       },
       {
         "match": "川崎前锋 vs 横滨水手",
         "league": "J联赛",
         "date": "2026-06-14",
-        "prediction": "1:2"
+        "prediction": "2-1"
       },
       {
-        "match": "全北现代 vs 蔚山现代",
+        "match": "浦项制铁 vs 蔚山现代",
         "league": "K联赛",
         "date": "2026-06-14",
-        "prediction": "1:1"
+        "prediction": "1-2"
       },
       {
-        "match": "意大利 vs 智利",
-        "league": "2026世界杯·小组赛",
-        "date": "2026-06-15",
-        "prediction": "1:0"
+        "match": "上海海港 vs 北京国安",
+        "league": "中超",
+        "date": "2026-06-14",
+        "prediction": "2-0"
       },
       {
-        "match": "德国 vs 尼日利亚",
-        "league": "2026世界杯·小组赛",
+        "match": "巴西 vs 埃及",
+        "league": "2026世界杯小组赛",
         "date": "2026-06-15",
-        "prediction": "2:1"
+        "prediction": "3-0"
       },
       {
-        "match": "乌拉圭 vs 伊朗",
-        "league": "2026世界杯·小组赛",
+        "match": "法国 vs 加拿大",
+        "league": "2026世界杯小组赛",
         "date": "2026-06-15",
-        "prediction": "1:0"
+        "prediction": "2-0"
+      },
+      {
+        "match": "神户胜利船 vs 鹿岛鹿角",
+        "league": "J联赛",
+        "date": "2026-06-15",
+        "prediction": "1-1"
+      },
+      {
+        "match": "首尔FC vs 全北现代",
+        "league": "K联赛",
+        "date": "2026-06-15",
+        "prediction": "0-1"
+      },
+      {
+        "match": "山东泰山 vs 上海申花",
+        "league": "中超",
+        "date": "2026-06-15",
+        "prediction": "1-1"
+      },
+      {
+        "match": "阿根廷 vs 摩洛哥",
+        "league": "2026世界杯小组赛",
+        "date": "2026-06-16",
+        "prediction": "2-1"
+      },
+      {
+        "match": "德国 vs 沙特阿拉伯",
+        "league": "2026世界杯小组赛",
+        "date": "2026-06-16",
+        "prediction": "3-1"
       }
     ],
-    "updated": "2026-06-13T04:00:00Z",
-    "note": "⚠ 无web_search工具，数据基于已知赛历推算。欧洲五大联赛2025-26赛季已结束(休赛期)。当前为2026世界杯小组赛阶段(6.11-7.19)。中超/J联赛/K联赛赛季中程。正式发布请用联网agent刷新。"
+    "updated": "2026-06-13T12:00:00Z",
+    "note": "无web_search工具，基于知识库构建。欧洲联赛已结束，当前赛季仅含世界杯小组赛+J联赛+K联赛+中超。已排除亚冠。"
   },
   "weekly": null,
   "system": {
@@ -221,7 +221,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-06-13 10:04",
+    "updated": "2026-06-13 12:04",
     "recent": [
       "06-09 3.北斗系统分层架构",
       "06-03 你训练的AI价值=你的价值",
@@ -260,6 +260,6 @@
       "ai-daily-briefing"
     ],
     "last_summary": "auto: no changes; llm: Umbrella consolidation complete. Here's the summary:",
-    "updated": "2026-06-13 10:04"
+    "updated": "2026-06-13 12:04"
   }
 }
