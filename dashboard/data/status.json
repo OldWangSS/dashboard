@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-14 04:01",
+  "updated": "2026-06-14 06:00",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -182,8 +182,8 @@
         "prediction": "3-1"
       }
     ],
-    "updated": "2026-06-13T12:00:00Z",
-    "note": "无web_search工具，基于知识库构建。欧洲联赛已结束，当前赛季仅含世界杯小组赛+J联赛+K联赛+中超。已排除亚冠。"
+    "updated": "2026-06-14T04:00:00Z",
+    "note": "无web_search工具，沿用知识库数据。已过滤：无亚冠、无2025及以前赛季。欧洲联赛已休赛，当前仅含世界杯小组赛+J联赛+K联赛+中超。"
   },
   "weekly": null,
   "system": {
@@ -221,7 +221,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-06-14 04:01",
+    "updated": "2026-06-14 06:00",
     "recent": [
       "06-09 3.北斗系统分层架构",
       "06-03 你训练的AI价值=你的价值",
@@ -260,6 +260,6 @@
       "ai-daily-briefing"
     ],
     "last_summary": "auto: no changes; llm: Umbrella consolidation complete. Here's the summary:",
-    "updated": "2026-06-14 04:01"
+    "updated": "2026-06-14 06:00"
   }
 }
