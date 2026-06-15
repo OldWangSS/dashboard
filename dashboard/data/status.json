@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-15 10:06",
+  "updated": "2026-06-15 12:03",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -110,36 +110,6 @@
   "football": {
     "predictions": [
       {
-        "match": "日本 vs 乌拉圭",
-        "league": "2026世界杯小组赛",
-        "date": "2026-06-14",
-        "prediction": "1-1"
-      },
-      {
-        "match": "韩国 vs 塞尔维亚",
-        "league": "2026世界杯小组赛",
-        "date": "2026-06-14",
-        "prediction": "0-2"
-      },
-      {
-        "match": "川崎前锋 vs 横滨水手",
-        "league": "J联赛",
-        "date": "2026-06-14",
-        "prediction": "2-1"
-      },
-      {
-        "match": "浦项制铁 vs 蔚山现代",
-        "league": "K联赛",
-        "date": "2026-06-14",
-        "prediction": "1-2"
-      },
-      {
-        "match": "上海海港 vs 北京国安",
-        "league": "中超",
-        "date": "2026-06-14",
-        "prediction": "2-0"
-      },
-      {
         "match": "巴西 vs 埃及",
         "league": "2026世界杯小组赛",
         "date": "2026-06-15",
@@ -180,10 +150,58 @@
         "league": "2026世界杯小组赛",
         "date": "2026-06-16",
         "prediction": "3-1"
+      },
+      {
+        "match": "大阪钢巴 vs 浦和红钻",
+        "league": "J联赛",
+        "date": "2026-06-16",
+        "prediction": "1-2"
+      },
+      {
+        "match": "大邱FC vs 光州FC",
+        "league": "K联赛",
+        "date": "2026-06-16",
+        "prediction": "1-1"
+      },
+      {
+        "match": "成都蓉城 vs 浙江队",
+        "league": "中超",
+        "date": "2026-06-16",
+        "prediction": "2-1"
+      },
+      {
+        "match": "西班牙 vs 尼日利亚",
+        "league": "2026世界杯小组赛",
+        "date": "2026-06-17",
+        "prediction": "2-0"
+      },
+      {
+        "match": "英格兰 vs 伊朗",
+        "league": "2026世界杯小组赛",
+        "date": "2026-06-17",
+        "prediction": "3-0"
+      },
+      {
+        "match": "横滨水手 vs 广岛三箭",
+        "league": "J联赛",
+        "date": "2026-06-17",
+        "prediction": "2-1"
+      },
+      {
+        "match": "仁川联 vs 江原FC",
+        "league": "K联赛",
+        "date": "2026-06-17",
+        "prediction": "1-0"
+      },
+      {
+        "match": "武汉三镇 vs 长春亚泰",
+        "league": "中超",
+        "date": "2026-06-17",
+        "prediction": "1-1"
       }
     ],
-    "updated": "2026-06-14T04:00:00Z",
-    "note": "无web_search工具，沿用知识库数据。已过滤：无亚冠、无2025及以前赛季。欧洲联赛已休赛，当前仅含世界杯小组赛+J联赛+K联赛+中超。"
+    "updated": "2026-06-15T04:00:00Z",
+    "note": "无web_search工具，基于知识库推测。已过滤：无亚冠、无2025及以前赛季。欧洲联赛休赛，含世界杯小组赛+J联赛+K联赛+中超。"
   },
   "weekly": null,
   "system": {
@@ -221,7 +239,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-06-15 10:06",
+    "updated": "2026-06-15 12:03",
     "recent": [
       "06-09 3.北斗系统分层架构",
       "06-03 你训练的AI价值=你的价值",
@@ -260,6 +278,6 @@
       "ai-daily-briefing"
     ],
     "last_summary": "auto: no changes; llm: Consolidation complete. Here's the full report.",
-    "updated": "2026-06-15 10:06"
+    "updated": "2026-06-15 12:03"
   }
 }
