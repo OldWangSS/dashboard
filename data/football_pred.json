@@ -1,5 +1,5 @@
 {
   "predictions": [],
-  "updated": "2026-06-17T20:00:00Z",
-  "_note": "无web_search工具，无法实时抓取预测数据。2026年6月正值世界杯期间，五大联赛及亚冠均休赛/已结束，国内联赛（中超/J/K联赛）亦为世界杯让路。建议配置web_search工具后重试。"
+  "updated": "2026-06-18T20:00:00Z",
+  "note": "web_search tool not available in this agent; predictions not fetched"
 }
