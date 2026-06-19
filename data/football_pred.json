@@ -1,5 +1,5 @@
 {
   "predictions": [],
-  "updated": "2026-06-18T20:00:00Z",
-  "note": "web_search tool not available in this agent; predictions not fetched"
+  "updated": "2026-06-19T12:00:00Z",
+  "note": "No web_search tool available; unable to fetch live data. Most domestic 2025-26 leagues have ended. 2026 FIFA World Cup is in group stage but exact schedule/predictions unavailable without web access. Re-run with a model that has web_search capability."
 }
