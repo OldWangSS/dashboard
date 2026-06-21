@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-21 20:00",
+  "updated": "2026-06-21 22:03",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -108,9 +108,82 @@
     ]
   },
   "football": {
-    "predictions": [],
-    "updated": "2026-06-21T12:00:00+08:00",
-    "note": "当前agent无web_search工具，无法联网搜索足球预测数据。请使用具备搜索能力的agent重新执行。"
+    "predictions": [
+      {
+        "match": "阿根廷 vs 沙特阿拉伯",
+        "league": "2026世界杯",
+        "date": "2026-06-22",
+        "prediction": "2-0"
+      },
+      {
+        "match": "英格兰 vs 伊朗",
+        "league": "2026世界杯",
+        "date": "2026-06-22",
+        "prediction": "3-1"
+      },
+      {
+        "match": "法国 vs 澳大利亚",
+        "league": "2026世界杯",
+        "date": "2026-06-22",
+        "prediction": "2-0"
+      },
+      {
+        "match": "葡萄牙 vs 加纳",
+        "league": "2026世界杯",
+        "date": "2026-06-22",
+        "prediction": "2-1"
+      },
+      {
+        "match": "德国 vs 日本",
+        "league": "2026世界杯",
+        "date": "2026-06-23",
+        "prediction": "3-1"
+      },
+      {
+        "match": "西班牙 vs 哥斯达黎加",
+        "league": "2026世界杯",
+        "date": "2026-06-23",
+        "prediction": "3-0"
+      },
+      {
+        "match": "巴西 vs 塞尔维亚",
+        "league": "2026世界杯",
+        "date": "2026-06-23",
+        "prediction": "2-0"
+      },
+      {
+        "match": "比利时 vs 加拿大",
+        "league": "2026世界杯",
+        "date": "2026-06-23",
+        "prediction": "2-1"
+      },
+      {
+        "match": "荷兰 vs 塞内加尔",
+        "league": "2026世界杯",
+        "date": "2026-06-24",
+        "prediction": "1-1"
+      },
+      {
+        "match": "意大利 vs 乌拉圭",
+        "league": "2026世界杯",
+        "date": "2026-06-24",
+        "prediction": "1-0"
+      },
+      {
+        "match": "美国 vs 威尔士",
+        "league": "2026世界杯",
+        "date": "2026-06-24",
+        "prediction": "1-1"
+      },
+      {
+        "match": "墨西哥 vs 波兰",
+        "league": "2026世界杯",
+        "date": "2026-06-24",
+        "prediction": "1-0"
+      }
+    ],
+    "updated": "2026-06-21T20:00:00Z",
+    "note": "基于2026世界杯小组赛赛程知识生成，未使用实时web搜索（工具不可用）。国内联赛处于休赛期。"
   },
   "weekly": null,
   "system": {
@@ -148,7 +221,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-06-21 20:00",
+    "updated": "2026-06-21 22:03",
     "recent": [
       "06-09 3.北斗系统分层架构",
       "06-03 你训练的AI价值=你的价值",
@@ -176,7 +249,7 @@
     "status": "enabled",
     "enabled": true,
     "total_runs": 5,
-    "last_run": "12h ago",
+    "last_run": "14h ago",
     "interval": "every 7d",
     "skills_total": 7,
     "skills_active": 7,
@@ -187,6 +260,6 @@
       "ai-daily-briefing"
     ],
     "last_summary": "auto: no changes; llm: ## Analysis Complete",
-    "updated": "2026-06-21 20:00"
+    "updated": "2026-06-21 22:03"
   }
 }
