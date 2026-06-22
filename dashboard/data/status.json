@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-23 00:04",
+  "updated": "2026-06-23 02:01",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -149,7 +149,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-06-23 00:04",
+    "updated": "2026-06-23 02:01",
     "recent": [
       "06-09 3.北斗系统分层架构",
       "06-03 你训练的AI价值=你的价值",
@@ -188,6 +188,6 @@
       "ai-daily-briefing"
     ],
     "last_summary": "auto: no changes; llm: ## Analysis Complete",
-    "updated": "2026-06-23 00:04"
+    "updated": "2026-06-23 02:01"
   }
 }
