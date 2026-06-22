@@ -1,18 +1,6 @@
 {
-  "predictions": [
-    {"match": "阿根廷 vs 沙特阿拉伯", "league": "2026世界杯", "date": "2026-06-22", "prediction": "2-0"},
-    {"match": "英格兰 vs 伊朗", "league": "2026世界杯", "date": "2026-06-22", "prediction": "3-1"},
-    {"match": "法国 vs 澳大利亚", "league": "2026世界杯", "date": "2026-06-22", "prediction": "2-0"},
-    {"match": "葡萄牙 vs 加纳", "league": "2026世界杯", "date": "2026-06-22", "prediction": "2-1"},
-    {"match": "德国 vs 日本", "league": "2026世界杯", "date": "2026-06-23", "prediction": "3-1"},
-    {"match": "西班牙 vs 哥斯达黎加", "league": "2026世界杯", "date": "2026-06-23", "prediction": "3-0"},
-    {"match": "巴西 vs 塞尔维亚", "league": "2026世界杯", "date": "2026-06-23", "prediction": "2-0"},
-    {"match": "比利时 vs 加拿大", "league": "2026世界杯", "date": "2026-06-23", "prediction": "2-1"},
-    {"match": "荷兰 vs 塞内加尔", "league": "2026世界杯", "date": "2026-06-24", "prediction": "1-1"},
-    {"match": "意大利 vs 乌拉圭", "league": "2026世界杯", "date": "2026-06-24", "prediction": "1-0"},
-    {"match": "美国 vs 威尔士", "league": "2026世界杯", "date": "2026-06-24", "prediction": "1-1"},
-    {"match": "墨西哥 vs 波兰", "league": "2026世界杯", "date": "2026-06-24", "prediction": "1-0"}
-  ],
-  "updated": "2026-06-21T20:00:00Z",
-  "note": "基于2026世界杯小组赛赛程知识生成，未使用实时web搜索（工具不可用）。国内联赛处于休赛期。"
+  "predictions": [],
+  "updated": "2026-06-22T20:00:00Z",
+  "status": "no_web_search_tool_available",
+  "note": "web_search tool not available to this agent. Please populate manually or via a pipeline that has search capability."
 }
