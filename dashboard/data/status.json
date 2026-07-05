@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-05 08:09",
+  "updated": "2026-07-05 10:03",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -162,7 +162,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-07-05 08:09",
+    "updated": "2026-07-05 10:03",
     "recent": [
       "06-09 3.北斗系统分层架构",
       "06-03 你训练的AI价值=你的价值",
@@ -189,18 +189,18 @@
   "curator": {
     "status": "enabled",
     "enabled": true,
-    "total_runs": 6,
-    "last_run": "7d ago",
+    "total_runs": 7,
+    "last_run": "1h ago",
     "interval": "every 7d",
-    "skills_total": 11,
-    "skills_active": 11,
+    "skills_total": 9,
+    "skills_active": 9,
     "skills_stale": 0,
     "most_active_skills": [
       "openclaw",
       "ai-daily-briefing",
       "beidou-architecture"
     ],
-    "last_summary": "auto: no changes; llm: ---",
-    "updated": "2026-07-05 08:09"
+    "last_summary": "auto: no changes; llm: ## Consolidation Pass Summary",
+    "updated": "2026-07-05 10:03"
   }
 }
