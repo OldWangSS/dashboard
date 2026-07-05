@@ -1,24 +1,6 @@
 {
   "snapshots": [
     {
-      "time": "06-28 08:08",
-      "agents_online": 1,
-      "agents_total": 7,
-      "agents_detail": {
-        "tianshu": true,
-        "yuheng": false,
-        "kaiyang": false,
-        "tianji": false,
-        "tianquan": false,
-        "tianxuan": false,
-        "yaoguang": false
-      },
-      "tokens_today": 0,
-      "tasks_today": 0,
-      "kb_updated": 20,
-      "curator_skills": 6
-    },
-    {
       "time": "06-28 10:06",
       "agents_online": 1,
       "agents_total": 7,
@@ -1511,7 +1493,25 @@
       "tasks_today": 0,
       "kb_updated": 20,
       "curator_skills": 11
+    },
+    {
+      "time": "07-05 08:09",
+      "agents_online": 1,
+      "agents_total": 7,
+      "agents_detail": {
+        "tianshu": true,
+        "yuheng": false,
+        "kaiyang": false,
+        "tianji": false,
+        "tianquan": false,
+        "tianxuan": false,
+        "yaoguang": false
+      },
+      "tokens_today": 0,
+      "tasks_today": 0,
+      "kb_updated": 20,
+      "curator_skills": 11
     }
   ],
-  "updated": "07-05 06:06"
+  "updated": "07-05 08:09"
 }
