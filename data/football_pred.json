@@ -1,6 +1,11 @@
 {
-  "predictions": [],
-  "updated": "2026-06-23T04:00:00Z",
-  "status": "no_web_search_tool_available",
-  "note": "web_search tool not available to this agent. Please populate via a pipeline that has search capability (e.g., agent with web_search tool, or external scraper)."
+  "predictions": [
+    {
+      "match": "Spain vs Belgium",
+      "league": "世界杯",
+      "date": "07/11 03:00",
+      "prediction": "1-1"
+    }
+  ],
+  "updated": "2026-07-10T20:00:21.330107+08:00"
 }
