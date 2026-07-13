@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-13 14:02",
+  "updated": "2026-07-13 16:03",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -121,8 +121,15 @@
     ]
   },
   "football": {
-    "predictions": [],
-    "updated": "2026-07-13T12:00:31.737187+08:00"
+    "predictions": [
+      {
+        "match": "Spain vs Belgium",
+        "league": "世界杯",
+        "date": "07/11 03:00",
+        "prediction": "1-1"
+      }
+    ],
+    "updated": "2026-07-10T20:00:21.330107+08:00"
   },
   "weekly": null,
   "system": {
@@ -160,7 +167,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-07-13 14:02",
+    "updated": "2026-07-13 16:03",
     "recent": [
       "06-09 3.北斗系统分层架构",
       "06-03 你训练的AI价值=你的价值",
@@ -199,6 +206,6 @@
       "beidou-architecture"
     ],
     "last_summary": "auto: no changes; llm: Cross-references between `beidou-architecture` and `openclaw` are proper see-also links (`详见 openclaw skill → references/...`), not duplicate content. Architecture defines the WHAT, OpenClaw management defines the HOW — clean boundary, no c…",
-    "updated": "2026-07-13 14:02"
+    "updated": "2026-07-13 16:03"
   }
 }
