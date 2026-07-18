@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-18 08:06",
+  "updated": "2026-07-18 10:05",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -160,7 +160,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-07-18 08:06",
+    "updated": "2026-07-18 10:05",
     "recent": [
       "06-09 3.北斗系统分层架构",
       "06-03 你训练的AI价值=你的价值",
@@ -188,7 +188,7 @@
     "status": "enabled",
     "enabled": true,
     "total_runs": 8,
-    "last_run": "5d ago",
+    "last_run": "6d ago",
     "interval": "every 7d",
     "skills_total": 9,
     "skills_active": 9,
@@ -199,6 +199,6 @@
       "beidou-architecture"
     ],
     "last_summary": "auto: no changes; llm: Cross-references between `beidou-architecture` and `openclaw` are proper see-also links (`详见 openclaw skill → references/...`), not duplicate content. Architecture defines the WHAT, OpenClaw management defines the HOW — clean boundary, no c…",
-    "updated": "2026-07-18 08:06"
+    "updated": "2026-07-18 10:05"
   }
 }
