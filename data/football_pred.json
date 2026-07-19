@@ -1,4 +1,11 @@
 {
-  "predictions": [],
-  "updated": "2026-07-13T20:00:40.652166+08:00"
+  "predictions": [
+    {
+      "match": "Spain vs Argentina",
+      "league": "世界杯",
+      "date": "07/20 03:00",
+      "prediction": "1-1"
+    }
+  ],
+  "updated": "2026-07-19T20:00:19.000320+08:00"
 }
