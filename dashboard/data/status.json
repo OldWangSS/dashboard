@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-21 16:05",
+  "updated": "2026-07-21 18:05",
   "daily": {
     "tasks": [],
     "agents_called": 0
@@ -160,7 +160,7 @@
     "note": "无session数据"
   },
   "knowledge": {
-    "updated": "2026-07-21 16:05",
+    "updated": "2026-07-21 18:05",
     "recent": [
       "06-09 3.北斗系统分层架构",
       "06-03 你训练的AI价值=你的价值",
@@ -190,8 +190,8 @@
     "total_runs": 9,
     "last_run": "2d ago",
     "interval": "every 7d",
-    "skills_total": 9,
-    "skills_active": 9,
+    "skills_total": 10,
+    "skills_active": 10,
     "skills_stale": 0,
     "most_active_skills": [
       "ai-daily-briefing",
@@ -199,6 +199,6 @@
       "beidou-architecture"
     ],
     "last_summary": "auto: no changes; llm: All four maintenance patches applied cleanly. Final report:",
-    "updated": "2026-07-21 16:05"
+    "updated": "2026-07-21 18:05"
   }
 }
